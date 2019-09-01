@@ -1,0 +1,22 @@
+D:\dev\MapIt\sol\MapIt.Helpers\bin\Debug\MapIt.Helpers.dll
+D:\dev\MapIt\sol\MapIt.Helpers\bin\Debug\MapIt.Helpers.pdb
+D:\dev\MapIt\sol\MapIt.Helpers\obj\Debug\MapIt.Helpers.dll
+D:\dev\MapIt\sol\MapIt.Helpers\obj\Debug\MapIt.Helpers.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Debug\MapIt.Helpers.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Debug\MapIt.Helpers.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.csprojResolveAssemblyReference.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.pdb
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Helpers\bin\Debug\MapIt.Helpers.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Helpers\bin\Debug\MapIt.Helpers.pdb
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.csprojResolveAssemblyReference.cache
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Debug\MapIt.Helpers.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Debug\MapIt.Helpers.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Debug\Newtonsoft.Json.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.csprojAssemblyReference.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.csproj.CoreCompileInputs.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Debug\MapIt.Helpers.csproj.CopyComplete

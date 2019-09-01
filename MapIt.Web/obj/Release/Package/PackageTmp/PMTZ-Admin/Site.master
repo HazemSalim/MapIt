@@ -1,0 +1,459 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MapIt.Web.Admin.SiteMaster" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Map it Administration Panel</title>
+
+    <link rel="shortcut icon" type="image/png" href="/Images/fav.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="/Images/fav.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%--<webopt:BundleReference runat="server" Path="~/Content/admin" />--%>
+    <link href="/Content/admin/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/admin/datepicker3.css" rel="stylesheet" />
+    <link href="/Content/admin/bootstrap-table.css" rel="stylesheet" />
+    <link href="/Content/admin/admin-styles.css" rel="stylesheet" />
+    <link href="/Content/snackbar.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/40d471a376.js"></script>
+
+    <%--<asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/admin") %>
+    </asp:PlaceHolder>--%>
+
+    <script src="/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = window.location.href.toLowerCase();
+            var pagename = url.substring(url.lastIndexOf('/'));
+            for (var i = 0; i < $('.nav a').length; i++) {
+                if ($('.nav a').eq(i).attr("href") != null && pagename.indexOf($('.nav a').eq(i).attr("href").toLowerCase()) > 0) {
+                    $('.nav a').eq(i).closest('li').attr("class", "active");
+                    return;
+                }
+            }
+        });
+
+        function checkAll(ele, eid) {
+            var checkboxes = document.getElementById(eid).getElementsByTagName('input');
+            if (ele.checked) {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].type == 'checkbox') {
+                        checkboxes[i].checked = true;
+                    }
+                }
+            } else {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    console.log(i)
+                    if (checkboxes[i].type == 'checkbox') {
+                        checkboxes[i].checked = false;
+                    }
+                }
+            }
+        }
+
+        function hideShow(ele, eid) {
+            debugger;
+            if (ele.checked) {
+                eid.style.display = 'block';
+            } else {
+                eid.style.display = 'none';
+            }
+        }
+
+        function goBack() {
+            window.history.back()
+        }
+
+        function goForward() {
+            window.history.forward()
+        }
+
+        function printContent(el) {
+            var restorepage = document.body.innerHTML;
+            var printcontent = document.getElementById(el).innerHTML;
+            document.body.innerHTML = printcontent;
+            window.print();
+        }
+
+        function tempAlert(msg, location, duration) {
+            var el = document.createElement("div");
+            el.setAttribute("id", "snackbar");
+            el.innerHTML = msg;
+            el.className = "show";
+            setTimeout(function () {
+                el.parentNode.removeChild(el);
+            }, duration);
+            document.body.appendChild(el);
+
+            if (location.length != 0) {
+                setTimeout(function () {
+                    window.location = location;
+                }, duration);
+            }
+        }
+
+        function checkAll2(ele, eid) {
+            var checkboxes = document.getElementsByClassName(eid);
+            if (ele.checked) {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].childNodes[1].childNodes[0].type == 'checkbox') {
+                        checkboxes[i].childNodes[1].childNodes[0].checked = true;
+                    }
+                }
+            } else {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    console.log(i)
+                    if (checkboxes[i].childNodes[1].childNodes[0].type == 'checkbox') {
+                        checkboxes[i].childNodes[1].childNodes[0].checked = false;
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- cdn for modernizr, if you haven't included it already -->
+    <script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+    <!-- polyfiller file to detect and load polyfills -->
+    <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+    <script>
+        $(window).load(function () {
+            webshims.setOptions('waitReady', false);
+            webshims.setOptions('forms-ext', { types: 'date' });
+            webshims.polyfill('forms forms-ext');
+        });
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" enctype="multipart/form-data">
+        <div id="divLoadingImage" class="loading">
+            <img class="loading_image" src="../images/loading.gif" alt="" />
+        </div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts>
+                <asp:ScriptReference Path="../scripts/loading.js" />
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div id="snackbar"></div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="."><span>Map it</span>Admin</a>
+                    <ul class="user-menu">
+                        <li class="dropdown pull-right">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-user"></i>
+                                <asp:Label ID="lblFullName" runat="server"></asp:Label>
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="ChangePassword">
+                                    <i class="fa fa-gear"></i>
+                                    Change Password</a></li>
+                                <li><a href="Login">
+                                    <i class="fa fa-power-off"></i>
+                                    Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+            <ul class="nav menu">
+                <li><a href=".">
+                    <i class="fa fa-tachometer"></i>
+                    Dashboard</a>
+                </li>
+                <li role="presentation" class="divider"><b>&nbsp;<i class="fa fa-window-maximize"></i> Meta Data</b></li>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Countries))
+                    {%>
+                <li><a href="Countries">
+                    <i class="fa fa-globe"></i>
+                    Countries</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Currencies))
+                    {%>
+                <li><a href="Currencies">
+                    <i class="fa fa-money"></i>
+                    Currencies</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.PaymentMethods))
+                    {%>
+                <li><a href="PaymentMethods">
+                    <i class="fa fa-credit-card"></i>
+                    Payment Methods</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.ContentPages))
+                    {%>
+                <li><a href="ContentPages">
+                    <i class="fa fa-window-maximize"></i>
+                    Content Pages</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.ContentPages))
+                    {%>
+                <li><a href="FAQs">
+                    <i class="fa fa-question"></i>
+                    FAQs</a>
+                </li>
+                <%}%>
+                <li role="presentation" class="divider"><b>&nbsp;<i class="fa fa-newspaper-o"></i> Marketing</b></li>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.CommAds))
+                    {%>
+                <li><a href="CommAds">
+                    <i class="fa fa-picture-o"></i>
+                    Comm. Ads</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Offers))
+                    {%>
+                <li><a href="Offers">
+                    <i class="fa fa-picture-o"></i>
+                    Offers</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Brokers))
+                    {%>
+                <li><a href="Brokers">
+                    <i class="fa fa-user"></i>
+                    Brokers</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Newsletter))
+                    {%>
+                <li><a href="Newsletter">
+                    <i class="fa fa-newspaper-o"></i>
+                    News Letters</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.GenNotifs))
+                    {%>
+                <li><a href="GenNotifs">
+                    <i class="fa fa-clone"></i>
+                    General Notifications</a>
+                </li>
+                <%}%>
+                <li role="presentation" class="divider"><b>&nbsp;<i class="fa fa-users"></i> Users</b></li>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Packages))
+                    {%>
+                <li><a href="UsersPackages">
+                    <i class="fa fa-clone"></i>
+                    Users Packages</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Users))
+                    {%>
+                <li><a href="Users">
+                    <i class="fa fa-users"></i>
+                    Users</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Users))
+                    {%>
+                <li><a href="TechMessages">
+                    <i class="fa fa-users"></i>
+                    Tech Messages
+                    <img src='<%= new MapIt.Repository.UsersRepository().HasPendingMessages() ? "/images/red_circle.png" : "" %>' alt="" /></a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Users))
+                    {%>
+                <li><a href="UserCredits">
+                    <i class="fa fa-users"></i>
+                    Users Credits</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Users))
+                    {%>
+                <li><a href="UserBalanceLogs">
+                    <i class="fa fa-users"></i>
+                    User Balance Logs</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Users))
+                    {%>
+                <li><a href="AddFreeCredit">
+                    <i class="fa fa-money"></i>
+                    Add Free Credit</a>
+                </li>
+                <%}%>
+                <li role="presentation" class="divider"><b>&nbsp;<i class="fa fa-home"></i> Properties</b></li>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.ProPages))
+                    {%>
+                <li><a href="PropertyTypes">
+                    <i class="fa fa-building"></i>
+                    Property Types</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.ProPages))
+                    {%>
+                <li><a href="Components">
+                    <i class="fa fa-clone"></i>
+                    Components</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.ProPages))
+                    {%>
+                <li><a href="Features">
+                    <i class="fa fa-clone"></i>
+                    Features</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.PropertiesSettings))
+                    {%>
+                <li><a href="PropertySettings">
+                    <i class="fa fa-gear"></i>
+                    Properties Settings</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Properties))
+                    {%>
+                <li><a href="Properties">
+                    <i class="fa fa-home"></i>
+                    Properties</a>
+                </li>
+                <%}%>
+                <li role="presentation" class="divider"><b>&nbsp;<i class="fa fa-clone"></i> Services</b></li>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.SerPages))
+                    {%>
+                <li><a href="ServiceCategories">
+                    <i class="fa fa-clone"></i>
+                    Service Categories</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Services))
+                    {%>
+                <li><a href="Services">
+                    <i class="fa fa-clone"></i>
+                    Services</a>
+                </li>
+                <%}%>
+                <li role="presentation" class="divider"><b>&nbsp;<i class="fa fa-id-card"></i> Requests</b></li>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Requests))
+                    {%>
+                <li><a href="Merchants">
+                    <i class="fa fa-id-card-o"></i>
+                    Merchants Requests</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.Requests))
+                    {%>
+                <li><a href="Photographers">
+                    <i class="fa fa-id-card-o"></i>
+                    Photographers Requests</a>
+                </li>
+                <%}%>
+                <li role="presentation" class="divider"><b>&nbsp;<i class="fa fa-gear"></i> Admin Settings</b></li>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.GeneralSettings))
+                    {%>
+                <li><a href="GeneralSettings">
+                    <i class="fa fa-gear"></i>
+                    General Settings</a>
+                </li>
+                <%}%>
+                <%if (new MapIt.Repository.AdminPermissionsRepository().GetByPageId(MapIt.Helpers.ParseHelper.GetInt(Session["AdminUserId"].ToString()).Value
+                              , (int)MapIt.Lib.AppEnums.AdminPages.AdminUsers))
+                    {%>
+                <li><a href="Admins">
+                    <i class="fa fa-user"></i>
+                    Admin Users</a>
+                </li>
+                <%}%>
+            </ul>
+
+        </div>
+        <!--/.sidebar-->
+
+        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+            <asp:ContentPlaceHolder ID="Content" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+            <div class="text-center">
+                &copy; <%:DateTime.Now.Year %> Map it. All Rights Reserved.
+            </div>
+            <div class="text-center">
+                Developed by Hard Task
+                <a href="http://hardtask.com" target="_blank">
+                    <img src="/images/hardtask.png" alt="">
+                </a>
+            </div>
+        </div>
+        <!--/.main-->
+
+        <!-- Hight Slide -->
+        <script type="text/javascript" src="/scripts/highslide/highslide-with-gallery.js"></script>
+        <link rel="stylesheet" type="text/css" href="/scripts/highslide/highslide.css" />
+        <script type="text/javascript">
+            hs.graphicsDir = '/scripts/highslide/graphics/';
+            hs.align = 'center';
+            hs.transitions = ['expand', 'crossfade'];
+            hs.wrapperClassName = 'dark borderless floating-caption';
+            hs.fadeInOut = true;
+            hs.dimmingOpacity = .75;
+
+            // Add the controlbar
+            if (hs.addSlideshow) hs.addSlideshow({
+                //slideshowGroup: 'group1',
+                interval: 5000,
+                repeat: false,
+                useControls: true,
+                fixedControls: 'fit',
+                overlayOptions: {
+                    opacity: .6,
+                    position: 'bottom center',
+                    hideOnMouseOut: true
+                }
+            });
+        </script>
+    </form>
+</body>
+</html>

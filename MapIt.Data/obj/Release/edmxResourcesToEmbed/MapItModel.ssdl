@@ -1,0 +1,2081 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MapItModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminPages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdminPermissions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminUserId" Type="int" Nullable="false" />
+    <Property Name="AdminPageId" Type="int" Nullable="false" />
+    <Property Name="IsAccessible" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdminUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastLoginOn" Type="datetime" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Areas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="Coordinates" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Blocks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AreaId" Type="int" Nullable="false" />
+    <Property Name="Coordinates" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="BrokerAreas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrokerId" Type="int" Nullable="false" />
+    <Property Name="AreaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Brokers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Link" Type="nvarchar" MaxLength="250" />
+    <Property Name="DetailsEN" Type="nvarchar(max)" />
+    <Property Name="DetailsAR" Type="nvarchar(max)" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+    <Property Name="AllAreas" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="Coordinates" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CommAdPlaces">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CommercialAds">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CommAdPlaceId" Type="int" Nullable="false" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="1000" />
+    <Property Name="FromDate" Type="datetime" Nullable="false" />
+    <Property Name="ToDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Components">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ordering" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContentPages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="HasLink" Type="bit" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="500" />
+    <Property Name="ContentEN" Type="nvarchar(max)" />
+    <Property Name="ContentAR" Type="nvarchar(max)" />
+    <Property Name="Ordering" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Zoom" Type="int" Nullable="false" />
+    <Property Name="CCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ISOCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Currencies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SymbolEN" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SymbolAR" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Digits" Type="int" Nullable="false" />
+    <Property Name="Format" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="ExchangeRate" Type="float" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DevicesTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="DeviceId" Type="nvarchar(max)" />
+    <Property Name="DeviceToken" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeviceType" Type="int" Nullable="false" />
+    <Property Name="PushCounter" Type="int" Nullable="false" />
+    <Property Name="IsLogged" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FAQs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ContentEN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContentAR" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ordering" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Features">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GeneralSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MetaDesc" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="MetaKW" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Website" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Facebook" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Twitter" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Instagram" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Youtube" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Linkedin" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Snapchat" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Tumblr" Type="nvarchar" MaxLength="1000" />
+    <Property Name="AppStore" Type="nvarchar" MaxLength="1000" />
+    <Property Name="GooglePlay" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="DefaultCountryId" Type="int" Nullable="false" />
+    <Property Name="DefaultCurrencyId" Type="int" Nullable="false" />
+    <Property Name="InvoiceTerms" Type="nvarchar" MaxLength="1000" />
+    <Property Name="WorkingHours" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="DefFreeAmount" Type="float" Nullable="false" />
+    <Property Name="NormalAdCost" Type="float" Nullable="false" />
+    <Property Name="SpecAdCost" Type="float" Nullable="false" />
+    <Property Name="AdVideoCost" Type="float" Nullable="false" />
+    <Property Name="NormalAdDuration" Type="int" Nullable="false" />
+    <Property Name="SpecAdDuration" Type="int" Nullable="false" />
+    <Property Name="AvPhotos" Type="int" Nullable="false" />
+    <Property Name="AvVideos" Type="int" Nullable="false" />
+    <Property Name="SimilarAdCount" Type="int" Nullable="false" />
+    <Property Name="PageSize" Type="int" Nullable="false" />
+    <Property Name="PageSizeMob" Type="int" Nullable="false" />
+    <Property Name="AutoActiveUser" Type="bit" Nullable="false" />
+    <Property Name="AutoActiveAd" Type="bit" Nullable="false" />
+    <Property Name="Version" Type="float" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="GenNotifs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Merchants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="NewsSubscribers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="GenNotifId" Type="int" />
+    <Property Name="PropertyId" Type="bigint" />
+    <Property Name="ServiceId" Type="bigint" />
+    <Property Name="OfferId" Type="int" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NotifTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DescriptionEN" Type="nvarchar" MaxLength="500" />
+    <Property Name="DescriptionAR" Type="nvarchar" MaxLength="500" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="250" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ViewersCount" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Ordering" Type="int" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Packages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DescriptionEN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DescriptionAR" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="PagePlaces">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PageShows">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PageId" Type="int" Nullable="false" />
+    <Property Name="PagePlaceId" Type="int" Nullable="false" />
+    <Property Name="Show" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentMethods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CostFeePercent" Type="float" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreditId" Type="bigint" Nullable="false" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="100" />
+    <Property Name="PaymentId" Type="nvarchar" MaxLength="100" />
+    <Property Name="TranId" Type="nvarchar" MaxLength="100" />
+    <Property Name="RefId" Type="nvarchar" MaxLength="100" />
+    <Property Name="Auth" Type="nvarchar" MaxLength="100" />
+    <Property Name="Result" Type="nvarchar" MaxLength="100" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="PaidOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Photographers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Properties">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="PurposeId" Type="int" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="BlockId" Type="int" />
+    <Property Name="Area" Type="float" />
+    <Property Name="BuildingAge" Type="int" />
+    <Property Name="MonthlyIncome" Type="float" />
+    <Property Name="SellingPrice" Type="float" />
+    <Property Name="RentPrice" Type="float" />
+    <Property Name="Details" Type="nvarchar(max)" />
+    <Property Name="OtherPhones" Type="nvarchar" MaxLength="250" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Street" Type="nvarchar" MaxLength="100" />
+    <Property Name="PortalAddressEN" Type="nvarchar" MaxLength="500" />
+    <Property Name="PortalAddressAR" Type="nvarchar" MaxLength="500" />
+    <Property Name="PACI" Type="nvarchar" MaxLength="50" />
+    <Property Name="ViewersCount" Type="int" Nullable="false" />
+    <Property Name="PaySpecial" Type="bit" Nullable="false" />
+    <Property Name="PayVideo" Type="bit" Nullable="false" />
+    <Property Name="IsSpecial" Type="bit" Nullable="false" />
+    <Property Name="IsAvailable" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AdminAdded" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="PropertyComments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PropertyId" Type="bigint" Nullable="false" />
+    <Property Name="SenderId" Type="bigint" Nullable="false" />
+    <Property Name="ReceiverId" Type="bigint" Nullable="false" />
+    <Property Name="TextMessage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyComponents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PropertyId" Type="bigint" Nullable="false" />
+    <Property Name="ComponentId" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" />
+  </EntityType>
+  <EntityType Name="PropertyFavorites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="PropertyId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyFeatures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PropertyId" Type="bigint" Nullable="false" />
+    <Property Name="FeatureId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyPhotos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PropertyId" Type="bigint" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyReports">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PropertyId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="ReasonId" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertySettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="PropertyName" Type="nvarchar" MaxLength="500" />
+    <Property Name="PropertyId" Type="int" />
+    <Property Name="IsAvailable" Type="bit" Nullable="false" />
+    <Property Name="IsMondatory" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ordering" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyVideos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PropertyId" Type="bigint" Nullable="false" />
+    <Property Name="Video" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyViews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="PropertyId" Type="bigint" Nullable="false" />
+    <Property Name="ViewedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Purposes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reasons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceAreas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceId" Type="bigint" Nullable="false" />
+    <Property Name="AreaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceComments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceId" Type="bigint" Nullable="false" />
+    <Property Name="SenderId" Type="bigint" Nullable="false" />
+    <Property Name="ReceiverId" Type="bigint" Nullable="false" />
+    <Property Name="TextMessage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceFavorites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="ServiceId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServicePhotos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceId" Type="bigint" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceRates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="ServiceId" Type="bigint" Nullable="false" />
+    <Property Name="Rate" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceReports">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="ReasonId" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="ExYears" Type="int" Nullable="false" />
+    <Property Name="OtherPhones" Type="nvarchar" MaxLength="250" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ViewersCount" Type="int" Nullable="false" />
+    <Property Name="AllAreas" Type="bit" Nullable="false" />
+    <Property Name="IsCompany" Type="bit" Nullable="false" />
+    <Property Name="IsSpecial" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AdminAdded" Type="bit" Nullable="false" />
+    <Property Name="Ordering" Type="int" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="ServicesCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ordering" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="ServiceViews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="ServiceId" Type="bigint" Nullable="false" />
+    <Property Name="ViewedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sliders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="OpenBlank" Type="bit" Nullable="false" />
+    <Property Name="Ordering" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="TechMessages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="Sender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TextMessage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserBalanceLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="TransType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TransOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserCredits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="PackageId" Type="int" />
+    <Property Name="PaymentMethodId" Type="int" Nullable="false" />
+    <Property Name="CurrencyId" Type="int" Nullable="false" />
+    <Property Name="ExchangeRate" Type="float" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="PaymentStatus" Type="int" Nullable="false" />
+    <Property Name="TransOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="250" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Sex" Type="int" />
+    <Property Name="BirthDate" Type="date" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="OtherPhones" Type="nvarchar" MaxLength="250" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActivationCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsCanceled" Type="bit" Nullable="false" />
+    <Property Name="LastLoginOn" Type="datetime" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="AdminUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="WatchLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="AreaId" Type="int" />
+    <Property Name="PurposeId" Type="int" />
+    <Property Name="AddedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AdminPermissions_AdminPages">
+    <End Role="AdminPages" Type="Self.AdminPages" Multiplicity="1" />
+    <End Role="AdminPermissions" Type="Self.AdminPermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdminPages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AdminPermissions">
+        <PropertyRef Name="AdminPageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AdminPermissions_AdminUsers">
+    <End Role="AdminUsers" Type="Self.AdminUsers" Multiplicity="1" />
+    <End Role="AdminPermissions" Type="Self.AdminPermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdminUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AdminPermissions">
+        <PropertyRef Name="AdminUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Areas_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Areas" Type="Self.Areas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Areas">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blocks_Areas">
+    <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+    <End Role="Blocks" Type="Self.Blocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Areas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Blocks">
+        <PropertyRef Name="AreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BrokerAreas_Areas">
+    <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+    <End Role="BrokerAreas" Type="Self.BrokerAreas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Areas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrokerAreas">
+        <PropertyRef Name="AreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BrokerAreas_Brokers">
+    <End Role="Brokers" Type="Self.Brokers" Multiplicity="1" />
+    <End Role="BrokerAreas" Type="Self.BrokerAreas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brokers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrokerAreas">
+        <PropertyRef Name="BrokerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Brokers_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Brokers" Type="Self.Brokers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Brokers">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cities_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommercialAds_CommAdPlaces">
+    <End Role="CommAdPlaces" Type="Self.CommAdPlaces" Multiplicity="1" />
+    <End Role="CommercialAds" Type="Self.CommercialAds" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CommAdPlaces">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CommercialAds">
+        <PropertyRef Name="CommAdPlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommercialAds_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+    <End Role="CommercialAds" Type="Self.CommercialAds" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CommercialAds">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentPages_ContentPages">
+    <End Role="ContentPages" Type="Self.ContentPages" Multiplicity="0..1" />
+    <End Role="ContentPages1" Type="Self.ContentPages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentPages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentPages1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DevicesTokens_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="DevicesTokens" Type="Self.DevicesTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DevicesTokens">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GeneralSettings_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="GeneralSettings" Type="Self.GeneralSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GeneralSettings">
+        <PropertyRef Name="DefaultCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GeneralSettings_Currencies">
+    <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+    <End Role="GeneralSettings" Type="Self.GeneralSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currencies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GeneralSettings">
+        <PropertyRef Name="DefaultCurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_GenNotifs">
+    <End Role="GenNotifs" Type="Self.GenNotifs" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GenNotifs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="GenNotifId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_NotifTypes">
+    <End Role="NotifTypes" Type="Self.NotifTypes" Multiplicity="1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NotifTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Offers">
+    <End Role="Offers" Type="Self.Offers" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="OfferId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offers_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="Offers" Type="Self.Offers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Offers">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PageShows_ContentPages">
+    <End Role="ContentPages" Type="Self.ContentPages" Multiplicity="1" />
+    <End Role="PageShows" Type="Self.PageShows" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentPages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PageShows">
+        <PropertyRef Name="PageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PageShows_PagePlaces">
+    <End Role="PagePlaces" Type="Self.PagePlaces" Multiplicity="1" />
+    <End Role="PageShows" Type="Self.PageShows" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PagePlaces">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PageShows">
+        <PropertyRef Name="PagePlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PaymentTransactions_UserCredits">
+    <End Role="UserCredits" Type="Self.UserCredits" Multiplicity="1" />
+    <End Role="PaymentTransactions" Type="Self.PaymentTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserCredits">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentTransactions">
+        <PropertyRef Name="CreditId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Properties_Blocks">
+    <End Role="Blocks" Type="Self.Blocks" Multiplicity="0..1" />
+    <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blocks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Properties">
+        <PropertyRef Name="BlockId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Properties_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Properties">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Properties_PropertyTypes">
+    <End Role="PropertyTypes" Type="Self.PropertyTypes" Multiplicity="1" />
+    <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PropertyTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Properties">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Properties_Purposes">
+    <End Role="Purposes" Type="Self.Purposes" Multiplicity="1" />
+    <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Purposes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Properties">
+        <PropertyRef Name="PurposeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Properties_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Properties" Type="Self.Properties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Properties">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyComments_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+    <End Role="PropertyComments" Type="Self.PropertyComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyComments">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyComments_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="PropertyComments" Type="Self.PropertyComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyComments">
+        <PropertyRef Name="SenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyComments_Users1">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="PropertyComments" Type="Self.PropertyComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyComments">
+        <PropertyRef Name="ReceiverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyComponents_Components">
+    <End Role="Components" Type="Self.Components" Multiplicity="1" />
+    <End Role="PropertyComponents" Type="Self.PropertyComponents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Components">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyComponents">
+        <PropertyRef Name="ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyComponents_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+    <End Role="PropertyComponents" Type="Self.PropertyComponents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyComponents">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyFavorites_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+    <End Role="PropertyFavorites" Type="Self.PropertyFavorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyFavorites">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyFavorites_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PropertyFavorites" Type="Self.PropertyFavorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyFavorites">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyFeatures_Features">
+    <End Role="Features" Type="Self.Features" Multiplicity="1" />
+    <End Role="PropertyFeatures" Type="Self.PropertyFeatures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Features">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyFeatures">
+        <PropertyRef Name="FeatureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyFeatures_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+    <End Role="PropertyFeatures" Type="Self.PropertyFeatures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyFeatures">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyPhotos_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+    <End Role="PropertyPhotos" Type="Self.PropertyPhotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyPhotos">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyReports_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+    <End Role="PropertyReports" Type="Self.PropertyReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyReports">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyReports_Reasons">
+    <End Role="Reasons" Type="Self.Reasons" Multiplicity="1" />
+    <End Role="PropertyReports" Type="Self.PropertyReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reasons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyReports">
+        <PropertyRef Name="ReasonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyReports_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="PropertyReports" Type="Self.PropertyReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyReports">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyVideos_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+    <End Role="PropertyVideos" Type="Self.PropertyVideos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyVideos">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyViews_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+    <End Role="PropertyViews" Type="Self.PropertyViews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyViews">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyViews_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PropertyViews" Type="Self.PropertyViews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyViews">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceAreas_Areas">
+    <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+    <End Role="ServiceAreas" Type="Self.ServiceAreas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Areas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceAreas">
+        <PropertyRef Name="AreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceAreas_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServiceAreas" Type="Self.ServiceAreas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceAreas">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceComments_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServiceComments" Type="Self.ServiceComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceComments">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceComments_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ServiceComments" Type="Self.ServiceComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceComments">
+        <PropertyRef Name="SenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceComments_Users1">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ServiceComments" Type="Self.ServiceComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceComments">
+        <PropertyRef Name="ReceiverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceFavorites_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServiceFavorites" Type="Self.ServiceFavorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceFavorites">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceFavorites_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServiceFavorites" Type="Self.ServiceFavorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceFavorites">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicePhotos_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServicePhotos" Type="Self.ServicePhotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServicePhotos">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRates_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServiceRates" Type="Self.ServiceRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceRates">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRates_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServiceRates" Type="Self.ServiceRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceRates">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceReports_Reasons">
+    <End Role="Reasons" Type="Self.Reasons" Multiplicity="1" />
+    <End Role="ServiceReports" Type="Self.ServiceReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reasons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceReports">
+        <PropertyRef Name="ReasonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceReports_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServiceReports" Type="Self.ServiceReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceReports">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceReports_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ServiceReports" Type="Self.ServiceReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceReports">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Services_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Services" Type="Self.Services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Services">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Services_ServicesCategories">
+    <End Role="ServicesCategories" Type="Self.ServicesCategories" Multiplicity="1" />
+    <End Role="Services" Type="Self.Services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicesCategories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Services">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Services_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Services" Type="Self.Services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Services">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicesCategories_ServicesCategories">
+    <End Role="ServicesCategories" Type="Self.ServicesCategories" Multiplicity="0..1" />
+    <End Role="ServicesCategories1" Type="Self.ServicesCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicesCategories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServicesCategories1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceViews_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServiceViews" Type="Self.ServiceViews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceViews">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceViews_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServiceViews" Type="Self.ServiceViews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceViews">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sliders_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+    <End Role="Sliders" Type="Self.Sliders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sliders">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TechMessages_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="TechMessages" Type="Self.TechMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TechMessages">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserBalanceLogs_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserBalanceLogs" Type="Self.UserBalanceLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserBalanceLogs">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCredits_Currencies">
+    <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+    <End Role="UserCredits" Type="Self.UserCredits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currencies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCredits">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCredits_Packages">
+    <End Role="Packages" Type="Self.Packages" Multiplicity="0..1" />
+    <End Role="UserCredits" Type="Self.UserCredits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCredits">
+        <PropertyRef Name="PackageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCredits_PaymentMethods">
+    <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="1" />
+    <End Role="UserCredits" Type="Self.UserCredits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethods">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCredits">
+        <PropertyRef Name="PaymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCredits_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserCredits" Type="Self.UserCredits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCredits">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchLists_Areas">
+    <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
+    <End Role="WatchLists" Type="Self.WatchLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Areas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchLists">
+        <PropertyRef Name="AreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchLists_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="WatchLists" Type="Self.WatchLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchLists">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchLists_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+    <End Role="WatchLists" Type="Self.WatchLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchLists">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchLists_PropertyTypes">
+    <End Role="PropertyTypes" Type="Self.PropertyTypes" Multiplicity="1" />
+    <End Role="WatchLists" Type="Self.WatchLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PropertyTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchLists">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchLists_Purposes">
+    <End Role="Purposes" Type="Self.Purposes" Multiplicity="0..1" />
+    <End Role="WatchLists" Type="Self.WatchLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Purposes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchLists">
+        <PropertyRef Name="PurposeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchLists_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="WatchLists" Type="Self.WatchLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchLists">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetComponents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyTypeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetFeatures" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyTypeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyTypeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SavePropertyTypeSettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyTypeId" Type="int" Mode="In" />
+    <Parameter Name="settings" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="MapItModelStoreContainer">
+    <EntitySet Name="AdminPages" EntityType="Self.AdminPages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdminPermissions" EntityType="Self.AdminPermissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blocks" EntityType="Self.Blocks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BrokerAreas" EntityType="Self.BrokerAreas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Brokers" EntityType="Self.Brokers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommAdPlaces" EntityType="Self.CommAdPlaces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommercialAds" EntityType="Self.CommercialAds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Components" EntityType="Self.Components" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContentPages" EntityType="Self.ContentPages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DevicesTokens" EntityType="Self.DevicesTokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FAQs" EntityType="Self.FAQs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Features" EntityType="Self.Features" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneralSettings" EntityType="Self.GeneralSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GenNotifs" EntityType="Self.GenNotifs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Merchants" EntityType="Self.Merchants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewsSubscribers" EntityType="Self.NewsSubscribers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotifTypes" EntityType="Self.NotifTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Offers" EntityType="Self.Offers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PagePlaces" EntityType="Self.PagePlaces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PageShows" EntityType="Self.PageShows" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentTransactions" EntityType="Self.PaymentTransactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Photographers" EntityType="Self.Photographers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Properties" EntityType="Self.Properties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyComments" EntityType="Self.PropertyComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyComponents" EntityType="Self.PropertyComponents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyFavorites" EntityType="Self.PropertyFavorites" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyFeatures" EntityType="Self.PropertyFeatures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyPhotos" EntityType="Self.PropertyPhotos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyReports" EntityType="Self.PropertyReports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertySettings" EntityType="Self.PropertySettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyTypes" EntityType="Self.PropertyTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyVideos" EntityType="Self.PropertyVideos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyViews" EntityType="Self.PropertyViews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Purposes" EntityType="Self.Purposes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reasons" EntityType="Self.Reasons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceAreas" EntityType="Self.ServiceAreas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceComments" EntityType="Self.ServiceComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceFavorites" EntityType="Self.ServiceFavorites" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServicePhotos" EntityType="Self.ServicePhotos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceRates" EntityType="Self.ServiceRates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceReports" EntityType="Self.ServiceReports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServicesCategories" EntityType="Self.ServicesCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceViews" EntityType="Self.ServiceViews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sliders" EntityType="Self.Sliders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TechMessages" EntityType="Self.TechMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserBalanceLogs" EntityType="Self.UserBalanceLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserCredits" EntityType="Self.UserCredits" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WatchLists" EntityType="Self.WatchLists" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AdminPermissions_AdminPages" Association="Self.FK_AdminPermissions_AdminPages">
+      <End Role="AdminPages" EntitySet="AdminPages" />
+      <End Role="AdminPermissions" EntitySet="AdminPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdminPermissions_AdminUsers" Association="Self.FK_AdminPermissions_AdminUsers">
+      <End Role="AdminUsers" EntitySet="AdminUsers" />
+      <End Role="AdminPermissions" EntitySet="AdminPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Areas_Cities" Association="Self.FK_Areas_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Areas" EntitySet="Areas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blocks_Areas" Association="Self.FK_Blocks_Areas">
+      <End Role="Areas" EntitySet="Areas" />
+      <End Role="Blocks" EntitySet="Blocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BrokerAreas_Areas" Association="Self.FK_BrokerAreas_Areas">
+      <End Role="Areas" EntitySet="Areas" />
+      <End Role="BrokerAreas" EntitySet="BrokerAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BrokerAreas_Brokers" Association="Self.FK_BrokerAreas_Brokers">
+      <End Role="Brokers" EntitySet="Brokers" />
+      <End Role="BrokerAreas" EntitySet="BrokerAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Brokers_Cities" Association="Self.FK_Brokers_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Brokers" EntitySet="Brokers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommercialAds_CommAdPlaces" Association="Self.FK_CommercialAds_CommAdPlaces">
+      <End Role="CommAdPlaces" EntitySet="CommAdPlaces" />
+      <End Role="CommercialAds" EntitySet="CommercialAds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommercialAds_Countries" Association="Self.FK_CommercialAds_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="CommercialAds" EntitySet="CommercialAds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentPages_ContentPages" Association="Self.FK_ContentPages_ContentPages">
+      <End Role="ContentPages" EntitySet="ContentPages" />
+      <End Role="ContentPages1" EntitySet="ContentPages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DevicesTokens_Users" Association="Self.FK_DevicesTokens_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="DevicesTokens" EntitySet="DevicesTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GeneralSettings_Countries" Association="Self.FK_GeneralSettings_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="GeneralSettings" EntitySet="GeneralSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GeneralSettings_Currencies" Association="Self.FK_GeneralSettings_Currencies">
+      <End Role="Currencies" EntitySet="Currencies" />
+      <End Role="GeneralSettings" EntitySet="GeneralSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_GenNotifs" Association="Self.FK_Notifications_GenNotifs">
+      <End Role="GenNotifs" EntitySet="GenNotifs" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_NotifTypes" Association="Self.FK_Notifications_NotifTypes">
+      <End Role="NotifTypes" EntitySet="NotifTypes" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Offers" Association="Self.FK_Notifications_Offers">
+      <End Role="Offers" EntitySet="Offers" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Properties" Association="Self.FK_Notifications_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Services" Association="Self.FK_Notifications_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Users" Association="Self.FK_Notifications_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offers_Countries" Association="Self.FK_Offers_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Offers" EntitySet="Offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PageShows_ContentPages" Association="Self.FK_PageShows_ContentPages">
+      <End Role="ContentPages" EntitySet="ContentPages" />
+      <End Role="PageShows" EntitySet="PageShows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PageShows_PagePlaces" Association="Self.FK_PageShows_PagePlaces">
+      <End Role="PagePlaces" EntitySet="PagePlaces" />
+      <End Role="PageShows" EntitySet="PageShows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PaymentTransactions_UserCredits" Association="Self.FK_PaymentTransactions_UserCredits">
+      <End Role="UserCredits" EntitySet="UserCredits" />
+      <End Role="PaymentTransactions" EntitySet="PaymentTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Properties_Blocks" Association="Self.FK_Properties_Blocks">
+      <End Role="Blocks" EntitySet="Blocks" />
+      <End Role="Properties" EntitySet="Properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Properties_Countries" Association="Self.FK_Properties_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Properties" EntitySet="Properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Properties_PropertyTypes" Association="Self.FK_Properties_PropertyTypes">
+      <End Role="PropertyTypes" EntitySet="PropertyTypes" />
+      <End Role="Properties" EntitySet="Properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Properties_Purposes" Association="Self.FK_Properties_Purposes">
+      <End Role="Purposes" EntitySet="Purposes" />
+      <End Role="Properties" EntitySet="Properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Properties_Users" Association="Self.FK_Properties_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Properties" EntitySet="Properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyComments_Properties" Association="Self.FK_PropertyComments_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="PropertyComments" EntitySet="PropertyComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyComments_Users" Association="Self.FK_PropertyComments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PropertyComments" EntitySet="PropertyComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyComments_Users1" Association="Self.FK_PropertyComments_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PropertyComments" EntitySet="PropertyComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyComponents_Components" Association="Self.FK_PropertyComponents_Components">
+      <End Role="Components" EntitySet="Components" />
+      <End Role="PropertyComponents" EntitySet="PropertyComponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyComponents_Properties" Association="Self.FK_PropertyComponents_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="PropertyComponents" EntitySet="PropertyComponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyFavorites_Properties" Association="Self.FK_PropertyFavorites_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="PropertyFavorites" EntitySet="PropertyFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyFavorites_Users" Association="Self.FK_PropertyFavorites_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PropertyFavorites" EntitySet="PropertyFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyFeatures_Features" Association="Self.FK_PropertyFeatures_Features">
+      <End Role="Features" EntitySet="Features" />
+      <End Role="PropertyFeatures" EntitySet="PropertyFeatures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyFeatures_Properties" Association="Self.FK_PropertyFeatures_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="PropertyFeatures" EntitySet="PropertyFeatures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyPhotos_Properties" Association="Self.FK_PropertyPhotos_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="PropertyPhotos" EntitySet="PropertyPhotos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyReports_Properties" Association="Self.FK_PropertyReports_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="PropertyReports" EntitySet="PropertyReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyReports_Reasons" Association="Self.FK_PropertyReports_Reasons">
+      <End Role="Reasons" EntitySet="Reasons" />
+      <End Role="PropertyReports" EntitySet="PropertyReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyReports_Users" Association="Self.FK_PropertyReports_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PropertyReports" EntitySet="PropertyReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyVideos_Properties" Association="Self.FK_PropertyVideos_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="PropertyVideos" EntitySet="PropertyVideos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyViews_Properties" Association="Self.FK_PropertyViews_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="PropertyViews" EntitySet="PropertyViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyViews_Users" Association="Self.FK_PropertyViews_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PropertyViews" EntitySet="PropertyViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceAreas_Areas" Association="Self.FK_ServiceAreas_Areas">
+      <End Role="Areas" EntitySet="Areas" />
+      <End Role="ServiceAreas" EntitySet="ServiceAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceAreas_Services" Association="Self.FK_ServiceAreas_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServiceAreas" EntitySet="ServiceAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceComments_Services" Association="Self.FK_ServiceComments_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServiceComments" EntitySet="ServiceComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceComments_Users" Association="Self.FK_ServiceComments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ServiceComments" EntitySet="ServiceComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceComments_Users1" Association="Self.FK_ServiceComments_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ServiceComments" EntitySet="ServiceComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceFavorites_Services" Association="Self.FK_ServiceFavorites_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServiceFavorites" EntitySet="ServiceFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceFavorites_Users" Association="Self.FK_ServiceFavorites_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ServiceFavorites" EntitySet="ServiceFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicePhotos_Services" Association="Self.FK_ServicePhotos_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServicePhotos" EntitySet="ServicePhotos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRates_Services" Association="Self.FK_ServiceRates_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServiceRates" EntitySet="ServiceRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRates_Users" Association="Self.FK_ServiceRates_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ServiceRates" EntitySet="ServiceRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceReports_Reasons" Association="Self.FK_ServiceReports_Reasons">
+      <End Role="Reasons" EntitySet="Reasons" />
+      <End Role="ServiceReports" EntitySet="ServiceReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceReports_Services" Association="Self.FK_ServiceReports_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServiceReports" EntitySet="ServiceReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceReports_Users" Association="Self.FK_ServiceReports_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ServiceReports" EntitySet="ServiceReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Services_Cities" Association="Self.FK_Services_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Services_ServicesCategories" Association="Self.FK_Services_ServicesCategories">
+      <End Role="ServicesCategories" EntitySet="ServicesCategories" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Services_Users" Association="Self.FK_Services_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicesCategories_ServicesCategories" Association="Self.FK_ServicesCategories_ServicesCategories">
+      <End Role="ServicesCategories" EntitySet="ServicesCategories" />
+      <End Role="ServicesCategories1" EntitySet="ServicesCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceViews_Services" Association="Self.FK_ServiceViews_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServiceViews" EntitySet="ServiceViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceViews_Users" Association="Self.FK_ServiceViews_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ServiceViews" EntitySet="ServiceViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sliders_Countries" Association="Self.FK_Sliders_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Sliders" EntitySet="Sliders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TechMessages_Users" Association="Self.FK_TechMessages_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TechMessages" EntitySet="TechMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserBalanceLogs_Users" Association="Self.FK_UserBalanceLogs_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserBalanceLogs" EntitySet="UserBalanceLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCredits_Currencies" Association="Self.FK_UserCredits_Currencies">
+      <End Role="Currencies" EntitySet="Currencies" />
+      <End Role="UserCredits" EntitySet="UserCredits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCredits_Packages" Association="Self.FK_UserCredits_Packages">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="UserCredits" EntitySet="UserCredits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCredits_PaymentMethods" Association="Self.FK_UserCredits_PaymentMethods">
+      <End Role="PaymentMethods" EntitySet="PaymentMethods" />
+      <End Role="UserCredits" EntitySet="UserCredits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCredits_Users" Association="Self.FK_UserCredits_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserCredits" EntitySet="UserCredits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Countries" Association="Self.FK_Users_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchLists_Areas" Association="Self.FK_WatchLists_Areas">
+      <End Role="Areas" EntitySet="Areas" />
+      <End Role="WatchLists" EntitySet="WatchLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchLists_Cities" Association="Self.FK_WatchLists_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="WatchLists" EntitySet="WatchLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchLists_Countries" Association="Self.FK_WatchLists_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="WatchLists" EntitySet="WatchLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchLists_PropertyTypes" Association="Self.FK_WatchLists_PropertyTypes">
+      <End Role="PropertyTypes" EntitySet="PropertyTypes" />
+      <End Role="WatchLists" EntitySet="WatchLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchLists_Purposes" Association="Self.FK_WatchLists_Purposes">
+      <End Role="Purposes" EntitySet="Purposes" />
+      <End Role="WatchLists" EntitySet="WatchLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchLists_Users" Association="Self.FK_WatchLists_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="WatchLists" EntitySet="WatchLists" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

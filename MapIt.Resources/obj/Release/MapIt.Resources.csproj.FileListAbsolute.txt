@@ -1,0 +1,12 @@
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Resources\bin\Release\MapIt.Resources.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Resources\bin\Release\MapIt.Resources.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Resources\obj\Release\MapIt.Resources.csprojResolveAssemblyReference.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Resources\obj\Release\MapIt.Resources.csproj.CoreCompileInputs.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Resources\obj\Release\MapIt.Resources.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Resources\obj\Release\MapIt.Resources.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\bin\Release\MapIt.Resources.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\bin\Release\MapIt.Resources.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\obj\Release\MapIt.Resources.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\obj\Release\MapIt.Resources.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\obj\Release\MapIt.Resources.csproj.CoreCompileInputs.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\obj\Release\MapIt.Resources.csprojAssemblyReference.cache

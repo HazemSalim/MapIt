@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="merchantDC">
+        <s:complexType />
+      </s:element>
+      <s:element name="merchantDCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="merchantDCResult" type="tns:MerchantDC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MerchantDC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="merchant_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchant_username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchant_password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchant_ReferenceID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchant_error_url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf5" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PayRequest">
+        <s:complexType />
+      </s:element>
+      <s:element name="PayRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PayRequestResult" type="tns:PayRequestDC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PayRequestDC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerDC" type="tns:CustomerDC" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantDC" type="tns:MerchantDC" />
+          <s:element minOccurs="0" maxOccurs="1" name="lstProductDC" type="tns:ArrayOfProductDC" />
+          <s:element minOccurs="0" maxOccurs="1" name="totalDC" type="tns:TotalDC" />
+          <s:element minOccurs="0" maxOccurs="1" name="paymentModeDC" type="tns:PaymentModeDC" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomerDC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="civil_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Area" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Block" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Street" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Avenue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Building" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Floor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apartment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProductDC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductDC" nillable="true" type="tns:ProductDC" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductDC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="product_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="unitPrice" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="qty" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TotalDC">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="subtotal" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PaymentModeDC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="paymentMode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PayResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PayResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PayResponseResult" type="tns:PayResponseDC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PayResponseDC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="referenceID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paymentURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="net_amount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="invoiceNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PaymentRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PayRequestDC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaymentRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentRequestResult" type="tns:PayResponseDC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderStatusRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrderStatusRequestDC" type="tns:GetOrderStatusRequestDC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetOrderStatusRequestDC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="merchant_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchant_username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchant_password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="referenceID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOrderStatusRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderStatusRequestResult" type="tns:OrderStatusResponseDC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderStatusResponseDC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayTxnID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Paymode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="result" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="gross_amount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="net_amount" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf5" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="merchantDCSoapIn">
+    <wsdl:part name="parameters" element="tns:merchantDC" />
+  </wsdl:message>
+  <wsdl:message name="merchantDCSoapOut">
+    <wsdl:part name="parameters" element="tns:merchantDCResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:PayRequest" />
+  </wsdl:message>
+  <wsdl:message name="PayRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:PayRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:PayResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:PayResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaymentRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:PaymentRequest" />
+  </wsdl:message>
+  <wsdl:message name="PaymentRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:PaymentRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderStatusRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderStatusRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderStatusRequestResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PayGatewayServiceSoap">
+    <wsdl:operation name="merchantDC">
+      <wsdl:input message="tns:merchantDCSoapIn" />
+      <wsdl:output message="tns:merchantDCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayRequest">
+      <wsdl:input message="tns:PayRequestSoapIn" />
+      <wsdl:output message="tns:PayRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayResponse">
+      <wsdl:input message="tns:PayResponseSoapIn" />
+      <wsdl:output message="tns:PayResponseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentRequest">
+      <wsdl:input message="tns:PaymentRequestSoapIn" />
+      <wsdl:output message="tns:PaymentRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatusRequest">
+      <wsdl:input message="tns:GetOrderStatusRequestSoapIn" />
+      <wsdl:output message="tns:GetOrderStatusRequestSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PayGatewayServiceSoap" type="tns:PayGatewayServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="merchantDC">
+      <soap:operation soapAction="http://tempuri.org/merchantDC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayRequest">
+      <soap:operation soapAction="http://tempuri.org/PayRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayResponse">
+      <soap:operation soapAction="http://tempuri.org/PayResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentRequest">
+      <soap:operation soapAction="http://tempuri.org/PaymentRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatusRequest">
+      <soap:operation soapAction="http://tempuri.org/GetOrderStatusRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PayGatewayServiceSoap12" type="tns:PayGatewayServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="merchantDC">
+      <soap12:operation soapAction="http://tempuri.org/merchantDC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayRequest">
+      <soap12:operation soapAction="http://tempuri.org/PayRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayResponse">
+      <soap12:operation soapAction="http://tempuri.org/PayResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentRequest">
+      <soap12:operation soapAction="http://tempuri.org/PaymentRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatusRequest">
+      <soap12:operation soapAction="http://tempuri.org/GetOrderStatusRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PayGatewayService">
+    <wsdl:port name="PayGatewayServiceSoap" binding="tns:PayGatewayServiceSoap">
+      <soap:address location="https://test.myfatoorah.com/pg/PayGatewayService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PayGatewayServiceSoap12" binding="tns:PayGatewayServiceSoap12">
+      <soap12:address location="https://test.myfatoorah.com/pg/PayGatewayService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

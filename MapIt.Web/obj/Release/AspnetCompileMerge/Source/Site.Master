@@ -1,0 +1,428 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MapIt.Web.Site" %>
+
+<%@ Register Src="Controls/LoginBox.ascx" TagName="LoginBox" TagPrefix="uc1" %>
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta runat="server" id="mDes" name="description" content="" />
+    <meta runat="server" id="mKey" name="keywords" content="" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="application-name" content="Map it" />
+    <meta name="apple-mobile-web-app-title" content="Map it" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="/images/fav.png" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png" />
+
+    <link rel="stylesheet" href="/Content/fonts.css" />
+    <link rel="stylesheet" href="/Content/iconMoon.css" />
+    <link rel="stylesheet" href="/Content/<%= GetGlobalResourceObject("Resource","css_kit") %>" />
+    <link rel="stylesheet" href="/Content/<%= GetGlobalResourceObject("Resource","css_style") %>" />
+    <link rel="stylesheet" href="/Content/<%= GetGlobalResourceObject("Resource","main") %>" />
+    <%--<link rel="stylesheet" href="/Content/main.css" />--%>
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/40d471a376.js"></script>
+
+    <!-- Snackbar CSS -->
+    <link href="/Content/snackbar.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        function tempAlert(msg, location, duration) {
+            var el = document.createElement("div");
+            el.setAttribute("id", "snackbar");
+            el.innerHTML = msg;
+            el.className = "show";
+            setTimeout(function () {
+                el.parentNode.removeChild(el);
+            }, duration);
+            document.body.appendChild(el);
+
+            if (location.length != 0) {
+                setTimeout(function () {
+                    window.location = location;
+                }, duration);
+            }
+        }
+
+        function checkAll(ele, eid) {
+            var checkboxes = document.getElementById(eid).getElementsByTagName('input');
+            if (ele.checked) {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].type == 'checkbox') {
+                        checkboxes[i].checked = true;
+                    }
+                }
+            } else {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    console.log(i)
+                    if (checkboxes[i].type == 'checkbox') {
+                        checkboxes[i].checked = false;
+                    }
+                }
+            }
+        }
+
+        var loadFile = function (event) {
+            var el = document.getElementById(event.target.id);
+            var output = el.nextElementSibling;
+            output.style.display = "block";
+            output.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+        //$(document).keypress(function (event) {
+        //    if (event.keyCode == 13) {
+        //        $("#btnSearch").click();
+        //    }
+        //});
+    </script>
+    <style>
+        .white {
+            color: #fff;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="divLoadingImage" class="loading">
+            <img class="loading_image" src="/images/loading.gif" alt="" />
+        </div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+            <Scripts>
+                <asp:ScriptReference Path="/scripts/loading.js" />
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div id="snackbar"></div>
+
+        <!-- start header -->
+        <header class=" uk-visible@s">
+            <div class="uk-container">
+                <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div class="">
+                    </div>
+                    <div>
+                        <div class="headerLinks uk-align-left@l uk-text-left">
+                            <a id="aAcc" runat="server" href="/Register" class="uk-button-text">
+                                <span class="icon-user"></span>
+                                <asp:Literal ID="litAcc" runat="server" />
+                            </a>
+                            <a id="aLog" runat="server" href="#modal-container" class=" uk-button-text" uk-toggle>
+                                <span class="icon-arrow"></span>
+                                <asp:Literal ID="litLog" runat="server" /></a>
+                            <asp:LinkButton ID="lnkLanguage" runat="server" OnClick="lnkLanguage_Click" CssClass="langChange">
+                                <span><%= GetGlobalResourceObject("Resource","lang_title") %></span>
+                            </asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-container">
+                <div class="uk-position-relative">
+                    <nav class="uk-navbar-container " uk-navbar="dropbar: true">
+
+                        <div class="widthFull">
+
+                            <ul class="uk-navbar-nav">
+                                <li>
+                                    <div class="uk-align-right@l mapItLogoContainer">
+                                        <a href="..">
+                                            <img class="mapItLogo" src="/images/mapitLogo.svg">
+                                        </a>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/Offers" ><%= GetGlobalResourceObject("Resource","offers") %></a><%--class="menuSub"--%>
+                                    <%--<div class="uk-navbar-dropdown ">
+                                        <div class=" uk-column-1-4">
+                                            <asp:Repeater ID="rOffers" runat="server">
+                                                <ItemTemplate>
+                                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                        <li class="uk-active">
+                                                            <h4><%# Eval(Resources.Resource.db_title_col) %></h4>
+                                                            <a href='<%# Eval("PageName", "../Ofr/{0}") %>' title='<%# Eval(Resources.Resource.db_title_col) %>'>
+                                                                <img src='<%# Eval("FinalPhoto") %>' style="height: 170px;" alt='<%# Eval(Resources.Resource.db_title_col) %>'>
+                                                            </a>
+                                                            <p style="min-height: 80px">
+                                                                <%# MapIt.Helpers.PresentHelper.StringLimit(Eval(Resources.Resource.db_description_col),100) %>
+                                                            </p>
+                                                            <a class="uk-button uk-button-primary" style="color: #fff;"
+                                                                href='<%# Eval("PageName", "../Ofr/{0}") %>'>
+                                                                <%= GetGlobalResourceObject("Resource","more") %></a>
+                                                        </li>
+                                                    </ul>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                        <div class="uk-column-1-1 moreOffers">
+                                            <a href="/Offers" class="uk-button-text">
+                                                <span class="icon-eye"></span>
+                                                <span><%= GetGlobalResourceObject("Resource","see_more_offers") %>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>--%>
+
+                                </li>
+
+                                <li>
+                                    <a href="/ServCat"><%= GetGlobalResourceObject("Resource","cons_services") %></a>
+                                </li>
+
+                                <li class="navlinkIcon">
+                                    <a href="/AboutUs">
+                                        <span><%= GetGlobalResourceObject("Resource","about") %>
+                                        </span>
+
+                                        <span class="icon-mapit"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/TermsCond"><%= GetGlobalResourceObject("Resource","terms_cond") %></a>
+                                </li>
+                                <li>
+                                    <a href="/FAQs"><%= GetGlobalResourceObject("Resource","faqs") %></a>
+                                </li>
+                                <li class="navlinkIcon">
+                                    <a href="/TechSupport">
+                                        <span class="icon-male-telemarketer"></span>
+                                        <span><%= GetGlobalResourceObject("Resource","tech_support") %>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="menuSub"><%= GetGlobalResourceObject("Resource","more") %></a>
+                                    <div class="uk-navbar-dropdown ">
+                                        <ul style="width: 23%; float: left;" class=" uk-nav uk-navbar-dropdown-nav">
+
+                                            <li class="uk-text-left">
+                                                <h5 style="margin-bottom: 0px;"><%= GetGlobalResourceObject("Resource","my_account") %></h5>
+                                                <hr style="margin: 5px;">
+                                                <a href="/EditAccount" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","my_profile") %>
+                                                </a>
+                                                <a href="/ChangePassword" class="menu_link" style="display: none; visibility: hidden;">
+                                                    <%= GetGlobalResourceObject("Resource","change_password") %>
+                                                </a>
+                                                <a href="/BuyCredit" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","get_more_credits") %>
+                                                </a>
+                                                <a href="/PaymentHistory" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","payment_history") %>
+                                                </a>
+                                                <a href="/MyServices" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","my_services") %>
+                                                </a>
+                                                <a href="/MyProperties" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","my_properties") %>
+                                                </a>
+                                                <br />
+                                            </li>
+                                        </ul>
+                                        <ul style="width: 23%; float: left;" class=" uk-nav uk-navbar-dropdown-nav">
+                                            <li class="uk-text-left">
+                                                <h5 style="margin-bottom: 0px;"><%= GetGlobalResourceObject("Resource","looking_for_broker") %></h5>
+                                                <hr style="margin: 5px;">
+                                                <a href="/Brokers" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","brokers") %>
+                                                </a>
+                                                <br />
+
+                                            </li>
+                                        </ul>
+                                        <ul style="width: 23%; float: left;" class=" uk-nav uk-navbar-dropdown-nav">
+                                            <li class="uk-text-left">
+                                                <h5 style="margin-bottom: 0px;"><%= GetGlobalResourceObject("Resource","favorites") %></h5>
+                                                <hr style="margin: 5px;">
+                                                <a href="/ProFavorites" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","my_favorites_pro") %>
+                                                </a>
+                                                <a href="/SrvFavorites" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","my_favorites_srv") %>
+                                                </a>
+                                                <br />
+
+                                            </li>
+                                        </ul>
+                                        <ul style="width: 23%; float: left;" class=" uk-nav uk-navbar-dropdown-nav">
+                                            <li class="uk-text-left">
+                                                <h5 style="margin-bottom: 0px;"><%= GetGlobalResourceObject("Resource","recently_added") %></h5>
+                                                <hr style="margin: 5px;">
+                                                <a href="/Proprties" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","todays_ads") %>
+                                                </a>
+                                                <br />
+
+
+                                            </li>
+                                        </ul>
+                                        <ul style="width: 23%; float: left;" class=" uk-nav uk-navbar-dropdown-nav">
+                                            <li class="uk-text-left">
+                                                <h5 style="margin-bottom: 0px;"><%= GetGlobalResourceObject("Resource","b2b") %></h5>
+                                                <hr style="margin: 5px;">
+                                                <a href="/ReqB2B" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","b2b") %>
+                                                </a>
+                                                <a href="/ReqPhotographer" class="menu_link">
+                                                    <%= GetGlobalResourceObject("Resource","request_photographer") %>
+                                                </a>
+                                                <br />
+
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="uk-margin">
+                                        <asp:DropDownList ID="ddlCountry" runat="server" CssClass="uk-select" Style="border-radius: 20px; min-width: 100px;"
+                                            ClientIDMode="Static" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged" AutoPostBack="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- end header -->
+
+        <!-- start menu for Mobile -->
+        <div class="headerMobile uk-hidden@s">
+
+            <div class="menuMobileLogoContainer">
+                <a href="#" class=" uk-align-center">
+                    <img class="mapItLogo" src="/images/mapitLogo.svg">
+                </a>
+                <asp:LinkButton ID="lnkMobLanguage" runat="server" OnClick="lnkLanguage_Click">
+                    <span><%= GetGlobalResourceObject("Resource","lang_title") %></span>
+                </asp:LinkButton>
+
+            </div>
+            <a href="#offcanvas-slide" class="uk-button   uk-align-center" uk-toggle>
+                <span class="icon-menu"></span>
+            </a>
+
+            <div id="offcanvas-slide" uk-offcanvas class="uk-hidden@s">
+                <div class="uk-offcanvas-bar">
+
+                    <ul class="uk-nav uk-nav-default menuMobileStyle ">
+                        <li>
+                            <a href="/Offers" class=" uk-button-text"><%= GetGlobalResourceObject("Resource","offers") %></a>
+                        </li>
+                        <li>
+                            <a href="/ServCat" class=" uk-button-text"><%= GetGlobalResourceObject("Resource","cons_services") %></a>
+                        </li>
+                        <li class="navlinkIcon">
+                            <a href="/AboutUs" class=" uk-button-text">
+                                <span><%= GetGlobalResourceObject("Resource","about") %>
+                                </span>
+
+                                <img src="/images/mapitLogoWhite.svg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/TermsCond" class=" uk-button-text"><%= GetGlobalResourceObject("Resource","terms_cond") %></a>
+                        </li>
+                        <li>
+                            <a href="/FAQs" class=" uk-button-text"><%= GetGlobalResourceObject("Resource","faqs") %></a>
+                        </li>
+                        <li class="navlinkIcon">
+                            <a href="#" class=" uk-button-text">
+                                <img src="/images/male-telemarketer.svg">
+                                <span><%= GetGlobalResourceObject("Resource","tech_support") %>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="aMobAcc" runat="server" href="/Register" class=" uk-button-text">
+                                <span class="icon-user"></span>
+                                <asp:Literal ID="litMobAcc" runat="server" />
+                            </a>
+                        </li>
+                        <li>
+                            <a id="aMobLog" runat="server" href="#modal-container" class=" uk-button-text">
+                                <span class="icon-user"></span>
+                                <asp:Literal ID="litMobLog" runat="server" />
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- end menu for Mobile -->
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <!-- Start Footer -->
+        <footer>
+            <div class="uk-container">
+                <div class="uk-column-1@s uk-column-1-2@m">
+                    <div class="socialFooter">
+                        <a id="aFacebook" runat="server" href="#">
+                            <img src="/images/facebook.svg">
+                        </a>
+                        <a id="aYoutube" runat="server" href="#">
+                            <img src="/images/youtube.svg">
+                        </a>
+                        <a id="aTwitter" runat="server" href="#">
+                            <img src="/images/twitter.svg">
+                        </a>
+                        <div class="contactUsFooter ">
+                            <span>
+                                <img src="/images/phone.svg">
+                                <a id="aPhone" runat="server" href="tel:"></a>
+                            </span>
+                            <span>
+                                <img src="/images/close-envelope.svg">
+                                <a id="aEmail" runat="server" href="mailto:"></a>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="copyRight">
+                        <span>Copyright © <%:DateTime.Now.Year %>
+                            <a href="..">
+                                <img src="/images/mapitLogo.svg">
+                            </a>
+                            Developed By
+                        <a href="http://www.hardtask.com/" target="_blank" title="Hard Task">
+                            <img src="/images/HardTask_logo.svg">
+                        </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div id="modal-container" uk-modal>
+            <uc1:LoginBox ID="LoginBox1" runat="server" />
+        </div>
+
+        <script src="/Scripts/uikit.min.js"></script>
+        <script src="/Scripts/uikit-icons.min.js"></script>
+    </form>
+</body>
+</html>

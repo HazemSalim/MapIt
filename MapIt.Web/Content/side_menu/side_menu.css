@@ -1,0 +1,72 @@
+﻿
+.overlay {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 10000070;
+	top: 0;
+	left: 0;
+	/*background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0, 0.9);*/
+	background-color: #f5f5f5;
+	overflow-x: hidden;
+	transition: 0.5s;
+}
+
+	.overlay h2 {
+		margin: 8px;
+		margin-top: 40px;
+	}
+
+.overlay-content {
+	position: relative;
+	top: 10%;
+	width: 100%;
+	margin-top: 30px;
+}
+
+.overlay a {
+	/*padding: 8px;*/
+	text-decoration: none;
+	font-size: 24px;
+	color: #576373;
+	display: block;
+	transition: 0.3s;
+}
+
+	.overlay a:hover, .overlay a:focus {
+		color: #fff;
+	}
+
+.closebtn {
+	position: absolute;
+	top: 0;
+	right: 20px;
+	font-size: 60px !important;
+}
+
+
+.closeoverly {
+	background: rgba(0,0,0,0.5);
+	position: fixed;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 0;
+}
+
+
+
+@media screen and (max-height: 450px) {
+	.overlay a {
+		font-size: 20px;
+	}
+
+	.closebtn {
+		font-size: 40px !important;
+		top: 15px;
+		right: 35px;
+	}
+}

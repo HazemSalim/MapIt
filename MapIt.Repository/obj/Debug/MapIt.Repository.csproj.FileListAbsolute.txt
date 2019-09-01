@@ -1,0 +1,51 @@
+D:\dev\MapIt\sol\MapIt.Repository\obj\Debug\MapIt.Repository.csprojResolveAssemblyReference.cache
+D:\dev\MapIt\sol\MapIt.Repository\bin\Debug\MapIt.Repository.dll.config
+D:\dev\MapIt\sol\MapIt.Repository\bin\Debug\MapIt.Repository.dll
+D:\dev\MapIt\sol\MapIt.Repository\bin\Debug\MapIt.Repository.pdb
+D:\dev\MapIt\sol\MapIt.Repository\bin\Debug\EntityFramework.dll
+D:\dev\MapIt\sol\MapIt.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\dev\MapIt\sol\MapIt.Repository\bin\Debug\MapIt.Data.dll
+D:\dev\MapIt\sol\MapIt.Repository\bin\Debug\MapIt.Data.pdb
+D:\dev\MapIt\sol\MapIt.Repository\bin\Debug\EntityFramework.xml
+D:\dev\MapIt\sol\MapIt.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\dev\MapIt\sol\MapIt.Repository\obj\Debug\MapIt.Repository.dll
+D:\dev\MapIt\sol\MapIt.Repository\obj\Debug\MapIt.Repository.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Repository.dll.config
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Repository.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Repository.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\EntityFramework.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Data.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Data.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\EntityFramework.xml
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.csprojResolveAssemblyReference.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.pdb
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\bin\Debug\MapIt.Repository.dll.config
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\bin\Debug\MapIt.Repository.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\bin\Debug\MapIt.Repository.pdb
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\bin\Debug\EntityFramework.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\bin\Debug\EntityFramework.SqlServer.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\bin\Debug\MapIt.Data.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\bin\Debug\MapIt.Data.pdb
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\bin\Debug\EntityFramework.xml
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\bin\Debug\EntityFramework.SqlServer.xml
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.csprojResolveAssemblyReference.cache
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Repository.dll.config
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Repository.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Repository.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\EntityFramework.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Data.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Data.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\EntityFramework.xml
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Debug\MapIt.Data.dll.config
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.csprojAssemblyReference.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.csproj.CoreCompileInputs.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Debug\MapIt.Repository.csproj.CopyComplete

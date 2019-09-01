@@ -1,0 +1,151 @@
+﻿.navbar-nav-padding {
+    padding-left: 40px;
+}
+
+.r_tel {
+    float: right;
+}
+
+.l_tel {
+    float: left !important;
+    padding-right: 6px !important;
+    padding-left: 6px !important;
+}
+
+.location_icon {
+    position: absolute;
+    top: 29px;
+    right: 35px;
+}
+
+    .location_icon img {
+        width: 24px;
+        height: 24px;
+    }
+
+.delete_location_icon {
+    position: absolute;
+    top: 29px;
+    right: 7px;
+}
+
+    .delete_location_icon img {
+        width: 24px;
+        height: 24px;
+    }
+
+.option_row {
+    position: relative;
+    padding-right: 20px;
+    margin: 10px auto;
+}
+
+.option_row_btn_image {
+    width: 25px;
+    height: 25px;
+    border: none;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+}
+
+.account_icon img {
+    height: 78px;
+    padding-top: 20px;
+}
+
+.ad_photo_item {
+    width: 100px;
+    height: 100px;
+    float: left;
+    position: relative;
+}
+
+    .ad_photo_item img {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        z-index: 12;
+        top: 0;
+        right: 0;
+        pointer-events: none;
+    }
+
+    .ad_photo_item input[type="file"] {
+        /*width: 175px !important;
+		padding: 0 !important;
+		margin: 2px !important;
+		height: auto !important;
+		line-height: 0 !important;*/
+    }
+
+.tabledata {
+    width: 100%;
+    background-color: #FFFFFF;
+    /*border: 2px solid #003366;*/
+}
+
+    .tabledata td, th {
+        border-bottom: 1px solid #003366;
+        min-height: 20px;
+        text-align: left;
+        padding: 2px 3px;
+    }
+
+    .tabledata tr:hover {
+        background-color: #ddd;
+    }
+
+.headertabledata, .headertabledata a {
+    font-weight: bold;
+    color: #ffffff; /*white-space:nowrap;*/
+    background-color: #003366;
+    height: 30px;
+}
+
+    .headertabledata:hover {
+        background-color: #003366 !important;
+    }
+
+.alternativetabledata {
+    background-color: #dddddd;
+}
+
+.tabledata a {
+    padding: 0px;
+    background-color: transparent;
+}
+
+/* Larger than mobile */
+@media (min-width: 320px) {
+
+    .r_tel {
+        width: 60% !important;
+    }
+
+    .l_tel {
+        width: 40% !important;
+    }
+}
+
+/* Larger than desktop */
+@media (min-width: 768px) {
+
+    .r_tel {
+        width: 70% !important;
+    }
+
+    .l_tel {
+        width: 30% !important;
+    }
+}
+
+.fiterNavMargin {
+    margin-left: 160px;
+}
+
+@media only screen and (max-width: 640px) {
+    .fiterNavMargin {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,791 @@
+body {
+    min-height: 100%;
+    font-family: 'Conv_Bahij TheSansArabic-Plain';
+    font-size: 14px;
+}
+
+.loading {
+    background-color: rgba(255, 255, 255, 0.7);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    z-index: 99999;
+    display: none;
+}
+
+.loading_image {
+    width: 64px;
+    height: 64px;
+    margin-top: -64px;
+    left: 0;
+    right: 0;
+    top: 50%;
+    bottom: 0;
+    position: fixed;
+    z-index: 999999;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.alert-text {
+    display: inline-block;
+    color: #a94442;
+    font-size: 0.81em;
+    white-space: nowrap;
+}
+
+/* --------start font Icon size---------- */
+
+.icon-user:before {
+    font-size: 16px;
+}
+
+.icon-eye:before {
+    font-size: 16px;
+}
+
+.icon-mapit:before {
+    font-size: 21px;
+}
+
+.icon-male-telemarketer {
+    font-size: 21px;
+}
+
+.icon-favorite-heart-button {
+    color: #1298c7;
+    margin: 5px;
+    display: inline-block;
+}
+
+.icon-menu:before {
+    font-size: 40px;
+    color: #036;
+}
+
+/* --------End font Icon size---------- */
+
+::selection {
+    background: #003366;
+}
+
+a, .sizeSpan {
+    color: #1e87f0;
+}
+
+pre {
+    font-family: 'Conv_Bahij TheSansArabic-Plain';
+}
+
+h1 span {
+    font-family: 'Conv_Bahij TheSansArabic-Bold';
+}
+
+h1, .uk-h1, h2, .uk-h2, h3, .uk-h3, h4, .uk-h4, h5, .uk-h5, h6, .uk-h6 {
+    font-family: 'Conv_Bahij TheSansArabic-Plain';
+}
+
+a:hover {
+    color: #1dbbeb;
+    text-decoration: none;
+}
+
+.uk-button-text:hover, .uk-button-text:focus {
+    color: inherit;
+}
+
+.uk-button-text {
+    color: inherit;
+}
+
+    .uk-button-text::before {
+        border-bottom-color: inherit;
+        border-bottom: 1px solid;
+        bottom: -5px;
+    }
+
+header {
+    min-height: 60px;
+    font-size: 12px;
+    padding: 10px 0px;
+    border-bottom: 1px solid #036;
+    background: #fdfdfd;
+}
+
+.widthFull {
+    width: 100%;
+    position: relative;
+}
+
+.uk-list > li:nth-child(n+2), .uk-list > li > ul {
+    margin-top: 25px;
+}
+
+.txtRight {
+    text-align: left;
+}
+
+.txtLeft {
+    text-align: right;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.headerLinks img {
+    width: 16px;
+    margin: 0px 5px;
+}
+
+.headerLinks a {
+    margin: 0 5px;
+    color: #003366;
+}
+
+    .headerLinks a:hover {
+        color: #1298c7;
+    }
+
+.langChange {
+    margin: -10px 0 !important;
+    background-color: #1dbbeb;
+    color: #fff !important;
+    padding: 20px 0px;
+    display: inline-block;
+}
+
+    .langChange:hover {
+        color: #003366 !important;
+    }
+
+    .langChange:hover {
+        background-color: #036;
+        color: #fff !important;
+    }
+
+    .langChange span {
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        display: inline-block;
+        margin: 5px -5px;
+    }
+
+.mainColor {
+    background-color: #fff;
+}
+
+.mapItLogoContainer {
+    background: #036;
+    padding: 25px 20px 57px 20px;
+    margin-right: 0;
+    position: relative;
+    top: -45px;
+}
+
+.mapItLogo {
+    width: 120px;
+}
+
+.BG-Kuwite {
+    background-image: url('../images/BG-Header.jpg');
+    min-height: 440px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.BG-KuwiteNight {
+    background-image: url('../images/kuwait-night-asia.jpg');
+    min-height: 220px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+}
+
+.navBG {
+    background: #154d86;
+}
+
+.navBar {
+    display: inline-block;
+}
+
+    .navBar li {
+        display: inline-block;
+        color: #fff;
+        margin: 10px;
+    }
+
+.navlinkIcon img {
+    height: 20px;
+    margin: 0 4px;
+}
+
+.moreOffers {
+    padding-top: 20px;
+}
+
+    .moreOffers a {
+        padding-top: 20px;
+        color: #333;
+    }
+
+.uk-navbar-container:not(.uk-navbar-transparent) {
+    background-color: transparent;
+}
+
+.uk-navbar-nav > li > a {
+    color: #003366;
+    height: 40px;
+}
+
+.uk-navbar-nav {
+    position: absolute;
+    width: 98%;
+    top: -40px;
+}
+
+    .uk-navbar-nav li {
+    }
+
+.menuMobile {
+    height: 40px;
+}
+
+.uk-navbar-nav > li:hover > a, .uk-navbar-nav > li > a:focus, .uk-navbar-nav > li > a.uk-open {
+    color: #666;
+    outline: none;
+    background: #fff;
+}
+
+.dropdownButtonLi {
+    position: relative;
+}
+
+.dropdownButton:after {
+    content: "";
+    background-image: url(../images/arrowSubMenu.svg);
+    height: 5px;
+    top: 10px;
+    right: -10px;
+    width: 8px;
+    position: absolute;
+}
+
+.searchSection {
+    padding: 100px 0 20px 0;
+}
+
+    .searchSection h1 {
+        margin-bottom: 35px;
+        color: #fff;
+    }
+
+    .searchSection div.uk-margin-large, .searchSection div.uk-search-default {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+.searchLinks a {
+    padding: 10px 8%;
+    border-radius: 0 30px 30px 0;
+    background-color: #1dbbeb;
+}
+
+    .searchLinks a:hover {
+        background-color: #fff;
+        color: #036;
+    }
+
+    .searchLinks a:first-child {
+        border-radius: 30px 0 0px 30px;
+    }
+
+    .searchLinks a:last-child {
+        border-radius: 0 30px 30px 0;
+    }
+
+.active {
+    background-color: #fff !important;
+    color: #036;
+}
+
+.searchSection .uk-form-horizontal .uk-form-controls {
+    margin-left: 0;
+    direction: ltr;
+    width: 100%;
+}
+
+.searchSection .uk-select:not([multiple]):not([size]) {
+    border-radius: 20px;
+    padding-left: 20px;
+}
+
+.uk-search-default .uk-search-input {
+    background: white;
+    border-radius: 20px;
+}
+
+.uk-search-default .uk-search-icon:not(.uk-search-icon-flip) + .uk-search-input {
+    padding-left: 20px;
+}
+
+.uk-search-default .uk-search-icon {
+    width: 30px;
+    height: 30px;
+    background: #1dbbeb;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.uk-search .uk-search-icon {
+    right: 0;
+    left: inherit;
+}
+
+.uk-margin-large {
+    margin-top: 40px !important;
+}
+
+.SearchIcon {
+    height: 16px;
+}
+
+.uk-search svg {
+    display: none;
+}
+
+.uk-search-default .uk-search-input:focus {
+    background-color: #fff;
+}
+
+select option:first-child {
+    background: #383838;
+    color: #fff;
+}
+
+.filterSearchNav select option:first-child {
+    background: inherit;
+    color: inherit;
+}
+
+select option:first-child {
+    background: #383838;
+    color: #fff;
+}
+
+.bodyLinks .searchNow {
+    color: #fff;
+    float: inherit;
+}
+
+    .bodyLinks .searchNow:hover {
+        color: #1298c7;
+        border-color: #1298c7;
+    }
+
+.bodyLinks li:first-child {
+    color: #333;
+    font-size: 21px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 22px;
+    padding: 0px 0 10px 0;
+    display: inline-block;
+}
+
+.bodyLinksContainer {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px !important;
+}
+
+.downloadApp {
+    text-align: center;
+}
+
+    .downloadApp h5 {
+        font-family: 'Conv_Bahij TheSansArabic-Bold';
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .downloadApp h6 {
+        font-family: 'Conv_Bahij TheSansArabic-Light';
+        font-size: 16px;
+        margin: 5px 0;
+        color: #fff;
+    }
+
+    .downloadApp img {
+        height: 30px;
+    }
+
+footer {
+    background-color: #003366;
+    padding: 20px 0;
+    color: #fff;
+}
+
+.contactUsFooter {
+    display: inline-block;
+}
+
+.socialFooter img {
+    height: 50px;
+}
+
+.contactUsFooter img {
+    display: inline-block;
+}
+
+.contactUsFooter img {
+    height: 20px;
+    margin: 0 15px 0 0px;
+}
+
+.contactUsFooter span {
+    display: block;
+    margin: 10px;
+    position: relative;
+    top: 16px;
+}
+
+.copyRight {
+    text-align: right;
+    padding: 40px 0;
+    direction: ltr;
+}
+
+    .copyRight img {
+        height: 20px;
+    }
+
+.uk-navbar-nav > li > a, .uk-navbar-item, .uk-navbar-toggle {
+    font-family: inherit;
+}
+
+.uk-navbar-dropdown {
+    width: 100%;
+}
+
+.uk-navbar-dropdown-nav h4, .uk-navbar-dropdown-nav h6, .uk-navbar-dropdown-nav p {
+    color: #333;
+    margin-top: 10px;
+}
+
+.uk-navbar-dropdown-nav {
+    text-align: center;
+}
+
+.uk-button-primary {
+    background-color: #1dbbeb;
+    padding: 0px 30px;
+    border-radius: 30px;
+}
+
+.uk-navbar-dropdown-nav h4 {
+    font-family: 'Conv_Bahij TheSansArabic-Bold';
+}
+
+@media only screen and (max-width: 544px) {
+    .searchNow {
+        display: block;
+        float: none !important;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .copyRight {
+        text-align: center;
+    }
+
+    .socialFooter {
+        text-align: center;
+    }
+}
+
+
+
+@media only screen and (max-width: 1024px) {
+    .uk-grid-stack {
+        margin: 0 auto;
+        padding: 15px;
+    }
+}
+
+.uk-checkbox {
+    margin-right: 10px;
+    margin-bottom: 0 !important;
+}
+
+/* page Stile */
+
+.BodyContainer {
+    padding: 90px 0;
+}
+
+    .BodyContainer h2 {
+        color: #003366;
+        font-family: 'Conv_Bahij TheSansArabic-Bold';
+    }
+
+.pageTitle {
+    color: #154d86;
+    margin-bottom: 50px;
+}
+
+.uk-slideshow-items {
+    background-color: #000;
+}
+
+.uk-card-body {
+    padding: 10px;
+}
+
+    .uk-card-body h3 {
+        font-family: 'Conv_Bahij TheSansArabic-Bold';
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .uk-card-body > span {
+        float: left;
+        margin: 3px 5px 0 0;
+    }
+
+    .uk-card-body span:before {
+        font-size: 21px;
+    }
+
+.uk-card img {
+    opacity: .7;
+}
+
+.uk-card-body p {
+    display: inline-block;
+    margin-top: -5px;
+}
+
+.uk-position-top-left, .uk-position-top-right {
+    z-index: 1;
+}
+
+.uk-card-default .uk-card-title {
+    color: #18b9e7;
+}
+
+.uk-grid > * > :last-child {
+    margin-bottom: 15px;
+}
+
+.OfferNum {
+    background: rgba(0, 0, 0, .6);
+    padding: 10px;
+    direction: ltr;
+    color: #fff;
+}
+
+.uk-pagination {
+    width: 100%;
+    direction: rtl;
+}
+
+    .uk-pagination .uk-margin-small-top {
+        margin-top: 0px !important;
+    }
+
+.sizeSpan {
+    margin: 5px;
+}
+
+.searchResultTitle {
+    width: 100%;
+}
+
+    .searchResultTitle h6 {
+        font-size: 18px;
+    }
+
+        .searchResultTitle h6 span {
+            font-family: 'Conv_Bahij TheSansArabic-Bold';
+        }
+
+.filterSearchNav {
+    background: #dcf7ff;
+    box-shadow: 0px 15px 39px -15px rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+    .filterSearchNav .uk-button-default {
+        border: 0;
+        border-right: 1px solid #ddd;
+    }
+
+    .filterSearchNav .uk-navbar-nav > li > a {
+        color: #333;
+    }
+
+    .filterSearchNav .uk-margin {
+        margin-bottom: 0;
+    }
+
+.searhNavFilter {
+    width: 100% !important;
+    left: 0;
+}
+
+.filterSearchNav a, .filterSearchNav .uk-navbar-nav > li > a, .uk-navbar-item, .uk-navbar-toggle {
+    height: inherit;
+}
+
+.filterSearchNav .uk-navbar-dropdown-nav {
+    text-align: inherit;
+}
+
+    .filterSearchNav .uk-navbar-dropdown-nav li {
+        margin: 5px;
+    }
+
+.sellcheckbox li:first-child {
+    margin: 10px 0px;
+    color: #000;
+}
+
+.filterSearchNav .uk-navbar-dropdown {
+    width: auto;
+}
+
+.filterSearchNav .uk-grid > * > :last-child {
+    margin-bottom: 0px;
+}
+
+.uk-icon {
+    line-height: inherit;
+}
+
+.uk-sortable-handle svg {
+    display: none;
+}
+
+.searchResultSpan {
+    font-size: 28px;
+    color: #003366;
+}
+
+.justView label {
+    display: block;
+}
+
+.mapitLogoPageTitle:before {
+    font-size: 30px;
+}
+
+.buildDetails span {
+    font-size: 21px;
+}
+
+.uk-inline-clip {
+    border: 1px solid #ddd;
+    min-height: 110px;
+}
+
+.LinkStyle {
+    color: #003366;
+}
+
+.blackStar {
+    color: #000;
+}
+
+.detailsIconsContainer span {
+    color: #003366;
+}
+
+.buttonStyle {
+    background: #99a6b3;
+    border: 1px solid #fff;
+}
+
+    .buttonStyle:hover {
+        background: #fff;
+        border: #99a6b3 1px solid;
+    }
+
+        .buttonStyle:hover span {
+            color: #99a6b3;
+        }
+
+    .buttonStyle span {
+        color: #fff;
+    }
+
+.moreAdsContainer {
+    margin-top: 5px !important;
+}
+
+.inlinBlock {
+    display: inline-block;
+}
+
+.uk-navbar-dropdown-dropbar {
+    right: 0 !important;
+    border: 1px solid #036;
+    border-top: none;
+}
+
+.uk-navbar-dropbar-slide {
+    top: 11px;
+    direction: rtl;
+}
+
+.menuMobileStyle li {
+    padding: 10px 0;
+}
+
+.menuMobileLogoContainer {
+    background: #036;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.navFilter {
+    position: static;
+}
+
+.searchAgent {
+    padding: 5px 0;
+    background: #003366;
+    color: #fff;
+    /* 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    */
+}
+
+.searchNow {
+    float: right;
+    background: #1dbbeb;
+    border-radius: 20px;
+    border: 1px solid #1dbbeb;
+}
+
+.searchAgent span {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.searchAgent .icon-users {
+    font-size: 28px;
+    padding-right: 10px;
+}

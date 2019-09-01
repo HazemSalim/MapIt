@@ -1,0 +1,30 @@
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Repository.dll.config
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Repository.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Repository.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\EntityFramework.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\EntityFramework.SqlServer.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Data.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Data.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Data.dll.config
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\EntityFramework.xml
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\EntityFramework.SqlServer.xml
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.csprojResolveAssemblyReference.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.csproj.CoreCompileInputs.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.csproj.CopyComplete
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Repository.dll.config
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Repository.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Repository.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\EntityFramework.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\EntityFramework.SqlServer.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Data.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Data.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\EntityFramework.xml
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\EntityFramework.SqlServer.xml
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\bin\Release\MapIt.Data.dll.config
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.csproj.CoreCompileInputs.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.csprojAssemblyReference.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Repository\obj\Release\MapIt.Repository.csproj.CopyComplete

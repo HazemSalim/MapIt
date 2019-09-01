@@ -1,0 +1,14 @@
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Release\MapIt.Helpers.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Release\MapIt.Helpers.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Release\MapIt.Helpers.csprojResolveAssemblyReference.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Release\MapIt.Helpers.csproj.CoreCompileInputs.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Release\MapIt.Helpers.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Release\MapIt.Helpers.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Release\MapIt.Helpers.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Release\MapIt.Helpers.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Release\MapIt.Helpers.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Release\MapIt.Helpers.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\bin\Release\Newtonsoft.Json.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Release\MapIt.Helpers.csproj.CoreCompileInputs.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Release\MapIt.Helpers.csprojAssemblyReference.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Helpers\obj\Release\MapIt.Helpers.csproj.CopyComplete

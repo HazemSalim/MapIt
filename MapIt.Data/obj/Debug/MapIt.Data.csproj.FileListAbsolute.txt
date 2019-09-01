@@ -1,0 +1,41 @@
+D:\dev\MapIt\sol\MapIt.Data\bin\Debug\MapIt.Data.dll.config
+D:\dev\MapIt\sol\MapIt.Data\bin\Debug\MapIt.Data.dll
+D:\dev\MapIt\sol\MapIt.Data\bin\Debug\MapIt.Data.pdb
+D:\dev\MapIt\sol\MapIt.Data\bin\Debug\EntityFramework.dll
+D:\dev\MapIt\sol\MapIt.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\dev\MapIt\sol\MapIt.Data\bin\Debug\EntityFramework.xml
+D:\dev\MapIt\sol\MapIt.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\dev\MapIt\sol\MapIt.Data\obj\Debug\MapIt.Data.dll
+D:\dev\MapIt\sol\MapIt.Data\obj\Debug\MapIt.Data.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\MapIt.Data.dll.config
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\MapIt.Data.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\MapIt.Data.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\EntityFramework.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\EntityFramework.xml
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\EntityFramework.SqlServer.xml
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\bin\Debug\MapIt.Data.dll.config
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\bin\Debug\MapIt.Data.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\bin\Debug\MapIt.Data.pdb
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\bin\Debug\EntityFramework.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\bin\Debug\EntityFramework.SqlServer.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\bin\Debug\EntityFramework.xml
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\bin\Debug\EntityFramework.SqlServer.xml
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\obj\Debug\MapIt.Data.csprojResolveAssemblyReference.cache
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\obj\Debug\MapIt.Data.dll
+H:\SELMY\_Projects\Map it\web\mapit\trunk\MapIt.Data\obj\Debug\MapIt.Data.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.csprojResolveAssemblyReference.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\MapIt.Data.dll.config
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\MapIt.Data.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\MapIt.Data.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\EntityFramework.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\EntityFramework.xml
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.csprojAssemblyReference.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.csproj.CoreCompileInputs.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.csproj.CopyComplete

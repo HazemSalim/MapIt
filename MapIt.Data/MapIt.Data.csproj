@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0D2FF36A-06B9-40B8-8B95-306137657BC3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MapIt.Data</RootNamespace>
+    <AssemblyName>MapIt.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminPage.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPermission.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUser.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Area.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Block.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Broker.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokerArea.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommAdPlace.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommercialAd.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Component.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPage.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Currency.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DevicesToken.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FAQ.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Feature.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralSetting.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenNotif.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetComponents_Result.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetFeatures_Result.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetSettings_Result.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MapItModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapItModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MapItModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MapItModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapItModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Merchant.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewsSubscriber.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotifType.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Offer.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Package.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PagePlace.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PageShow.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials.cs" />
+    <Compile Include="PaymentMethod.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentTransaction.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Photographer.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Property.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyComment.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyComponent.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyFavorite.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyFeature.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyPhoto.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyReport.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertySetting.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyType.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyVideo.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyView.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Purpos.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reason.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceArea.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceComment.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceFavorite.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServicePhoto.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceRate.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceReport.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServicesCategory.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceView.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Slider.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TechMessage.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserBalanceLog.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCredit.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WatchList.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="MapItModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MapItModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MapItModel.edmx.diagram">
+      <DependentUpon>MapItModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MapItModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MapItModel.edmx</DependentUpon>
+      <LastGenOutput>MapItModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MapItModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MapItModel.edmx</DependentUpon>
+      <LastGenOutput>MapItModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

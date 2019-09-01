@@ -1,0 +1,50 @@
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.csprojResolveAssemblyReference.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.csproj.ResolveComReference.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.csproj.CoreCompileInputs.cache
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Web.dll.config
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Web.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Web.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Data.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Helpers.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Lib.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Repository.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Resources.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\JdSoft.Apns.Notifications.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\Newtonsoft.Json.Compact.dll
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Data.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Data.dll.config
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Helpers.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Lib.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Repository.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Repository.dll.config
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Resources.pdb
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.csproj.CopyComplete
+E:\Work\dev\HardTask\Projects\Web Applications\MapIt\mapit_web\trunk\MapIt.Web\bin\MessageBird.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Web.dll.config
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Web.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Web.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Data.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Helpers.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Lib.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Repository.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Resources.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\JdSoft.Apns.Notifications.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MessageBird.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\Newtonsoft.Json.Compact.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Data.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Helpers.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Lib.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Repository.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Resources.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\Interop.e24PaymentPipeLib.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\Interop.e24PaymentPipeLib.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.csproj.ResolveComReference.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.dll
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.pdb
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Data.dll.config
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\bin\MapIt.Repository.dll.config
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.csproj.CoreCompileInputs.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.csprojAssemblyReference.cache
+D:\dev\MapIt\mapit_web\trunk\MapIt.Web\obj\Release\MapIt.Web.csproj.CopyComplete

@@ -1,0 +1,366 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?lb55lm');
+    src:  url('fonts/icomoon.eot?lb55lm#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?lb55lm') format('truetype'),
+      url('../fonts/icomoon.woff?lb55lm') format('woff'),
+      url('../fonts/icomoon.svg?lb55lm#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-megaphone:before {
+    content: "\e95c";
+  }
+  .icon-dark-eye:before {
+    content: "\e900";
+  }
+  .icon-report-symbol:before {
+    content: "\e901";
+  }
+  .icon-share:before {
+    content: "\e902";
+  }
+  .icon-add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign:before {
+    content: "\e903";
+  }
+  .icon-add-house:before {
+    content: "\e904";
+  }
+  .icon-eye2:before {
+    content: "\e905";
+  }
+  .icon-favorite-heart-button:before {
+    content: "\e906";
+  }
+  .icon-icon:before {
+    content: "\e907";
+  }
+  .icon-label:before {
+    content: "\e908";
+  }
+  .icon-link2:before {
+    content: "\e909";
+  }
+  .icon-user:before {
+    content: "\e90a";
+  }
+  .icon-mapit:before {
+    content: "\e90b";
+  }
+  .icon-arrow:before {
+    content: "\e90c";
+  }
+  .icon-arrowSubMenu:before {
+    content: "\e90d";
+  }
+  .icon-close-envelope:before {
+    content: "\e90e";
+  }
+  .icon-facebook:before {
+    content: "\e90f";
+  }
+  .icon-male-telemarketer:before {
+    content: "\e910";
+  }
+  .icon-link22:before {
+    content: "\e911";
+  }
+  .icon-information-button:before {
+    content: "\e912";
+  }
+  .icon-magnifying-glass2:before {
+    content: "\e913";
+  }
+  .icon-sofa-1:before {
+    content: "\e914";
+  }
+  .icon-fields:before {
+    content: "\e915";
+  }
+  .icon-cooking-on-fire:before {
+    content: "\e916";
+  }
+  .icon-cold2:before {
+    content: "\e917";
+  }
+  .icon-signing-the-contract2:before {
+    content: "\e918";
+  }
+  .icon-double-king-size-bed:before {
+    content: "\e919";
+  }
+  .icon-bathtub:before {
+    content: "\e91a";
+  }
+  .icon-cottage:before {
+    content: "\e91b";
+  }
+  .icon-maps-and-flags:before {
+    content: "\e91c";
+  }
+  .icon-bath:before {
+    content: "\e91d";
+  }
+  .icon-bathroom:before {
+    content: "\e91e";
+  }
+  .icon-sofa2:before {
+    content: "\e91f";
+  }
+  .icon-menu:before {
+    content: "\e920";
+  }
+  .icon-phone:before {
+    content: "\e921";
+  }
+  .icon-searcher:before {
+    content: "\e922";
+  }
+  .icon-twitter:before {
+    content: "\e923";
+  }
+ 
+  .icon-youtube:before {
+    content: "\e925";
+  }
+  .icon-money:before {
+    content: "\e926";
+  }
+  .icon-coins:before {
+    content: "\e927";
+  }
+  .icon-star-1:before {
+    content: "\e928";
+  }
+  .icon-like:before {
+    content: "\e929";
+  }
+  .icon-hands:before {
+    content: "\e92a";
+  }
+  .icon-bars:before {
+    content: "\e92b";
+  }
+  .icon-round:before {
+    content: "\e92c";
+  }
+  .icon-success:before {
+    content: "\e92d";
+  }
+  .icon-error:before {
+    content: "\e92e";
+  }
+  .icon-play-button:before {
+    content: "\e92f";
+  }
+  .icon-puzzle-part:before {
+    content: "\e930";
+  }
+  .icon-house:before {
+    content: "\e931";
+  }
+  .icon-android:before {
+    content: "\e932";
+  }
+  .icon-video:before {
+    content: "\e933";
+  }
+  .icon-signing-the-contract:before {
+    content: "\e934";
+  }
+  .icon-cold:before {
+    content: "\e935";
+  }
+  .icon-luxury:before {
+    content: "\e936";
+  }
+  .icon-sofa:before {
+    content: "\e937";
+  }
+  .icon-magnifying-glass:before {
+    content: "\e938";
+  }
+  .icon-photo-camera-1:before {
+    content: "\e939";
+  }
+  .icon-placeholder:before {
+    content: "\e93a";
+  }
+  .icon-construction:before {
+    content: "\e93b";
+  }
+  .icon-home-1:before {
+    content: "\e93c";
+  }
+  .icon-technology:before {
+    content: "\e93d";
+  }
+  .icon-home:before {
+    content: "\e93e";
+  }
+  .icon-pot:before {
+    content: "\e93f";
+  }
+  .icon-building:before {
+    content: "\e940";
+  }
+  .icon-interface:before {
+    content: "\e941";
+  }
+  .icon-star:before {
+    content: "\e942";
+  }
+  .icon-photo-camera:before {
+    content: "\e943";
+  }
+  .icon-lock-1:before {
+    content: "\e944";
+  }
+  .icon-lock:before {
+    content: "\e945";
+  }
+  
+
+  .icon-users:before {
+    content: "\e947";
+  }
+  .icon-placeholder-1:before {
+    content: "\e948";
+  }
+  .icon-calendar-1:before {
+    content: "\e949";
+  }
+  .icon-calendar:before {
+    content: "\e94a";
+  }
+  .icon-office-block:before {
+    content: "\e94b";
+  }
+  .icon-furniture:before {
+    content: "\e94c";
+  }
+  .icon-home2:before {
+    content: "\e94d";
+  }
+  .icon-home22:before {
+    content: "\e94e";
+  }
+  .icon-home3:before {
+    content: "\e94f";
+  }
+  .icon-office:before {
+    content: "\e950";
+  }
+  .icon-newspaper:before {
+    content: "\e951";
+  }
+  .icon-pencil:before {
+    content: "\e952";
+  }
+  .icon-pencil2:before {
+    content: "\e953";
+  }
+  .icon-image:before {
+    content: "\e954";
+  }
+  .icon-images:before {
+    content: "\e955";
+  }
+  .icon-camera:before {
+    content: "\e956";
+  }
+  .icon-price-tag:before {
+    content: "\e957";
+  }
+  .icon-price-tags:before {
+    content: "\e958";
+  }
+  .icon-calendar2:before {
+    content: "\e959";
+  }
+  .icon-printer:before {
+    content: "\e95a";
+  }
+  .icon-measuring-tape:before {
+    content: "\e95b";
+  }
+  .icon-bubble:before {
+    content: "\e96b";
+  }
+  .icon-user-plus:before {
+    content: "\e973";
+  }
+  .icon-user-tie:before {
+    content: "\e976";
+  }
+  .icon-quotes-left:before {
+    content: "\e977";
+  }
+  .icon-shrink:before {
+    content: "\e98a";
+  }
+  .icon-key:before {
+    content: "\e98d";
+  }
+  .icon-lock2:before {
+    content: "\e98f";
+  }
+  .icon-earth:before {
+    content: "\e9ca";
+  }
+  .icon-link:before {
+    content: "\e9cb";
+  }
+  .icon-eye:before {
+    content: "\e9ce";
+  }
+  .icon-eye-plus:before {
+    content: "\e9cf";
+  }
+  .icon-eye-minus:before {
+    content: "\e9d0";
+  }
+  .icon-eye-blocked:before {
+    content: "\e9d1";
+  }
+  .icon-bookmark:before {
+    content: "\e9d2";
+  }
+  .icon-bookmarks:before {
+    content: "\e9d3";
+  }
+  .icon-star-full:before {
+    content: "\e9d9";
+  }
+  .icon-heart:before {
+    content: "\e9da";
+  }
+  .icon-cancel-circle:before {
+    content: "\ea0d";
+  }
+  .icon-blocked:before {
+    content: "\ea0e";
+  }
+  .icon-cross:before {
+    content: "\ea0f";
+  }
+  .icon-checkmark:before {
+    content: "\ea10";
+  }
+  

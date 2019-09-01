@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F37BF0A-FC91-4BBC-B14B-7D228E69144A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MapIt.Repository</RootNamespace>
+    <AssemblyName>MapIt.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GenNotifsRepository.cs" />
+    <Compile Include="ServiceAreasRepository.cs" />
+    <Compile Include="FAQsRepository.cs" />
+    <Compile Include="BrokerAreasRepository.cs" />
+    <Compile Include="UserBalanceLogsRepository.cs" />
+    <Compile Include="WatchListsRepository.cs" />
+    <Compile Include="NotificationsRepository.cs" />
+    <Compile Include="NotifTypesRepository.cs" />
+    <Compile Include="TechMessagesRepository.cs" />
+    <Compile Include="PropertyViewsRepository.cs" />
+    <Compile Include="ServiceCommentsRepository.cs" />
+    <Compile Include="PropertyCommentsRepository.cs" />
+    <Compile Include="PhotographersRepository.cs" />
+    <Compile Include="ServiceViewsRepository.cs" />
+    <Compile Include="ServiceReportsRepository.cs" />
+    <Compile Include="ServicePhotosRepository.cs" />
+    <Compile Include="ServiceFavoritesRepository.cs" />
+    <Compile Include="ServicesRepository.cs" />
+    <Compile Include="ServicesCategoriesRepository.cs" />
+    <Compile Include="ComponentsRepository.cs" />
+    <Compile Include="BlocksRepository.cs" />
+    <Compile Include="BrokersRepository.cs" />
+    <Compile Include="PackagesRepository.cs" />
+    <Compile Include="FeaturesRepository.cs" />
+    <Compile Include="PropertyVideosRepository.cs" />
+    <Compile Include="PropertyReportsRepository.cs" />
+    <Compile Include="ReasonsRepository.cs" />
+    <Compile Include="PurposesRepository.cs" />
+    <Compile Include="PropertyTypesRepository.cs" />
+    <Compile Include="PropertyFeaturesRepository.cs" />
+    <Compile Include="PropertyComponentsRepository.cs" />
+    <Compile Include="PropertySettingsRepository.cs" />
+    <Compile Include="UserCreditsRepository.cs" />
+    <Compile Include="AdminUsersRepository.cs" />
+    <Compile Include="AdminPagesRepository.cs" />
+    <Compile Include="NewsSubscribersRepository.cs" />
+    <Compile Include="DevicesTokensRepository.cs" />
+    <Compile Include="PaymentMethodsRepository.cs" />
+    <Compile Include="CitiesRepository.cs" />
+    <Compile Include="AreasRepository.cs" />
+    <Compile Include="PaymentTransactionsRepository.cs" />
+    <Compile Include="PropertyPhotosRepository.cs" />
+    <Compile Include="PropertiesRepository.cs" />
+    <Compile Include="SlidersRepository.cs" />
+    <Compile Include="AdminPermissionsRepository.cs" />
+    <Compile Include="CommAdPlacesRepository.cs" />
+    <Compile Include="CommercialAdsRepository.cs" />
+    <Compile Include="PropertyFavoritesRepository.cs" />
+    <Compile Include="OffersRepository.cs" />
+    <Compile Include="ServiceRatesRepository.cs" />
+    <Compile Include="MerchantsRepository.cs" />
+    <Compile Include="UsersRepository.cs" />
+    <Compile Include="CountriesRepository.cs" />
+    <Compile Include="CurrenciesRepository.cs" />
+    <Compile Include="DbContextExtentions.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="GeneralSettingsRepository.cs" />
+    <Compile Include="ContentPagesRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MapIt.Data\MapIt.Data.csproj">
+      <Project>{0d2ff36a-06b9-40b8-8b95-306137657bc3}</Project>
+      <Name>MapIt.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
