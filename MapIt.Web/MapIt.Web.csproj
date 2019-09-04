@@ -81,8 +81,10 @@
     <Reference Include="NetSpell.SpellChecker">
       <HintPath>..\..\..\..\..\tools\CuteEditor_for_NET6\bin\NetSpell.SpellChecker.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Device" />
     <Reference Include="System.Runtime.Serialization" />
@@ -3231,17 +3233,6 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resource.ar-kw.designer.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="e24PaymentPipeLib">
-      <Guid>{78EEF9E1-38E9-11D5-9B13-00E0B8184571}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MapIt.Data\MapIt.Data.csproj">

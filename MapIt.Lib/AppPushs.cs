@@ -51,7 +51,17 @@ namespace MapIt.Lib
 
                 if (notifObj.UserId.HasValue)
                 {
-                    if (notifObj.OfferId.HasValue)
+                    #region Get message by Language
+                    //string message = notifObj.TitleAR;
+                     
+                    //    DevicesTokensRepository devicesTokensRepository = new DevicesTokensRepository();
+                    //    var deviceToken = devicesTokensRepository.First(c => c.UserId == userId);
+                    //    if (deviceToken != null && deviceToken.la.la)
+                        #endregion
+
+
+
+                        if (notifObj.OfferId.HasValue)
                     {
                         SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), notifObj.TitleAR);
                     }

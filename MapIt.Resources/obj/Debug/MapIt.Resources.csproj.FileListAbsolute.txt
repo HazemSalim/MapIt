@@ -16,3 +16,7 @@ D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\bin\Debug\MapIt.Resources.pdb
 D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\obj\Debug\MapIt.Resources.dll
 D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\obj\Debug\MapIt.Resources.pdb
 D:\dev\MapIt\mapit_web\trunk\MapIt.Resources\obj\Debug\MapIt.Resources.csproj.CoreCompileInputs.cache
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Resources\bin\Debug\MapIt.Resources.dll
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Resources\bin\Debug\MapIt.Resources.pdb
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Resources\obj\Debug\MapIt.Resources.dll
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Resources\obj\Debug\MapIt.Resources.pdb

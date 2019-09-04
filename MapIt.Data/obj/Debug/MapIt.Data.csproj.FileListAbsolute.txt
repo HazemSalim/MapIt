@@ -39,3 +39,12 @@ D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.pdb
 D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.csprojAssemblyReference.cache
 D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.csproj.CoreCompileInputs.cache
 D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Debug\MapIt.Data.csproj.CopyComplete
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\bin\Debug\MapIt.Data.dll.config
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\bin\Debug\MapIt.Data.dll
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\bin\Debug\MapIt.Data.pdb
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\bin\Debug\EntityFramework.dll
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\bin\Debug\EntityFramework.xml
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\obj\Debug\MapIt.Data.dll
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\obj\Debug\MapIt.Data.pdb

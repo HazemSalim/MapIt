@@ -2986,3 +2986,67 @@ Exception StackTrace :
    at MapIt.Web.Controls.LoginBox.BindCodes() in D:\dev\MapIt\mapit_web\trunk\MapIt.Web\Controls\LoginBox.ascx.cs:line 63
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   4/9/2019 10:03
+
+Exception Message :   
+Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 117
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   4/9/2019 10:07
+
+Exception Message :   
+Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 117
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   4/9/2019 10:08
+
+Exception Message :   
+Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 117
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   4/9/2019 10:09
+
+Exception Message :   
+Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 117
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

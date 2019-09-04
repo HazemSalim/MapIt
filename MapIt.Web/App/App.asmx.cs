@@ -13,6 +13,7 @@ using MapIt.Repository;
 using MapIt.Web.App.App_Model;
 using System.Threading;
 using System.Device.Location;
+using Newtonsoft.Json;
 
 namespace MapIt.Web.App
 {
@@ -113,8 +114,10 @@ namespace MapIt.Web.App
             {
                 HttpContext.Current.Response.ContentType = "application/json";
                 HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
-                JavaScriptSerializer ser = new JavaScriptSerializer();
-                string strResponse = ser.Serialize(obj);
+
+                string strResponse = JsonConvert.SerializeObject(obj);
+                //JavaScriptSerializer ser = new JavaScriptSerializer();
+                //string strResponse = ser.Serialize(obj);
                 strResponse = strResponse.Replace("null", @"""""");
                 HttpContext.Current.Response.Write(strResponse);
             }
