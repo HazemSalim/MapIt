@@ -19,6 +19,7 @@ namespace MapIt.Data
         public long UserId { get; set; }
         public int ReasonId { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public string Notes { get; set; }
     
         public virtual Property Property { get; set; }
         public virtual Reason Reason { get; set; }

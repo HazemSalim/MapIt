@@ -15,7 +15,7 @@
 
         function updateLocation() {
             try {
-                debugger;
+                
                 var longitude = document.getElementById("hfLongitude");
                 var latitude = document.getElementById("hfLatitude");
                 var txtLocation = document.getElementById("txtLocation");

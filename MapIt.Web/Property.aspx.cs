@@ -255,7 +255,7 @@ namespace MapIt.Web
                 if (UserId > 0)
                 {
                     propertiesRepository = new PropertiesRepository();
-                    propertiesRepository.SetReport(PropertyId, UserId, 1);
+                    propertiesRepository.SetReport(PropertyId, UserId, 1,string.Empty);
                 }
                 else
                 {

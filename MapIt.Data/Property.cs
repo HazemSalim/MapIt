@@ -21,11 +21,11 @@ namespace MapIt.Data
             this.PropertyFavorites = new HashSet<PropertyFavorite>();
             this.PropertyFeatures = new HashSet<PropertyFeature>();
             this.PropertyPhotos = new HashSet<PropertyPhoto>();
-            this.PropertyReports = new HashSet<PropertyReport>();
             this.PropertyVideos = new HashSet<PropertyVideo>();
             this.PropertyViews = new HashSet<PropertyView>();
             this.PropertyComments = new HashSet<PropertyComment>();
             this.Notifications = new HashSet<Notification>();
+            this.PropertyReports = new HashSet<PropertyReport>();
         }
     
         public long Id { get; set; }
@@ -62,7 +62,6 @@ namespace MapIt.Data
         public virtual Country Country { get; set; }
         public virtual PropertyType PropertyType { get; set; }
         public virtual Purpos Purpos { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyComponent> PropertyComponents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -72,8 +71,6 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyPhoto> PropertyPhotos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PropertyReport> PropertyReports { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyVideo> PropertyVideos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyView> PropertyViews { get; set; }
@@ -81,5 +78,8 @@ namespace MapIt.Data
         public virtual ICollection<PropertyComment> PropertyComments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Notification> Notifications { get; set; }
+        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PropertyReport> PropertyReports { get; set; }
     }
 }

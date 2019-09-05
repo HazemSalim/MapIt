@@ -261,8 +261,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TitleEN" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TitleAR" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
@@ -303,8 +303,8 @@
     <Property Name="ServiceId" Type="bigint" />
     <Property Name="OfferId" Type="int" />
     <Property Name="TypeId" Type="int" Nullable="false" />
-    <Property Name="TitleEN" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TitleAR" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="IsRead" Type="bit" Nullable="false" />
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
   </EntityType>
@@ -496,6 +496,7 @@
     <Property Name="UserId" Type="bigint" Nullable="false" />
     <Property Name="ReasonId" Type="int" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="PropertySettings">
     <Key>
@@ -606,6 +607,7 @@
     <Property Name="UserId" Type="bigint" Nullable="false" />
     <Property Name="ReasonId" Type="int" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Services">
     <Key>
@@ -733,6 +735,7 @@
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="8" />
   </EntityType>
   <EntityType Name="WatchLists">
     <Key>

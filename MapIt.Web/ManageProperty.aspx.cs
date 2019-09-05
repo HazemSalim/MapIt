@@ -28,8 +28,8 @@ namespace MapIt.Web
         ComponentsRepository componentsRepository;
         PropertiesRepository propertiesRepository;
         PropertyPhotosRepository propertyPhotosRepository;
-        PropertyFeaturesRepository propertyFeaturesRepository;
-        PropertyComponentsRepository propertyComponentsRepository;
+        //PropertyFeaturesRepository propertyFeaturesRepository;
+        //PropertyComponentsRepository propertyComponentsRepository;
 
         #endregion
 
@@ -801,7 +801,7 @@ namespace MapIt.Web
             }
         }
 
-        MapIt.Data.Property GetData()
+        Data.Property GetData()
         {
             try
             {
@@ -942,6 +942,11 @@ namespace MapIt.Web
                         if (!string.IsNullOrEmpty(img) && img.Trim() != string.Empty)
                             photosList.Add(new PropertyPhoto { Photo = img });
                     }
+                }
+                else
+                {
+                    PresentHelper.ShowScriptMessage(Resources.Resource.select_photo);
+                    return;
                 }
 
                 var componentList = GetComponentList();

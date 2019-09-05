@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using MapIt.Data;
 using MapIt.Repository;
 using MapIt.Helpers;
@@ -49,60 +47,62 @@ namespace MapIt.Lib
                 notifObj = notificationsRepository.GetByKey(notifObj.Id);
 
 
+                #region Get message by Language
+                string message = notifObj.TitleAR;
+
+                if (userId.HasValue && userId > 0)
+                {
+                    UsersRepository usersRepository = new UsersRepository();
+                    var usr = usersRepository.First(c => c.Id == userId);
+                    if (usr != null && usr.Lang == "en")
+                        message = notifObj.TitleEN;
+                }
+                #endregion
+
                 if (notifObj.UserId.HasValue)
                 {
-                    #region Get message by Language
-                    //string message = notifObj.TitleAR;
-                     
-                    //    DevicesTokensRepository devicesTokensRepository = new DevicesTokensRepository();
-                    //    var deviceToken = devicesTokensRepository.First(c => c.UserId == userId);
-                    //    if (deviceToken != null && deviceToken.la.la)
-                        #endregion
-
-
-
-                        if (notifObj.OfferId.HasValue)
+                    if (notifObj.OfferId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
                     }
                     else if (notifObj.PropertyId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.PropertyId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.PropertyId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
                     }
                     else if (notifObj.ServiceId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.ServiceId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.ServiceId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
                     }
                     else if (notifObj.GenNotifId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
                     }
                     else
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
                     }
                 }
                 else
                 {
                     if (notifObj.OfferId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), message);
                     }
                     else if (notifObj.PropertyId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.PropertyId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.PropertyId.Value.ToString(), nTypeObj.Title.ToString(), message);
                     }
                     else if (notifObj.ServiceId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.ServiceId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.ServiceId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
                     }
                     else if (notifObj.GenNotifId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), message);
                     }
                     else
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.TitleAR);
+                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), message);
                     }
                 }
             }

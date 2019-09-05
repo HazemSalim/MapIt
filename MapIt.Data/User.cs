@@ -18,24 +18,24 @@ namespace MapIt.Data
         public User()
         {
             this.DevicesTokens = new HashSet<DevicesToken>();
+            this.Notifications = new HashSet<Notification>();
             this.Properties = new HashSet<Property>();
+            this.PropertyComments = new HashSet<PropertyComment>();
+            this.ReceiverPropertyComments = new HashSet<PropertyComment>();
             this.PropertyFavorites = new HashSet<PropertyFavorite>();
-            this.PropertyReports = new HashSet<PropertyReport>();
             this.PropertyViews = new HashSet<PropertyView>();
+            this.ServiceComments = new HashSet<ServiceComment>();
+            this.ReceiverServiceComments = new HashSet<ServiceComment>();
             this.ServiceFavorites = new HashSet<ServiceFavorite>();
             this.ServiceRates = new HashSet<ServiceRate>();
-            this.ServiceReports = new HashSet<ServiceReport>();
-            this.ServiceViews = new HashSet<ServiceView>();
-            this.UserBalanceLogs = new HashSet<UserBalanceLog>();
-            this.WatchLists = new HashSet<WatchList>();
             this.Services = new HashSet<Service>();
-            this.UserCredits = new HashSet<UserCredit>();
-            this.SenderPropertyComments = new HashSet<PropertyComment>();
-            this.ReceiverPropertyComments = new HashSet<PropertyComment>();
-            this.SenderServiceComments = new HashSet<ServiceComment>();
-            this.ReceiverServiceComments = new HashSet<ServiceComment>();
+            this.ServiceViews = new HashSet<ServiceView>();
             this.TechMessages = new HashSet<TechMessage>();
-            this.Notifications = new HashSet<Notification>();
+            this.UserBalanceLogs = new HashSet<UserBalanceLog>();
+            this.UserCredits = new HashSet<UserCredit>();
+            this.WatchLists = new HashSet<WatchList>();
+            this.PropertyReports = new HashSet<PropertyReport>();
+            this.ServiceReports = new HashSet<ServiceReport>();
         }
     
         public long Id { get; set; }
@@ -57,45 +57,46 @@ namespace MapIt.Data
         public System.DateTime AddedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<int> AdminUserId { get; set; }
+        public string Lang { get; set; }
     
         public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DevicesToken> DevicesTokens { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notification> Notifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Property> Properties { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PropertyComment> PropertyComments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PropertyComment> ReceiverPropertyComments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyFavorite> PropertyFavorites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PropertyReport> PropertyReports { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyView> PropertyViews { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServiceComment> ServiceComments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServiceComment> ReceiverServiceComments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceFavorite> ServiceFavorites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceRate> ServiceRates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceReport> ServiceReports { get; set; }
+        public virtual ICollection<Service> Services { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceView> ServiceViews { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TechMessage> TechMessages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserBalanceLog> UserBalanceLogs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WatchList> WatchLists { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Service> Services { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserCredit> UserCredits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PropertyComment> SenderPropertyComments { get; set; }
+        public virtual ICollection<WatchList> WatchLists { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PropertyComment> ReceiverPropertyComments { get; set; }
+        public virtual ICollection<PropertyReport> PropertyReports { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceComment> SenderServiceComments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceComment> ReceiverServiceComments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TechMessage> TechMessages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Notification> Notifications { get; set; }
+        public virtual ICollection<ServiceReport> ServiceReports { get; set; }
     }
 }

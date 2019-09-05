@@ -52,7 +52,6 @@ namespace MapIt.Data
         public virtual DbSet<PropertyFavorite> PropertyFavorites { get; set; }
         public virtual DbSet<PropertyFeature> PropertyFeatures { get; set; }
         public virtual DbSet<PropertyPhoto> PropertyPhotos { get; set; }
-        public virtual DbSet<PropertyReport> PropertyReports { get; set; }
         public virtual DbSet<PropertySetting> PropertySettings { get; set; }
         public virtual DbSet<PropertyType> PropertyTypes { get; set; }
         public virtual DbSet<PropertyVideo> PropertyVideos { get; set; }
@@ -62,12 +61,10 @@ namespace MapIt.Data
         public virtual DbSet<ServiceFavorite> ServiceFavorites { get; set; }
         public virtual DbSet<ServicePhoto> ServicePhotos { get; set; }
         public virtual DbSet<ServiceRate> ServiceRates { get; set; }
-        public virtual DbSet<ServiceReport> ServiceReports { get; set; }
         public virtual DbSet<ServicesCategory> ServicesCategories { get; set; }
         public virtual DbSet<ServiceView> ServiceViews { get; set; }
         public virtual DbSet<Slider> Sliders { get; set; }
         public virtual DbSet<UserBalanceLog> UserBalanceLogs { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<WatchList> WatchLists { get; set; }
         public virtual DbSet<BrokerArea> BrokerAreas { get; set; }
         public virtual DbSet<ServiceArea> ServiceAreas { get; set; }
@@ -85,6 +82,9 @@ namespace MapIt.Data
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Component> Components { get; set; }
         public virtual DbSet<GeneralSetting> GeneralSettings { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<PropertyReport> PropertyReports { get; set; }
+        public virtual DbSet<ServiceReport> ServiceReports { get; set; }
     
         public virtual ObjectResult<GetSettings_Result> GetSettings(Nullable<int> propertyTypeId)
         {

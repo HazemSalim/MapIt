@@ -35,7 +35,7 @@ namespace MapIt.Repository
 
         public Repository()
         {
-            this._objectContext = new MapIt.Data.MapItEntities().ToObjectContext();
+            this._objectContext = new MapItEntities().ToObjectContext();
         }
 
         public Repository(ObjectContext objectContext)

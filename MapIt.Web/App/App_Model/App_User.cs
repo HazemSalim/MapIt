@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Web;
 using MapIt.Data;
 using MapIt.Lib;
 using MapIt.Repository;
@@ -49,6 +47,8 @@ namespace MapIt.Web.App.App_Model
         public string ActualCreditAmount { get; set; }
 
         public string Photo { get; set; }
+
+        public string Lang { get; set; }
 
         public int WatchListNotifs { get; set; }
         public int GeneralNotifs { get; set; }
@@ -107,6 +107,7 @@ namespace MapIt.Web.App.App_Model
             UnreadCommentsCount = (user.ReceiverPropertyComments.Count(c => !c.IsRead)) + (user.ReceiverServiceComments.Count(c => !c.IsRead));
             UnreadTechMessagesCount = user.TechMessages.Count(c => !c.IsRead);
             AddedOn = user.AddedOn;
+            Lang = user.Lang;
 
             LastProCommentText = string.Empty;
             LastProCommentRead = false;
@@ -131,6 +132,7 @@ namespace MapIt.Web.App.App_Model
             CountryEN = user.Country.TitleEN;
             CountryAR = user.Country.TitleAR;
             Phone = user.Phone;
+            Lang = user.Lang;
             Email = !string.IsNullOrEmpty(user.Email) ? user.Email : string.Empty;
             UserName = !string.IsNullOrEmpty(user.UserName) ? user.UserName : string.Empty;
             OtherPhones = user.OtherPhones;

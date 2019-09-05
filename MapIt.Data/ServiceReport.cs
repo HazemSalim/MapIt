@@ -19,9 +19,10 @@ namespace MapIt.Data
         public long UserId { get; set; }
         public int ReasonId { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public string Notes { get; set; }
     
         public virtual Reason Reason { get; set; }
-        public virtual User User { get; set; }
         public virtual Service Service { get; set; }
+        public virtual User User { get; set; }
     }
 }

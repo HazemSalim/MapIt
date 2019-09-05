@@ -136,7 +136,7 @@ namespace MapIt.Repository
             return Entities.PropertyFavorites.Any(p => p.PropertyId == propertyId && p.UserId == userId) ? true : false;
         }
 
-        public long SetReport(long propertyId, long userId, int reasonId)
+        public long SetReport(long propertyId, long userId, int reasonId,string notes)
         {
             var abusives = Entities.PropertyReports.Where(pr => pr.PropertyId == propertyId && pr.UserId == userId).ToList();
             if (abusives != null && abusives.Count > 0)
@@ -149,6 +149,7 @@ namespace MapIt.Repository
                 propertyReport.PropertyId = propertyId;
                 propertyReport.UserId = userId;
                 propertyReport.ReasonId = reasonId;
+                propertyReport.Notes = notes;
                 propertyReport.CreatedOn = DateTime.Now;
                 Entities.PropertyReports.Add(propertyReport);
                 Entities.SaveChanges();

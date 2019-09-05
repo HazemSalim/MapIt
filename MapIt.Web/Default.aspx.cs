@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using MapIt.Helpers;
-using MapIt.Lib;
 using MapIt.Repository;
 
 namespace MapIt.Web
@@ -14,12 +10,12 @@ namespace MapIt.Web
     {
         #region Variables
 
-        GeneralSettingsRepository generalSettingsRepository;
+        //GeneralSettingsRepository generalSettingsRepository;
         CitiesRepository citiesRepository;
         AreasRepository areasRepository;
         BlocksRepository blocksRepository;
         PropertyTypesRepository propertyTypesRepository;
-        PropertiesRepository propertiesRepository;
+        //PropertiesRepository propertiesRepository;
         ServicesCategoriesRepository servicesCategoriesRepository;
 
         #endregion Variables

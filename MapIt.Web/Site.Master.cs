@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
@@ -17,7 +13,7 @@ namespace MapIt.Web
         #region Variables
 
         CountriesRepository countriesRepository;
-        OffersRepository offersRepository;
+        //OffersRepository offersRepository;
 
         #endregion
 

@@ -19,7 +19,7 @@ namespace MapIt.Web.Admin
         #region Variables
 
         PhotographersRepository photographersRepository;
-        CountriesRepository countriesRepository;
+        //CountriesRepository countriesRepository;
 
         #endregion Variables
 

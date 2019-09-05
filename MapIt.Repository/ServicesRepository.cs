@@ -126,7 +126,7 @@ namespace MapIt.Repository
             return Entities.ServiceFavorites.Any(p => p.ServiceId == serviceId && p.UserId == userId) ? true : false;
         }
 
-        public long SetReport(long serviceId, long userId, int reasonId)
+        public long SetReport(long serviceId, long userId, int reasonId,string notes)
         {
             var abusives = Entities.ServiceReports.Where(sr => sr.ServiceId == serviceId && sr.UserId == userId).ToList();
             if (abusives != null && abusives.Count > 0)
@@ -139,6 +139,7 @@ namespace MapIt.Repository
                 serviceReport.ServiceId = serviceId;
                 serviceReport.UserId = userId;
                 serviceReport.ReasonId = reasonId;
+                serviceReport.Notes = notes;
                 serviceReport.CreatedOn = DateTime.Now;
                 Entities.ServiceReports.Add(serviceReport);
                 Entities.SaveChanges();

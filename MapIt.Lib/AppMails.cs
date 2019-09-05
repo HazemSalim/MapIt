@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using MapIt.Data;
 using MapIt.Repository;
 using MapIt.Helpers;
@@ -287,6 +284,7 @@ namespace MapIt.Lib
                         body += "<tr><td colspan='2'>   There is an new report with the following details; <br /><br /></td></tr>";
                         body += "<tr><td style='white-space:nowrap;'> Property Id </td><td>#" + propertyReportObj.PropertyId + "</td></tr>";
                         body += "<tr><td style='white-space:nowrap;'> Reason </td><td>" + propertyReportObj.Reason.TitleEN + "</td></tr>";
+                        body += "<tr><td style='white-space:nowrap;'> Notes </td><td>" + propertyReportObj.Notes + "</td></tr>";
                         body += "<tr><td style='white-space:nowrap;'> Ad Owner Phone </td><td>+" + propertyReportObj.Property.User.Country.CCode + " " + propertyReportObj.Property.User.Phone + "</td></tr>";
                         body += "<tr><td style='white-space:nowrap;'> Ad Reporter Phone </td><td>+" + propertyReportObj.User.Country.CCode + " " + propertyReportObj.User.Phone + "</td></tr>";
                         body += "<tr><td colspan='2' style='white-space:nowrap;'> You can check the account throw <a href='" + AppSettings.WebsiteURL + "admin'>Admin Panel.</a></td></tr>";
@@ -314,6 +312,7 @@ namespace MapIt.Lib
                         body += "<tr><td colspan='2'>   There is an new report with the following details; <br /><br /></td></tr>";
                         body += "<tr><td style='white-space:nowrap;'> Service Id </td><td>#" + serviceReportObj.ServiceId + "</td></tr>";
                         body += "<tr><td style='white-space:nowrap;'> Reason </td><td>" + serviceReportObj.Reason.TitleEN + "</td></tr>";
+                        body += "<tr><td style='white-space:nowrap;'> Notes </td><td>" + serviceReportObj.Notes + "</td></tr>";
                         body += "<tr><td style='white-space:nowrap;'> Ad Owner Phone </td><td>+" + serviceReportObj.Service.User.Country.CCode + " " + serviceReportObj.Service.User.Phone + "</td></tr>";
                         body += "<tr><td style='white-space:nowrap;'> Ad Reporter Phone </td><td>+" + serviceReportObj.User.Country.CCode + " " + serviceReportObj.User.Phone + "</td></tr>";
                         body += "<tr><td colspan='2' style='white-space:nowrap;'> You can check the account throw <a href='" + AppSettings.WebsiteURL + "admin'>Admin Panel.</a></td></tr>";

@@ -520,7 +520,6 @@ namespace MapIt.Web.App
             }
         }
 
-
         [WebMethod(Description = "Set countryId with 0 to get all cities areas blocks.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void GetCitiesAreasBlocks(int countryId, string key)
@@ -1037,7 +1036,7 @@ namespace MapIt.Web.App
                 }
 
                 propertiesRepository = new PropertiesRepository();
-                var propertyObj = new MapIt.Data.Property();
+                var propertyObj = new Data.Property();
 
                 propertyObj.PurposeId = purposeId;
                 propertyObj.TypeId = typeId;
@@ -2115,9 +2114,9 @@ namespace MapIt.Web.App
             }
         }
 
-        [WebMethod(Description = "Set property is reported by propertyId, userId and reasonId.")]
+        [WebMethod(Description = "Set property is reported by propertyId, userId , notes and reasonId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void MakePropertyReported(long propertyId, long userId, int reasonId, string key)
+        public void MakePropertyReported(long propertyId, long userId, int reasonId,string notes, string key)
         {
             try
             {
@@ -2127,7 +2126,7 @@ namespace MapIt.Web.App
                 }
 
                 propertiesRepository = new PropertiesRepository();
-                long result = propertiesRepository.SetReport(propertyId, userId, reasonId);
+                long result = propertiesRepository.SetReport(propertyId, userId, reasonId,notes);
                 AppMails.SendNewReportToAdmin(result, true);
                 RenderAsJson(result);
             }
@@ -2956,7 +2955,7 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = "Set service is reported by serviceId, userId and reasonId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void MakeServiceReported(long serviceId, long userId, int reasonId, string key)
+        public void MakeServiceReported(long serviceId, long userId, int reasonId, string notes, string key)
         {
             try
             {
@@ -2966,7 +2965,7 @@ namespace MapIt.Web.App
                 }
 
                 servicesRepository = new ServicesRepository();
-                long result = servicesRepository.SetReport(serviceId, userId, reasonId);
+                long result = servicesRepository.SetReport(serviceId, userId, reasonId, notes);
                 AppMails.SendNewReportToAdmin(result, false);
                 RenderAsJson(result);
             }
@@ -3082,7 +3081,7 @@ namespace MapIt.Web.App
         [WebMethod(Description = @"Upload Photo URL -> http://'website'/App/AppUUF.aspx <br />Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />
 -3 -> Phone exist <br />-4 -> Email exist <br />-5 -> Username exist <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void Register(string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string deviceToken, string otherPhones, string photo, string key)
+        public void Register(string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string deviceToken, string otherPhones, string photo,string lang, string key)
         {
             try
             {
@@ -3141,7 +3140,7 @@ namespace MapIt.Web.App
                     _sex = sex;
                 }
 
-                var userObj = new MapIt.Data.User();
+                var userObj = new User();
                 userObj.FirstName = firstName;
                 userObj.LastName = lastName;
                 userObj.Sex = _sex;
@@ -3153,6 +3152,7 @@ namespace MapIt.Web.App
                 userObj.UserName = userName;
                 userObj.OtherPhones = otherPhones;
                 userObj.Photo = photo;
+                userObj.Lang = lang;
                 userObj.ActivationCode = AuthHelper.RandomCode(4);
                 userObj.IsActive = GSetting.AutoActiveUser;
                 userObj.IsCanceled = false;
@@ -3617,7 +3617,7 @@ namespace MapIt.Web.App
         [WebMethod(Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> UserName exist <br />-5 -> Email exist 
 <br />-1 -> Error<br />BirthDate format will be like '06/20/2017'<br />You can set password with blank if you do not want to update. ")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void EditUser(long userId, string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string otherPhones, string photo, string key)
+        public void EditUser(long userId, string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string otherPhones, string photo,string lang, string key)
         {
             try
             {
@@ -3670,6 +3670,7 @@ namespace MapIt.Web.App
                 userObj.CountryId = countryId;
                 userObj.Phone = phone;
                 userObj.Email = email;
+                userObj.Lang = lang;
                 userObj.OtherPhones = otherPhones;
 
                 if (!string.IsNullOrEmpty(password))

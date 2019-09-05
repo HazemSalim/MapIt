@@ -710,10 +710,18 @@ namespace MapIt.Web.Admin
 
                 var phoneList = GetPhoneList();
                 var photoList = GetPhotoList();
+
+                if (photoList.Count == 0)
+                {
+                    PresentHelper.ShowScriptMessage("Select one Photo at least");
+                    return;
+                }
+
+
                 var componentList = GetComponentList();
                 var featureList = GetFeatureList();
 
-                var propertyObj = new MapIt.Data.Property();
+                var propertyObj = new Data.Property();
                 propertyObj.UserId = ParseHelper.GetInt64(hfUserId.Value).Value;
                 propertyObj.PurposeId = purposeId.Value;
                 propertyObj.TypeId = typeId.Value;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
@@ -17,7 +16,7 @@ namespace MapIt.Web.Admin
         #region Variables
 
         CountriesRepository countriesRepository;
-        CurrenciesRepository currenciesRepository;
+        //CurrenciesRepository currenciesRepository;
 
         #endregion Variables
 
