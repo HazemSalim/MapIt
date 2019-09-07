@@ -150,15 +150,15 @@ namespace MapIt.Web.App.App_Model
             AreaEN = property.BlockId.HasValue ? property.Block.Area.TitleEN : string.Empty;
             AreaAR = property.BlockId.HasValue ? property.Block.Area.TitleAR : string.Empty;
 
-            BlockId = property.BlockId.HasValue ? property.BlockId.Value : 0;
+            BlockId = property.BlockId ?? 0;
             BlockEN = property.BlockId.HasValue ? property.Block.TitleEN : string.Empty;
             BlockAR = property.BlockId.HasValue ? property.Block.TitleAR : string.Empty;
 
-            Area = property.Area.HasValue ? property.Area.Value : 0;
-            BuildingAge = property.BuildingAge.HasValue ? property.BuildingAge.Value : 0;
-            MonthlyIncome = property.MonthlyIncome.HasValue ? property.MonthlyIncome.Value : 0;
-            SellingPrice = property.SellingPrice.HasValue ? property.SellingPrice.Value : 0;
-            RentPrice = property.RentPrice.HasValue ? property.RentPrice.Value : 0;
+            Area = property.Area ?? 0;
+            BuildingAge = property.BuildingAge ?? 0;
+            MonthlyIncome = property.MonthlyIncome ?? 0;
+            SellingPrice = property.SellingPrice ?? 0;
+            RentPrice = property.RentPrice ?? 0;
 
             Details = !string.IsNullOrEmpty(property.Details) ? property.Details : string.Empty;
 
@@ -198,7 +198,7 @@ namespace MapIt.Web.App.App_Model
                 ComponentId = pc.ComponentId,
                 ComponentEN = pc.Component.TitleEN,
                 ComponentAR = pc.Component.TitleAR,
-                Count = pc.Count.HasValue ? pc.Count.Value : 0,
+                Count = pc.Count ?? 0,
                 Photo = pc.Component.Photo
             });
 
@@ -229,7 +229,7 @@ namespace MapIt.Web.App.App_Model
                 {
                     Id = ad.Id,
                     Title = ad.Title,
-                    CountryId = ad.CountryId.HasValue ? ad.CountryId.Value : 0,
+                    CountryId = ad.CountryId ?? 0,
                     CountryEN = ad.CountryId.HasValue ? ad.Country.TitleEN : string.Empty,
                     CountryAR = ad.CountryId.HasValue ? ad.Country.TitleAR : string.Empty,
                     Photo = ad.Photo,
@@ -237,7 +237,7 @@ namespace MapIt.Web.App.App_Model
                 });
         }
 
-        public App_Property(MapIt.Data.Property property, long userId)
+        public App_Property(Data.Property property, long userId)
         {
             Id = property.Id;
             PageURL = property.PageName;
@@ -356,7 +356,7 @@ namespace MapIt.Web.App.App_Model
                 });
         }
 
-        public App_Property(MapIt.Data.CommercialAd adObj)
+        public App_Property(CommercialAd adObj)
         {
             Id = -1;
             PageURL = string.Empty;

@@ -7,13 +7,13 @@ using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
 
-namespace MapIt.Web.Admin
+namespace MapIt.Web.PMTZ_Admin
 {
-    public partial class PropertyMessages : System.Web.UI.Page
+    public partial class PropertyReports : System.Web.UI.Page
     {
         #region Variables
 
-        PropertyCommentsRepository propertyCommentsRepository;
+        PropertyReportsRepository propertyReportsRepository;
 
         #endregion Variables
 
@@ -89,30 +89,32 @@ namespace MapIt.Web.Admin
         {
             try
             {
-                propertyCommentsRepository = new PropertyCommentsRepository();
-                var list = propertyCommentsRepository.Find(m => m.PropertyId == PropertyId).OrderByDescending(m => m.AddedOn).AsQueryable();
+                propertyReportsRepository = new PropertyReportsRepository();
+                var list = propertyReportsRepository.Find(m => m.PropertyId == PropertyId).OrderByDescending(m => m.CreatedOn).AsQueryable();
                 if (list != null && list.Count() > 0)
                 {
                     if (!string.IsNullOrEmpty(SortExpression))
                     {
-                        list = SortHelper.SortList<PropertyComment>(list, SortExpression, SortDirection);
+                        list = SortHelper.SortList(list, SortExpression, SortDirection);
                     }
 
-                    PagedDataSource pds = new PagedDataSource();
-                    pds.AllowPaging = true;
-                    pds.PageSize = AspNetPager1.PageSize;
-                    pds.CurrentPageIndex = AspNetPager1.CurrentPageIndex - 1;
+                    PagedDataSource pds = new PagedDataSource
+                    {
+                        AllowPaging = true,
+                        PageSize = AspNetPager1.PageSize,
+                        CurrentPageIndex = AspNetPager1.CurrentPageIndex - 1,
 
-                    pds.DataSource = list.ToList();
-                    gvMessages.DataSource = pds;
-                    gvMessages.DataBind();
+                        DataSource = list.ToList()
+                    };
+                    gvReports.DataSource = pds;
+                    gvReports.DataBind();
                     AspNetPager1.RecordCount = list.Count();
                     AspNetPager1.Visible = true;
                 }
                 else
                 {
-                    gvMessages.DataSource = new List<TechMessage>();
-                    gvMessages.DataBind();
+                    gvReports.DataSource = new List<PropertyReport>();
+                    gvReports.DataBind();
                     AspNetPager1.Visible = false;
                 }
 
@@ -131,8 +133,8 @@ namespace MapIt.Web.Admin
         {
             if (!IsPostBack)
             {
-                if (Session["AdminUserId"] != null && (int)ParseHelper.GetInt(Session["AdminUserId"].ToString()) > 1 &&
-                    !(new AdminPermissionsRepository().GetByPageId((int)ParseHelper.GetInt(Session["AdminUserId"].ToString()), (int)AppEnums.AdminPages.Properties)))
+                if (Session["AdminUserId"] != null && ParseHelper.GetInt(Session["AdminUserId"].ToString()) > 1 &&
+                    !new AdminPermissionsRepository().GetByPageId((int)ParseHelper.GetInt(Session["AdminUserId"].ToString()), (int)AppEnums.AdminPages.Properties))
                 {
                     Response.Redirect(".");
                 }
@@ -151,7 +153,7 @@ namespace MapIt.Web.Admin
             }
         }
 
-        protected void gvMessages_Sorting(object sender, GridViewSortEventArgs e)
+        protected void gvReports_Sorting(object sender, GridViewSortEventArgs e)
         {
             string sortDirection = "ASC";
             if (!string.IsNullOrEmpty(SortExpression) && SortExpression == e.SortExpression

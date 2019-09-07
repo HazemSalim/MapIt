@@ -26,3 +26,12 @@ D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\Newtonsoft.Json.dll
 D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\Newtonsoft.Json.xml
 D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\obj\Debug\MapIt.Helpers.dll
 D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\obj\Debug\MapIt.Helpers.pdb
+F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\bin\Debug\MapIt.Helpers.dll
+F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\bin\Debug\MapIt.Helpers.pdb
+F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\bin\Debug\Newtonsoft.Json.dll
+F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\bin\Debug\Newtonsoft.Json.xml
+F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\obj\Debug\MapIt.Helpers.csproj.CoreCompileInputs.cache
+F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\obj\Debug\MapIt.Helpers.csproj.CopyComplete
+F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\obj\Debug\MapIt.Helpers.dll
+F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\obj\Debug\MapIt.Helpers.pdb
+F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\obj\Debug\MapIt.Helpers.csprojAssemblyReference.cache

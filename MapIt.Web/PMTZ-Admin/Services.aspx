@@ -291,8 +291,10 @@
                                         <asp:TemplateField ItemStyle-Width="70px" HeaderText="Reported" SortExpression="ServiceReports.Count">
                                             <ItemTemplate>
                                                 <div style="text-align: center;">
-                                                    <span style="font-size: 24px;"><%# (int)Eval("ReportsCount") == 0 ? "" : Eval("ReportsCount") %></span>
-                                                    <%# (bool)Eval("IsReported") ? "<i class='fa fa-flag' style='font-size:25px;color:red;'></i>" : "" %>
+                                                    <a href="ServiceReports?id=<%# Eval("Id") %>">
+                                                        <span style="font-size: 24px;"><%# (int)Eval("ReportsCount") == 0 ? "" : Eval("ReportsCount") %></span>
+                                                        <%# (bool)Eval("IsReported") ? "<i class='fa fa-flag' style='font-size:25px;color:red;'></i>" : "" %>
+                                                    </a>
                                                 </div>
                                             </ItemTemplate>
                                         </asp:TemplateField>

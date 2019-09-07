@@ -22,6 +22,7 @@ namespace MapIt.Web.App
     /// </summary>
     [WebService(Namespace = "http://mapitre.com/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     [System.Web.Script.Services.ScriptService]
     public class App : System.Web.Services.WebService
@@ -100,7 +101,7 @@ namespace MapIt.Web.App
             }
         }
 
-        public Int32 ListAdPlace
+        public int ListAdPlace
         {
             get
             {
@@ -112,6 +113,7 @@ namespace MapIt.Web.App
         {
             try
             {
+                HttpContext.Current.Response.Clear();
                 HttpContext.Current.Response.ContentType = "application/json";
                 HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
 
@@ -120,10 +122,12 @@ namespace MapIt.Web.App
                 //string strResponse = ser.Serialize(obj);
                 strResponse = strResponse.Replace("null", @"""""");
                 HttpContext.Current.Response.Write(strResponse);
+                
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
+                HttpContext.Current.Response.Clear();
                 HttpContext.Current.Response.ContentType = "application/json";
                 HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
                 JavaScriptSerializer ser = new JavaScriptSerializer();
@@ -1510,11 +1514,13 @@ namespace MapIt.Web.App
 
                 foreach (var property in properties)
                 {
-                    appProperty = new App_Property(property);
-                    appProperty.Details = propertyId < 1 ? string.Empty : property.Details;
-                    appProperty.IsFavorite = loginFavIds.Contains(property.Id);
-                    appProperty.IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false;
-                    appProperty.IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false;
+                    appProperty = new App_Property(property)
+                    {
+                        Details = propertyId < 1 ? string.Empty : property.Details,
+                        IsFavorite = loginFavIds.Contains(property.Id),
+                        IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false,
+                        IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false
+                    };
                     //list.Add(appProperty);
 
                     if (propertyId > 0)
@@ -1558,7 +1564,11 @@ namespace MapIt.Web.App
                     }
                 }
 
-                RenderAsJson(list);
+               RenderAsJson(list);
+
+               // this.Context.Response.ContentType = "application/json; charset=utf-8";
+                //this.Context.Response.Write(JsonConvert.SerializeObject(list));
+
             }
             catch (Exception ex)
             {
@@ -2348,10 +2358,10 @@ namespace MapIt.Web.App
 
                 var list = categoriesList.Where(c => c.IsActive && (categoryId > 0 ? c.ParentId == categoryId : true)).Select(c => new
                 {
-                    Id = c.Id,
-                    TitleEN = c.TitleEN,
-                    TitleAR = c.TitleAR,
-                    Photo = c.Id == -1 ? c.Photo : (String.IsNullOrEmpty(c.Photo) ? AppSettings.WebsiteURL + AppSettings.NoImage : AppSettings.WebsiteURL + AppSettings.ServiceCategoryPhotos + c.Photo),
+                     c.Id,
+                     c.TitleEN,
+                    c.TitleAR,
+                    Photo = c.Id == -1 ? c.Photo : (string.IsNullOrEmpty(c.Photo) ? AppSettings.WebsiteURL + AppSettings.NoImage : AppSettings.WebsiteURL + AppSettings.ServiceCategoryPhotos + c.Photo),
                     ServicesCount = c.Id == -1 ? 0 : c.ServicesCount,
                     SubCategories = c.Id == -1 ? new List<App_ServiceCategory>() : (c.SubServicesCategories.Where(sc => sc.IsActive).OrderBy(sc => appLang.ToLower() == "ar" ? sc.TitleAR : sc.TitleEN).Select(sc => new App_ServiceCategory
                     {
