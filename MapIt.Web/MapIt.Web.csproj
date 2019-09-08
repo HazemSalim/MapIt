@@ -1648,8 +1648,10 @@
     <Content Include="PMTZ-Admin\LocationByEsri.aspx" />
     <Content Include="PMTZ-Admin\Photographers.aspx" />
     <Content Include="PMTZ-Admin\Merchants.aspx" />
+    <Content Include="PMTZ-Admin\PropertyReports.aspx" />
     <Content Include="PMTZ-Admin\ServiceMessages.aspx" />
     <Content Include="PMTZ-Admin\PropertyMessages.aspx" />
+    <Content Include="PMTZ-Admin\ServiceReports.aspx" />
     <Content Include="ReqB2B.aspx" />
     <Content Include="ReqPhotographer.aspx" />
     <Content Include="Brokers.aspx" />
@@ -2563,6 +2565,13 @@
     <Compile Include="PMTZ-Admin\Merchants.aspx.designer.cs">
       <DependentUpon>Merchants.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PMTZ-Admin\PropertyReports.aspx.cs">
+      <DependentUpon>PropertyReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PMTZ-Admin\PropertyReports.aspx.designer.cs">
+      <DependentUpon>PropertyReports.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PMTZ-Admin\ServiceMessages.aspx.cs">
       <DependentUpon>ServiceMessages.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2576,6 +2585,13 @@
     </Compile>
     <Compile Include="PMTZ-Admin\PropertyMessages.aspx.designer.cs">
       <DependentUpon>PropertyMessages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PMTZ-Admin\ServiceReports.aspx.cs">
+      <DependentUpon>ServiceReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PMTZ-Admin\ServiceReports.aspx.designer.cs">
+      <DependentUpon>ServiceReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReqB2B.aspx.cs">
       <DependentUpon>ReqB2B.aspx</DependentUpon>

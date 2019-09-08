@@ -309,8 +309,10 @@
                                         <asp:TemplateField ItemStyle-Width="70px" HeaderText="Reported" SortExpression="PropertyReports.Count">
                                             <ItemTemplate>
                                                 <div style="text-align: center;">
-                                                    <span style="font-size: 24px;"><%# (int)Eval("ReportsCount") == 0 ? "" : Eval("ReportsCount") %></span>
-                                                    <%# (bool)Eval("IsReported") ? "<i class='fa fa-flag' style='font-size:25px;color:red;'></i>" : "" %>
+                                                    <a href="PropertyReports?id=<%# Eval("Id") %>">
+                                                        <span style="font-size: 24px;"><%# (int)Eval("ReportsCount") == 0 ? "" : Eval("ReportsCount") %></span>
+                                                        <%# (bool)Eval("IsReported") ? "<i class='fa fa-flag' style='font-size:25px;color:red;'></i>" : "" %>
+                                                    </a>
                                                 </div>
                                             </ItemTemplate>
                                         </asp:TemplateField>
@@ -335,7 +337,10 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <a href="PropertyMessages?id=<%# Eval("Id") %>" style="float: left; display: block; padding: 0px 8px;"><i class="fa fa-comments-o" style="font-size: 25px;"></i></a>
+                                                <a href="PropertyMessages?id=<%# Eval("Id") %>" style="float: left; display: block; padding: 0px 8px;">
+                                                    <i class="fa fa-comments-o" style="font-size: 25px;"></i></a>
+
+
                                                 <asp:LinkButton ID="lnkEdit" runat="server" CommandName="EditItem" CommandArgument='<%# Eval("Id") %>'
                                                     CssClass="grid_button" ToolTip="Edit">
                                                         <i class="fa fa-pencil" style="font-size:25px;"></i>
