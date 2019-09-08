@@ -15,6 +15,12 @@ namespace MapIt.Repository
                ((dateFrom.HasValue && dateTo.HasValue) ? (tm.AddedOn >= dateFrom.Value && tm.AddedOn < dateTo.Value) : true));
         }
 
+        public int GetUnReadCount()
+        {
+            return base.Find(x =>
+               x.IsRead == false).Count();
+        }
+
         public void SetRead(Int64 userId)
         {
             var messagesList = Entities.TechMessages.Where(m => m.UserId == userId);

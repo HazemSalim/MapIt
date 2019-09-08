@@ -15,11 +15,16 @@ namespace MapIt.Web.Admin
     {
         #region Variables
 
+        TechMessagesRepository techMessagesRepository;
 
-
-        #endregion
+        #endregion Variables
 
         #region Events
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            GetNotificationData();
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,5 +46,23 @@ namespace MapIt.Web.Admin
         }
 
         #endregion
+
+        #region Methods
+        private void GetNotificationData()
+        {
+            techMessagesRepository = new TechMessagesRepository();
+            int unReadCount = techMessagesRepository.GetUnReadCount();
+            if (unReadCount > 0)
+            {
+                litTechMessages.Text = "<a href='TechMessages.aspx' title ='Support Messages' class='fa fa-bell-o'><span class='fa fa-comment'></span><span class='num'>" +
+                    unReadCount + "</span></a>";
+            }
+            else
+            {
+                litTechMessages.Text = "";
+            }
+        }
+        #endregion
+
     }
 }

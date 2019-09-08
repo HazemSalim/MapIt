@@ -121,7 +121,7 @@ namespace MapIt.Web.Admin
             try
             {
                 techMessagesRepository = new TechMessagesRepository();
-                IQueryable<MapIt.Data.User> list;
+                IQueryable<User> list;
 
                 if (Search)
                 {
@@ -138,7 +138,7 @@ namespace MapIt.Web.Admin
 
                     if (!string.IsNullOrEmpty(SortExpression))
                     {
-                        list = SortHelper.SortList<MapIt.Data.User>(list, SortExpression, SortDirection);
+                        list = SortHelper.SortList(list, SortExpression, SortDirection);
                     }
 
                     int count = list.Count();

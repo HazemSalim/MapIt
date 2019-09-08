@@ -1318,3 +1318,25 @@ body {
 }
 
 /*-----End packages------*/
+
+a.fa-bell-o {
+  position: relative;
+  font-size: 2em;
+  color: grey;
+  cursor: pointer;
+  top:10px;
+}
+span.fa-comment {
+  position: absolute;
+  font-size: 0.7em;
+  top: -4px;
+  color: red;
+  right: -4px;
+}
+span.num {
+  position: absolute;
+  font-size: 0.4em;
+  top: 1px;
+  color: #fff;
+  right: 2px;
+}
