@@ -3781,3 +3781,33 @@ Exception StackTrace :
    at MapIt.Web.Admin.TechMessages.LoadData() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\PMTZ-Admin\TechMessages.aspx.cs:line 144
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   17/9/2019 09:00
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   17/9/2019 09:14
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

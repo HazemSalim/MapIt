@@ -112,28 +112,41 @@ namespace MapIt.Web.App
         {
             try
             {
-                HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.ContentType = "application/json";
-                HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
+                //// HttpContext.Current.Response.Clear();
+                //HttpContext.Current.Response.ContentType = "application/json";
+                //HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
+
+                //string strResponse = JsonConvert.SerializeObject(obj);
+                //// JavaScriptSerializer ser = new JavaScriptSerializer();
+                ////string strResponse = ser.Serialize(obj);
+                //strResponse = strResponse.Replace("null", @"""""");
+                //HttpContext.Current.Response.Write(strResponse);
 
                 string strResponse = JsonConvert.SerializeObject(obj);
-                //JavaScriptSerializer ser = new JavaScriptSerializer();
-                //string strResponse = ser.Serialize(obj);
-                strResponse = strResponse.Replace("null", @"""""");
-                HttpContext.Current.Response.Write(strResponse);
-                
+
+                Context.Response.Clear();
+                Context.Response.ContentType = "application/json";
+                Context.Response.AddHeader("content-length", strResponse.Length.ToString());
+                Context.Response.Flush();
+                Context.Response.Write(strResponse);
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.ContentType = "application/json";
-                HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
-                JavaScriptSerializer ser = new JavaScriptSerializer();
-                string strResponse = ser.Serialize("");
-                HttpContext.Current.Response.Write(strResponse);
+
+                string strResponse = JsonConvert.SerializeObject("");
+
+                Context.Response.Clear();
+                Context.Response.ContentType = "application/json";
+                Context.Response.AddHeader("content-length", strResponse.Length.ToString());
+                Context.Response.Flush();
+                Context.Response.Write(strResponse);
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
             }
         }
+
 
         IQueryable<User> pushUsersAlertList;
         int pushTypeId;
