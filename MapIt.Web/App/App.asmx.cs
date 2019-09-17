@@ -112,38 +112,41 @@ namespace MapIt.Web.App
         {
             try
             {
-                //// HttpContext.Current.Response.Clear();
-                //HttpContext.Current.Response.ContentType = "application/json";
-                //HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
-
-                //string strResponse = JsonConvert.SerializeObject(obj);
-                //// JavaScriptSerializer ser = new JavaScriptSerializer();
-                ////string strResponse = ser.Serialize(obj);
-                //strResponse = strResponse.Replace("null", @"""""");
-                //HttpContext.Current.Response.Write(strResponse);
 
                 string strResponse = JsonConvert.SerializeObject(obj);
 
-                Context.Response.Clear();
-                Context.Response.ContentType = "application/json";
-                Context.Response.AddHeader("content-length", strResponse.Length.ToString());
-                Context.Response.Flush();
-                Context.Response.Write(strResponse);
-                HttpContext.Current.ApplicationInstance.CompleteRequest();
+
+                //if (obj is string || obj is int)
+                //{
+                //    HttpContext.Current.Response.Clear();
+                //    HttpContext.Current.Response.ContentType = "application/json";
+                //    HttpContext.Current.Response.AddHeader("content-length", strResponse.Length.ToString());
+                //    HttpContext.Current.Response.Flush();
+                //    HttpContext.Current.Response.Write(strResponse);
+                //    HttpContext.Current.ApplicationInstance.CompleteRequest();
+
+                //}
+                //else
+                //{
+                HttpContext.Current.Response.Clear();
+                HttpContext.Current.Response.ContentType = "application/json";
+                    HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
+
+                    strResponse = strResponse.Replace("null", @"""""");
+                    HttpContext.Current.Response.Write(strResponse);
+
+
+                //}
 
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-
-                string strResponse = JsonConvert.SerializeObject("");
-
-                Context.Response.Clear();
-                Context.Response.ContentType = "application/json";
-                Context.Response.AddHeader("content-length", strResponse.Length.ToString());
-                Context.Response.Flush();
-                Context.Response.Write(strResponse);
-                HttpContext.Current.ApplicationInstance.CompleteRequest();
+                HttpContext.Current.Response.ContentType = "application/json";
+                HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
+                JavaScriptSerializer ser = new JavaScriptSerializer();
+                string strResponse = ser.Serialize("");
+                HttpContext.Current.Response.Write(strResponse);
             }
         }
 
