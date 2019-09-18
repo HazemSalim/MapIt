@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace MapIt.Web.App.App_Model
 {
@@ -90,7 +91,7 @@ namespace MapIt.Web.App.App_Model
             set { _Photo = value; }
         }
 
-        public String AddedOnDate
+        public string AddedOnDate
         {
             get
             {
@@ -98,7 +99,7 @@ namespace MapIt.Web.App.App_Model
             }
         }
 
-        [System.Web.Script.Serialization.ScriptIgnore]
+        [ScriptIgnore]
         public DateTime AddedOn { get; set; }
 
         public string DurationEN { get; set; }

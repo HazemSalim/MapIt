@@ -3826,3 +3826,252 @@ Exception StackTrace :
    at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\ParseHelper.cs:line 77
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 08:15
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 09:11
+
+Exception Message :   
+Cannot implicitly convert type 'long' to 'string'
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 121
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 09:11
+
+Exception Message :   
+Cannot implicitly convert type 'long' to 'string'
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at CallSite.Target(Closure , CallSite , Object )
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 121
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 09:38
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 128
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 09:38
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 150
+   at MapIt.Web.App.App.Register(String firstName, String lastName, Int32 sex, String birthDate, Int32 countryId, String phone, String email, String userName, String password, String deviceToken, String otherPhones, String photo, String lang, String key) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 3168
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 09:38
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 128
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:07
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 149
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:07
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 157
+   at MapIt.Web.App.App.Register(String firstName, String lastName, Int32 sex, String birthDate, Int32 countryId, String phone, String email, String userName, String password, String deviceToken, String otherPhones, String photo, String lang, String key) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 3175
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:07
+
+Exception Message :   
+Server cannot append header after HTTP headers have been sent.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Web.HttpResponse.AppendHeader(String name, String value)
+   at System.Web.HttpResponse.AddHeader(String name, String value)
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 144
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:07
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 149
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:07
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 157
+   at MapIt.Web.App.App.Register(String firstName, String lastName, Int32 sex, String birthDate, Int32 countryId, String phone, String email, String userName, String password, String deviceToken, String otherPhones, String photo, String lang, String key) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 3175
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:07
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 149
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:08
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 149
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:08
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 157
+   at MapIt.Web.App.App.Register(String firstName, String lastName, Int32 sex, String birthDate, Int32 countryId, String phone, String email, String userName, String password, String deviceToken, String otherPhones, String photo, String lang, String key) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 3175
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:08
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at MapIt.Web.App.App.RenderAsJson(Object obj) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\App\App.asmx.cs:line 149
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   18/9/2019 10:27
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

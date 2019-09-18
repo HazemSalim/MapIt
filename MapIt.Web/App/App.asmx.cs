@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Web.Script.Services;
-using System.Web.Script.Serialization;
 using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
@@ -13,6 +12,7 @@ using MapIt.Web.App.App_Model;
 using System.Threading;
 using System.Device.Location;
 using Newtonsoft.Json;
+using System.Web.Script.Serialization;
 
 namespace MapIt.Web.App
 {
@@ -112,31 +112,24 @@ namespace MapIt.Web.App
         {
             try
             {
+                JavaScriptSerializer ser = new JavaScriptSerializer();
+                string strResponse = ser.Serialize(obj);
 
-                string strResponse = JsonConvert.SerializeObject(obj);
+                //string strResponse = JsonConvert.SerializeObject(obj);
 
+                //Context.Response.Clear();
+                //Context.Response.ContentType = "application/json";
+                //Context.Response.AddHeader("content-length", strResponse.Length.ToString());
 
-                //if (obj is string || obj is int)
-                //{
-                //    HttpContext.Current.Response.Clear();
-                //    HttpContext.Current.Response.ContentType = "application/json";
-                //    HttpContext.Current.Response.AddHeader("content-length", strResponse.Length.ToString());
-                //    HttpContext.Current.Response.Flush();
-                //    HttpContext.Current.Response.Write(strResponse);
-                //    HttpContext.Current.ApplicationInstance.CompleteRequest();
+                //Context.Response.Write(strResponse);
 
-                //}
-                //else
-                //{
-                HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.ContentType = "application/json";
-                    HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
+                Context.Response.Clear();
+                Context.Response.ContentType = "application/json";
+                Context.Response.AddHeader("content-length", strResponse.Length.ToString());
+                strResponse = strResponse.Replace("null", @"""""");
 
-                    strResponse = strResponse.Replace("null", @"""""");
-                    HttpContext.Current.Response.Write(strResponse);
+                HttpContext.Current.Response.Write(strResponse);
 
-
-                //}
 
             }
             catch (Exception ex)
@@ -144,10 +137,24 @@ namespace MapIt.Web.App
                 LogHelper.LogException(ex);
                 HttpContext.Current.Response.ContentType = "application/json";
                 HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
-                JavaScriptSerializer ser = new JavaScriptSerializer();
-                string strResponse = ser.Serialize("");
-                HttpContext.Current.Response.Write(strResponse);
+                HttpContext.Current.Response.Write(JsonConvert.SerializeObject(""));
             }
+        }
+
+        bool IsValueType(object value)
+        {
+            return value is string
+                || value is sbyte
+                    || value is byte
+                    || value is short
+                    || value is ushort
+                    || value is int
+                    || value is uint
+                    || value is long
+                    || value is ulong
+                    || value is float
+                    || value is double
+                    || value is decimal;
         }
 
 
@@ -1579,9 +1586,9 @@ namespace MapIt.Web.App
                     }
                 }
 
-               RenderAsJson(list);
+                RenderAsJson(list);
 
-               // this.Context.Response.ContentType = "application/json; charset=utf-8";
+                // this.Context.Response.ContentType = "application/json; charset=utf-8";
                 //this.Context.Response.Write(JsonConvert.SerializeObject(list));
 
             }
@@ -2141,24 +2148,26 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = "Set property is reported by propertyId, userId , notes and reasonId.", MessageName = "MakePropertyReported2")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void MakePropertyReported(long propertyId, long userId, int reasonId, string key, string notes)
+        public long MakePropertyReported(long propertyId, long userId, int reasonId, string key, string notes)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 propertiesRepository = new PropertiesRepository();
                 long result = propertiesRepository.SetReport(propertyId, userId, reasonId, notes);
                 AppMails.SendNewReportToAdmin(result, true);
-                RenderAsJson(result);
+                //RenderAsJson(result);
+                return result;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
@@ -2380,8 +2389,8 @@ namespace MapIt.Web.App
 
                 var list = categoriesList.Where(c => c.IsActive && (categoryId > 0 ? c.ParentId == categoryId : true)).Select(c => new
                 {
-                     c.Id,
-                     c.TitleEN,
+                    c.Id,
+                    c.TitleEN,
                     c.TitleAR,
                     Photo = c.Id == -1 ? c.Photo : (string.IsNullOrEmpty(c.Photo) ? AppSettings.WebsiteURL + AppSettings.NoImage : AppSettings.WebsiteURL + AppSettings.ServiceCategoryPhotos + c.Photo),
                     ServicesCount = c.Id == -1 ? 0 : c.ServicesCount,
@@ -2992,26 +3001,28 @@ namespace MapIt.Web.App
             MakeServiceReported(serviceId, userId, reasonId, key, "");
         }
 
-        [WebMethod(Description = "Set service is reported by serviceId, userId , notes and reasonId." ,MessageName = "MakeServiceReported2")]
+        [WebMethod(Description = "Set service is reported by serviceId, userId , notes and reasonId.", MessageName = "MakeServiceReported2")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void MakeServiceReported(long serviceId, long userId, int reasonId,  string key,string notes)
+        public long MakeServiceReported(long serviceId, long userId, int reasonId, string key, string notes)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 servicesRepository = new ServicesRepository();
                 long result = servicesRepository.SetReport(serviceId, userId, reasonId, notes);
                 AppMails.SendNewReportToAdmin(result, false);
-                RenderAsJson(result);
+                //RenderAsJson(result);
+                return result;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
@@ -3120,19 +3131,19 @@ namespace MapIt.Web.App
         [WebMethod(MessageName = "Register2", Description = @"Upload Photo URL -> http://'website'/App/AppUUF.aspx <br />Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />
 -3 -> Phone exist <br />-4 -> Email exist <br />-5 -> Username exist <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void Register(string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string deviceToken, string otherPhones, string photo,string lang, string key)
+        public long Register(string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string deviceToken, string otherPhones, string photo, string lang, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 if (countryId < 1 || string.IsNullOrEmpty(phone) || string.IsNullOrEmpty(password))
                 {
-                    RenderAsJson(-2);
-                    return;
+                    //RenderAsJson(-2);
+                    return -2;
                 }
 
                 usersRepository = new UsersRepository();
@@ -3145,11 +3156,11 @@ namespace MapIt.Web.App
                         uObj.IsCanceled = false;
                         usersRepository.Update(uObj);
                         RenderAsJson(uObj.Id);
-                        return;
+                        return uObj.Id;
                     }
 
-                    RenderAsJson(-3);
-                    return;
+                    //RenderAsJson(-3);
+                    return -3;
                 }
 
                 if (!string.IsNullOrEmpty(email))
@@ -3157,8 +3168,8 @@ namespace MapIt.Web.App
                     uObj = usersRepository.GetByEmail(email);
                     if (uObj != null)
                     {
-                        RenderAsJson(-4);
-                        return;
+                        //RenderAsJson(-4);
+                        return -4;
                     }
                 }
 
@@ -3167,8 +3178,8 @@ namespace MapIt.Web.App
                     uObj = usersRepository.GetByUserName(userName);
                     if (uObj != null)
                     {
-                        RenderAsJson(-5);
-                        return;
+                        // RenderAsJson(-5);
+                        return -5;
                     }
                 }
 
@@ -3243,12 +3254,14 @@ namespace MapIt.Web.App
                     AppMails.SendNewUserToAdmin(userObj.Id);
                 }
 
-                RenderAsJson(userObj.Id);
+                //RenderAsJson(userObj.Id);
+                return userObj.Id;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
@@ -3672,19 +3685,19 @@ namespace MapIt.Web.App
         [WebMethod(MessageName = "EditUser2", Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> UserName exist <br />-5 -> Email exist 
 <br />-1 -> Error<br />BirthDate format will be like '06/20/2017'<br />You can set password with blank if you do not want to update. ")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void EditUser(long userId, string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string otherPhones, string photo, string lang, string key)
+        public long EditUser(long userId, string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string otherPhones, string photo, string lang, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 if (userId < 1 || countryId < 1 || string.IsNullOrEmpty(phone))
                 {
-                    RenderAsJson(-2);
-                    return;
+                    //RenderAsJson(-2);
+                    return -2;
                 }
 
                 usersRepository = new UsersRepository();
@@ -3695,8 +3708,8 @@ namespace MapIt.Web.App
                     userObj = usersRepository.GetByEmail(email, userId);
                     if (userObj != null)
                     {
-                        RenderAsJson(-5);
-                        return;
+                        //RenderAsJson(-5);
+                        return -5;
                     }
                 }
 
@@ -3705,8 +3718,8 @@ namespace MapIt.Web.App
                     userObj = usersRepository.GetByUserName(userName, userId);
                     if (userObj != null)
                     {
-                        RenderAsJson(-5);
-                        return;
+                        //RenderAsJson(-3);
+                        return -3;
                     }
                 }
 
@@ -3739,13 +3752,15 @@ namespace MapIt.Web.App
                 }
 
                 usersRepository.Update(userObj);
-                RenderAsJson(userObj.Id);
+                //RenderAsJson(userObj.Id);
+                return userObj.Id;
 
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
