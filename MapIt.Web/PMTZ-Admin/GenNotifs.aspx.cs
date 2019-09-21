@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.IO;
 using System.Data;
-using System.Drawing;
 using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
@@ -20,6 +17,9 @@ namespace MapIt.Web.Admin
         #region Variables
 
         GenNotifsRepository genNotifsRepository;
+        PropertiesRepository propertiesRepository;
+        ServicesRepository servicesRepository;
+
 
         int pushGNotifId;
         string pushMessageEN;
@@ -80,12 +80,76 @@ namespace MapIt.Web.Admin
 
         #region Methods
 
+        void CheckQueryString()
+        {
+            long propertyID = 0,serviceID=0;
+            if (Request.QueryString["pid"] != null && long.TryParse(Request.QueryString["pid"], out propertyID))
+            {
+                if (propertyID > 0)
+                {
+                    ddlProperties.SelectedValue = propertyID.ToString();
+                    btnAddNew_Click(null, null);
+                }
+            }
+            if (Request.QueryString["sid"] != null && long.TryParse(Request.QueryString["sid"], out serviceID))
+            {
+                if (serviceID > 0)
+                {
+                    ddlServices.SelectedValue = serviceID.ToString();
+                    btnAddNew_Click(null, null);
+                }
+            }
+        }
+
+        void BindProperties()
+        {
+            try
+            {
+                propertiesRepository = new PropertiesRepository();
+                List<Data.Property> data = propertiesRepository.Find(c => c.IsActive).ToList();
+                if (data != null)
+                {
+                    ddlProperties.DataSource = data.OrderByDescending(c => c.AddedOn).ToList();
+                    ddlProperties.DataBind();
+                }
+
+                data = null;
+                propertiesRepository = null;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+            }
+        }
+
+
+        void BindServices()
+        {
+            try
+            {
+                servicesRepository = new ServicesRepository();
+                var data = servicesRepository.Find(c => c.IsActive).ToList();
+                if (data != null)
+                {
+                    ddlServices.DataSource = data.OrderByDescending(c => c.AddedOn).ToList();
+                    ddlServices.DataBind();
+                }
+
+                data = null;
+                servicesRepository = null;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+            }
+        }
+
         void LoadData()
         {
             try
             {
                 genNotifsRepository = new GenNotifsRepository();
-                IQueryable<MapIt.Data.GenNotif> list;
+                IQueryable<GenNotif> list;
                 list = genNotifsRepository.GetAll().AsQueryable();
 
                 if (list != null && list.Count() > 0)
@@ -94,15 +158,17 @@ namespace MapIt.Web.Admin
 
                     if (!string.IsNullOrEmpty(SortExpression))
                     {
-                        list = SortHelper.SortList<MapIt.Data.GenNotif>(list, SortExpression, SortDirection);
+                        list = SortHelper.SortList(list, SortExpression, SortDirection);
                     }
 
-                    PagedDataSource pds = new PagedDataSource();
-                    pds.AllowPaging = true;
-                    pds.PageSize = AspNetPager1.PageSize;
-                    pds.CurrentPageIndex = AspNetPager1.CurrentPageIndex - 1;
+                    PagedDataSource pds = new PagedDataSource
+                    {
+                        AllowPaging = true,
+                        PageSize = AspNetPager1.PageSize,
+                        CurrentPageIndex = AspNetPager1.CurrentPageIndex - 1,
 
-                    pds.DataSource = list.ToList();
+                        DataSource = list.ToList()
+                    };
                     gvGenNotifs.DataSource = pds;
                     gvGenNotifs.DataBind();
                     AspNetPager1.RecordCount = list.Count();
@@ -130,7 +196,17 @@ namespace MapIt.Web.Admin
 
         void DoWork()
         {
-            AppPushs.Push((int)AppEnums.NotifTypes.General, null, pushGNotifId, null, null, null, pushMessageEN, pushMessageAR);
+            long? propertyID = null, serviceID = null;
+            if (ddlProperties.SelectedValue != "")
+            {
+                propertyID = long.Parse(ddlProperties.SelectedValue);
+            }
+            else if (ddlServices.SelectedValue != "")
+            {
+                serviceID = long.Parse(ddlServices.SelectedValue);
+            }
+
+            AppPushs.Push((int)AppEnums.NotifTypes.General, null, pushGNotifId, propertyID, serviceID, null, pushMessageEN, pushMessageAR);
         }
 
         void Add()
@@ -138,11 +214,12 @@ namespace MapIt.Web.Admin
             try
             {
                 genNotifsRepository = new GenNotifsRepository();
-                var genNotifObj = new MapIt.Data.GenNotif();
-
-                genNotifObj.TitleEN = txtTitleEN.Text;
-                genNotifObj.TitleAR = txtTitleAR.Text;
-                genNotifObj.AddedOn = DateTime.Now;
+                var genNotifObj = new GenNotif
+                {
+                    TitleEN = txtTitleEN.Text,
+                    TitleAR = txtTitleAR.Text,
+                    AddedOn = DateTime.Now
+                };
 
                 genNotifsRepository.Add(genNotifObj);
 
@@ -166,7 +243,7 @@ namespace MapIt.Web.Admin
             }
         }
 
-        void Delete(Int32 id)
+        void Delete(int id)
         {
             try
             {
@@ -199,15 +276,20 @@ namespace MapIt.Web.Admin
         {
             if (!IsPostBack)
             {
-                if (Session["AdminUserId"] != null && (int)ParseHelper.GetInt(Session["AdminUserId"].ToString()) > 1 &&
-                    !(new AdminPermissionsRepository().GetByPageId((int)ParseHelper.GetInt(Session["AdminUserId"].ToString()), (int)AppEnums.AdminPages.GenNotifs)))
+                if (Session["AdminUserId"] != null && ParseHelper.GetInt(Session["AdminUserId"].ToString()) > 1 &&
+                    !new AdminPermissionsRepository().GetByPageId((int)ParseHelper.GetInt(Session["AdminUserId"].ToString()), (int)AppEnums.AdminPages.GenNotifs))
                 {
                     Response.Redirect(".");
                 }
 
+                BindProperties();
+                BindServices();
+
                 LoadData();
                 pnlAllRecords.Visible = true;
                 pnlRecordDetails.Visible = false;
+
+                CheckQueryString();
             }
         }
 

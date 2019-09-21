@@ -340,6 +340,9 @@
                                                 <a href="PropertyMessages?id=<%# Eval("Id") %>" style="float: left; display: block; padding: 0px 8px;">
                                                     <i class="fa fa-comments-o" style="font-size: 25px;"></i></a>
 
+                                                 <a href="GenNotifs?pid=<%# Eval("Id") %>" style="float: left; display: block; padding: 0px 8px;">
+                                                    <i class="fa fa-envelope-o" style="font-size: 25px;"></i></a>
+
 
                                                 <asp:LinkButton ID="lnkEdit" runat="server" CommandName="EditItem" CommandArgument='<%# Eval("Id") %>'
                                                     CssClass="grid_button" ToolTip="Edit">

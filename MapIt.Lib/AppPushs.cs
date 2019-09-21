@@ -23,18 +23,19 @@ namespace MapIt.Lib
                 }
 
                 var notificationsRepository = new NotificationsRepository();
-                var notifObj = new Notification();
-
-                notifObj.UserId = userId;
-                notifObj.GenNotifId = gNotifId;
-                notifObj.PropertyId = propertyId;
-                notifObj.ServiceId = serviceId;
-                notifObj.OfferId = offerId;
-                notifObj.TypeId = nTypeObj.Id;
-                notifObj.TitleEN = msgEN;
-                notifObj.TitleAR = msgAR;
-                notifObj.IsRead = false;
-                notifObj.AddedOn = DateTime.Now;
+                var notifObj = new Notification
+                {
+                    UserId = userId,
+                    GenNotifId = gNotifId,
+                    PropertyId = propertyId,
+                    ServiceId = serviceId,
+                    OfferId = offerId,
+                    TypeId = nTypeObj.Id,
+                    TitleEN = msgEN,
+                    TitleAR = msgAR,
+                    IsRead = false,
+                    AddedOn = DateTime.Now
+                };
 
                 notificationsRepository.Add(notifObj);
 

@@ -685,18 +685,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GenNotifs">
-      <EntityTypeMapping TypeName="MapItModel.GenNotif">
-        <MappingFragment StoreEntitySet="GenNotifs">
-          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Notifications">
       <EntityTypeMapping TypeName="MapItModel.Notification">
         <MappingFragment StoreEntitySet="Notifications">
@@ -839,6 +827,18 @@
           <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GenNotifs">
+      <EntityTypeMapping TypeName="MapItModel.GenNotif">
+        <MappingFragment StoreEntitySet="GenNotifs">
+          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

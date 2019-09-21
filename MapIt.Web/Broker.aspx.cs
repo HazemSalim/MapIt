@@ -65,7 +65,7 @@ namespace MapIt.Web
                     litDetails.Text = Culture.ToLower() == "ar-kw" ? brokerObj.DetailsAR : brokerObj.DetailsEN;
 
                     aPhone.InnerText = brokerObj.Phone;
-                    aPhone.HRef = "tel:" + brokerObj.Phone;
+                    //aPhone.HRef = "tel:" + brokerObj.Phone;
 
                     if (!string.IsNullOrEmpty(brokerObj.Email))
                     {

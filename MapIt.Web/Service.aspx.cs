@@ -79,7 +79,7 @@ namespace MapIt.Web
 
                     CategoryId = serviceObj.CategoryId;
                     aPhone.InnerText = serviceObj.User.Phone;
-                    aPhone.HRef = "tel:" + serviceObj.User.Phone;
+                    //aPhone.HRef = "tel:" + serviceObj.User.Phone;
                     litViewers.Text = serviceObj.ViewersCount.ToString();
                     litFav.Text = serviceObj.ServiceFavorites.Count.ToString();
                     litYears.Text = serviceObj.ExYears.ToString();

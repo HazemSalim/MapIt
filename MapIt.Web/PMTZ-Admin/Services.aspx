@@ -320,6 +320,10 @@
                                         <asp:TemplateField>
                                             <ItemTemplate>
                                                 <a href="ServiceMessages?id=<%# Eval("Id") %>" style="float: left; display: block; padding: 0px 8px;"><i class="fa fa-comments-o" style="font-size: 25px;"></i></a>
+
+                                                 <a href="GenNotifs?sid=<%# Eval("Id") %>" style="float: left; display: block; padding: 0px 8px;">
+                                                    <i class="fa fa-envelope-o" style="font-size: 25px;"></i></a>
+
                                                 <asp:LinkButton ID="lnkEdit" runat="server" CommandName="EditItem" CommandArgument='<%# Eval("Id") %>'
                                                     CssClass="grid_button" ToolTip="Edit">
                                                         <i class="fa fa-pencil" style="font-size:25px;"></i>

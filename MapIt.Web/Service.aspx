@@ -85,8 +85,8 @@
 
                                     <span class="uk-margin-left">
                                         <span class="icon-phone"></span>
-                                        <span>
-                                            <a id="aPhone" runat="server" href="#">
+                                        <span style="user-select:none;">
+                                            <a id="aPhone" runat="server" >
                                                 <asp:Literal ID="litPhone" runat="server" /></a></span>
                                     </span>
 

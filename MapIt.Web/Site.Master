@@ -390,9 +390,9 @@
                             <img src="/images/twitter.svg">
                         </a>
                         <div class="contactUsFooter ">
-                            <span>
+                            <span style="user-select:none;">
                                 <img src="/images/phone.svg">
-                                <a id="aPhone" runat="server" href="tel:"></a>
+                                <a id="aPhone" runat="server" ></a>
                             </span>
                             <span>
                                 <img src="/images/close-envelope.svg">

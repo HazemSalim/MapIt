@@ -261,8 +261,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar(max)" Nullable="false" />
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />

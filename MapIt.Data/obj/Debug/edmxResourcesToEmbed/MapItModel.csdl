@@ -243,12 +243,7 @@
       <End Role="Service" EntitySet="Services" />
       <End Role="ServiceComment" EntitySet="ServiceComments" />
     </AssociationSet>
-    <EntitySet Name="GenNotifs" EntityType="MapItModel.GenNotif" />
     <EntitySet Name="Notifications" EntityType="MapItModel.Notification" />
-    <AssociationSet Name="FK_Notifications_GenNotifs" Association="MapItModel.FK_Notifications_GenNotifs">
-      <End Role="GenNotif" EntitySet="GenNotifs" />
-      <End Role="Notification" EntitySet="Notifications" />
-    </AssociationSet>
     <AssociationSet Name="FK_Notifications_NotifTypes" Association="MapItModel.FK_Notifications_NotifTypes">
       <End Role="NotifType" EntitySet="NotifTypes" />
       <End Role="Notification" EntitySet="Notifications" />
@@ -383,6 +378,11 @@
     <AssociationSet Name="FK_ServiceReports_Users" Association="MapItModel.FK_ServiceReports_Users">
       <End Role="User" EntitySet="Users" />
       <End Role="ServiceReport" EntitySet="ServiceReports" />
+    </AssociationSet>
+    <EntitySet Name="GenNotifs" EntityType="MapItModel.GenNotif" />
+    <AssociationSet Name="FK_Notifications_GenNotifs" Association="MapItModel.FK_Notifications_GenNotifs">
+      <End Role="GenNotif" EntitySet="GenNotifs" />
+      <End Role="Notification" EntitySet="Notifications" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="AdminPage">
@@ -1685,18 +1685,6 @@
     <Property Type="String" Name="PropertyName" Nullable="true" MaxLength="Max" />
     <Property Type="String" Name="PropertyText" MaxLength="Max" Nullable="true" />
   </ComplexType>
-  <EntityType Name="GenNotif">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="AdminUserId" Type="Int32" />
-    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_GenNotifs" FromRole="GenNotif" ToRole="Notification" />
-  </EntityType>
   <EntityType Name="Notification">
     <Key>
       <PropertyRef Name="Id" />
@@ -1712,25 +1700,13 @@
     <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="IsRead" Type="Boolean" Nullable="false" />
     <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="GenNotif" Relationship="MapItModel.FK_Notifications_GenNotifs" FromRole="Notification" ToRole="GenNotif" />
     <NavigationProperty Name="NotifType" Relationship="MapItModel.FK_Notifications_NotifTypes" FromRole="Notification" ToRole="NotifType" />
     <NavigationProperty Name="Offer" Relationship="MapItModel.FK_Notifications_Offers" FromRole="Notification" ToRole="Offer" />
     <NavigationProperty Name="Property" Relationship="MapItModel.FK_Notifications_Properties" FromRole="Notification" ToRole="Property" />
     <NavigationProperty Name="Service" Relationship="MapItModel.FK_Notifications_Services" FromRole="Notification" ToRole="Service" />
     <NavigationProperty Name="User" Relationship="MapItModel.FK_Notifications_Users" FromRole="Notification" ToRole="User" />
+    <NavigationProperty Name="GenNotif" Relationship="MapItModel.FK_Notifications_GenNotifs" FromRole="Notification" ToRole="GenNotif" />
   </EntityType>
-  <Association Name="FK_Notifications_GenNotifs">
-    <End Type="MapItModel.GenNotif" Role="GenNotif" Multiplicity="0..1" />
-    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="GenNotif">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Notification">
-        <PropertyRef Name="GenNotifId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Notifications_NotifTypes">
     <End Type="MapItModel.NotifType" Role="NotifType" Multiplicity="1" />
     <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
@@ -2255,6 +2231,30 @@
       </Principal>
       <Dependent Role="ServiceReport">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="GenNotif">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="AdminUserId" Type="Int32" />
+    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_GenNotifs" FromRole="GenNotif" ToRole="Notification" />
+  </EntityType>
+  <Association Name="FK_Notifications_GenNotifs">
+    <End Type="MapItModel.GenNotif" Role="GenNotif" Multiplicity="0..1" />
+    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GenNotif">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="GenNotifId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

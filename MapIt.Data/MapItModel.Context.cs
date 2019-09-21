@@ -78,13 +78,13 @@ namespace MapIt.Data
         public virtual DbSet<PropertyComment> PropertyComments { get; set; }
         public virtual DbSet<ServiceComment> ServiceComments { get; set; }
         public virtual DbSet<TechMessage> TechMessages { get; set; }
-        public virtual DbSet<GenNotif> GenNotifs { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Component> Components { get; set; }
         public virtual DbSet<GeneralSetting> GeneralSettings { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<PropertyReport> PropertyReports { get; set; }
         public virtual DbSet<ServiceReport> ServiceReports { get; set; }
+        public virtual DbSet<GenNotif> GenNotifs { get; set; }
     
         public virtual ObjectResult<GetSettings_Result> GetSettings(Nullable<int> propertyTypeId)
         {

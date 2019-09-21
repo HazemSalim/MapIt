@@ -40,7 +40,7 @@ namespace MapIt.Web
                     aYoutube.HRef = pageObj.GeneralSetting.Youtube;
                     aTwitter.HRef = pageObj.GeneralSetting.Twitter;
 
-                    aPhone.HRef = "tel:" + pageObj.GeneralSetting.Phone;
+                    //aPhone.HRef = "tel:" + pageObj.GeneralSetting.Phone;
                     aPhone.InnerText = pageObj.GeneralSetting.Phone;
 
                     aEmail.HRef = "mailto:" + pageObj.GeneralSetting.Email;

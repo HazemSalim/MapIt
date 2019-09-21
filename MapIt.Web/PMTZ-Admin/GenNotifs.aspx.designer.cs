@@ -67,6 +67,24 @@ namespace MapIt.Web.Admin {
         protected global::System.Web.UI.WebControls.Panel pnlRecordDetails;
         
         /// <summary>
+        /// ddlProperties control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProperties;
+        
+        /// <summary>
+        /// ddlServices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlServices;
+        
+        /// <summary>
         /// txtTitleEN control.
         /// </summary>
         /// <remarks>

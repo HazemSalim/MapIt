@@ -67,7 +67,7 @@ namespace MapIt.Web
                     litViewers.Text = offerObj.ViewersCount.ToString();
 
                     aWhatsapp.InnerText = aPhone.InnerText = offerObj.Phone;
-                    aWhatsapp.HRef = aPhone.HRef = "tel:" + offerObj.Phone;
+                    //aWhatsapp.HRef = aPhone.HRef = "tel:" + offerObj.Phone;
 
                     aLink.InnerText = offerObj.Link;
                     aLink.HRef = offerObj.Link;
