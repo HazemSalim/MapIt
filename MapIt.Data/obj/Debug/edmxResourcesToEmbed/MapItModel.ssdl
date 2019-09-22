@@ -736,6 +736,15 @@
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
     <Property Name="Lang" Type="nvarchar" MaxLength="8" />
+    <Property Name="UserTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="UserTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="WatchLists">
     <Key>
@@ -1624,6 +1633,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Users_UserTypes">
+    <End Role="UserTypes" Type="Self.UserTypes" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_WatchLists_Areas">
     <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
     <End Role="WatchLists" Type="Self.WatchLists" Multiplicity="*" />
@@ -1767,6 +1788,7 @@
     <EntitySet Name="UserBalanceLogs" EntityType="Self.UserBalanceLogs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserCredits" EntityType="Self.UserCredits" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WatchLists" EntityType="Self.WatchLists" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AdminPermissions_AdminPages" Association="Self.FK_AdminPermissions_AdminPages">
       <End Role="AdminPages" EntitySet="AdminPages" />
@@ -2054,6 +2076,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Users_Countries" Association="Self.FK_Users_Countries">
       <End Role="Countries" EntitySet="Countries" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_UserTypes" Association="Self.FK_Users_UserTypes">
+      <End Role="UserTypes" EntitySet="UserTypes" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
     <AssociationSet Name="FK_WatchLists_Areas" Association="Self.FK_WatchLists_Areas">

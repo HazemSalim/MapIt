@@ -2502,6 +2502,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\App_Model\App_MarketGraph.cs" />
+    <Compile Include="App\App_Model\App_UserType.cs" />
     <Compile Include="LocationByEsri.aspx.cs">
       <DependentUpon>LocationByEsri.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

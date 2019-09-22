@@ -253,6 +253,9 @@
     <Compile Include="UserCredit.cs">
       <DependentUpon>MapItModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserType.cs">
+      <DependentUpon>MapItModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="WatchList.cs">
       <DependentUpon>MapItModel.tt</DependentUpon>
     </Compile>

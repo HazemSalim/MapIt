@@ -72,6 +72,7 @@ namespace MapIt.Web.App
         NotificationsRepository notificationsRepository;
         WatchListsRepository watchListsRepository;
         UserBalanceLogsRepository userBalanceLogsRepository;
+        UserTypesRepository userTypesRepository; 
         Random random = new Random();
 
         #endregion
@@ -719,6 +720,33 @@ namespace MapIt.Web.App
                 foreach (var obj in reasons)
                 {
                     list.Add(new App_Reason(obj));
+                }
+
+                RenderAsJson(list);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+            }
+        }
+
+        [WebMethod(Description = "Get all User Types.")]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void GetUserTypes(string key)
+        {
+            try
+            {
+                if (!key.Equals(AppSettings.WSKey))
+                {
+                    return;
+                }
+
+                userTypesRepository = new UserTypesRepository();
+                List<App_UserType> list = new List<App_UserType>();
+                var types = userTypesRepository.GetAll();
+                foreach (var obj in types)
+                {
+                    list.Add(new App_UserType(obj));
                 }
 
                 RenderAsJson(list);
@@ -2146,9 +2174,9 @@ namespace MapIt.Web.App
             }
         }
 
-        [WebMethod(Description = "Set property is reported by propertyId, userId , notes and reasonId.", MessageName = "MakePropertyReported2")]
+        [WebMethod(Description = "Set property is reported by propertyId, userId , notes and reasonId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public long MakePropertyReported(long propertyId, long userId, int reasonId, string key, string notes)
+        public long MakePropertyReported2(long propertyId, long userId, int reasonId, string key, string notes)
         {
             try
             {
@@ -2171,11 +2199,11 @@ namespace MapIt.Web.App
             }
         }
 
-        [WebMethod(Description = "Set property is reported by propertyId, userId and reasonId.", MessageName = "MakePropertyReported")]
+        [WebMethod(Description = "Set property is reported by propertyId, userId and reasonId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void MakePropertyReported(long propertyId, long userId, int reasonId, string key)
         {
-            MakePropertyReported(propertyId, userId, reasonId, key, "");
+            MakePropertyReported2(propertyId, userId, reasonId, key, "");
         }
 
         [WebMethod(Description = "1 -> Republish property Success <br />-2 -> Property not exist<br />-3 -> This property does not belong to this user<br />-1 -> Error")]
@@ -2994,16 +3022,16 @@ namespace MapIt.Web.App
             }
         }
 
-        [WebMethod(Description = "Set service is reported by serviceId, userId and reasonId.", MessageName = "MakeServiceReported")]
+        [WebMethod(Description = "Set service is reported by serviceId, userId and reasonId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void MakeServiceReported(long serviceId, long userId, int reasonId, string key)
         {
-            MakeServiceReported(serviceId, userId, reasonId, key, "");
+            MakeServiceReported2(serviceId, userId, reasonId, key, "");
         }
 
-        [WebMethod(Description = "Set service is reported by serviceId, userId , notes and reasonId.", MessageName = "MakeServiceReported2")]
+        [WebMethod(Description = "Set service is reported by serviceId, userId , notes and reasonId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public long MakeServiceReported(long serviceId, long userId, int reasonId, string key, string notes)
+        public long MakeServiceReported2(long serviceId, long userId, int reasonId, string key, string notes)
         {
             try
             {
@@ -3128,10 +3156,10 @@ namespace MapIt.Web.App
 
         #region Users
 
-        [WebMethod(MessageName = "Register2", Description = @"Upload Photo URL -> http://'website'/App/AppUUF.aspx <br />Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />
+        [WebMethod( Description = @"Upload Photo URL -> http://'website'/App/AppUUF.aspx <br />Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />
 -3 -> Phone exist <br />-4 -> Email exist <br />-5 -> Username exist <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public long Register(string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string deviceToken, string otherPhones, string photo, string lang, string key)
+        public long Register2(string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string deviceToken, string otherPhones, string photo, string lang,int userTypeID, string key)
         {
             try
             {
@@ -3193,6 +3221,10 @@ namespace MapIt.Web.App
                 var userObj = new User();
                 userObj.FirstName = firstName;
                 userObj.LastName = lastName;
+
+                if(userTypeID>0)
+                    userObj.UserTypeID = userTypeID;
+
                 userObj.Sex = _sex;
                 userObj.BirthDate = ParseHelper.GetDate(birthDate, "dd/MM/yyyy", null);
                 userObj.CountryId = countryId;
@@ -3265,12 +3297,12 @@ namespace MapIt.Web.App
             }
         }
 
-        [WebMethod(MessageName = "Register", Description = @"Upload Photo URL -> http://'website'/App/AppUUF.aspx <br />Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />
+        [WebMethod( Description = @"Upload Photo URL -> http://'website'/App/AppUUF.aspx <br />Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />
 -3 -> Phone exist <br />-4 -> Email exist <br />-5 -> Username exist <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void Register(string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string deviceToken, string otherPhones, string photo, string key)
         {
-            Register(firstName, lastName, sex, birthDate, countryId, phone, email, userName, password, deviceToken, otherPhones, photo, "", key);
+            Register2(firstName, lastName, sex, birthDate, countryId, phone, email, userName, password, deviceToken, otherPhones, photo, "",0, key);
         }
 
         [WebMethod(Description = @"UserId -> Success <br />-2 -> Required field missing <br />-3 -> Not exist <br />-4 -> Code is incorrect <br />-5 -> Already Activated <br />-1 -> Error")]
@@ -3674,18 +3706,18 @@ namespace MapIt.Web.App
             }
         }
 
-        [WebMethod(MessageName = "EditUser", Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> UserName exist <br />-5 -> Email exist 
+        [WebMethod( Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> UserName exist <br />-5 -> Email exist 
 <br />-1 -> Error<br />BirthDate format will be like '06/20/2017'<br />You can set password with blank if you do not want to update. ")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void EditUser(long userId, string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string otherPhones, string photo, string key)
         {
-            EditUser(userId, firstName, lastName, sex, birthDate, countryId, phone, email, userName, password, otherPhones, photo, "", key);
+            EditUser2(userId, firstName, lastName, sex, birthDate, countryId, phone, email, userName, password, otherPhones, photo, "",0, key);
         }
 
-        [WebMethod(MessageName = "EditUser2", Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> UserName exist <br />-5 -> Email exist 
+        [WebMethod( Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> UserName exist <br />-5 -> Email exist 
 <br />-1 -> Error<br />BirthDate format will be like '06/20/2017'<br />You can set password with blank if you do not want to update. ")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public long EditUser(long userId, string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string otherPhones, string photo, string lang, string key)
+        public long EditUser2(long userId, string firstName, string lastName, int sex, string birthDate, int countryId, string phone, string email, string userName, string password, string otherPhones, string photo, string lang,int userTypeID, string key)
         {
             try
             {
@@ -3733,6 +3765,10 @@ namespace MapIt.Web.App
                 userObj = usersRepository.GetByKey(userId);
                 userObj.FirstName = firstName;
                 userObj.LastName = lastName;
+
+                if(userTypeID>0)
+                    userObj.UserTypeID = userTypeID;
+
                 userObj.Sex = _sex;
                 userObj.BirthDate = ParseHelper.GetDate(birthDate, "dd/MM/yyyy", null);
                 userObj.CountryId = countryId;

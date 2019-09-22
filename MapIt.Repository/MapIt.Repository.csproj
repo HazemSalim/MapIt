@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenNotifsRepository.cs" />
+    <Compile Include="UserTypesRepository.cs" />
     <Compile Include="ServiceAreasRepository.cs" />
     <Compile Include="FAQsRepository.cs" />
     <Compile Include="BrokerAreasRepository.cs" />
