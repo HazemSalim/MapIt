@@ -11,7 +11,7 @@ namespace MapIt.Lib
 {
     public class SendPushNotification
     {
-        public static void Send(string id, string id2, string type, string details = "")
+        public static void Send(string id, string id2, string type, string details = "",string imageFile="")
         {
             try
             {
@@ -22,8 +22,11 @@ namespace MapIt.Lib
                 {
                     Dictionary<string, string> dic = new Dictionary<string, string>();
                     dic.Add("Id", id);
-                    dic.Add("Id2", id);
+                    dic.Add("Id2", id2);
                     dic.Add("Type", type);
+
+                    if(!string.IsNullOrEmpty(imageFile))
+                        dic.Add("Image", imageFile);
 
                     string msg = "";
                     if (!details.Trim().Equals(""))
@@ -69,7 +72,7 @@ namespace MapIt.Lib
             }
         }
 
-        public static void Send(string id, string id2, string type, List<DevicesToken> dt, string details = "")
+        public static void Send(string id, string id2, string type, List<DevicesToken> dt, string details = "", string imageFile = "")
         {
             try
             {
@@ -78,12 +81,13 @@ namespace MapIt.Lib
 
                 if (dt != null && dt.Count > 0)
                 {
-                    Dictionary<string, string> dic = new Dictionary<string, string>
-                    {
-                        { "Id", id },
-                        { "Id2", id2 },
-                        { "Type", type }
-                    };
+                    Dictionary<string, string> dic = new Dictionary<string, string>();
+                    dic.Add("Id", id);
+                    dic.Add("Id2", id2);
+                    dic.Add("Type", type);
+
+                    if (!string.IsNullOrEmpty(imageFile))
+                        dic.Add("Image", imageFile);
 
                     string msg = "";
                     if (!details.Trim().Equals(""))

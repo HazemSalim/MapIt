@@ -5,9 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
-using System.Text;
 using System.Data;
-using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
@@ -259,7 +257,7 @@ namespace MapIt.Web.Admin
             try
             {
                 usersRepository = new UsersRepository();
-                IQueryable<MapIt.Data.User> usersList;
+                IQueryable<Data.User> usersList;
 
                 if (Search)
                 {
@@ -276,7 +274,7 @@ namespace MapIt.Web.Admin
 
                     if (!string.IsNullOrEmpty(SortExpression))
                     {
-                        usersList = SortHelper.SortList<MapIt.Data.User>(usersList, SortExpression, SortDirection);
+                        usersList = SortHelper.SortList(usersList, SortExpression, SortDirection);
                     }
 
                     //if (Search && (SearchSexStatus != null || SearchCountry != null || SearchActiveStatus != null || SearchCDateFrom != null || SearchCDateTo != null || !string.IsNullOrEmpty(SearchKeyWord)))
@@ -301,10 +299,10 @@ namespace MapIt.Web.Admin
                 }
                 else
                 {
-                    gvUsersExcel.DataSource = new List<MapIt.Data.User>();
+                    gvUsersExcel.DataSource = new List<Data.User>();
                     gvUsersExcel.DataBind();
 
-                    gvUsers.DataSource = new List<MapIt.Data.User>();
+                    gvUsers.DataSource = new List<Data.User>();
                     gvUsers.DataBind();
                     AspNetPager1.Visible = false;
                 }
@@ -473,7 +471,7 @@ namespace MapIt.Web.Admin
 
                 var phoneList = GetPhoneList();
 
-                var userObj = new MapIt.Data.User();
+                var userObj = new Data.User();
                 userObj.FirstName = txtFirstName.Text;
                 userObj.LastName = txtLastName.Text;
                 userObj.Sex = ParseHelper.GetInt(ddlSex.SelectedValue);
