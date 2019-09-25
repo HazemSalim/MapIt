@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using MapIt.Data;
 using System.Data.Common;
-using System.Data.Entity.Core.Objects;
+using System.Device.Location;
 
 namespace MapIt.Repository
 {
@@ -26,55 +24,56 @@ namespace MapIt.Repository
             int? admin, int? avDuration, string keyword = "")
         {
             return Find(p =>
-                            (propertyId.HasValue && propertyId.Value > 0 ? p.Id == propertyId.Value : true) &&
-                            (userId.HasValue && userId.Value > 0 ? p.UserId == userId.Value : true) &&
-                            (purposeId.HasValue && purposeId.Value > 0 ? p.PurposeId == purposeId.Value : true) &&
-                            (typeId.HasValue && typeId.Value > 0 ? p.TypeId == typeId.Value : true) &&
-                            (countryId.HasValue && countryId.Value > 0 ? p.CountryId == countryId.Value : true) &&
-                            (cityId.HasValue && cityId.Value > 0 ? (p.BlockId.HasValue ? p.Block.Area.CityId == cityId.Value : true) : true) &&
-                            (areaId.HasValue && areaId.Value > 0 ? (p.BlockId.HasValue ? p.Block.AreaId == areaId.Value : true) : true) &&
-                            (blockId.HasValue && blockId.Value > 0 ? (p.BlockId.HasValue ? p.BlockId == blockId.Value : true) : true) &&
-                            (!string.IsNullOrEmpty(street) ? p.Street.Replace(" ", string.Empty).ToLower().Contains(street.Replace(" ", string.Empty).ToLower()) : true) &&
-                            ((!string.IsNullOrEmpty(portalAddress) ? p.PortalAddressEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                            (!string.IsNullOrEmpty(portalAddress) ? p.PortalAddressAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                            (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.City.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                            (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.City.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                            (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                            (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                            (!string.IsNullOrEmpty(portalAddress) ? p.Block.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                            (!string.IsNullOrEmpty(portalAddress) ? p.Block.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true)) &&
-                            (!string.IsNullOrEmpty(paci) ? p.PACI.Replace(" ", string.Empty).ToLower().Contains(paci.Replace(" ", string.Empty).ToLower()) : true) &&
-                            ((areaFrom.HasValue && areaFrom.Value > 0 && areaTo.HasValue && areaTo.Value > 0) ?
-                            (p.Area.Value >= areaFrom.Value && p.Area.Value <= areaTo.Value) : true) &&
-                            ((yearFrom.HasValue && yearFrom.Value > 0 && yearTo.HasValue && yearTo.Value > 0) ?
-                            (p.BuildingAge.Value >= yearFrom.Value && p.BuildingAge.Value < yearTo.Value) : true) &&
-                            ((mIncomeFrom.HasValue && mIncomeFrom.Value > 0 && mIncomeTo.HasValue && mIncomeTo.Value > 0) ?
-                            (p.MonthlyIncome.Value >= mIncomeFrom.Value && p.MonthlyIncome.Value < mIncomeTo.Value) : true) &&
-                            ((sPriceFrom.HasValue && sPriceFrom.Value > 0 && sPriceTo.HasValue && sPriceTo.Value > 0) ?
-                            (p.SellingPrice.Value >= sPriceFrom.Value && p.SellingPrice.Value < sPriceTo.Value) : true) &&
-                            ((rPriceFrom.HasValue && rPriceFrom.Value > 0 && rPriceTo.HasValue && rPriceTo.Value > 0) ?
-                            (p.RentPrice.Value >= rPriceFrom.Value && p.RentPrice.Value < rPriceTo.Value) : true) &&
-                            ((addedFrom.HasValue && addedTo.HasValue) ? (p.AddedOn >= addedFrom.Value && p.AddedOn < addedTo.Value) : true) &&
-                            (special.HasValue ? (p.IsSpecial == (special.Value == 1 ? true : false)) : true) &&
-                            (available.HasValue ? (p.IsAvailable == (available.Value == 1 ? true : false)) : true) &&
-                            (active.HasValue ? (p.IsActive == (active.Value == 1 ? true : false)) : true) &&
-                            (admin.HasValue ? (p.AdminAdded == (admin.Value == 1 ? true : false)) : true) &&
-                            (canceled.HasValue ? (p.User.IsCanceled == (canceled.Value == 1 ? true : false)) : true)
-                            &&
-                            ((!string.IsNullOrEmpty(keyword) ? p.User.Phone.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true) ||
-                             (!string.IsNullOrEmpty(keyword) ? p.Street.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true) ||
-                             (!string.IsNullOrEmpty(keyword) ? p.PortalAddressEN.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true) ||
-                             (!string.IsNullOrEmpty(keyword) ? p.PortalAddressAR.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true) ||
-                             (!string.IsNullOrEmpty(keyword) ? p.PACI.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true)) &&
-                             (avDuration.Value == 1 ? ((!p.IsSpecial && EntityFunctions.AddDays(p.AddedOn, GSetting.NormalAdDuration).Value >= DateTime.Now) ||
-                             (p.IsSpecial && EntityFunctions.AddDays(p.AddedOn, GSetting.SpecAdDuration).Value >= DateTime.Now)) : true));
+                                     
+                                       (propertyId.HasValue && propertyId.Value > 0 ? p.Id == propertyId.Value : true) &&
+                                       (userId.HasValue && userId.Value > 0 ? p.UserId == userId.Value : true) &&
+                                       (purposeId.HasValue && purposeId.Value > 0 ? p.PurposeId == purposeId.Value : true) &&
+                                       (typeId.HasValue && typeId.Value > 0 ? p.TypeId == typeId.Value : true) &&
+                                       (countryId.HasValue && countryId.Value > 0 ? p.CountryId == countryId.Value : true) &&
+                                       (cityId.HasValue && cityId.Value > 0 ? (p.BlockId.HasValue ? p.Block.Area.CityId == cityId.Value : true) : true) &&
+                                       (areaId.HasValue && areaId.Value > 0 ? (p.BlockId.HasValue ? p.Block.AreaId == areaId.Value : true) : true) &&
+                                       (blockId.HasValue && blockId.Value > 0 ? (p.BlockId.HasValue ? p.BlockId == blockId.Value : true) : true) &&
+                                       (!string.IsNullOrEmpty(street) ? p.Street.Replace(" ", string.Empty).ToLower().Contains(street.Replace(" ", string.Empty).ToLower()) : true) &&
+                                       ((!string.IsNullOrEmpty(portalAddress) ? p.PortalAddressEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
+                                       (!string.IsNullOrEmpty(portalAddress) ? p.PortalAddressAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
+                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.City.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
+                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.City.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
+                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
+                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
+                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
+                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true)) &&
+                                       (!string.IsNullOrEmpty(paci) ? p.PACI.Replace(" ", string.Empty).ToLower().Contains(paci.Replace(" ", string.Empty).ToLower()) : true) &&
+                                       ((areaFrom.HasValue && areaFrom.Value > 0 && areaTo.HasValue && areaTo.Value > 0) ?
+                                       (p.Area.Value >= areaFrom.Value && p.Area.Value <= areaTo.Value) : true) &&
+                                       ((yearFrom.HasValue && yearFrom.Value > 0 && yearTo.HasValue && yearTo.Value > 0) ?
+                                       (p.BuildingAge.Value >= yearFrom.Value && p.BuildingAge.Value < yearTo.Value) : true) &&
+                                       ((mIncomeFrom.HasValue && mIncomeFrom.Value > 0 && mIncomeTo.HasValue && mIncomeTo.Value > 0) ?
+                                       (p.MonthlyIncome.Value >= mIncomeFrom.Value && p.MonthlyIncome.Value < mIncomeTo.Value) : true) &&
+                                       ((sPriceFrom.HasValue && sPriceFrom.Value > 0 && sPriceTo.HasValue && sPriceTo.Value > 0) ?
+                                       (p.SellingPrice.Value >= sPriceFrom.Value && p.SellingPrice.Value < sPriceTo.Value) : true) &&
+                                       ((rPriceFrom.HasValue && rPriceFrom.Value > 0 && rPriceTo.HasValue && rPriceTo.Value > 0) ?
+                                       (p.RentPrice.Value >= rPriceFrom.Value && p.RentPrice.Value < rPriceTo.Value) : true) &&
+                                       ((addedFrom.HasValue && addedTo.HasValue) ? (p.AddedOn >= addedFrom.Value && p.AddedOn < addedTo.Value) : true) &&
+                                       (special.HasValue ? (p.IsSpecial == (special.Value == 1 ? true : false)) : true) &&
+                                       (available.HasValue ? (p.IsAvailable == (available.Value == 1 ? true : false)) : true) &&
+                                       (active.HasValue ? (p.IsActive == (active.Value == 1 ? true : false)) : true) &&
+                                       (admin.HasValue ? (p.AdminAdded == (admin.Value == 1 ? true : false)) : true) &&
+                                       (canceled.HasValue ? (p.User.IsCanceled == (canceled.Value == 1 ? true : false)) : true)
+                                       &&
+                                       ((!string.IsNullOrEmpty(keyword) ? p.User.Phone.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true) ||
+                                        (!string.IsNullOrEmpty(keyword) ? p.Street.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true) ||
+                                        (!string.IsNullOrEmpty(keyword) ? p.PortalAddressEN.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true) ||
+                                        (!string.IsNullOrEmpty(keyword) ? p.PortalAddressAR.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true) ||
+                                        (!string.IsNullOrEmpty(keyword) ? p.PACI.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true)) &&
+                                        (avDuration.Value == 1 ? ((!p.IsSpecial && System.Data.Entity.DbFunctions.AddDays(p.AddedOn, GSetting.NormalAdDuration).Value >= DateTime.Now) ||
+                                        (p.IsSpecial && System.Data.Entity.DbFunctions.AddDays(p.AddedOn, GSetting.SpecAdDuration).Value >= DateTime.Now)) : true));
         }
 
         public IQueryable<Property> GetAvProperties()
         {
             return Find(p => p.IsActive && p.IsAvailable && p.User.IsActive && !p.User.IsCanceled &&
-                (!p.IsSpecial && EntityFunctions.AddDays(p.AddedOn, GSetting.NormalAdDuration).Value >= DateTime.Now) ||
-                (p.IsSpecial && EntityFunctions.AddDays(p.AddedOn, GSetting.SpecAdDuration).Value >= DateTime.Now));
+                (!p.IsSpecial && System.Data.Entity.DbFunctions.AddDays(p.AddedOn, GSetting.NormalAdDuration).Value >= DateTime.Now) ||
+                (p.IsSpecial && System.Data.Entity.DbFunctions.AddDays(p.AddedOn, GSetting.SpecAdDuration).Value >= DateTime.Now));
         }
 
         public bool IncreaseViewersCount(long propertyId)
@@ -136,7 +135,7 @@ namespace MapIt.Repository
             return Entities.PropertyFavorites.Any(p => p.PropertyId == propertyId && p.UserId == userId) ? true : false;
         }
 
-        public long SetReport(long propertyId, long userId, int reasonId,string notes)
+        public long SetReport(long propertyId, long userId, int reasonId, string notes)
         {
             var abusives = Entities.PropertyReports.Where(pr => pr.PropertyId == propertyId && pr.UserId == userId).ToList();
             if (abusives != null && abusives.Count > 0)
