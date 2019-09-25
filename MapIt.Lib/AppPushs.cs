@@ -10,7 +10,7 @@ namespace MapIt.Lib
     {
         #region Methods
 
-        public static void Push(int typeId, long? userId, int? gNotifId, long? propertyId, long? serviceId, int? offerId, string msgEN, string msgAR)
+        public static void Push(int typeId, long? userId, int? gNotifId, long? propertyId, long? serviceId, int? offerId, string msgEN, string msgAR,string imageFile="")
         {
             try
             {
@@ -64,46 +64,47 @@ namespace MapIt.Lib
                 {
                     if (notifObj.OfferId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message, imageFile);
                     }
                     else if (notifObj.PropertyId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.PropertyId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.PropertyId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message, imageFile);
                     }
                     else if (notifObj.ServiceId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.ServiceId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.ServiceId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message, imageFile);
                     }
                     else if (notifObj.GenNotifId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message, imageFile);
                     }
                     else
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message, imageFile);
                     }
                 }
                 else
                 {
                     if (notifObj.OfferId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), message, imageFile);
                     }
                     else if (notifObj.PropertyId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.PropertyId.Value.ToString(), nTypeObj.Title.ToString(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.PropertyId.Value.ToString(), nTypeObj.Title.ToString(), message, imageFile);
                     }
                     else if (notifObj.ServiceId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.ServiceId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), notifObj.ServiceId.Value.ToString(), nTypeObj.Title.ToString(),
+                            notifObj.User.DevicesTokens.ToList(), message, imageFile);
                     }
                     else if (notifObj.GenNotifId.HasValue)
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), message, imageFile);
                     }
                     else
                     {
-                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), message);
+                        SendPushNotification.Send(notifObj.Id.ToString(), string.Empty, nTypeObj.Title.ToString(), message, imageFile);
                     }
                 }
             }

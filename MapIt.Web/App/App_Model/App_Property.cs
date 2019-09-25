@@ -399,7 +399,7 @@ namespace MapIt.Web.App.App_Model
             SellingPrice = 0;
             RentPrice = 0;
 
-            Details = !String.IsNullOrEmpty(adObj.Photo) ? adObj.Link : string.Empty;
+            Details = !string.IsNullOrEmpty(adObj.Photo) ? adObj.Link : string.Empty;
 
             OtherPhones = string.Empty;
 
@@ -423,7 +423,7 @@ namespace MapIt.Web.App.App_Model
 
             UnreadMessageCount = 0;
 
-            Photo = !String.IsNullOrEmpty(adObj.Photo) ? string.Concat(AppSettings.CommAdPhotos + adObj.Photo) : string.Empty;
+            Photo = !string.IsNullOrEmpty(adObj.Photo) ? string.Concat(AppSettings.CommAdPhotos + adObj.Photo) : string.Empty;
 
             AddedOn = adObj.AddedOn;
 

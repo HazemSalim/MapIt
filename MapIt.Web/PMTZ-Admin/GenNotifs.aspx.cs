@@ -9,6 +9,7 @@ using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
 using System.Threading;
+using System.IO;
 
 namespace MapIt.Web.Admin
 {
@@ -73,6 +74,21 @@ namespace MapIt.Web.Admin
             set
             {
                 ViewState["SortExpression"] = value;
+            }
+        }
+
+        public string OldPhoto
+        {
+            get
+            {
+                if (ViewState["OldPhoto"] != null)
+                    return ViewState["OldPhoto"].ToString();
+
+                return null;
+            }
+            set
+            {
+                ViewState["OldPhoto"] = value;
             }
         }
 
@@ -192,6 +208,48 @@ namespace MapIt.Web.Admin
             txtTitleEN.Text = txtTitleAR.Text = string.Empty;
             gvGenNotifs.SelectedIndex = -1;
             RecordId = null;
+
+            OldPhoto = null;
+        }
+
+        string SavePhoto()
+        {
+            try
+            {
+                string imageExt = Path.GetExtension(fuPhoto.FileName);
+                string imageName = Guid.NewGuid().ToString();
+                string imagePath = AppSettings.PackagePhotos + imageName + imageExt;
+
+                FileStream fs = new FileStream(Server.MapPath(imagePath), FileMode.Create, FileAccess.ReadWrite);
+                fs.Write(fuPhoto.FileBytes, 0, fuPhoto.FileBytes.Length);
+                fs.Close();
+
+                return imageName + imageExt;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+                return null;
+            }
+        }
+
+        void DeletePhoto(string photoName)
+        {
+            try
+            {
+                try
+                {
+                    File.Delete(Server.MapPath(AppSettings.PackagePhotos + photoName));
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.LogException(ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+            }
         }
 
         void DoWork()
@@ -206,7 +264,21 @@ namespace MapIt.Web.Admin
                 serviceID = long.Parse(ddlServices.SelectedValue);
             }
 
-            AppPushs.Push((int)AppEnums.NotifTypes.General, null, pushGNotifId, propertyID, serviceID, null, pushMessageEN, pushMessageAR);
+            string photo = string.Empty;
+            if (fuPhoto.HasFile)
+            {
+                photo = SavePhoto();
+                if (string.IsNullOrEmpty(photo))
+                {
+                    PresentHelper.ShowScriptMessage("Error in saving photo");
+                    return;
+                }
+            }
+
+
+            photo = !string.IsNullOrEmpty(photo) ? string.Concat( AppSettings.PackagePhotos  + photo) : string.Empty;
+
+            AppPushs.Push((int)AppEnums.NotifTypes.General, null, pushGNotifId, propertyID, serviceID, null, pushMessageEN, pushMessageAR, photo);
         }
 
         void Add()
