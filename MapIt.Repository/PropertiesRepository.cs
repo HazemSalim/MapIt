@@ -2,7 +2,6 @@
 using System.Linq;
 using MapIt.Data;
 using System.Data.Common;
-using System.Device.Location;
 
 namespace MapIt.Repository
 {
@@ -21,10 +20,10 @@ namespace MapIt.Repository
         public IQueryable<Property> Search(long? propertyId, long? userId, int? purposeId, int? typeId, int? countryId, int? cityId, int? areaId, int? blockId,
             string street, string portalAddress, string paci, double? areaFrom, double? areaTo, int? yearFrom, int? yearTo, double? mIncomeFrom, double? mIncomeTo, double? sPriceFrom,
             double? sPriceTo, double? rPriceFrom, double? rPriceTo, DateTime? addedFrom, DateTime? addedTo, int? special, int? available, int? active, int? canceled,
-            int? admin, int? avDuration, string keyword = "")
+            int? admin, int? avDuration, string keyword = "",int userTypeID=0)
         {
             return Find(p =>
-                                     
+                                       (userTypeID > 0 && p.User!=null ? p.User.UserTypeID == userTypeID : true) &&
                                        (propertyId.HasValue && propertyId.Value > 0 ? p.Id == propertyId.Value : true) &&
                                        (userId.HasValue && userId.Value > 0 ? p.UserId == userId.Value : true) &&
                                        (purposeId.HasValue && purposeId.Value > 0 ? p.PurposeId == purposeId.Value : true) &&

@@ -1801,7 +1801,7 @@ namespace MapIt.Web.App
         public object GetPropertiesMap(long propertyId, long userId, int purposeId, int typeId, int countryId, int cityId, int areaId, int blockId,
            string portalAddress, double areaFrom, double areaTo, int yearFrom, int yearTo, double mIncomeFrom, double mIncomeTo, double sPriceFrom,
            double sPriceTo, double rPriceFrom, double rPriceTo, int today, int special, int sortOption, int pageIndex, long loginUserId,
-           double minLatitude, double minLongitude, double maxLatitude, double maxLongitude, double centerLatitude, double centerLongitude, string key)
+           int userTypeID, double minLatitude, double minLongitude, double maxLatitude, double maxLongitude, double centerLatitude, double centerLongitude, string key)
         {
             try
             {
@@ -1842,7 +1842,7 @@ namespace MapIt.Web.App
 
                 var properties = propertiesRepository.Search(propertyId, userId, purposeId, typeId, countryId, cityId, areaId, blockId, null, portalAddress,
                     null, areaFrom, areaTo, yearFrom, yearTo, mIncomeFrom, mIncomeTo, sPriceFrom, sPriceTo, rPriceFrom, rPriceTo, dateFrom, dateTo, _special,
-                    1, 1, 0, null, 1, null).ToList();
+                    1, 1, 0, null, 1, null,userTypeID).ToList();
 
 
                 if (centerLatitude != 0 && centerLongitude != 0)
