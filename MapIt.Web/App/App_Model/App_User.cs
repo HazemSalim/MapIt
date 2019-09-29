@@ -50,6 +50,8 @@ namespace MapIt.Web.App.App_Model
 
         public string Lang { get; set; }
 
+        public int? UserTypeID { get; set; }
+
         public int WatchListNotifs { get; set; }
         public int GeneralNotifs { get; set; }
 
@@ -92,6 +94,7 @@ namespace MapIt.Web.App.App_Model
             Sex = user.Sex.HasValue ? user.Sex.Value : 0;
             BirthDate = user.BirthDate;
             CountryId = user.CountryId;
+            UserTypeID = user.UserTypeID;
             CountryEN = user.Country.TitleEN;
             CountryAR = user.Country.TitleAR;
             Phone = user.Phone;
@@ -129,6 +132,7 @@ namespace MapIt.Web.App.App_Model
             Sex = user.Sex.HasValue ? user.Sex.Value : 0;
             BirthDate = user.BirthDate;
             CountryId = user.CountryId;
+            UserTypeID = user.UserTypeID;
             CountryEN = user.Country.TitleEN;
             CountryAR = user.Country.TitleAR;
             Phone = user.Phone;

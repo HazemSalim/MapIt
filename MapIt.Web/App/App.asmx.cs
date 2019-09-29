@@ -4003,6 +4003,43 @@ namespace MapIt.Web.App
             }
         }
 
+        [WebMethod(Description = "Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> User not exist <br />-1 -> Error")]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void EditUserType(long userId, int userTypeID, string key)
+        {
+            try
+            {
+                if (!key.Equals(AppSettings.WSKey))
+                {
+                    return;
+                }
+
+                if (userId < 1 || userId==0)
+                {
+                    RenderAsJson(-2);
+                    return;
+                }
+
+                usersRepository = new UsersRepository();
+                var userObj = usersRepository.GetByKey(userId);
+                if (userObj == null)
+                {
+                    RenderAsJson(-3);
+                    return;
+                }
+
+                userObj.UserTypeID = userTypeID;
+                usersRepository.Update(userObj);
+                RenderAsJson(userObj.Id);
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+                RenderAsJson(-1);
+            }
+        }
+
         [WebMethod(Description = "Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> User not exist <br />-4 -> Password wrong <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void Deactivate(long userId, string password, string key)
