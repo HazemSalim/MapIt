@@ -94,7 +94,9 @@ namespace MapIt.Web.App.App_Model
             Sex = user.Sex.HasValue ? user.Sex.Value : 0;
             BirthDate = user.BirthDate;
             CountryId = user.CountryId;
-            UserTypeID = user.UserTypeID;
+            UserTypeID = user.UserTypeID.HasValue && user.UserTypeID.Value > 0 ?
+                user.UserTypeID.Value : 0;
+
             CountryEN = user.Country.TitleEN;
             CountryAR = user.Country.TitleAR;
             Phone = user.Phone;
@@ -132,7 +134,8 @@ namespace MapIt.Web.App.App_Model
             Sex = user.Sex.HasValue ? user.Sex.Value : 0;
             BirthDate = user.BirthDate;
             CountryId = user.CountryId;
-            UserTypeID = user.UserTypeID;
+            UserTypeID = user.UserTypeID.HasValue && user.UserTypeID.Value > 0 ?
+                user.UserTypeID.Value : 0;
             CountryEN = user.Country.TitleEN;
             CountryAR = user.Country.TitleAR;
             Phone = user.Phone;
