@@ -198,6 +198,7 @@
                                         <asp:BoundField DataField="Id" HeaderText="Id" />
                                         <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" />
                                         <asp:BoundField DataField="Country.TitleEN" HeaderText="Country" SortExpression="Country.TitleEN" />
+                                        <asp:BoundField DataField="UserType.TitleEN" HeaderText="User Type" SortExpression="UserType.TitleEN" />
                                         <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
                                         <asp:BoundField DataField="AddedOn" HeaderText="Added On" SortExpression="AddedOn" DataFormatString="{0:dd/MM/yyyy hh:mm tt}" />
                                         <asp:BoundField DataField="LastLoginOn" HeaderText="Last Login On" SortExpression="LastLoginOn" DataFormatString="{0:dd/MM/yyyy hh:mm tt}" />
