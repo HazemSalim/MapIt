@@ -276,6 +276,38 @@ namespace MapIt.Lib
             }
         }
 
+        public static string SMSUserName
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["SMSUserName"];
+            }
+        }
+
+        public static string SMSPassword
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["SMSPassword"];
+            }
+        }
+
+        public static string SMSCustomerID
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["SMSCustomerID"];
+            }
+        }
+
+        public static string SMSSenderText
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["SMSSenderText"];
+            }
+        }
+
         public static string SMSActivationText
         {
             get

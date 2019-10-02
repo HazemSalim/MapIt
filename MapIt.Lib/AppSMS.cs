@@ -13,10 +13,33 @@ namespace MapIt.Lib
     {
         public static void Send(string messageBody, string phonenumber)
         {
-            Client client = Client.CreateDefault(AppSettings.SMSAccessKey, null);
+            //https://www.smsbox.com/SMSGateway/Services/Messaging.asmx/Http_SendSMS?
+            //username =username&password=password&customerId=000&senderText=SMSBOX.COM&
+            //messageBody =test&recipientNumbers=965xxxxxxxx,965xxxxxxxx&defdate=&
+            //isBlink =false&isFlash=false
 
-            MessageBird.Objects.Message message =
-            client.SendMessage(AppSettings.SMSOriginator, messageBody, new[] { ParseHelper.GetInt64(phonenumber).Value });
+
+            SMSBoxServiceRefrence.MessagingSoapClient client = new SMSBoxServiceRefrence.MessagingSoapClient("MessagingSoap12");
+
+            var result = client.SendSMS(new SMSBoxServiceRefrence.SendingSMSRequest
+            {
+                IsBlink = false,
+                IsFlash = false,
+                MessageBody = messageBody,
+                RecipientNumbers = phonenumber,
+                SenderText = AppSettings.SMSSenderText,
+                User = new SMSBoxServiceRefrence.SoapUser
+                {
+                    Username = AppSettings.SMSUserName,
+                    Password = AppSettings.SMSPassword,
+                    CustomerId = int.Parse(AppSettings.SMSCustomerID)
+                }
+            });
+
+            //Client client = Client.CreateDefault(AppSettings.SMSAccessKey, null);
+
+            //MessageBird.Objects.Message message =
+            //client.SendMessage(AppSettings.SMSOriginator, messageBody, new[] { ParseHelper.GetInt64(phonenumber).Value });
         }
     }
 }
