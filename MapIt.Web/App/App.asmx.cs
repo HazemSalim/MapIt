@@ -1939,15 +1939,15 @@ namespace MapIt.Web.App
                 }
 
 
-                if (centerLatitude != 0 && centerLongitude != 0)
-                {
+                //if (centerLatitude != 0 && centerLongitude != 0)
+                //{
                     return new { Data = list, PageSize = GSetting.PageSizeMob, Count = allPropertiesCount };
                  
-                }
-                else
-                {
-                   return list;
-                }
+                //}
+                //else
+                //{
+                //   return list;
+                //}
 
             }
             catch (Exception ex)
