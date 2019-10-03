@@ -3648,39 +3648,39 @@ namespace MapIt.Web.App
         [WebMethod(Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> Not exist 
 <br />-4 -> Wrong password <br />-5 -> Not activated <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void Login(string userName, string password, string deviceToken, string key)
+        public string Login(string userName, string password, string deviceToken, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return "-1";
                 }
 
                 if (string.IsNullOrEmpty(userName) || userName.Trim() == string.Empty || string.IsNullOrEmpty(password) || password.Trim() == string.Empty)
                 {
-                    RenderAsJson("-2");
-                    return;
+                    //RenderAsJson("-2");
+                    return "-2";
                 }
 
                 usersRepository = new UsersRepository();
                 var userObj = usersRepository.GetByPhone(userName);
                 if (userObj == null)
                 {
-                    RenderAsJson("-3");
-                    return;
+                    //RenderAsJson("-3");
+                    return "-3";
                 }
 
                 if (userObj.Password != AuthHelper.GetMD5Hash(password))
                 {
-                    RenderAsJson("-4");
-                    return;
+                    //RenderAsJson("-4");
+                    return "-4";
                 }
 
                 if (!userObj.IsActive)
                 {
-                    RenderAsJson(-5 + "-" + userObj.Id);
-                    return;
+                    //RenderAsJson(-5 + "-" + userObj.Id);
+                    return "-5" + "-" + userObj.Id.ToString();
                 }
 
                 if (userObj.IsCanceled)
@@ -3702,13 +3702,14 @@ namespace MapIt.Web.App
                 }
 
 
-                RenderAsJson(userObj.Id.ToString());
-                return;
+                //RenderAsJson(userObj.Id.ToString());
+                return userObj.Id.ToString();
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return "-1";
             }
         }
 

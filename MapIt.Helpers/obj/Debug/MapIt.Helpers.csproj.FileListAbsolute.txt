@@ -35,3 +35,4 @@ D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\Newtonsoft.Json.dll
 D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\Newtonsoft.Json.xml
 D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\obj\Debug\MapIt.Helpers.dll
 D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\obj\Debug\MapIt.Helpers.pdb
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\obj\Debug\MapIt.Helpers.csprojResolveAssemblyReference.cache
