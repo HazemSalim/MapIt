@@ -3467,33 +3467,33 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = @"UserId -> Success <br />-2 -> Required field missing <br />-3 -> Not exist <br />-4 -> Code is incorrect <br />-5 -> Already Activated <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void ActivateUser(long userId, string code, string key)
+        public long ActivateUser(long userId, string code, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 if (userId < 1 || string.IsNullOrEmpty(code) || code.Trim() == string.Empty)
                 {
-                    RenderAsJson(-2);
-                    return;
+                    //RenderAsJson(-2);
+                    return -2;
                 }
 
                 usersRepository = new UsersRepository();
                 var userObj = usersRepository.GetByKey(userId);
                 if (userObj == null)
                 {
-                    RenderAsJson(-3);
-                    return;
+                    //RenderAsJson(-3);
+                    return -3;
                 }
 
                 if (userObj.ActivationCode != code)
                 {
-                    RenderAsJson(-4);
-                    return;
+                    //RenderAsJson(-4);
+                    return -4;
                 }
 
                 //if (userObj.IsActive)
@@ -3505,12 +3505,14 @@ namespace MapIt.Web.App
                 userObj.IsActive = true;
                 usersRepository.Update(userObj);
 
-                RenderAsJson(userObj.Id);
+                //RenderAsJson(userObj.Id);
+                return userObj.Id;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 

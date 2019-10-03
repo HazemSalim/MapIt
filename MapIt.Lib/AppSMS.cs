@@ -13,12 +13,6 @@ namespace MapIt.Lib
     {
         public static void Send(string messageBody, string phonenumber)
         {
-            //https://www.smsbox.com/SMSGateway/Services/Messaging.asmx/Http_SendSMS?
-            //username =username&password=password&customerId=000&senderText=SMSBOX.COM&
-            //messageBody =test&recipientNumbers=965xxxxxxxx,965xxxxxxxx&defdate=&
-            //isBlink =false&isFlash=false
-
-
             SMSBoxServiceRefrence.MessagingSoapClient client = new SMSBoxServiceRefrence.MessagingSoapClient("MessagingSoap12");
 
             var result = client.SendSMS(new SMSBoxServiceRefrence.SendingSMSRequest
