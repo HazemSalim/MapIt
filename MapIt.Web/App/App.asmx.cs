@@ -3516,27 +3516,27 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = @"UserId >> Success <br />-2 >> Required field missing <br />-3 >> Not exist <br />-4 >> Active <br />-1 >> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void ResendSMS(long userId, string key)
+        public int ResendSMS(long userId, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 if (userId < 1)
                 {
-                    RenderAsJson(-2);
-                    return;
+                    //RenderAsJson(-2);
+                    return -2;
                 }
 
                 usersRepository = new UsersRepository();
                 var userObj = usersRepository.GetByKey(userId);
                 if (userObj == null)
                 {
-                    RenderAsJson(-3);
-                    return;
+                    //RenderAsJson(-3);
+                    return -3;
                 }
 
                 //if (userObj.IsActive)
@@ -3548,12 +3548,14 @@ namespace MapIt.Web.App
                 string smsMessage = AppSettings.SMSActivationText + userObj.ActivationCode;
                 AppSMS.Send(smsMessage, userObj.PhoneForSMS);
 
-                RenderAsJson(1);
+                //RenderAsJson(1);
+                return 1;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
