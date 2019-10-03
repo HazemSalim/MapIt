@@ -113,6 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\App2.asmx" />
     <Content Include="Content\main-ar.css" />
     <Content Include="CuteSoft_Client\CuteEditor\Dialogs\Clean.htm" />
     <Content Include="CuteSoft_Client\CuteEditor\Dialogs\colorpicker.aspx" />
@@ -2501,6 +2502,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\App2.asmx.cs">
+      <DependentUpon>App2.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="App\App_Model\App_MarketGraph.cs" />
     <Compile Include="App\App_Model\App_UserType.cs" />
     <Compile Include="LocationByEsri.aspx.cs">

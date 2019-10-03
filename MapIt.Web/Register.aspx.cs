@@ -109,15 +109,16 @@ namespace MapIt.Web
                     return;
                 }
 
-                MapIt.Data.User userObj = new MapIt.Data.User();
-
-                userObj.CountryId = ParseHelper.GetInt(ddlCountry.SelectedValue).Value;
-                userObj.Phone = ddlCode.SelectedValue + " " + txtPhone.Text;
-                userObj.Email = txtEmail.Text;
-                userObj.Password = AuthHelper.GetMD5Hash(txtPassword.Text);
-                userObj.ActivationCode = AuthHelper.RandomCode(4);
-                userObj.IsActive = GeneralSetting.AutoActiveUser;
-                userObj.AddedOn = DateTime.Now;
+                User userObj = new User
+                {
+                    CountryId = ParseHelper.GetInt(ddlCountry.SelectedValue).Value,
+                    Phone = ddlCode.SelectedValue + " " + txtPhone.Text,
+                    Email = txtEmail.Text,
+                    Password = AuthHelper.GetMD5Hash(txtPassword.Text),
+                    ActivationCode = AuthHelper.RandomCode(4),
+                    IsActive = GeneralSetting.AutoActiveUser,
+                    AddedOn = DateTime.Now
+                };
 
                 usersRepository.Add(userObj);
 
