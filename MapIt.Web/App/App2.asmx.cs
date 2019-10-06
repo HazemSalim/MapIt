@@ -3717,19 +3717,19 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = "Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void Logout(long userId, string deviceToken, string key)
+        public long Logout(long userId, string deviceToken, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 if (userId < 1)
                 {
-                    RenderAsJson(-2);
-                    return;
+                    //RenderAsJson(-2);
+                    return -2;
                 }
 
                 devicesTokensRepository = new DevicesTokensRepository();
@@ -3743,66 +3743,69 @@ namespace MapIt.Web.App
                     devicesTokensRepository.Update(exToken);
                 }
 
-                RenderAsJson(userId);
+                //RenderAsJson(userId);
+                return userId;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
         [WebMethod(Description = "1 -> Success <br />-2 -> Username is empty <br />-3 -> Not exist <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void ForgetUserName(string email, string key)
+        public long ForgetUserName(string email, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 if (string.IsNullOrEmpty(email) || email.Trim() == string.Empty)
                 {
-                    RenderAsJson(-2);
-                    return;
+                    //RenderAsJson(-2);
+                    return -2;
                 }
 
                 usersRepository = new UsersRepository();
                 var userObj = usersRepository.GetByEmail(email);
                 if (userObj == null)
                 {
-                    RenderAsJson(-3);
-                    return;
+                    //RenderAsJson(-3);
+                    return -3;
                 }
 
                 AppMails.SendUserInfo(userObj.Id, false);
-                RenderAsJson(1);
-                return;
+                //RenderAsJson(1);
+                return userObj.Id;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
         [WebMethod(Description = "1 -> Success <br />-2 -> Email is empty <br />-3 -> Not exist <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void ForgetPassword(string phone, string email, string key)
+        public long ForgetPassword(string phone, string email, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 if (string.IsNullOrEmpty(phone) && string.IsNullOrEmpty(email))
                 {
-                    RenderAsJson(-2);
-                    return;
+                    //RenderAsJson(-2);
+                    return -2;
                 }
 
                 usersRepository = new UsersRepository();
@@ -3812,8 +3815,8 @@ namespace MapIt.Web.App
                     userObj = usersRepository.GetByEmail(email);
                     if (userObj == null)
                     {
-                        RenderAsJson(-3);
-                        return;
+                        //RenderAsJson(-3);
+                        return -3;
                     }
                 }
 
@@ -3826,13 +3829,14 @@ namespace MapIt.Web.App
                 //string smsMessage = AppSettings.SMSPasswordText + AppSettings.WebsiteURL + "/ResetPassword?" + userObj.Key;
                 //AppSMS.Send(smsMessage, userObj.PhoneForSMS);
 
-                RenderAsJson(1);
-                return;
+                //RenderAsJson(1);
+                return userObj.Id;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
