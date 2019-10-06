@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Script.Services;
 using System.Web.Script.Serialization;
-using System.Data.Entity.Core.Objects;
 using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
