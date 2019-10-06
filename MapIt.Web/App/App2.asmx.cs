@@ -3399,10 +3399,10 @@ namespace MapIt.Web.App
                     AddedOn = DateTime.Now
                 };
 
-                usersRepository.Add(userObj);
-
                 if (userTypeID > 0)
                     userObj.UserTypeID = userTypeID;
+
+                usersRepository.Add(userObj);
 
                 if (!userObj.IsActive)
                 {
