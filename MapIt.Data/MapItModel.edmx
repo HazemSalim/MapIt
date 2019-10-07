@@ -260,6 +260,14 @@
           <Property Name="AddedOn" Type="datetime" Nullable="false" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="AdminUserId" Type="int" />
+          <Property Name="MessageCloseEnglish" Type="nvarchar" MaxLength="500" />
+          <Property Name="MessageCloseArabic" Type="nvarchar" MaxLength="500" />
+          <Property Name="IOSAppUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="MessageUpdateEnglish" Type="nvarchar" MaxLength="500" />
+          <Property Name="MessageUpdateArabic" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsForceUpdateIOS" Type="bit" />
+          <Property Name="IOSVersionNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsForceClose" Type="bit" />
         </EntityType>
         <EntityType Name="GenNotifs">
           <Key>
@@ -2387,15 +2395,6 @@
           <FunctionImport Name="GetFeatures" ReturnType="Collection(MapItModel.GetFeatures_Result)">
           <Parameter Name="propertyTypeId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="GeneralSettings" EntityType="MapItModel.GeneralSetting" />
-          <AssociationSet Name="FK_GeneralSettings_Countries" Association="MapItModel.FK_GeneralSettings_Countries">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="GeneralSetting" EntitySet="GeneralSettings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GeneralSettings_Currencies" Association="MapItModel.FK_GeneralSettings_Currencies">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="GeneralSetting" EntitySet="GeneralSettings" />
-          </AssociationSet>
           <EntitySet Name="PropertyReports" EntityType="MapItModel.PropertyReport" />
           <EntitySet Name="ServiceReports" EntityType="MapItModel.ServiceReport" />
           <AssociationSet Name="FK_PropertyReports_Properties" Association="MapItModel.FK_PropertyReports_Properties">
@@ -2504,6 +2503,15 @@
           <AssociationSet Name="FK_WatchLists_Users" Association="MapItModel.FK_WatchLists_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="WatchList" EntitySet="WatchLists" />
+          </AssociationSet>
+          <EntitySet Name="GeneralSettings" EntityType="MapItModel.GeneralSetting" />
+          <AssociationSet Name="FK_GeneralSettings_Countries" Association="MapItModel.FK_GeneralSettings_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="GeneralSetting" EntitySet="GeneralSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralSettings_Currencies" Association="MapItModel.FK_GeneralSettings_Currencies">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="GeneralSetting" EntitySet="GeneralSettings" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="AdminPage">
@@ -2652,8 +2660,8 @@
           <NavigationProperty Name="Sliders" Relationship="MapItModel.FK_Sliders_Countries" FromRole="Country" ToRole="Slider" />
           <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Countries" FromRole="Country" ToRole="WatchList" />
           <NavigationProperty Name="Offers" Relationship="MapItModel.FK_Offers_Countries" FromRole="Country" ToRole="Offer" />
-          <NavigationProperty Name="GeneralSettings" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="Country" ToRole="GeneralSetting" />
           <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_Countries" FromRole="Country" ToRole="User" />
+          <NavigationProperty Name="GeneralSettings" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="Country" ToRole="GeneralSetting" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -3911,79 +3919,6 @@
           <Property Type="String" Name="TitleAR" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="TitleEN" Nullable="false" MaxLength="100" />
         </ComplexType>
-        <EntityType Name="GeneralSetting">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MetaDesc" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="MetaKW" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Facebook" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Twitter" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Instagram" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Youtube" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Linkedin" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Snapchat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Tumblr" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="AppStore" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="GooglePlay" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DefaultCountryId" Type="Int32" Nullable="false" />
-          <Property Name="DefaultCurrencyId" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceTerms" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="WorkingHours" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="DefFreeAmount" Type="Double" Nullable="false" />
-          <Property Name="NormalAdCost" Type="Double" Nullable="false" />
-          <Property Name="SpecAdCost" Type="Double" Nullable="false" />
-          <Property Name="AdVideoCost" Type="Double" Nullable="false" />
-          <Property Name="NormalAdDuration" Type="Int32" Nullable="false" />
-          <Property Name="SpecAdDuration" Type="Int32" Nullable="false" />
-          <Property Name="AvPhotos" Type="Int32" Nullable="false" />
-          <Property Name="AvVideos" Type="Int32" Nullable="false" />
-          <Property Name="SimilarAdCount" Type="Int32" Nullable="false" />
-          <Property Name="PageSize" Type="Int32" Nullable="false" />
-          <Property Name="PageSizeMob" Type="Int32" Nullable="false" />
-          <Property Name="AutoActiveUser" Type="Boolean" Nullable="false" />
-          <Property Name="AutoActiveAd" Type="Boolean" Nullable="false" />
-          <Property Name="Version" Type="Double" Nullable="false" />
-          <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="AdminUserId" Type="Int32" />
-          <NavigationProperty Name="Country" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="GeneralSetting" ToRole="Country" />
-          <NavigationProperty Name="DefaultCurrency" Relationship="MapItModel.FK_GeneralSettings_Currencies" FromRole="GeneralSetting" ToRole="Currency" />
-        </EntityType>
-        <Association Name="FK_GeneralSettings_Countries">
-          <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
-          <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="GeneralSetting">
-              <PropertyRef Name="DefaultCountryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GeneralSettings_Currencies">
-          <End Type="MapItModel.Currency" Role="Currency" Multiplicity="1" />
-          <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="GeneralSetting">
-              <PropertyRef Name="DefaultCurrencyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="PropertyReport">
           <Key>
             <PropertyRef Name="Id" />
@@ -4399,6 +4334,87 @@
             </Principal>
             <Dependent Role="WatchList">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GeneralSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDesc" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKW" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Facebook" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Twitter" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Instagram" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Youtube" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Linkedin" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Snapchat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tumblr" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="AppStore" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="GooglePlay" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultCountryId" Type="Int32" Nullable="false" />
+          <Property Name="DefaultCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceTerms" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="WorkingHours" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DefFreeAmount" Type="Double" Nullable="false" />
+          <Property Name="NormalAdCost" Type="Double" Nullable="false" />
+          <Property Name="SpecAdCost" Type="Double" Nullable="false" />
+          <Property Name="AdVideoCost" Type="Double" Nullable="false" />
+          <Property Name="NormalAdDuration" Type="Int32" Nullable="false" />
+          <Property Name="SpecAdDuration" Type="Int32" Nullable="false" />
+          <Property Name="AvPhotos" Type="Int32" Nullable="false" />
+          <Property Name="AvVideos" Type="Int32" Nullable="false" />
+          <Property Name="SimilarAdCount" Type="Int32" Nullable="false" />
+          <Property Name="PageSize" Type="Int32" Nullable="false" />
+          <Property Name="PageSizeMob" Type="Int32" Nullable="false" />
+          <Property Name="AutoActiveUser" Type="Boolean" Nullable="false" />
+          <Property Name="AutoActiveAd" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Double" Nullable="false" />
+          <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="AdminUserId" Type="Int32" />
+          <Property Name="MessageCloseEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MessageCloseArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IOSAppUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MessageUpdateEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MessageUpdateArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsForceUpdateIOS" Type="Boolean" />
+          <Property Name="IOSVersionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsForceClose" Type="Boolean" />
+          <NavigationProperty Name="Country" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="GeneralSetting" ToRole="Country" />
+          <NavigationProperty Name="DefaultCurrency" Relationship="MapItModel.FK_GeneralSettings_Currencies" FromRole="GeneralSetting" ToRole="Currency" />
+        </EntityType>
+        <Association Name="FK_GeneralSettings_Countries">
+          <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralSetting">
+              <PropertyRef Name="DefaultCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralSettings_Currencies">
+          <End Type="MapItModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralSetting">
+              <PropertyRef Name="DefaultCurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5140,54 +5156,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="GeneralSettings">
-            <EntityTypeMapping TypeName="MapItModel.GeneralSetting">
-              <MappingFragment StoreEntitySet="GeneralSettings">
-                <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-                <ScalarProperty Name="Version" ColumnName="Version" />
-                <ScalarProperty Name="AutoActiveAd" ColumnName="AutoActiveAd" />
-                <ScalarProperty Name="AutoActiveUser" ColumnName="AutoActiveUser" />
-                <ScalarProperty Name="PageSizeMob" ColumnName="PageSizeMob" />
-                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
-                <ScalarProperty Name="SimilarAdCount" ColumnName="SimilarAdCount" />
-                <ScalarProperty Name="AvVideos" ColumnName="AvVideos" />
-                <ScalarProperty Name="AvPhotos" ColumnName="AvPhotos" />
-                <ScalarProperty Name="SpecAdDuration" ColumnName="SpecAdDuration" />
-                <ScalarProperty Name="NormalAdDuration" ColumnName="NormalAdDuration" />
-                <ScalarProperty Name="AdVideoCost" ColumnName="AdVideoCost" />
-                <ScalarProperty Name="SpecAdCost" ColumnName="SpecAdCost" />
-                <ScalarProperty Name="NormalAdCost" ColumnName="NormalAdCost" />
-                <ScalarProperty Name="DefFreeAmount" ColumnName="DefFreeAmount" />
-                <ScalarProperty Name="WorkingHours" ColumnName="WorkingHours" />
-                <ScalarProperty Name="InvoiceTerms" ColumnName="InvoiceTerms" />
-                <ScalarProperty Name="DefaultCurrencyId" ColumnName="DefaultCurrencyId" />
-                <ScalarProperty Name="DefaultCountryId" ColumnName="DefaultCountryId" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="GooglePlay" ColumnName="GooglePlay" />
-                <ScalarProperty Name="AppStore" ColumnName="AppStore" />
-                <ScalarProperty Name="Tumblr" ColumnName="Tumblr" />
-                <ScalarProperty Name="Snapchat" ColumnName="Snapchat" />
-                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
-                <ScalarProperty Name="Youtube" ColumnName="Youtube" />
-                <ScalarProperty Name="Instagram" ColumnName="Instagram" />
-                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
-                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="MetaKW" ColumnName="MetaKW" />
-                <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
-                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropertyReports">
             <EntityTypeMapping TypeName="MapItModel.PropertyReport">
               <MappingFragment StoreEntitySet="PropertyReports">
@@ -5254,6 +5222,62 @@
           <EntitySetMapping Name="UserTypes">
             <EntityTypeMapping TypeName="MapItModel.UserType">
               <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralSettings">
+            <EntityTypeMapping TypeName="MapItModel.GeneralSetting">
+              <MappingFragment StoreEntitySet="GeneralSettings">
+                <ScalarProperty Name="IsForceClose" ColumnName="IsForceClose" />
+                <ScalarProperty Name="IOSVersionNumber" ColumnName="IOSVersionNumber" />
+                <ScalarProperty Name="IsForceUpdateIOS" ColumnName="IsForceUpdateIOS" />
+                <ScalarProperty Name="MessageUpdateArabic" ColumnName="MessageUpdateArabic" />
+                <ScalarProperty Name="MessageUpdateEnglish" ColumnName="MessageUpdateEnglish" />
+                <ScalarProperty Name="IOSAppUrl" ColumnName="IOSAppUrl" />
+                <ScalarProperty Name="MessageCloseArabic" ColumnName="MessageCloseArabic" />
+                <ScalarProperty Name="MessageCloseEnglish" ColumnName="MessageCloseEnglish" />
+                <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="AutoActiveAd" ColumnName="AutoActiveAd" />
+                <ScalarProperty Name="AutoActiveUser" ColumnName="AutoActiveUser" />
+                <ScalarProperty Name="PageSizeMob" ColumnName="PageSizeMob" />
+                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+                <ScalarProperty Name="SimilarAdCount" ColumnName="SimilarAdCount" />
+                <ScalarProperty Name="AvVideos" ColumnName="AvVideos" />
+                <ScalarProperty Name="AvPhotos" ColumnName="AvPhotos" />
+                <ScalarProperty Name="SpecAdDuration" ColumnName="SpecAdDuration" />
+                <ScalarProperty Name="NormalAdDuration" ColumnName="NormalAdDuration" />
+                <ScalarProperty Name="AdVideoCost" ColumnName="AdVideoCost" />
+                <ScalarProperty Name="SpecAdCost" ColumnName="SpecAdCost" />
+                <ScalarProperty Name="NormalAdCost" ColumnName="NormalAdCost" />
+                <ScalarProperty Name="DefFreeAmount" ColumnName="DefFreeAmount" />
+                <ScalarProperty Name="WorkingHours" ColumnName="WorkingHours" />
+                <ScalarProperty Name="InvoiceTerms" ColumnName="InvoiceTerms" />
+                <ScalarProperty Name="DefaultCurrencyId" ColumnName="DefaultCurrencyId" />
+                <ScalarProperty Name="DefaultCountryId" ColumnName="DefaultCountryId" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="GooglePlay" ColumnName="GooglePlay" />
+                <ScalarProperty Name="AppStore" ColumnName="AppStore" />
+                <ScalarProperty Name="Tumblr" ColumnName="Tumblr" />
+                <ScalarProperty Name="Snapchat" ColumnName="Snapchat" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="Youtube" ColumnName="Youtube" />
+                <ScalarProperty Name="Instagram" ColumnName="Instagram" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="MetaKW" ColumnName="MetaKW" />
+                <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
                 <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
                 <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -5336,7 +5360,6 @@
         <EntityTypeShape EntityType="MapItModel.TechMessage" Width="1.5" PointX="5.25" PointY="70.5" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Notification" Width="1.5" PointX="15" PointY="64.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Component" Width="1.5" PointX="12.75" PointY="44" IsExpanded="false" />
-        <EntityTypeShape EntityType="MapItModel.GeneralSetting" Width="1.5" PointX="12" PointY="50.625" IsExpanded="false" />
         <AssociationConnector Association="MapItModel.FK_AdminPermissions_AdminPages" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_AdminPermissions_AdminUsers" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_Areas_Cities" ManuallyRouted="false" />
@@ -5388,9 +5411,7 @@
         <AssociationConnector Association="MapItModel.FK_Notifications_Properties" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_Notifications_Services" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyComponents_Components" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_GeneralSettings_Countries" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_GeneralSettings_Currencies" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MapItModel.PropertyReport" Width="1.5" PointX="15" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MapItModel.PropertyReport" Width="1.5" PointX="15" PointY="47.375" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.ServiceReport" Width="1.5" PointX="14.5" PointY="52.5" IsExpanded="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyReports_Properties" />
         <AssociationConnector Association="MapItModel.FK_PropertyReports_Reasons" />
@@ -5421,6 +5442,9 @@
         <AssociationConnector Association="MapItModel.FK_UserCredits_Users" />
         <AssociationConnector Association="MapItModel.FK_Users_UserTypes" />
         <AssociationConnector Association="MapItModel.FK_WatchLists_Users" />
+        <EntityTypeShape EntityType="MapItModel.GeneralSetting" Width="1.5" PointX="18" PointY="49.125" />
+        <AssociationConnector Association="MapItModel.FK_GeneralSettings_Countries" />
+        <AssociationConnector Association="MapItModel.FK_GeneralSettings_Currencies" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MapIt.Data;
@@ -137,6 +135,15 @@ namespace MapIt.Web.Admin
                     chkAutoActiveUser.Checked = gSettingObj.AutoActiveUser;
                     chkAutoActiveAd.Checked = gSettingObj.AutoActiveAd;
                     txtVersion.Text = gSettingObj.Version.ToString();
+
+                    txtIOSVersionNumber.Text = gSettingObj.IOSVersionNumber.ToString();
+                    txtMessageCloseEnglish.Text = gSettingObj.MessageCloseEnglish.ToString();
+                    txtMessageCloseArabic.Text = gSettingObj.MessageCloseArabic.ToString();
+                    txtIOSAppUrl.Text = gSettingObj.IOSAppUrl.ToString();
+                    txtMessageUpdateEnglish.Text = gSettingObj.MessageUpdateEnglish.ToString();
+                    txtMessageUpdateArabic.Text = gSettingObj.MessageUpdateArabic.ToString();
+                    chkIsForceClose.Checked = gSettingObj.IsForceClose.HasValue && gSettingObj.IsForceClose.Value;
+                    chkIsForceUpdateIOS.Checked = gSettingObj.IsForceUpdateIOS.HasValue && gSettingObj.IsForceUpdateIOS.Value;
                 }
             }
             catch (Exception ex)
@@ -232,6 +239,15 @@ namespace MapIt.Web.Admin
                         gSettingObj.ModifiedOn = DateTime.Now;
                         gSettingObj.AdminUserId = ParseHelper.GetInt(Session["AdminUserId"].ToString());
 
+                        gSettingObj.MessageCloseEnglish = txtMessageCloseEnglish.Text;
+                        gSettingObj.MessageCloseArabic = txtMessageCloseArabic.Text;
+                        gSettingObj.IOSAppUrl = txtIOSAppUrl.Text;
+                        gSettingObj.MessageUpdateEnglish = txtMessageUpdateEnglish.Text;
+                        gSettingObj.MessageUpdateArabic = txtMessageUpdateArabic.Text;
+                        gSettingObj.IOSVersionNumber = txtIOSVersionNumber.Text;
+                        gSettingObj.IsForceUpdateIOS = chkIsForceUpdateIOS.Checked;
+                        gSettingObj.IsForceClose = chkIsForceClose.Checked;
+
                         gSettingsRepository.Update(gSettingObj);
                     }
                     else
@@ -283,6 +299,15 @@ namespace MapIt.Web.Admin
                     gSettingObj.Version = ParseHelper.GetDouble(txtVersion.Text).Value;
                     gSettingObj.AddedOn = DateTime.Now;
                     gSettingObj.AdminUserId = ParseHelper.GetInt(Session["AdminUserId"].ToString());
+
+                    gSettingObj.MessageCloseEnglish = txtMessageCloseEnglish.Text;
+                    gSettingObj.MessageCloseArabic = txtMessageCloseArabic.Text;
+                    gSettingObj.IOSAppUrl = txtIOSAppUrl.Text;
+                    gSettingObj.MessageUpdateEnglish = txtMessageUpdateEnglish.Text;
+                    gSettingObj.MessageUpdateArabic = txtMessageUpdateArabic.Text;
+                    gSettingObj.IOSVersionNumber = txtIOSVersionNumber.Text;
+                    gSettingObj.IsForceUpdateIOS = chkIsForceUpdateIOS.Checked;
+                    gSettingObj.IsForceClose = chkIsForceClose.Checked;
 
                     gSettingsRepository.Add(gSettingObj);
                     LoadData();

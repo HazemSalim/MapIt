@@ -733,54 +733,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="GeneralSettings">
-      <EntityTypeMapping TypeName="MapItModel.GeneralSetting">
-        <MappingFragment StoreEntitySet="GeneralSettings">
-          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-          <ScalarProperty Name="Version" ColumnName="Version" />
-          <ScalarProperty Name="AutoActiveAd" ColumnName="AutoActiveAd" />
-          <ScalarProperty Name="AutoActiveUser" ColumnName="AutoActiveUser" />
-          <ScalarProperty Name="PageSizeMob" ColumnName="PageSizeMob" />
-          <ScalarProperty Name="PageSize" ColumnName="PageSize" />
-          <ScalarProperty Name="SimilarAdCount" ColumnName="SimilarAdCount" />
-          <ScalarProperty Name="AvVideos" ColumnName="AvVideos" />
-          <ScalarProperty Name="AvPhotos" ColumnName="AvPhotos" />
-          <ScalarProperty Name="SpecAdDuration" ColumnName="SpecAdDuration" />
-          <ScalarProperty Name="NormalAdDuration" ColumnName="NormalAdDuration" />
-          <ScalarProperty Name="AdVideoCost" ColumnName="AdVideoCost" />
-          <ScalarProperty Name="SpecAdCost" ColumnName="SpecAdCost" />
-          <ScalarProperty Name="NormalAdCost" ColumnName="NormalAdCost" />
-          <ScalarProperty Name="DefFreeAmount" ColumnName="DefFreeAmount" />
-          <ScalarProperty Name="WorkingHours" ColumnName="WorkingHours" />
-          <ScalarProperty Name="InvoiceTerms" ColumnName="InvoiceTerms" />
-          <ScalarProperty Name="DefaultCurrencyId" ColumnName="DefaultCurrencyId" />
-          <ScalarProperty Name="DefaultCountryId" ColumnName="DefaultCountryId" />
-          <ScalarProperty Name="Fax" ColumnName="Fax" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-          <ScalarProperty Name="GooglePlay" ColumnName="GooglePlay" />
-          <ScalarProperty Name="AppStore" ColumnName="AppStore" />
-          <ScalarProperty Name="Tumblr" ColumnName="Tumblr" />
-          <ScalarProperty Name="Snapchat" ColumnName="Snapchat" />
-          <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
-          <ScalarProperty Name="Youtube" ColumnName="Youtube" />
-          <ScalarProperty Name="Instagram" ColumnName="Instagram" />
-          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
-          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
-          <ScalarProperty Name="Website" ColumnName="Website" />
-          <ScalarProperty Name="MetaKW" ColumnName="MetaKW" />
-          <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
-          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PropertyReports">
       <EntityTypeMapping TypeName="MapItModel.PropertyReport">
         <MappingFragment StoreEntitySet="PropertyReports">
@@ -847,6 +799,62 @@
     <EntitySetMapping Name="UserTypes">
       <EntityTypeMapping TypeName="MapItModel.UserType">
         <MappingFragment StoreEntitySet="UserTypes">
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GeneralSettings">
+      <EntityTypeMapping TypeName="MapItModel.GeneralSetting">
+        <MappingFragment StoreEntitySet="GeneralSettings">
+          <ScalarProperty Name="IsForceClose" ColumnName="IsForceClose" />
+          <ScalarProperty Name="IOSVersionNumber" ColumnName="IOSVersionNumber" />
+          <ScalarProperty Name="IsForceUpdateIOS" ColumnName="IsForceUpdateIOS" />
+          <ScalarProperty Name="MessageUpdateArabic" ColumnName="MessageUpdateArabic" />
+          <ScalarProperty Name="MessageUpdateEnglish" ColumnName="MessageUpdateEnglish" />
+          <ScalarProperty Name="IOSAppUrl" ColumnName="IOSAppUrl" />
+          <ScalarProperty Name="MessageCloseArabic" ColumnName="MessageCloseArabic" />
+          <ScalarProperty Name="MessageCloseEnglish" ColumnName="MessageCloseEnglish" />
+          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="AutoActiveAd" ColumnName="AutoActiveAd" />
+          <ScalarProperty Name="AutoActiveUser" ColumnName="AutoActiveUser" />
+          <ScalarProperty Name="PageSizeMob" ColumnName="PageSizeMob" />
+          <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+          <ScalarProperty Name="SimilarAdCount" ColumnName="SimilarAdCount" />
+          <ScalarProperty Name="AvVideos" ColumnName="AvVideos" />
+          <ScalarProperty Name="AvPhotos" ColumnName="AvPhotos" />
+          <ScalarProperty Name="SpecAdDuration" ColumnName="SpecAdDuration" />
+          <ScalarProperty Name="NormalAdDuration" ColumnName="NormalAdDuration" />
+          <ScalarProperty Name="AdVideoCost" ColumnName="AdVideoCost" />
+          <ScalarProperty Name="SpecAdCost" ColumnName="SpecAdCost" />
+          <ScalarProperty Name="NormalAdCost" ColumnName="NormalAdCost" />
+          <ScalarProperty Name="DefFreeAmount" ColumnName="DefFreeAmount" />
+          <ScalarProperty Name="WorkingHours" ColumnName="WorkingHours" />
+          <ScalarProperty Name="InvoiceTerms" ColumnName="InvoiceTerms" />
+          <ScalarProperty Name="DefaultCurrencyId" ColumnName="DefaultCurrencyId" />
+          <ScalarProperty Name="DefaultCountryId" ColumnName="DefaultCountryId" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="GooglePlay" ColumnName="GooglePlay" />
+          <ScalarProperty Name="AppStore" ColumnName="AppStore" />
+          <ScalarProperty Name="Tumblr" ColumnName="Tumblr" />
+          <ScalarProperty Name="Snapchat" ColumnName="Snapchat" />
+          <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+          <ScalarProperty Name="Youtube" ColumnName="Youtube" />
+          <ScalarProperty Name="Instagram" ColumnName="Instagram" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="MetaKW" ColumnName="MetaKW" />
+          <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
           <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
           <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
           <ScalarProperty Name="Id" ColumnName="Id" />

@@ -255,6 +255,14 @@
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
+    <Property Name="MessageCloseEnglish" Type="nvarchar" MaxLength="500" />
+    <Property Name="MessageCloseArabic" Type="nvarchar" MaxLength="500" />
+    <Property Name="IOSAppUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="MessageUpdateEnglish" Type="nvarchar" MaxLength="500" />
+    <Property Name="MessageUpdateArabic" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsForceUpdateIOS" Type="bit" />
+    <Property Name="IOSVersionNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsForceClose" Type="bit" />
   </EntityType>
   <EntityType Name="GenNotifs">
     <Key>

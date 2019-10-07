@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using MapIt.Data;
+﻿using MapIt.Data;
 
 namespace MapIt.Web.App.App_Model
 {
@@ -37,6 +33,15 @@ namespace MapIt.Web.App.App_Model
         public double Version { get; set; }
         public bool AutoActiveUser { get; set; }
 
+        public string MessageCloseEnglish { get; set; }
+        public string MessageCloseArabic { get; set; }
+        public string IOSAppUrl { get; set; }
+        public string MessageUpdateEnglish { get; set; }
+        public string MessageUpdateArabic { get; set; }
+        public bool IsForceUpdateIOS { get; set; }
+        public string IOSVersionNumber { get; set; }
+        public bool IsForceClose { get; set; }
+
         public App_GeneralSettings(GeneralSetting gSetting)
         {
             TitleEN = gSetting.TitleEN;
@@ -67,6 +72,17 @@ namespace MapIt.Web.App.App_Model
             AvVideos = gSetting.AvVideos;
             Version = gSetting.Version;
             AutoActiveUser = gSetting.AutoActiveUser;
+
+            MessageCloseEnglish = !string.IsNullOrEmpty(gSetting.MessageCloseEnglish) ? gSetting.MessageCloseEnglish : string.Empty;
+            MessageCloseArabic = !string.IsNullOrEmpty(gSetting.MessageCloseArabic) ? gSetting.MessageCloseArabic : string.Empty;
+            IOSAppUrl = !string.IsNullOrEmpty(gSetting.IOSAppUrl) ? gSetting.IOSAppUrl : string.Empty;
+            MessageUpdateEnglish = !string.IsNullOrEmpty(gSetting.MessageUpdateEnglish) ? gSetting.MessageUpdateEnglish : string.Empty;
+            MessageUpdateArabic = !string.IsNullOrEmpty(gSetting.MessageUpdateArabic) ? gSetting.MessageUpdateArabic : string.Empty;
+            IOSVersionNumber = !string.IsNullOrEmpty(gSetting.IOSVersionNumber) ? gSetting.IOSVersionNumber : string.Empty;
+            IsForceUpdateIOS = gSetting.IsForceUpdateIOS.HasValue && gSetting.IsForceUpdateIOS.Value ?
+                gSetting.IsForceUpdateIOS.Value : false;
+            IsForceClose = gSetting.IsForceClose.HasValue && gSetting.IsForceClose.Value ?
+                gSetting.IsForceClose.Value : false;
         }
     }
 }

@@ -23,8 +23,8 @@ namespace MapIt.Data
             this.Sliders = new HashSet<Slider>();
             this.WatchLists = new HashSet<WatchList>();
             this.Offers = new HashSet<Offer>();
-            this.GeneralSettings = new HashSet<GeneralSetting>();
             this.Users = new HashSet<User>();
+            this.GeneralSettings = new HashSet<GeneralSetting>();
         }
     
         public int Id { get; set; }
@@ -51,8 +51,8 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Offer> Offers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GeneralSetting> GeneralSettings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GeneralSetting> GeneralSettings { get; set; }
     }
 }

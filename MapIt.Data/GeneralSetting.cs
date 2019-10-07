@@ -56,6 +56,14 @@ namespace MapIt.Data
         public System.DateTime AddedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<int> AdminUserId { get; set; }
+        public string MessageCloseEnglish { get; set; }
+        public string MessageCloseArabic { get; set; }
+        public string IOSAppUrl { get; set; }
+        public string MessageUpdateEnglish { get; set; }
+        public string MessageUpdateArabic { get; set; }
+        public Nullable<bool> IsForceUpdateIOS { get; set; }
+        public string IOSVersionNumber { get; set; }
+        public Nullable<bool> IsForceClose { get; set; }
     
         public virtual Country Country { get; set; }
         public virtual Currency DefaultCurrency { get; set; }
