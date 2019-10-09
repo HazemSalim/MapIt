@@ -52,6 +52,8 @@ namespace MapIt.Web.App.App_Model
 
         public int? UserTypeID { get; set; }
 
+        public bool IsActive { get; set; }
+
         public int WatchListNotifs { get; set; }
         public int GeneralNotifs { get; set; }
 
@@ -91,8 +93,9 @@ namespace MapIt.Web.App.App_Model
             FirstName = !string.IsNullOrEmpty(user.FirstName) ? user.FirstName : string.Empty;
             LastName = !string.IsNullOrEmpty(user.LastName) ? user.LastName : string.Empty;
             FullName = !string.IsNullOrEmpty(user.FullName) ? user.FullName : string.Empty;
-            Sex = user.Sex.HasValue ? user.Sex.Value : 0;
+            Sex = user.Sex ?? 0;
             BirthDate = user.BirthDate;
+            IsActive = user.IsActive;
             CountryId = user.CountryId;
             UserTypeID = user.UserTypeID.HasValue && user.UserTypeID.Value > 0 ?
                 user.UserTypeID.Value : 0;
@@ -133,6 +136,7 @@ namespace MapIt.Web.App.App_Model
             FullName = !string.IsNullOrEmpty(user.FullName) ? user.FullName : string.Empty;
             Sex = user.Sex.HasValue ? user.Sex.Value : 0;
             BirthDate = user.BirthDate;
+            IsActive = user.IsActive;
             CountryId = user.CountryId;
             UserTypeID = user.UserTypeID.HasValue && user.UserTypeID.Value > 0 ?
                 user.UserTypeID.Value : 0;

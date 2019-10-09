@@ -2368,13 +2368,13 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = "1 -> Republish property Success <br />-2 -> Property not exist<br />-3 -> This property does not belong to this user<br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void RefreshProperty(long propertyId, long userId, string key)
+        public int RefreshProperty(long propertyId, long userId, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 propertiesRepository = new PropertiesRepository();
@@ -2384,35 +2384,39 @@ namespace MapIt.Web.App
                 {
                     if (propertyObj.UserId != userId)
                     {
-                        RenderAsJson(-3);
+                        //RenderAsJson(-3);
+                        return -3;
                     }
 
                     propertyObj.AddedOn = DateTime.Now;
                     propertiesRepository.Update(propertyObj);
 
-                    RenderAsJson(1);
+                    //RenderAsJson(1);
+                    return 1;
                 }
                 else
                 {
-                    RenderAsJson(-2);
+                    //RenderAsJson(-2);
+                    return -2;
                 }
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
         [WebMethod(Description = "Set property is stop by propertyId and userId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void StopProperty(long propertyId, long userId, string key)
+        public int StopProperty(long propertyId, long userId, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 propertiesRepository = new PropertiesRepository();
@@ -2422,7 +2426,8 @@ namespace MapIt.Web.App
                 {
                     if (propertyObj.UserId != userId)
                     {
-                        RenderAsJson(-3);
+                        //RenderAsJson(-3);
+                        return -3;
                     }
 
                     if (propertyObj.IsAvailable)
@@ -2430,37 +2435,41 @@ namespace MapIt.Web.App
                         propertyObj.IsAvailable = false;
                         propertiesRepository.Update(propertyObj);
 
-                        RenderAsJson(1);
+                        //RenderAsJson(1);
+                        return 1;
                     }
                     else
                     {
                         propertyObj.IsAvailable = true;
                         propertiesRepository.Update(propertyObj);
 
-                        RenderAsJson(2);
+                        //RenderAsJson(2);
+                        return 2;
                     }
                 }
                 else
                 {
-                    RenderAsJson(-2);
+                    //RenderAsJson(-2);
+                    return -2;
                 }
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
         [WebMethod(Description = "1 -> Delete property Success <br />-2 -> Property not exist<br />-3 -> This property does not belong to this user<br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void DeleteProperty(long propertyId, long userId, string key)
+        public int DeleteProperty(long propertyId, long userId, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 propertiesRepository = new PropertiesRepository();
@@ -2470,22 +2479,25 @@ namespace MapIt.Web.App
                 {
                     if (propertyObj.UserId != userId)
                     {
-                        RenderAsJson(-3);
-                        return;
+                        //RenderAsJson(-3);
+                        return -3;
                     }
 
                     propertiesRepository.DeleteAnyWay(propertyId);
-                    RenderAsJson(1);
+                    //RenderAsJson(1);
+                    return 1;
                 }
                 else
                 {
-                    RenderAsJson(-2);
+                    //RenderAsJson(-2);
+                    return -2;
                 }
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
@@ -3498,11 +3510,6 @@ namespace MapIt.Web.App
                     return -4;
                 }
 
-                //if (userObj.IsActive)
-                //{
-                //    RenderAsJson(-5);
-                //    return;
-                //}
 
                 userObj.IsActive = true;
                 usersRepository.Update(userObj);
