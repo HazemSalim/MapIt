@@ -110,6 +110,14 @@ namespace MapIt.Web
                         {
                             UserId = userObj.Id;
 
+                            Session["UserId"] = UserId;
+
+                            // Set last login datetime
+                            usersRepository = new UsersRepository();
+                            userObj.LastLoginOn = DateTime.Now;
+                            usersRepository.Update(userObj);
+
+
                             if (Request.QueryString["ReturnUrl"] != null && !string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
                             {
                                 Response.Redirect(Request.QueryString["ReturnUrl"], false);
@@ -118,11 +126,6 @@ namespace MapIt.Web
                             {
                                 Response.Redirect(".", false);
                             }
-
-                            // Set last login datetime
-                            usersRepository = new UsersRepository();
-                            userObj.LastLoginOn = DateTime.Now;
-                            usersRepository.Update(userObj);
                         }
                         else
                         {

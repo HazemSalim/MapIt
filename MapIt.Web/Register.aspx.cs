@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.IO;
 using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
@@ -12,12 +9,15 @@ using MapIt.Repository;
 
 namespace MapIt.Web
 {
-    public partial class Register : MapIt.Lib.BasePage
+    public partial class Register : BasePage
     {
         #region Variables
 
         UsersRepository usersRepository;
         CountriesRepository countriesRepository;
+        UserTypesRepository userTypesRepository;
+        UserCreditsRepository userCreditsRepository;
+        GeneralSettingsRepository gSettingsRepository;
 
         #endregion
 
@@ -81,12 +81,40 @@ namespace MapIt.Web
             }
         }
 
+        void BindUserTypes()
+        {
+            try
+            {
+                userTypesRepository = new UserTypesRepository();
+                var list = userTypesRepository.GetAll().ToList();
+                list = Culture.ToLower() == "ar-kw" ? list.OrderBy(c => c.TitleAR).ToList() : list.OrderBy(c => c.TitleEN).ToList();
+
+                if (list != null && list.Count > 0)
+                {
+                    ddlUserTypes.DataValueField = "Id";
+                    ddlUserTypes.DataTextField = Resources.Resource.db_title_col;
+
+                    ddlUserTypes.DataSource = list;
+                    ddlUserTypes.DataBind();
+                }
+                list = null;
+                userTypesRepository = null;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+            }
+        }
+        
         void Save()
         {
             try
             {
                 usersRepository = new UsersRepository();
-                var uObj = usersRepository.GetByPhone(txtPhone.Text);
+
+                string phone = ddlCode.SelectedValue + " " + txtPhone.Text;
+
+                var uObj = usersRepository.GetByPhone(phone);
                 if (uObj != null)
                 {
                     PresentHelper.ShowScriptMessage(Resources.Resource.phone_exist);
@@ -112,34 +140,116 @@ namespace MapIt.Web
                 User userObj = new User
                 {
                     CountryId = ParseHelper.GetInt(ddlCountry.SelectedValue).Value,
-                    Phone = ddlCode.SelectedValue + " " + txtPhone.Text,
+                    Phone = phone,
                     Email = txtEmail.Text,
+                    UserTypeID = int.Parse(ddlUserTypes.SelectedValue),
+                    FirstName = txtFirstName.Text,
+                    LastName = txtLastName.Text,
+                    //Lang = ddlLanguage.SelectedValue,
                     Password = AuthHelper.GetMD5Hash(txtPassword.Text),
                     ActivationCode = AuthHelper.RandomCode(4),
-                    IsActive = GeneralSetting.AutoActiveUser,
+                    IsActive = false,//GeneralSetting.AutoActiveUser,
+                    IsCanceled = false,
                     AddedOn = DateTime.Now
                 };
 
                 usersRepository.Add(userObj);
 
-                AppMails.SendWelcomeToUser(userObj.Id);
-                AppMails.SendNewUserToAdmin(userObj.Id);
+                if (!userObj.IsActive)
+                {
+                    string smsMessage = AppSettings.SMSActivationText + userObj.ActivationCode;
+                    AppSMS.Send(smsMessage, userObj.PhoneForSMS);
+                }
 
-                if (userObj.IsActive)
+
+                userCreditsRepository = new UserCreditsRepository();
+                var userCredit = new UserCredit()
                 {
-                    NewUserId = userObj.Id;
-                    UserId = userObj.Id;
-                    Response.Redirect("~/BuyCredit");
-                }
-                else
+                    TransNo = string.Empty,
+                    UserId = userObj.Id,
+                    PackageId = null,
+                    PaymentMethodId = (int)AppEnums.PaymentMethods.Free,
+                    CurrencyId = GSetting.DefaultCurrencyId,
+                    ExchangeRate = GSetting.DefaultCurrency.ExchangeRate,
+                    Amount = GSetting.DefFreeAmount,
+                    PaymentStatus = (int)AppEnums.PaymentStatus.Paid,
+                    TransOn = DateTime.Now
+                };
+
+                userCreditsRepository.Add(userCredit);
+                userCredit.TransNo = "TRN" + (userCredit.Id).ToString("D6");
+                userCreditsRepository.Update(userCredit);
+
+                AppMails.SendNewCreditToUser(userCredit.Id);
+
+                if (!userObj.IsActive)
                 {
-                    PresentHelper.ShowScriptMessage(Resources.Resource.register_save_success);
+                    AppMails.SendWelcomeToUser(userObj.Id);
+                    AppMails.SendNewUserToAdmin(userObj.Id);
                 }
+
+                NewUserId = userObj.Id;
+                UserId = userObj.Id;
+
+                registerDiv.Visible = false;
+                smsVerificationDiv.Visible = true;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
                 PresentHelper.ShowScriptMessage(Resources.Resource.error);
+            }
+        }
+
+        void smsVerification()
+        {
+            if (string.IsNullOrEmpty(txtActivationCode.Text))
+            {
+                PresentHelper.ShowScriptMessage(Resources.Resource.wrong_activation_code);
+            }
+            else
+            {
+                usersRepository = new UsersRepository();
+                var userObj = usersRepository.GetByKey(NewUserId);
+
+                if (userObj.ActivationCode != txtActivationCode.Text)
+                {
+                    PresentHelper.ShowScriptMessage(Resources.Resource.wrong_activation_code);
+                    return;
+                }
+
+
+                userObj.IsActive = true;
+                usersRepository.Update(userObj);
+
+                AppMails.SendWelcomeToUser(userObj.Id);
+                AppMails.SendNewUserToAdmin(userObj.Id);
+
+                Response.Redirect("~/BuyCredit");
+
+            }
+        }
+
+        void resendSMS()
+        {
+            var userObj = usersRepository.GetByKey(NewUserId);
+            if (userObj != null)
+            {
+                string smsMessage = AppSettings.SMSActivationText + userObj.ActivationCode;
+                AppSMS.Send(smsMessage, userObj.PhoneForSMS);
+
+                PresentHelper.ShowScriptMessage(Resources.Resource.send_email_success);
+            }
+
+        }
+
+        public GeneralSetting GSetting
+        {
+            get
+            {
+                gSettingsRepository = new GeneralSettingsRepository();
+                var gSettingObj = gSettingsRepository.Get();
+                return gSettingObj;
             }
         }
 
@@ -157,6 +267,7 @@ namespace MapIt.Web
             if (!IsPostBack)
             {
                 BindCountries();
+                BindUserTypes();
             }
         }
 
@@ -176,6 +287,22 @@ namespace MapIt.Web
             base.OnPreRenderComplete(e);
         }
 
+        protected void btnSMSVerification_Click(object sender, EventArgs e)
+        {
+            Page.Validate(btnSMSVerification.ValidationGroup);
+            if (Page.IsValid)
+            {
+                smsVerification();
+            }
+        }
+
+        protected void btnResendSMS_Click(object sender, EventArgs e)
+        {
+            resendSMS();
+        }
+
         #endregion
+
+
     }
 }

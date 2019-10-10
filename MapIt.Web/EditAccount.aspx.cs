@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.IO;
-using MapIt.Data;
 using MapIt.Helpers;
-using MapIt.Lib;
 using MapIt.Repository;
 
 namespace MapIt.Web
@@ -18,6 +13,7 @@ namespace MapIt.Web
 
         UsersRepository usersRepository;
         CountriesRepository countriesRepository;
+        UserTypesRepository userTypesRepository;
 
         #endregion
 
@@ -39,14 +35,54 @@ namespace MapIt.Web
 
                 if (list != null && list.Count > 0)
                 {
+                    ddlCountry.DataValueField = "Id";
+                    ddlCountry.DataTextField = Resources.Resource.db_title_col;
+
                     ddlCode.DataValueField = "CCode";
                     ddlCode.DataTextField = "FullCode";
+
+                    ddlCountry.DataSource = list;
+                    ddlCountry.DataBind();
 
                     ddlCode.DataSource = list.OrderBy(c => c.ISOCode).ToList();
                     ddlCode.DataBind();
                 }
+                string country = "Kuwait";
+                var defaultcountryobj = countriesRepository.Find(x => x.TitleEN.Trim().ToLower().Contains(country.ToLower())).SingleOrDefault();
+                if (defaultcountryobj != null)
+                {
+                    ddlCountry.SelectedValue = defaultcountryobj.Id.ToString();
+                    ddlCode.SelectedValue = defaultcountryobj.CCode.ToString();
+                }
                 list = null;
                 countriesRepository = null;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+            }
+        }
+
+        void BindUserTypes()
+        {
+            try
+            {
+                userTypesRepository = new UserTypesRepository();
+                var list = userTypesRepository.GetAll().ToList();
+                list = Culture.ToLower() == "ar-kw" ? list.OrderBy(c => c.TitleAR).ToList() : list.OrderBy(c => c.TitleEN).ToList();
+
+                if (list != null && list.Count > 0)
+                {
+                    ddlUserTypes.DataValueField = "Id";
+                    ddlUserTypes.DataTextField = Resources.Resource.db_title_col;
+
+                    ddlUserTypes.DataSource = list;
+                    ddlUserTypes.DataBind();
+
+                    ddlUserTypes.Items.Insert(0, new ListItem(Resources.Resource.select, "0"));
+                }
+                list = null;
+                userTypesRepository = null;
             }
             catch (Exception ex)
             {
@@ -70,6 +106,12 @@ namespace MapIt.Web
                     txtPhone.Text = phone[1];
 
                     txtEmail.Text = userObj.Email;
+                    txtFirstName.Text = userObj.FirstName;
+                    txtLastName.Text = userObj.LastName;
+
+                    ddlCountry.SelectedValue = userObj.CountryId > 0 ? userObj.CountryId.ToString() : "0";
+                    ddlUserTypes.SelectedValue = userObj.UserTypeID > 0 ? userObj.UserTypeID.ToString() : "0";
+                    ddlLanguage.SelectedValue = !string.IsNullOrEmpty(userObj.Lang) ? userObj.Lang.ToString() : "0";
                 }
                 else
                 {
@@ -99,6 +141,21 @@ namespace MapIt.Web
                 userObj.BirthDate = !string.IsNullOrEmpty(txtBDate.Text) ? ParseHelper.GetDate(txtBDate.Text, "yyyy-MM-dd", null) : null;
                 userObj.Phone = ddlCode.SelectedValue + " " + txtPhone.Text;
                 userObj.Email = txtEmail.Text;
+                userObj.LastName = txtLastName.Text;
+                userObj.FirstName = txtFirstName.Text;
+
+
+                userObj.Lang = ddlLanguage.SelectedValue != "0" ? ddlLanguage.SelectedValue : "";
+
+                if (ddlCountry.SelectedValue != "0")
+                    userObj.CountryId = int.Parse(ddlCountry.SelectedValue);
+
+                if (ddlUserTypes.SelectedValue != "0")
+                    userObj.UserTypeID = int.Parse(ddlUserTypes.SelectedValue);
+                else
+                    userObj.UserTypeID = null;
+
+
                 if (!string.IsNullOrEmpty(txtPassword.Text))
                 {
                     userObj.Password = AuthHelper.GetMD5Hash(txtPassword.Text);
@@ -130,6 +187,7 @@ namespace MapIt.Web
             if (!IsPostBack)
             {
                 BindCountries();
+                BindUserTypes();
                 BindUser();
             }
         }

@@ -3422,7 +3422,7 @@ namespace MapIt.Web.App
                     AppSMS.Send(smsMessage, userObj.PhoneForSMS);
                 }
 
-                // Assgin device token to user
+                #region Assgin device token to user
                 devicesTokensRepository = new DevicesTokensRepository();
                 var exToken = devicesTokensRepository.First(c => c.DeviceToken == deviceToken);
                 if (exToken != null)
@@ -3433,7 +3433,9 @@ namespace MapIt.Web.App
 
                     devicesTokensRepository.Update(exToken);
                 }
+                #endregion
 
+                #region User Credits
                 userCreditsRepository = new UserCreditsRepository();
                 var userCredit = new UserCredit()
                 {
@@ -3453,8 +3455,9 @@ namespace MapIt.Web.App
                 userCreditsRepository.Update(userCredit);
 
                 AppMails.SendNewCreditToUser(userCredit.Id);
+                #endregion
 
-                if (!userObj.IsActive)
+                if (userObj.IsActive)
                 {
                     AppMails.SendWelcomeToUser(userObj.Id);
                     AppMails.SendNewUserToAdmin(userObj.Id);
@@ -3515,6 +3518,10 @@ namespace MapIt.Web.App
                 usersRepository.Update(userObj);
 
                 //RenderAsJson(userObj.Id);
+
+                AppMails.SendWelcomeToUser(userObj.Id);
+                AppMails.SendNewUserToAdmin(userObj.Id);
+
                 return userObj.Id;
             }
             catch (Exception ex)

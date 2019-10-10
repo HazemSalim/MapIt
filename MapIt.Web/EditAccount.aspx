@@ -14,6 +14,58 @@
                     <asp:UpdatePanel ID="upEditAccount" runat="server" UpdateMode="Always">
                         <ContentTemplate>
                             <fieldset class="uk-fieldset uk-width-1-2@m uk-width-1-1@s">
+
+                                <div class="uk-margin">
+                                    <label for="lang">
+                                        <%= GetGlobalResourceObject("Resource","lang") %></label>
+                                    <asp:DropDownList ID="ddlLanguage" runat="server" CssClass="uk-input" Style="width: 100%;">
+                                        <asp:ListItem Value="0" Text='<%$ Resources:Resource,select %>'></asp:ListItem>
+                                        <asp:ListItem Value="ar" Text='<%$ Resources:Resource,arabic %>'></asp:ListItem>
+                                        <asp:ListItem Value="en" Text='<%$ Resources:Resource,english %>'></asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlLanguage" SetFocusOnError="true"
+                                        EnableClientScript="true" Display="Dynamic" ValidationGroup="EditAccount" Text='<%$ Resources:Resource,required_field %>' CssClass="alert-text"
+                                        InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <label for="userType">
+                                        <%= GetGlobalResourceObject("Resource","userType") %></label>
+                                    <asp:DropDownList ID="ddlUserTypes" runat="server" CssClass="uk-input" Style="width: 100%;">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlUserTypes" SetFocusOnError="true"
+                                        EnableClientScript="true" Display="Dynamic" ValidationGroup="EditAccount" Text='<%$ Resources:Resource,required_field %>' CssClass="alert-text"
+                                        InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <label for="country">
+                                        <%= GetGlobalResourceObject("Resource","country") %></label>
+                                    <asp:DropDownList ID="ddlCountry" runat="server" CssClass="uk-input" Style="width: 100%;">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="rfvCountry" runat="server" ControlToValidate="ddlCountry" SetFocusOnError="true"
+                                        EnableClientScript="true" Display="Dynamic" ValidationGroup="EditAccount" Text='<%$ Resources:Resource,required_field %>' CssClass="alert-text"
+                                        InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <label for="name" style="display: block;">
+                                        <%= GetGlobalResourceObject("Resource","name") %></label>
+
+                                    <asp:TextBox ID="txtFirstName" runat="server" Placeholder="<%$ Resources:Resource,first_name %>" ClientIDMode="Static" CssClass="uk-input l_tel"></asp:TextBox>
+
+
+                                    <asp:TextBox ID="txtLastName" runat="server" Placeholder="<%$ Resources:Resource,last_name %>" ClientIDMode="Static" CssClass="uk-input r_tel"></asp:TextBox>
+
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtFirstName"
+                                        Display="Static" EnableClientScript="true" SetFocusOnError="true"
+                                        ValidationGroup="Register" Text='<%$ Resources:Resource,required_field %>' CssClass="alert-text"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtLastName"
+                                        Display="Dynamic" EnableClientScript="true" SetFocusOnError="true"
+                                        ValidationGroup="EditAccount" Text='<%$ Resources:Resource,required_field %>' CssClass="alert-text"></asp:RequiredFieldValidator>
+                                    <div style="clear: both"></div>
+                                </div>
+
                                 <div class="uk-margin">
                                     <label for="email">
                                         <%= GetGlobalResourceObject("Resource","email") %></label>
