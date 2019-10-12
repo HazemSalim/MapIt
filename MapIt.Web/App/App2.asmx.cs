@@ -1803,6 +1803,7 @@ namespace MapIt.Web.App
            double sPriceTo, double rPriceFrom, double rPriceTo, int today, int special, int sortOption, int pageIndex, long loginUserId,
            int userTypeID, double minLatitude, double minLongitude, double maxLatitude, double maxLongitude, double centerLatitude, double centerLongitude, string key)
         {
+            int pageSize = 50;
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
@@ -1842,13 +1843,13 @@ namespace MapIt.Web.App
 
                 var properties = propertiesRepository.Search(propertyId, userId, purposeId, typeId, countryId, cityId, areaId, blockId, null, portalAddress,
                     null, areaFrom, areaTo, yearFrom, yearTo, mIncomeFrom, mIncomeTo, sPriceFrom, sPriceTo, rPriceFrom, rPriceTo, dateFrom, dateTo, _special,
-                    1, 1, 0, null, 1, null,userTypeID).ToList();
+                    1, 1, 0, null, 1, null, userTypeID).ToList();
 
 
                 if (centerLatitude != 0 && centerLongitude != 0)
                 {
-                  var sCoordCenter = new GeoCoordinate(centerLatitude, centerLongitude);
-                    properties = properties.Where(p=> minLatitude > 0 && maxLatitude > 0 ? p.DLatitude >= minLatitude && p.DLatitude <= maxLatitude && p.DLongitude >= minLongitude && p.DLongitude <= maxLongitude : true)
+                    var sCoordCenter = new GeoCoordinate(centerLatitude, centerLongitude);
+                    properties = properties.Where(p => minLatitude > 0 && maxLatitude > 0 ? p.DLatitude >= minLatitude && p.DLatitude <= maxLatitude && p.DLongitude >= minLongitude && p.DLongitude <= maxLongitude : true)
                         .OrderBy(x => x.GeoCoord.GetDistanceTo(sCoordCenter)).ToList();
                 }
                 else
@@ -1859,7 +1860,7 @@ namespace MapIt.Web.App
                 int allPropertiesCount = properties.Count;
                 if (pageIndex > -1)
                 {
-                    properties = properties.Skip(pageIndex * GSetting.PageSizeMob).Take(GSetting.PageSizeMob).ToList();
+                    properties = properties.Skip(pageIndex * pageSize).Take(pageSize).ToList();
                 }
 
                 List<long> loginFavIds = new List<long>();
@@ -1891,11 +1892,13 @@ namespace MapIt.Web.App
 
                 foreach (var property in properties)
                 {
-                    appProperty = new App_Property(property);
-                    appProperty.Details = propertyId < 1 ? string.Empty : property.Details;
-                    appProperty.IsFavorite = loginFavIds.Contains(property.Id);
-                    appProperty.IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false;
-                    appProperty.IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false;
+                    appProperty = new App_Property(property)
+                    {
+                        Details = propertyId < 1 ? string.Empty : property.Details,
+                        IsFavorite = loginFavIds.Contains(property.Id),
+                        IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false,
+                        IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false
+                    };
 
                     if (propertyId > 0)
                     {
@@ -1941,8 +1944,8 @@ namespace MapIt.Web.App
 
                 //if (centerLatitude != 0 && centerLongitude != 0)
                 //{
-                    return new { Data = list, PageSize = GSetting.PageSizeMob, Count = allPropertiesCount };
-                 
+                return new { Data = list, PageSize = pageSize, Count = allPropertiesCount };
+
                 //}
                 //else
                 //{
@@ -3662,7 +3665,7 @@ namespace MapIt.Web.App
         }
 
         [WebMethod(Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> Not exist 
-<br />-4 -> Wrong password <br />-5 -> Not activated <br />-1 -> Error")]
+<br />-4 -> Wrong password <br />-5 -> Not activated <br />-6 -> Not User Type <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string Login(string userName, string password, string deviceToken, string key)
         {
@@ -3697,6 +3700,12 @@ namespace MapIt.Web.App
                 {
                     //RenderAsJson(-5 + "-" + userObj.Id);
                     return "-5" + "-" + userObj.Id.ToString();
+                }
+
+                if (!userObj.UserTypeID.HasValue || userObj.UserTypeID.Value < 1)
+                {
+                    //RenderAsJson(-5 + "-" + userObj.Id);
+                    return "-6" + "-" + userObj.Id.ToString();
                 }
 
                 if (userObj.IsCanceled)
@@ -4041,7 +4050,7 @@ namespace MapIt.Web.App
                     return -1;
                 }
 
-                if (userId < 1 || userId==0)
+                if (userId < 1 || userId == 0)
                 {
                     //RenderAsJson(-2);
                     return -2;

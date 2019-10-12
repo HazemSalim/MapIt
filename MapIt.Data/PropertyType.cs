@@ -26,6 +26,8 @@ namespace MapIt.Data
         public string TitleAR { get; set; }
         public string Color { get; set; }
         public int Ordering { get; set; }
+        public string ShortTitleAR { get; set; }
+        public string ShortTitleEN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Property> Properties { get; set; }

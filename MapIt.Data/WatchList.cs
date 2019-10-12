@@ -26,8 +26,8 @@ namespace MapIt.Data
         public virtual Area Area { get; set; }
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
+        public virtual User User { get; set; }
         public virtual PropertyType PropertyType { get; set; }
         public virtual Purpos Purpos { get; set; }
-        public virtual User User { get; set; }
     }
 }

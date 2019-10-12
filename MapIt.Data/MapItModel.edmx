@@ -532,6 +532,8 @@
           <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Ordering" Type="int" Nullable="false" />
+          <Property Name="ShortTitleAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShortTitleEN" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PropertyVideos">
           <Key>
@@ -557,6 +559,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShortTitleAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShortTitleEN" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Reasons">
           <Key>
@@ -758,6 +762,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShortTitleAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShortTitleEN" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="WatchLists">
           <Key>
@@ -2158,10 +2164,8 @@
           <EntitySet Name="PropertyFeatures" EntityType="MapItModel.PropertyFeature" />
           <EntitySet Name="PropertyPhotos" EntityType="MapItModel.PropertyPhoto" />
           <EntitySet Name="PropertySettings" EntityType="MapItModel.PropertySetting" />
-          <EntitySet Name="PropertyTypes" EntityType="MapItModel.PropertyType" />
           <EntitySet Name="PropertyVideos" EntityType="MapItModel.PropertyVideo" />
           <EntitySet Name="PropertyViews" EntityType="MapItModel.PropertyView" />
-          <EntitySet Name="Purposes" EntityType="MapItModel.Purpos" />
           <EntitySet Name="Reasons" EntityType="MapItModel.Reason" />
           <EntitySet Name="ServiceFavorites" EntityType="MapItModel.ServiceFavorite" />
           <EntitySet Name="ServicePhotos" EntityType="MapItModel.ServicePhoto" />
@@ -2239,14 +2243,6 @@
             <End Role="PagePlace" EntitySet="PagePlaces" />
             <End Role="PageShow" EntitySet="PageShows" />
           </AssociationSet>
-          <AssociationSet Name="FK_Properties_PropertyTypes" Association="MapItModel.FK_Properties_PropertyTypes">
-            <End Role="PropertyType" EntitySet="PropertyTypes" />
-            <End Role="Property" EntitySet="Properties" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Properties_Purposes" Association="MapItModel.FK_Properties_Purposes">
-            <End Role="Purpos" EntitySet="Purposes" />
-            <End Role="Property" EntitySet="Properties" />
-          </AssociationSet>
           <AssociationSet Name="FK_PropertyComponents_Properties" Association="MapItModel.FK_PropertyComponents_Properties">
             <End Role="Property" EntitySet="Properties" />
             <End Role="PropertyComponent" EntitySet="PropertyComponents" />
@@ -2270,14 +2266,6 @@
           <AssociationSet Name="FK_PropertyViews_Properties" Association="MapItModel.FK_PropertyViews_Properties">
             <End Role="Property" EntitySet="Properties" />
             <End Role="PropertyView" EntitySet="PropertyViews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WatchLists_PropertyTypes" Association="MapItModel.FK_WatchLists_PropertyTypes">
-            <End Role="PropertyType" EntitySet="PropertyTypes" />
-            <End Role="WatchList" EntitySet="WatchLists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WatchLists_Purposes" Association="MapItModel.FK_WatchLists_Purposes">
-            <End Role="Purpos" EntitySet="Purposes" />
-            <End Role="WatchList" EntitySet="WatchLists" />
           </AssociationSet>
           <AssociationSet Name="FK_ServicesCategories_ServicesCategories" Association="MapItModel.FK_ServicesCategories_ServicesCategories">
             <End Role="ServicesCategory" EntitySet="ServicesCategories" />
@@ -2419,7 +2407,6 @@
             <End Role="Notification" EntitySet="Notifications" />
           </AssociationSet>
           <EntitySet Name="Users" EntityType="MapItModel.User" />
-          <EntitySet Name="UserTypes" EntityType="MapItModel.UserType" />
           <AssociationSet Name="FK_Users_Countries" Association="MapItModel.FK_Users_Countries">
             <End Role="Country" EntitySet="Countries" />
             <End Role="User" EntitySet="Users" />
@@ -2496,10 +2483,6 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserCredit" EntitySet="UserCredits" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_UserTypes" Association="MapItModel.FK_Users_UserTypes">
-            <End Role="UserType" EntitySet="UserTypes" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
           <AssociationSet Name="FK_WatchLists_Users" Association="MapItModel.FK_WatchLists_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="WatchList" EntitySet="WatchLists" />
@@ -2512,6 +2495,29 @@
           <AssociationSet Name="FK_GeneralSettings_Currencies" Association="MapItModel.FK_GeneralSettings_Currencies">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="GeneralSetting" EntitySet="GeneralSettings" />
+          </AssociationSet>
+          <EntitySet Name="PropertyTypes" EntityType="MapItModel.PropertyType" />
+          <EntitySet Name="Purposes" EntityType="MapItModel.Purpos" />
+          <EntitySet Name="UserTypes" EntityType="MapItModel.UserType" />
+          <AssociationSet Name="FK_Properties_PropertyTypes" Association="MapItModel.FK_Properties_PropertyTypes">
+            <End Role="PropertyType" EntitySet="PropertyTypes" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_Purposes" Association="MapItModel.FK_Properties_Purposes">
+            <End Role="Purpos" EntitySet="Purposes" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchLists_PropertyTypes" Association="MapItModel.FK_WatchLists_PropertyTypes">
+            <End Role="PropertyType" EntitySet="PropertyTypes" />
+            <End Role="WatchList" EntitySet="WatchLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchLists_Purposes" Association="MapItModel.FK_WatchLists_Purposes">
+            <End Role="Purpos" EntitySet="Purposes" />
+            <End Role="WatchList" EntitySet="WatchLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserTypes" Association="MapItModel.FK_Users_UserTypes">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="AdminPage">
@@ -2817,8 +2823,6 @@
           <Property Name="AdminUserId" Type="Int32" />
           <NavigationProperty Name="Block" Relationship="MapItModel.FK_Properties_Blocks" FromRole="Property" ToRole="Block" />
           <NavigationProperty Name="Country" Relationship="MapItModel.FK_Properties_Countries" FromRole="Property" ToRole="Country" />
-          <NavigationProperty Name="PropertyType" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="Property" ToRole="PropertyType" />
-          <NavigationProperty Name="Purpos" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Property" ToRole="Purpos" />
           <NavigationProperty Name="PropertyComponents" Relationship="MapItModel.FK_PropertyComponents_Properties" FromRole="Property" ToRole="PropertyComponent" />
           <NavigationProperty Name="PropertyFavorites" Relationship="MapItModel.FK_PropertyFavorites_Properties" FromRole="Property" ToRole="PropertyFavorite" />
           <NavigationProperty Name="PropertyFeatures" Relationship="MapItModel.FK_PropertyFeatures_Properties" FromRole="Property" ToRole="PropertyFeature" />
@@ -2829,6 +2833,8 @@
           <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_Properties" FromRole="Property" ToRole="Notification" />
           <NavigationProperty Name="PropertyReports" Relationship="MapItModel.FK_PropertyReports_Properties" FromRole="Property" ToRole="PropertyReport" />
           <NavigationProperty Name="User" Relationship="MapItModel.FK_Properties_Users" FromRole="Property" ToRole="User" />
+          <NavigationProperty Name="PropertyType" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="Property" ToRole="PropertyType" />
+          <NavigationProperty Name="Purpos" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Property" ToRole="Purpos" />
         </EntityType>
         <EntityType Name="PropertyComponent">
           <Key>
@@ -2882,18 +2888,6 @@
           <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
           <Property Name="IsMondatory" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="PropertyType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Ordering" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="PropertyType" ToRole="Property" />
-          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_PropertyTypes" FromRole="PropertyType" ToRole="WatchList" />
-        </EntityType>
         <EntityType Name="PropertyVideo">
           <Key>
             <PropertyRef Name="Id" />
@@ -2913,16 +2907,6 @@
           <Property Name="ViewedOn" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyViews_Properties" FromRole="PropertyView" ToRole="Property" />
           <NavigationProperty Name="User" Relationship="MapItModel.FK_PropertyViews_Users" FromRole="PropertyView" ToRole="User" />
-        </EntityType>
-        <EntityType Name="Purpos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Purpos" ToRole="Property" />
-          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Purposes" FromRole="Purpos" ToRole="WatchList" />
         </EntityType>
         <EntityType Name="Reason">
           <Key>
@@ -3038,9 +3022,9 @@
           <NavigationProperty Name="Area" Relationship="MapItModel.FK_WatchLists_Areas" FromRole="WatchList" ToRole="Area" />
           <NavigationProperty Name="City" Relationship="MapItModel.FK_WatchLists_Cities" FromRole="WatchList" ToRole="City" />
           <NavigationProperty Name="Country" Relationship="MapItModel.FK_WatchLists_Countries" FromRole="WatchList" ToRole="Country" />
+          <NavigationProperty Name="User" Relationship="MapItModel.FK_WatchLists_Users" FromRole="WatchList" ToRole="User" />
           <NavigationProperty Name="PropertyType" Relationship="MapItModel.FK_WatchLists_PropertyTypes" FromRole="WatchList" ToRole="PropertyType" />
           <NavigationProperty Name="Purpos" Relationship="MapItModel.FK_WatchLists_Purposes" FromRole="WatchList" ToRole="Purpos" />
-          <NavigationProperty Name="User" Relationship="MapItModel.FK_WatchLists_Users" FromRole="WatchList" ToRole="User" />
         </EntityType>
         <Association Name="FK_AdminPermissions_AdminPages">
           <End Type="MapItModel.AdminPage" Role="AdminPage" Multiplicity="1" />
@@ -3246,30 +3230,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Properties_PropertyTypes">
-          <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
-          <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PropertyType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Property">
-              <PropertyRef Name="TypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Properties_Purposes">
-          <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="1" />
-          <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Purpos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Property">
-              <PropertyRef Name="PurposeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PropertyComponents_Properties">
           <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
           <End Type="MapItModel.PropertyComponent" Role="PropertyComponent" Multiplicity="*" />
@@ -3339,30 +3299,6 @@
             </Principal>
             <Dependent Role="PropertyView">
               <PropertyRef Name="PropertyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WatchLists_PropertyTypes">
-          <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
-          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PropertyType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WatchList">
-              <PropertyRef Name="TypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WatchLists_Purposes">
-          <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="0..1" />
-          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Purpos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WatchList">
-              <PropertyRef Name="PurposeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4063,17 +3999,8 @@
           <NavigationProperty Name="TechMessages" Relationship="MapItModel.FK_TechMessages_Users" FromRole="User" ToRole="TechMessage" />
           <NavigationProperty Name="UserBalanceLogs" Relationship="MapItModel.FK_UserBalanceLogs_Users" FromRole="User" ToRole="UserBalanceLog" />
           <NavigationProperty Name="UserCredits" Relationship="MapItModel.FK_UserCredits_Users" FromRole="User" ToRole="UserCredit" />
-          <NavigationProperty Name="UserType" Relationship="MapItModel.FK_Users_UserTypes" FromRole="User" ToRole="UserType" />
           <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Users" FromRole="User" ToRole="WatchList" />
-        </EntityType>
-        <EntityType Name="UserType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_UserTypes" FromRole="UserType" ToRole="User" />
+          <NavigationProperty Name="UserType" Relationship="MapItModel.FK_Users_UserTypes" FromRole="User" ToRole="UserType" />
         </EntityType>
         <Association Name="FK_Users_Countries">
           <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
@@ -4313,18 +4240,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_UserTypes">
-          <End Type="MapItModel.UserType" Role="UserType" Multiplicity="0..1" />
-          <End Type="MapItModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="UserTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WatchLists_Users">
           <End Type="MapItModel.User" Role="User" Multiplicity="1" />
           <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
@@ -4415,6 +4330,103 @@
             </Principal>
             <Dependent Role="GeneralSetting">
               <PropertyRef Name="DefaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PropertyType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ordering" Type="Int32" Nullable="false" />
+          <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="PropertyType" ToRole="Property" />
+          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_PropertyTypes" FromRole="PropertyType" ToRole="WatchList" />
+        </EntityType>
+        <EntityType Name="Purpos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Purpos" ToRole="Property" />
+          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Purposes" FromRole="Purpos" ToRole="WatchList" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_UserTypes" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Properties_PropertyTypes">
+          <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
+          <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_Purposes">
+          <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="1" />
+          <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purpos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="PurposeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchLists_PropertyTypes">
+          <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
+          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WatchList">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchLists_Purposes">
+          <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="0..1" />
+          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purpos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WatchList">
+              <PropertyRef Name="PurposeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserTypes">
+          <End Type="MapItModel.UserType" Role="UserType" Multiplicity="0..1" />
+          <End Type="MapItModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4771,17 +4783,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PropertyTypes">
-            <EntityTypeMapping TypeName="MapItModel.PropertyType">
-              <MappingFragment StoreEntitySet="PropertyTypes">
-                <ScalarProperty Name="Ordering" ColumnName="Ordering" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropertyVideos">
             <EntityTypeMapping TypeName="MapItModel.PropertyVideo">
               <MappingFragment StoreEntitySet="PropertyVideos">
@@ -4797,15 +4798,6 @@
                 <ScalarProperty Name="ViewedOn" ColumnName="ViewedOn" />
                 <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Purposes">
-            <EntityTypeMapping TypeName="MapItModel.Purpos">
-              <MappingFragment StoreEntitySet="Purposes">
-                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -5219,15 +5211,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserTypes">
-            <EntityTypeMapping TypeName="MapItModel.UserType">
-              <MappingFragment StoreEntitySet="UserTypes">
-                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GeneralSettings">
             <EntityTypeMapping TypeName="MapItModel.GeneralSetting">
               <MappingFragment StoreEntitySet="GeneralSettings">
@@ -5284,6 +5267,41 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PropertyTypes">
+            <EntityTypeMapping TypeName="MapItModel.PropertyType">
+              <MappingFragment StoreEntitySet="PropertyTypes">
+                <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
+                <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
+                <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purposes">
+            <EntityTypeMapping TypeName="MapItModel.Purpos">
+              <MappingFragment StoreEntitySet="Purposes">
+                <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
+                <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
+                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="MapItModel.UserType">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
+                <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
+                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5333,10 +5351,8 @@
         <EntityTypeShape EntityType="MapItModel.PropertyFeature" Width="1.5" PointX="15" PointY="51" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.PropertyPhoto" Width="1.5" PointX="11.5" PointY="58.125" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.PropertySetting" Width="1.5" PointX="8.125" PointY="5.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="MapItModel.PropertyType" Width="1.5" PointX="7.5" PointY="35.5" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.PropertyVideo" Width="1.5" PointX="12" PointY="67.125" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.PropertyView" Width="1.5" PointX="12" PointY="64.125" IsExpanded="false" />
-        <EntityTypeShape EntityType="MapItModel.Purpos" Width="1.5" PointX="7.5" PointY="70.625" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Reason" Width="1.5" PointX="12.75" PointY="70.125" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.ServiceFavorite" Width="1.5" PointX="7.5" PointY="50.25" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.ServicePhoto" Width="1.5" PointX="7.25" PointY="54.25" IsExpanded="false" />
@@ -5377,16 +5393,12 @@
         <AssociationConnector Association="MapItModel.FK_WatchLists_Countries" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyFeatures_Features" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PageShows_PagePlaces" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_Properties_PropertyTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_Properties_Purposes" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyComponents_Properties" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyFavorites_Properties" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyFeatures_Properties" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyPhotos_Properties" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyVideos_Properties" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyViews_Properties" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_WatchLists_PropertyTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_WatchLists_Purposes" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_ServicesCategories_ServicesCategories" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_BrokerAreas_Areas" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_ServiceAreas_Areas" ManuallyRouted="false" />
@@ -5420,7 +5432,6 @@
         <EntityTypeShape EntityType="MapItModel.GenNotif" Width="1.5" PointX="0.75" PointY="5" IsExpanded="false" />
         <AssociationConnector Association="MapItModel.FK_Notifications_GenNotifs" />
         <EntityTypeShape EntityType="MapItModel.User" Width="2.25" PointX="3" PointY="57.75" />
-        <EntityTypeShape EntityType="MapItModel.UserType" Width="1.5" PointX="0.75" PointY="61.375" />
         <AssociationConnector Association="MapItModel.FK_Users_Countries" />
         <AssociationConnector Association="MapItModel.FK_DevicesTokens_Users" />
         <AssociationConnector Association="MapItModel.FK_Notifications_Users" />
@@ -5440,11 +5451,18 @@
         <AssociationConnector Association="MapItModel.FK_TechMessages_Users" />
         <AssociationConnector Association="MapItModel.FK_UserBalanceLogs_Users" />
         <AssociationConnector Association="MapItModel.FK_UserCredits_Users" />
-        <AssociationConnector Association="MapItModel.FK_Users_UserTypes" />
         <AssociationConnector Association="MapItModel.FK_WatchLists_Users" />
         <EntityTypeShape EntityType="MapItModel.GeneralSetting" Width="1.5" PointX="18" PointY="49.125" />
         <AssociationConnector Association="MapItModel.FK_GeneralSettings_Countries" />
         <AssociationConnector Association="MapItModel.FK_GeneralSettings_Currencies" />
+        <EntityTypeShape EntityType="MapItModel.PropertyType" Width="1.5" PointX="7.875" PointY="35.75" />
+        <EntityTypeShape EntityType="MapItModel.Purpos" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="MapItModel.UserType" Width="1.5" PointX="1.125" PointY="61.25" />
+        <AssociationConnector Association="MapItModel.FK_Properties_PropertyTypes" />
+        <AssociationConnector Association="MapItModel.FK_Properties_Purposes" />
+        <AssociationConnector Association="MapItModel.FK_WatchLists_PropertyTypes" />
+        <AssociationConnector Association="MapItModel.FK_WatchLists_Purposes" />
+        <AssociationConnector Association="MapItModel.FK_Users_UserTypes" />
       </Diagram>
     </Diagrams>
   </Designer>

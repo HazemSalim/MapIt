@@ -53,10 +53,8 @@ namespace MapIt.Data
         public virtual DbSet<PropertyFeature> PropertyFeatures { get; set; }
         public virtual DbSet<PropertyPhoto> PropertyPhotos { get; set; }
         public virtual DbSet<PropertySetting> PropertySettings { get; set; }
-        public virtual DbSet<PropertyType> PropertyTypes { get; set; }
         public virtual DbSet<PropertyVideo> PropertyVideos { get; set; }
         public virtual DbSet<PropertyView> PropertyViews { get; set; }
-        public virtual DbSet<Purpos> Purposes { get; set; }
         public virtual DbSet<Reason> Reasons { get; set; }
         public virtual DbSet<ServiceFavorite> ServiceFavorites { get; set; }
         public virtual DbSet<ServicePhoto> ServicePhotos { get; set; }
@@ -84,8 +82,10 @@ namespace MapIt.Data
         public virtual DbSet<ServiceReport> ServiceReports { get; set; }
         public virtual DbSet<GenNotif> GenNotifs { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<GeneralSetting> GeneralSettings { get; set; }
+        public virtual DbSet<PropertyType> PropertyTypes { get; set; }
+        public virtual DbSet<Purpos> Purposes { get; set; }
+        public virtual DbSet<UserType> UserTypes { get; set; }
     
         public virtual ObjectResult<GetSettings_Result> GetSettings(Nullable<int> propertyTypeId)
         {

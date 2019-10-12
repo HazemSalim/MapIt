@@ -527,6 +527,8 @@
     <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Ordering" Type="int" Nullable="false" />
+    <Property Name="ShortTitleAR" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortTitleEN" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PropertyVideos">
     <Key>
@@ -552,6 +554,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ShortTitleAR" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortTitleEN" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Reasons">
     <Key>
@@ -753,6 +757,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ShortTitleAR" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortTitleEN" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="WatchLists">
     <Key>

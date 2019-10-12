@@ -13,12 +13,16 @@ namespace MapIt.Web.App.App_Model
         public int Id { get; set; }
         public string TitleEN { get; set; }
         public string TitleAR { get; set; }
+        public string ShortTitleAR { get; set; }
+        public string ShortTitleEN { get; set; }
 
         public App_Purpos(Purpos obj)
         {
             Id = obj.Id;
             TitleEN = obj.TitleEN;
             TitleAR = obj.TitleAR;
+            ShortTitleEN = obj.ShortTitleEN;
+            ShortTitleAR = obj.ShortTitleAR;
         }
     }
 }
