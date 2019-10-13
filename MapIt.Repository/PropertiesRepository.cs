@@ -2,6 +2,7 @@
 using System.Linq;
 using MapIt.Data;
 using System.Data.Common;
+using System.Collections.Generic;
 
 namespace MapIt.Repository
 {
@@ -17,13 +18,38 @@ namespace MapIt.Repository
             }
         }
 
+        List<int> tointarray(string value, char sep)
+        {
+            if (string.IsNullOrEmpty(value))
+                return new List<int>();
+
+            string[] sa = value.Split(sep);
+            List<int> ia = new List<int>();
+            for (int i = 0; i < sa.Count(); ++i)
+            {
+                int j;
+                string s = sa[i];
+                if (int.TryParse(s, out j))
+                {
+                    ia.Add(j);
+                }
+            }
+            return ia;
+        }
+
         public IQueryable<Property> Search(long? propertyId, long? userId, int? purposeId, int? typeId, int? countryId, int? cityId, int? areaId, int? blockId,
             string street, string portalAddress, string paci, double? areaFrom, double? areaTo, int? yearFrom, int? yearTo, double? mIncomeFrom, double? mIncomeTo, double? sPriceFrom,
             double? sPriceTo, double? rPriceFrom, double? rPriceTo, DateTime? addedFrom, DateTime? addedTo, int? special, int? available, int? active, int? canceled,
-            int? admin, int? avDuration, string keyword = "",int userTypeID=0)
+            int? admin, int? avDuration, string keyword = "", int userTypeID = 0, string propertytypesIDs = "", string usertypesIDs = "")
         {
+            var tmpUserTpes = tointarray(usertypesIDs, ',');
+            var tmpPropertyTypesIDs = tointarray(propertytypesIDs, ',');
+
             return Find(p =>
-                                       (userTypeID > 0 && p.User!=null ? p.User.UserTypeID == userTypeID : true) &&
+                                       (p.User != null && tmpUserTpes.Count > 0 ? tmpUserTpes.Contains(p.User.UserTypeID.Value) : true) &&
+                                       (tmpPropertyTypesIDs.Count > 0 ? tmpPropertyTypesIDs.Contains(p.TypeId) : true) &&
+
+                                       (userTypeID > 0 && p.User != null ? p.User.UserTypeID == userTypeID : true) &&
                                        (propertyId.HasValue && propertyId.Value > 0 ? p.Id == propertyId.Value : true) &&
                                        (userId.HasValue && userId.Value > 0 ? p.UserId == userId.Value : true) &&
                                        (purposeId.HasValue && purposeId.Value > 0 ? p.PurposeId == purposeId.Value : true) &&

@@ -1798,10 +1798,11 @@ namespace MapIt.Web.App
         [WebMethod(Description = @"Get all properties. <br />Sort option 1: Added Descending - Sort option 2: Added Ascending - 
                     Sort option 3: Price Descending - Sort option 4: Price Ascending. <br /> Set today with value '1' to get today's deals")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public object GetPropertiesMap(long propertyId, long userId, int purposeId, int typeId, int countryId, int cityId, int areaId, int blockId,
+        public object GetPropertiesMap(long propertyId, long userId, int purposeId, string typeId, int countryId, int cityId, int areaId, int blockId,
            string portalAddress, double areaFrom, double areaTo, int yearFrom, int yearTo, double mIncomeFrom, double mIncomeTo, double sPriceFrom,
            double sPriceTo, double rPriceFrom, double rPriceTo, int today, int special, int sortOption, int pageIndex, long loginUserId,
-           int userTypeID, double minLatitude, double minLongitude, double maxLatitude, double maxLongitude, double centerLatitude, double centerLongitude, string key)
+           string userTypeID, double minLatitude, double minLongitude, double maxLatitude, double maxLongitude, double centerLatitude, 
+           double centerLongitude, string key)
         {
             int pageSize = 50;
             try
@@ -1841,9 +1842,9 @@ namespace MapIt.Web.App
                     _special = special;
                 }
 
-                var properties = propertiesRepository.Search(propertyId, userId, purposeId, typeId, countryId, cityId, areaId, blockId, null, portalAddress,
+                var properties = propertiesRepository.Search(propertyId, userId, purposeId, 0, countryId, cityId, areaId, blockId, null, portalAddress,
                     null, areaFrom, areaTo, yearFrom, yearTo, mIncomeFrom, mIncomeTo, sPriceFrom, sPriceTo, rPriceFrom, rPriceTo, dateFrom, dateTo, _special,
-                    1, 1, 0, null, 1, null, userTypeID).ToList();
+                    1, 1, 0, null, 1, null, 0, typeId,userTypeID).ToList();
 
 
                 if (centerLatitude != 0 && centerLongitude != 0)
