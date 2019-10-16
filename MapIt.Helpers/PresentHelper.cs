@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 using System.Net;
 using System.IO;
 using System.Text;
+using MapIt.Repository;
+using MapIt.Data;
 
 namespace MapIt.Helpers
 {
@@ -375,13 +377,24 @@ namespace MapIt.Helpers
                 LogHelper.LogException(ex);
             }
         }
+
+        public static GeneralSetting GSetting
+        {
+            get
+            {
+                var gSettingsRepository = new GeneralSettingsRepository();
+                var gSettingObj = gSettingsRepository.Get();
+                return gSettingObj;
+            }
+        }
+
         public static TokenObj GenerateToken()
         {
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create("https://kuwaitportal.paci.gov.kw/arcgis/sharing/generateToken");
-                var postData = "username=AqarMapUser";
-                postData += "&password=@qaR#7g210";
+                var postData = "username="+ GSetting.PaciUserName;
+                postData += "&password=" + GSetting.PaciPassword;
                 postData += "&Referer=requestip";
                 postData += "&expiration=999999";
                 postData += "&f=pjson";

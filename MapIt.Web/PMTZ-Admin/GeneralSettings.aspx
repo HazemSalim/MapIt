@@ -451,6 +451,32 @@
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
                             </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        PACI User Name
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtPaciUserName" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPaciUserName"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        Paci Password
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtPaciPassword" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtPaciPassword"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+
+
+
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="checkbox">

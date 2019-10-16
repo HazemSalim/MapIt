@@ -34,13 +34,15 @@ namespace MapIt.Lib
                         msg = details;
                     }
 
-                    PushNotification push = new PushNotification();
-                    push.GoogleAppID = ConfigurationManager.AppSettings["GoogleAppID"];
-                    push.P12FilePath = ConfigurationManager.AppSettings["P12FilePath"];
-                    push.P12FilePassword = ConfigurationManager.AppSettings["P12FilePassword"];
-                    push.Sandbox = Convert.ToBoolean(ConfigurationManager.AppSettings["Sandbox"]);
-                    push.PrintResult = Convert.ToBoolean(ConfigurationManager.AppSettings["PrintResult"]);
-                    push.CurrentContext = HttpContext.Current;
+                    PushNotification push = new PushNotification
+                    {
+                        GoogleAppID = ConfigurationManager.AppSettings["GoogleAppID"],
+                        P12FilePath = ConfigurationManager.AppSettings["P12FilePath"],
+                        P12FilePassword = ConfigurationManager.AppSettings["P12FilePassword"],
+                        Sandbox = Convert.ToBoolean(ConfigurationManager.AppSettings["Sandbox"]),
+                        PrintResult = Convert.ToBoolean(ConfigurationManager.AppSettings["PrintResult"]),
+                        CurrentContext = HttpContext.Current
+                    };
 
                     foreach (var item in dtList)
                     {

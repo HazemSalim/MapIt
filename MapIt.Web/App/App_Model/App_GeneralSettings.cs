@@ -42,6 +42,9 @@ namespace MapIt.Web.App.App_Model
         public string IOSVersionNumber { get; set; }
         public bool IsForceClose { get; set; }
 
+        public string PaciUserName { get; set; }
+        public string PaciPassword { get; set; }
+
         public App_GeneralSettings(GeneralSetting gSetting)
         {
             TitleEN = gSetting.TitleEN;
@@ -62,6 +65,10 @@ namespace MapIt.Web.App.App_Model
             Email = !string.IsNullOrEmpty(gSetting.Email) ? gSetting.Email : string.Empty;
             Phone = !string.IsNullOrEmpty(gSetting.Phone) ? gSetting.Phone : string.Empty;
             Fax = !string.IsNullOrEmpty(gSetting.Fax) ? gSetting.Fax : string.Empty;
+
+            PaciUserName = !string.IsNullOrEmpty(gSetting.PaciUserName) ? gSetting.PaciUserName : string.Empty;
+            PaciPassword = !string.IsNullOrEmpty(gSetting.PaciPassword) ? gSetting.PaciPassword : string.Empty;
+
             WorkingHours = !string.IsNullOrEmpty(gSetting.WorkingHours) ? gSetting.WorkingHours : string.Empty;
             NormalAdCost = gSetting.NormalAdCost;
             SpecAdCost = gSetting.SpecAdCost;

@@ -134,12 +134,13 @@ namespace MapIt.Lib
         {
             try
             {
-                NotificationService service = new NotificationService(Sandbox, P12FilePath, P12FilePassword, 1);
+                NotificationService service = new NotificationService(Sandbox, P12FilePath, P12FilePassword, 1)
+                {
+                    SendRetries = 1,
+                    //5 retries before generating notificationfailed event
 
-                service.SendRetries = 1;
-                //5 retries before generating notificationfailed event
-
-                service.ReconnectDelay = 1;
+                    ReconnectDelay = 1
+                };
 
                 //.2 seconds
 

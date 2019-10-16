@@ -357,15 +357,6 @@
       <End Role="User" EntitySet="Users" />
       <End Role="WatchList" EntitySet="WatchLists" />
     </AssociationSet>
-    <EntitySet Name="GeneralSettings" EntityType="MapItModel.GeneralSetting" />
-    <AssociationSet Name="FK_GeneralSettings_Countries" Association="MapItModel.FK_GeneralSettings_Countries">
-      <End Role="Country" EntitySet="Countries" />
-      <End Role="GeneralSetting" EntitySet="GeneralSettings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_GeneralSettings_Currencies" Association="MapItModel.FK_GeneralSettings_Currencies">
-      <End Role="Currency" EntitySet="Currencies" />
-      <End Role="GeneralSetting" EntitySet="GeneralSettings" />
-    </AssociationSet>
     <EntitySet Name="PropertyTypes" EntityType="MapItModel.PropertyType" />
     <EntitySet Name="Purposes" EntityType="MapItModel.Purpos" />
     <EntitySet Name="UserTypes" EntityType="MapItModel.UserType" />
@@ -388,6 +379,15 @@
     <AssociationSet Name="FK_Users_UserTypes" Association="MapItModel.FK_Users_UserTypes">
       <End Role="UserType" EntitySet="UserTypes" />
       <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="GeneralSettings" EntityType="MapItModel.GeneralSetting" />
+    <AssociationSet Name="FK_GeneralSettings_Countries" Association="MapItModel.FK_GeneralSettings_Countries">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="GeneralSetting" EntitySet="GeneralSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GeneralSettings_Currencies" Association="MapItModel.FK_GeneralSettings_Currencies">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="GeneralSetting" EntitySet="GeneralSettings" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="AdminPage">
@@ -2122,87 +2122,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="GeneralSetting">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="MetaDesc" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="MetaKW" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Facebook" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Twitter" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Instagram" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Youtube" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Linkedin" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Snapchat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Tumblr" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="AppStore" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="GooglePlay" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DefaultCountryId" Type="Int32" Nullable="false" />
-    <Property Name="DefaultCurrencyId" Type="Int32" Nullable="false" />
-    <Property Name="InvoiceTerms" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="WorkingHours" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="DefFreeAmount" Type="Double" Nullable="false" />
-    <Property Name="NormalAdCost" Type="Double" Nullable="false" />
-    <Property Name="SpecAdCost" Type="Double" Nullable="false" />
-    <Property Name="AdVideoCost" Type="Double" Nullable="false" />
-    <Property Name="NormalAdDuration" Type="Int32" Nullable="false" />
-    <Property Name="SpecAdDuration" Type="Int32" Nullable="false" />
-    <Property Name="AvPhotos" Type="Int32" Nullable="false" />
-    <Property Name="AvVideos" Type="Int32" Nullable="false" />
-    <Property Name="SimilarAdCount" Type="Int32" Nullable="false" />
-    <Property Name="PageSize" Type="Int32" Nullable="false" />
-    <Property Name="PageSizeMob" Type="Int32" Nullable="false" />
-    <Property Name="AutoActiveUser" Type="Boolean" Nullable="false" />
-    <Property Name="AutoActiveAd" Type="Boolean" Nullable="false" />
-    <Property Name="Version" Type="Double" Nullable="false" />
-    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="AdminUserId" Type="Int32" />
-    <Property Name="MessageCloseEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="MessageCloseArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="IOSAppUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="MessageUpdateEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="MessageUpdateArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="IsForceUpdateIOS" Type="Boolean" />
-    <Property Name="IOSVersionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsForceClose" Type="Boolean" />
-    <NavigationProperty Name="Country" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="GeneralSetting" ToRole="Country" />
-    <NavigationProperty Name="DefaultCurrency" Relationship="MapItModel.FK_GeneralSettings_Currencies" FromRole="GeneralSetting" ToRole="Currency" />
-  </EntityType>
-  <Association Name="FK_GeneralSettings_Countries">
-    <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
-    <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="GeneralSetting">
-        <PropertyRef Name="DefaultCountryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_GeneralSettings_Currencies">
-    <End Type="MapItModel.Currency" Role="Currency" Multiplicity="1" />
-    <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Currency">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="GeneralSetting">
-        <PropertyRef Name="DefaultCurrencyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="PropertyType">
     <Key>
       <PropertyRef Name="Id" />
@@ -2297,6 +2216,89 @@
       </Principal>
       <Dependent Role="User">
         <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="GeneralSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDesc" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKW" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Twitter" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Instagram" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Youtube" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Linkedin" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Snapchat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Tumblr" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="AppStore" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="GooglePlay" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DefaultCountryId" Type="Int32" Nullable="false" />
+    <Property Name="DefaultCurrencyId" Type="Int32" Nullable="false" />
+    <Property Name="InvoiceTerms" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="WorkingHours" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="DefFreeAmount" Type="Double" Nullable="false" />
+    <Property Name="NormalAdCost" Type="Double" Nullable="false" />
+    <Property Name="SpecAdCost" Type="Double" Nullable="false" />
+    <Property Name="AdVideoCost" Type="Double" Nullable="false" />
+    <Property Name="NormalAdDuration" Type="Int32" Nullable="false" />
+    <Property Name="SpecAdDuration" Type="Int32" Nullable="false" />
+    <Property Name="AvPhotos" Type="Int32" Nullable="false" />
+    <Property Name="AvVideos" Type="Int32" Nullable="false" />
+    <Property Name="SimilarAdCount" Type="Int32" Nullable="false" />
+    <Property Name="PageSize" Type="Int32" Nullable="false" />
+    <Property Name="PageSizeMob" Type="Int32" Nullable="false" />
+    <Property Name="AutoActiveUser" Type="Boolean" Nullable="false" />
+    <Property Name="AutoActiveAd" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Double" Nullable="false" />
+    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="AdminUserId" Type="Int32" />
+    <Property Name="MessageCloseEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MessageCloseArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IOSAppUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MessageUpdateEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MessageUpdateArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsForceUpdateIOS" Type="Boolean" />
+    <Property Name="IOSVersionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsForceClose" Type="Boolean" />
+    <Property Name="PaciUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PaciPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Country" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="GeneralSetting" ToRole="Country" />
+    <NavigationProperty Name="DefaultCurrency" Relationship="MapItModel.FK_GeneralSettings_Currencies" FromRole="GeneralSetting" ToRole="Currency" />
+  </EntityType>
+  <Association Name="FK_GeneralSettings_Countries">
+    <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GeneralSetting">
+        <PropertyRef Name="DefaultCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GeneralSettings_Currencies">
+    <End Type="MapItModel.Currency" Role="Currency" Multiplicity="1" />
+    <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GeneralSetting">
+        <PropertyRef Name="DefaultCurrencyId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -776,9 +776,46 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="PropertyTypes">
+      <EntityTypeMapping TypeName="MapItModel.PropertyType">
+        <MappingFragment StoreEntitySet="PropertyTypes">
+          <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
+          <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
+          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purposes">
+      <EntityTypeMapping TypeName="MapItModel.Purpos">
+        <MappingFragment StoreEntitySet="Purposes">
+          <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
+          <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="MapItModel.UserType">
+        <MappingFragment StoreEntitySet="UserTypes">
+          <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
+          <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="GeneralSettings">
       <EntityTypeMapping TypeName="MapItModel.GeneralSetting">
         <MappingFragment StoreEntitySet="GeneralSettings">
+          <ScalarProperty Name="PaciPassword" ColumnName="PaciPassword" />
+          <ScalarProperty Name="PaciUserName" ColumnName="PaciUserName" />
           <ScalarProperty Name="IsForceClose" ColumnName="IsForceClose" />
           <ScalarProperty Name="IOSVersionNumber" ColumnName="IOSVersionNumber" />
           <ScalarProperty Name="IsForceUpdateIOS" ColumnName="IsForceUpdateIOS" />
@@ -826,41 +863,6 @@
           <ScalarProperty Name="Website" ColumnName="Website" />
           <ScalarProperty Name="MetaKW" ColumnName="MetaKW" />
           <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
-          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PropertyTypes">
-      <EntityTypeMapping TypeName="MapItModel.PropertyType">
-        <MappingFragment StoreEntitySet="PropertyTypes">
-          <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
-          <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
-          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
-          <ScalarProperty Name="Color" ColumnName="Color" />
-          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Purposes">
-      <EntityTypeMapping TypeName="MapItModel.Purpos">
-        <MappingFragment StoreEntitySet="Purposes">
-          <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
-          <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
-          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserTypes">
-      <EntityTypeMapping TypeName="MapItModel.UserType">
-        <MappingFragment StoreEntitySet="UserTypes">
-          <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
-          <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
           <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
           <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
           <ScalarProperty Name="Id" ColumnName="Id" />

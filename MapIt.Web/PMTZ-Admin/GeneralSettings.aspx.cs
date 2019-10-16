@@ -144,6 +144,9 @@ namespace MapIt.Web.Admin
                     txtMessageUpdateArabic.Text = gSettingObj.MessageUpdateArabic.ToString();
                     chkIsForceClose.Checked = gSettingObj.IsForceClose.HasValue && gSettingObj.IsForceClose.Value;
                     chkIsForceUpdateIOS.Checked = gSettingObj.IsForceUpdateIOS.HasValue && gSettingObj.IsForceUpdateIOS.Value;
+
+                    txtPaciPassword.Text = gSettingObj.PaciPassword;
+                    txtPaciUserName.Text = gSettingObj.PaciUserName;
                 }
             }
             catch (Exception ex)
@@ -248,6 +251,9 @@ namespace MapIt.Web.Admin
                         gSettingObj.IsForceUpdateIOS = chkIsForceUpdateIOS.Checked;
                         gSettingObj.IsForceClose = chkIsForceClose.Checked;
 
+                        gSettingObj.PaciPassword = txtPaciPassword.Text;
+                        gSettingObj.PaciUserName = txtPaciUserName.Text;
+
                         gSettingsRepository.Update(gSettingObj);
                     }
                     else
@@ -308,6 +314,9 @@ namespace MapIt.Web.Admin
                     gSettingObj.IOSVersionNumber = txtIOSVersionNumber.Text;
                     gSettingObj.IsForceUpdateIOS = chkIsForceUpdateIOS.Checked;
                     gSettingObj.IsForceClose = chkIsForceClose.Checked;
+
+                    gSettingObj.PaciPassword = txtPaciPassword.Text;
+                    gSettingObj.PaciUserName = txtPaciUserName.Text;
 
                     gSettingsRepository.Add(gSettingObj);
                     LoadData();

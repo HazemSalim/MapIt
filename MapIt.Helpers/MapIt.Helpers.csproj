@@ -62,6 +62,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MapIt.Data\MapIt.Data.csproj">
+      <Project>{0D2FF36A-06B9-40B8-8B95-306137657BC3}</Project>
+      <Name>MapIt.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MapIt.Repository\MapIt.Repository.csproj">
+      <Project>{7F37BF0A-FC91-4BBC-B14B-7D228E69144A}</Project>
+      <Name>MapIt.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -263,6 +263,8 @@
     <Property Name="IsForceUpdateIOS" Type="bit" />
     <Property Name="IOSVersionNumber" Type="nvarchar" MaxLength="50" />
     <Property Name="IsForceClose" Type="bit" />
+    <Property Name="PaciUserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="PaciPassword" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="GenNotifs">
     <Key>
