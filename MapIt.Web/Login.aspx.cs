@@ -110,7 +110,7 @@ namespace MapIt.Web
                         {
                             UserId = userObj.Id;
 
-                            Session["UserId"] = UserId;
+                       
 
                             // Set last login datetime
                             usersRepository = new UsersRepository();

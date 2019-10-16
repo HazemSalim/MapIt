@@ -1653,6 +1653,7 @@
     <Content Include="PMTZ-Admin\ServiceMessages.aspx" />
     <Content Include="PMTZ-Admin\PropertyMessages.aspx" />
     <Content Include="PMTZ-Admin\ServiceReports.aspx" />
+    <Content Include="ReportAbuse.aspx" />
     <Content Include="ReqB2B.aspx" />
     <Content Include="ReqPhotographer.aspx" />
     <Content Include="Brokers.aspx" />
@@ -2598,6 +2599,13 @@
     </Compile>
     <Compile Include="PMTZ-Admin\ServiceReports.aspx.designer.cs">
       <DependentUpon>ServiceReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportAbuse.aspx.cs">
+      <DependentUpon>ReportAbuse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportAbuse.aspx.designer.cs">
+      <DependentUpon>ReportAbuse.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReqB2B.aspx.cs">
       <DependentUpon>ReqB2B.aspx</DependentUpon>

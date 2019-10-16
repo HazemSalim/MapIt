@@ -115,8 +115,8 @@
                                     </a>
                                 </div>
                                 <div class="detailsIconsContainer uk-margin-top">
-                                    <asp:LinkButton ID="lnkBtnReport" runat="server" CssClass="uk-button buttonStyle">
-
+                                <%--    <asp:LinkButton ID="lnkBtnReport" runat="server" CssClass="uk-button buttonStyle">--%>
+                                         <a id="aReportAbuse" runat="server" href="#" class="uk-button buttonStyle uk-margin-right">
                                         <span class="uk-margin-left">
                                             <span class="icon-report-symbol"></span>
                                             <span><%= GetGlobalResourceObject("Resource","report_abuse") %></span>
@@ -124,7 +124,8 @@
                                             <asp:Literal ID="litReports" runat="server" />
                                             )
                                         </span>
-                                    </asp:LinkButton>
+                                    </a>
+                                  <%--  </asp:LinkButton>--%>
                                     <a id="aOther" href="#" class="uk-button buttonStyle uk-margin-right">
                                         <span class="uk-margin-left">
                                             <span class="icon-megaphone"></span>

@@ -87,6 +87,7 @@ namespace MapIt.Web
                     litReports.Text = propertyObj.PropertyReports.Count.ToString();
                     litOthers.Text = (propertyObj.User.Properties.Count).ToString();
                     aOther.HRef = "/Proprties?op=1&user=" + propertyObj.UserId;
+                    aReportAbuse.HRef = "/ReportAbuse?op=1&id=" + propertyObj.Id;
                     litDuration.Text = Culture.ToLower() == "ar-kw" ? PresentHelper.GetDurationAr(propertyObj.AddedOn) : PresentHelper.GetDurationEn(propertyObj.AddedOn);
 
                     tr_SellingPrice.Visible = propertyObj.SellingPrice.HasValue;
@@ -248,26 +249,26 @@ namespace MapIt.Web
             }
         }
 
-        protected void lnkBtnReport_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (UserId > 0)
-                {
-                    propertiesRepository = new PropertiesRepository();
-                    propertiesRepository.SetReport(PropertyId, UserId, 1,string.Empty);
-                }
-                else
-                {
-                    PresentHelper.ShowScriptMessage(Resources.Resource.login_first, "/Login");
-                }
-            }
-            catch (Exception ex)
-            {
-                PresentHelper.ShowScriptMessage(Resources.Resource.error);
-                LogHelper.LogException(ex);
-            }
-        }
+        //protected void lnkBtnReport_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (UserId > 0)
+        //        {
+        //            propertiesRepository = new PropertiesRepository();
+        //            propertiesRepository.SetReport(PropertyId, UserId, 1,string.Empty);
+        //        }
+        //        else
+        //        {
+        //            PresentHelper.ShowScriptMessage(Resources.Resource.login_first, "/Login");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        PresentHelper.ShowScriptMessage(Resources.Resource.error);
+        //        LogHelper.LogException(ex);
+        //    }
+        //}
 
         protected void rRelatedPros_ItemCommand(object source, RepeaterCommandEventArgs e)
         {

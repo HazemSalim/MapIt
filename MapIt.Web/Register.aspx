@@ -65,7 +65,7 @@
                                     </div>
 
                                     <div class="uk-margin">
-                                        <label for="phone" style="display: block;">
+                                        <label for="txtPhone" style="display: block;">
                                             <%= GetGlobalResourceObject("Resource","phone") %></label>
                                         <asp:DropDownList ID="ddlCode" runat="server" CssClass="uk-input l_tel">
                                         </asp:DropDownList>
@@ -142,6 +142,20 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtActivationCode"
                                             Display="Dynamic" EnableClientScript="true" SetFocusOnError="true"
                                             ValidationGroup="SMSVerification" Text='<%$ Resources:Resource,required_field %>' CssClass="alert-text"></asp:RequiredFieldValidator>
+                                    </div>
+
+                                     <div class="uk-margin">
+                                        <label for="txtPhone2" style="display: block;">
+                                            <%= GetGlobalResourceObject("Resource","phone") %></label>
+                                        <asp:DropDownList ID="ddlCode2" runat="server" CssClass="uk-input l_tel">
+                                        </asp:DropDownList>
+                                        <asp:TextBox ID="txtPhone2" runat="server" Placeholder="<%$ Resources:Resource,phone %>" TextMode="Phone" ClientIDMode="Static" CssClass="uk-input r_tel"></asp:TextBox>
+
+
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPhone2"
+                                            Display="Dynamic" EnableClientScript="true" SetFocusOnError="true"
+                                            ValidationGroup="SMSVerification" Text='<%$ Resources:Resource,required_field %>' CssClass="alert-text"></asp:RequiredFieldValidator>
+                                        <div style="clear: both"></div>
                                     </div>
 
                                 </fieldset>
