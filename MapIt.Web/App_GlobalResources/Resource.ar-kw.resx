@@ -1497,4 +1497,7 @@
   <data name="userType" xml:space="preserve">
     <value>نوع المستخدم</value>
   </data>
+  <data name="reason" xml:space="preserve">
+    <value>السبب</value>
+  </data>
 </root>

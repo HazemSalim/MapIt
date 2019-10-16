@@ -3049,6 +3049,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reason.
+        /// </summary>
+        internal static string reason {
+            get {
+                return ResourceManager.GetString("reason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receipt.
         /// </summary>
         internal static string receipt {

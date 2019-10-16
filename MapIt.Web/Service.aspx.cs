@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using MapIt.Helpers;
-using MapIt.Lib;
 using MapIt.Repository;
 
 namespace MapIt.Web
@@ -80,6 +76,9 @@ namespace MapIt.Web
                     CategoryId = serviceObj.CategoryId;
                     aPhone.InnerText = serviceObj.User.Phone;
                     //aPhone.HRef = "tel:" + serviceObj.User.Phone;
+
+                    aReportAbuse.HRef = "/ReportAbuse?op=2&id=" + serviceObj.Id;
+
                     litViewers.Text = serviceObj.ViewersCount.ToString();
                     litFav.Text = serviceObj.ServiceFavorites.Count.ToString();
                     litYears.Text = serviceObj.ExYears.ToString();

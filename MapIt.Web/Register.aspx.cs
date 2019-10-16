@@ -59,11 +59,17 @@ namespace MapIt.Web
                     ddlCode.DataValueField = "CCode";
                     ddlCode.DataTextField = "FullCode";
 
+                    ddlCode2.DataValueField = "CCode";
+                    ddlCode2.DataTextField = "FullCode";
+
                     ddlCountry.DataSource = list;
                     ddlCountry.DataBind();
 
                     ddlCode.DataSource = list.OrderBy(c => c.ISOCode).ToList();
                     ddlCode.DataBind();
+
+                    ddlCode2.DataSource = list.OrderBy(c => c.ISOCode).ToList();
+                    ddlCode2.DataBind();
                 }
                 string country = "Kuwait";
                 var defaultcountryobj = countriesRepository.Find(x => x.TitleEN.Trim().ToLower().Contains(country.ToLower())).SingleOrDefault();
@@ -71,6 +77,7 @@ namespace MapIt.Web
                 {
                     ddlCountry.SelectedValue = defaultcountryobj.Id.ToString();
                     ddlCode.SelectedValue = defaultcountryobj.CCode.ToString();
+                    ddlCode2.SelectedValue = defaultcountryobj.CCode.ToString();
                 }
                 list = null;
                 countriesRepository = null;
@@ -193,6 +200,13 @@ namespace MapIt.Web
 
                 registerDiv.Visible = false;
                 smsVerificationDiv.Visible = true;
+
+                var tmp = userObj.Phone.Split(' ');
+                if (tmp.Count() > 1)
+                {
+                    txtPhone2.Text = tmp[1];
+
+                }
             }
             catch (Exception ex)
             {
@@ -233,8 +247,14 @@ namespace MapIt.Web
         void resendSMS()
         {
             var userObj = usersRepository.GetByKey(NewUserId);
+            string newPhone = ddlCode2.SelectedValue + " " + txtPhone2.Text;
             if (userObj != null)
             {
+                if (userObj.Phone != newPhone)
+                {
+                    userObj.Phone = newPhone;
+                    usersRepository.Update(userObj);
+                }
                 string smsMessage = AppSettings.SMSActivationText + userObj.ActivationCode;
                 AppSMS.Send(smsMessage, userObj.PhoneForSMS);
 
