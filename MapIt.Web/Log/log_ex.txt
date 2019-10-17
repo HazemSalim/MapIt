@@ -9758,3 +9758,18 @@ Exception StackTrace :
    at MapIt.Web.ReportAbuse.Submit() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\ReportAbuse.aspx.cs:line 106
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   17/10/2019 07:36
+
+Exception Message :   
+The remote name could not be resolved: 'kuwaitportal.paci.gov.kw'
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at MapIt.Helpers.PresentHelper.GenerateToken() in F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\PresentHelper.cs:line 405
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

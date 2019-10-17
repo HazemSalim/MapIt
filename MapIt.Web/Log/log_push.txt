@@ -17204,3 +17204,10 @@ Push Message :
 Send notification failed to iphone token: 8B4C628628F60AE4C8D7A78D0279995CDB83434ED2F3E642F2890D35BD5AE01A
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Push Time :   17/10/2019 07:37
+
+Push Message :   
+Send notification success to iphone token: 534B5C6FAEF8B28D6EF886C12FE880F5A2E336AF0C2150D859998402FE1014A3
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
