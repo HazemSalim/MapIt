@@ -3668,7 +3668,7 @@ namespace MapIt.Web.App
         [WebMethod(Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> Not exist 
 <br />-4 -> Wrong password <br />-5 -> Not activated <br />-6 -> Not User Type <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string Login(string userName, string password, string deviceToken, string key)
+        public string Login(string userName, string password, string deviceToken, int deviceType , string key)
         {
             try
             {
@@ -3717,15 +3717,30 @@ namespace MapIt.Web.App
 
                 // Assgin device token to user
                 devicesTokensRepository = new DevicesTokensRepository();
-                var exToken = devicesTokensRepository.First(c => c.DeviceToken == deviceToken);
+                var exToken = devicesTokensRepository.First(c => c.UserId == userObj.Id);
                 if (exToken != null)
                 {
-                    exToken.UserId = userObj.Id;
-                    exToken.PushCounter = 0;
+                    exToken.DeviceType = deviceType;
+                    exToken.DeviceToken = deviceToken;
                     exToken.IsLogged = true;
 
                     devicesTokensRepository.Update(exToken);
                 }
+                else
+                {
+                    DevicesToken dvTokObj = new DevicesToken
+                    {
+                        UserId = userObj.Id,
+                        DeviceToken = deviceToken,
+                        DeviceType = deviceType,
+                        PushCounter = 0,
+                        IsLogged = true,
+                        AddedOn = DateTime.Now
+                    };
+                    devicesTokensRepository.Add(dvTokObj);
+                }
+                
+               
 
 
                 //RenderAsJson(userObj.Id.ToString());
