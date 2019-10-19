@@ -50,6 +50,16 @@ namespace MapIt.Lib
                         devicesTokensRepository = new DevicesTokensRepository();
                         devicesTokensRepository.IncreasePushCounter(item.DeviceToken);
 
+                        if (item.User != null)
+                        {
+                            var tmp = msg.Split(new string[] { "$#" }, StringSplitOptions.None);
+                            if (tmp.Count() > 1)
+                            {
+                                msg = item.User.Lang == "en" ? tmp[1] : tmp[0];
+                            }
+
+                        }
+
                         Token t = new Token();
                         int tokenId = item.Id;
                         string token = item.DeviceToken;

@@ -3413,6 +3413,7 @@ namespace MapIt.Web.App
                     ActivationCode = AuthHelper.RandomCode(4),
                     IsActive = false,//GSetting.AutoActiveUser,
                     IsCanceled = false,
+                    IsVerified = true,
                     AddedOn = DateTime.Now
                 };
 
@@ -3520,6 +3521,7 @@ namespace MapIt.Web.App
 
 
                 userObj.IsActive = true;
+                userObj.IsVerified = true;
                 usersRepository.Update(userObj);
 
                 //RenderAsJson(userObj.Id);
@@ -3704,7 +3706,7 @@ namespace MapIt.Web.App
                     return "-5" + "-" + userObj.Id.ToString();
                 }
 
-                if (!userObj.UserTypeID.HasValue || userObj.UserTypeID.Value < 1)
+                if (!userObj.IsVerified.HasValue || !userObj.IsVerified.Value)
                 {
                     //RenderAsJson(-5 + "-" + userObj.Id);
                     return "-6" + "-" + userObj.Id.ToString();
@@ -3718,28 +3720,39 @@ namespace MapIt.Web.App
 
                 // Assgin device token to user
                 devicesTokensRepository = new DevicesTokensRepository();
-                var exToken = devicesTokensRepository.First(c => c.UserId == userObj.Id);
-                if (exToken != null)
+                var tokenFound = devicesTokensRepository.First(c => c.DeviceToken == deviceToken);
+                if (tokenFound != null)
                 {
-                    exToken.DeviceType = deviceType;
-                    exToken.DeviceToken = deviceToken;
-                    exToken.IsLogged = true;
-
-                    devicesTokensRepository.Update(exToken);
+                    tokenFound.UserId = userObj.Id;
+                    tokenFound.IsLogged = true;
+                    devicesTokensRepository.Update(tokenFound);
                 }
                 else
                 {
-                    DevicesToken dvTokObj = new DevicesToken
+                    var exToken = devicesTokensRepository.First(c => c.UserId == userObj.Id);
+                    if (exToken != null)
                     {
-                        UserId = userObj.Id,
-                        DeviceToken = deviceToken,
-                        DeviceType = deviceType,
-                        PushCounter = 0,
-                        IsLogged = true,
-                        AddedOn = DateTime.Now
-                    };
-                    devicesTokensRepository.Add(dvTokObj);
+                        exToken.DeviceType = deviceType;
+                        exToken.DeviceToken = deviceToken;
+                        exToken.IsLogged = true;
+
+                        devicesTokensRepository.Update(exToken);
+                    }
+                    else
+                    {
+                        DevicesToken dvTokObj = new DevicesToken
+                        {
+                            UserId = userObj.Id,
+                            DeviceToken = deviceToken,
+                            DeviceType = deviceType,
+                            PushCounter = 0,
+                            IsLogged = true,
+                            AddedOn = DateTime.Now
+                        };
+                        devicesTokensRepository.Add(dvTokObj);
+                    }
                 }
+                
                 
                
 
@@ -3978,7 +3991,9 @@ namespace MapIt.Web.App
                 userObj.LastName = lastName;
 
                 if (userTypeID > 0)
+                {
                     userObj.UserTypeID = userTypeID;
+                }
 
                 userObj.Sex = _sex;
                 userObj.BirthDate = ParseHelper.GetDate(birthDate, "dd/MM/yyyy", null);
@@ -4082,6 +4097,45 @@ namespace MapIt.Web.App
                 }
 
                 userObj.UserTypeID = userTypeID;
+                usersRepository.Update(userObj);
+                //RenderAsJson(userObj.Id);
+                return userObj.Id;
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+                return -1;
+                //RenderAsJson(-1);
+            }
+        }
+
+        [WebMethod(Description = "Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> User not exist <br />-1 -> Error")]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public long EditLanguage(long userId, string lang, string key)
+        {
+            try
+            {
+                if (!key.Equals(AppSettings.WSKey))
+                {
+                    return -1;
+                }
+
+                if (userId < 1 || userId == 0)
+                {
+                    //RenderAsJson(-2);
+                    return -2;
+                }
+
+                usersRepository = new UsersRepository();
+                var userObj = usersRepository.GetByKey(userId);
+                if (userObj == null)
+                {
+                    //RenderAsJson(-3);
+                    return -3;
+                }
+
+                userObj.Lang = lang;
                 usersRepository.Update(userObj);
                 //RenderAsJson(userObj.Id);
                 return userObj.Id;

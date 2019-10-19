@@ -59,6 +59,7 @@ namespace MapIt.Data
         public Nullable<int> AdminUserId { get; set; }
         public string Lang { get; set; }
         public Nullable<int> UserTypeID { get; set; }
+        public Nullable<bool> IsVerified { get; set; }
     
         public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -97,8 +98,8 @@ namespace MapIt.Data
         public virtual ICollection<UserBalanceLog> UserBalanceLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserCredit> UserCredits { get; set; }
+        public virtual UserType UserType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WatchList> WatchLists { get; set; }
-        public virtual UserType UserType { get; set; }
     }
 }

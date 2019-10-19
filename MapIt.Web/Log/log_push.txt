@@ -17232,3 +17232,17 @@ Push Message :
 Send notification success to iphone token: 534B5C6FAEF8B28D6EF886C12FE880F5A2E336AF0C2150D859998402FE1014A3
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Push Time :   19/10/2019 04:47
+
+Push Message :   
+Send notification success to iphone token: 4DAA6F32DEC52DB03752B8FB9A9DEF8EF2265AA3833222D195D3EAF23A7160D6
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Push Time :   19/10/2019 04:54
+
+Push Message :   
+Send notification success to iphone token: 4DAA6F32DEC52DB03752B8FB9A9DEF8EF2265AA3833222D195D3EAF23A7160D6
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

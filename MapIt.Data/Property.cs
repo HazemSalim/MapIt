@@ -78,8 +78,8 @@ namespace MapIt.Data
         public virtual ICollection<Notification> Notifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyReport> PropertyReports { get; set; }
-        public virtual User User { get; set; }
         public virtual PropertyType PropertyType { get; set; }
         public virtual Purpos Purpos { get; set; }
+        public virtual User User { get; set; }
     }
 }

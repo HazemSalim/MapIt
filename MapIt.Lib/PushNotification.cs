@@ -164,7 +164,6 @@ namespace MapIt.Lib
 
                 if ((parameters != null && parameters.Count > 0))
                 {
-                    alertNotification.Payload.AddCustom("mutable-content", "1");
                     foreach (string key in parameters.Keys)
                     {
                         if (!string.IsNullOrEmpty(key) && !key.Trim().Equals(""))

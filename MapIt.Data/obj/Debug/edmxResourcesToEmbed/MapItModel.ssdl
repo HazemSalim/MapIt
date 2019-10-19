@@ -751,6 +751,7 @@
     <Property Name="AdminUserId" Type="int" />
     <Property Name="Lang" Type="nvarchar" MaxLength="8" />
     <Property Name="UserTypeID" Type="int" />
+    <Property Name="IsVerified" Type="bit" />
   </EntityType>
   <EntityType Name="UserTypes">
     <Key>

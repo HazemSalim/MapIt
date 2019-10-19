@@ -756,6 +756,7 @@
           <Property Name="AdminUserId" Type="int" />
           <Property Name="Lang" Type="nvarchar" MaxLength="8" />
           <Property Name="UserTypeID" Type="int" />
+          <Property Name="IsVerified" Type="bit" />
         </EntityType>
         <EntityType Name="UserTypes">
           <Key>
@@ -2408,6 +2409,34 @@
             <End Role="GenNotif" EntitySet="GenNotifs" />
             <End Role="Notification" EntitySet="Notifications" />
           </AssociationSet>
+          <EntitySet Name="PropertyTypes" EntityType="MapItModel.PropertyType" />
+          <EntitySet Name="Purposes" EntityType="MapItModel.Purpos" />
+          <EntitySet Name="UserTypes" EntityType="MapItModel.UserType" />
+          <AssociationSet Name="FK_Properties_PropertyTypes" Association="MapItModel.FK_Properties_PropertyTypes">
+            <End Role="PropertyType" EntitySet="PropertyTypes" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Properties_Purposes" Association="MapItModel.FK_Properties_Purposes">
+            <End Role="Purpos" EntitySet="Purposes" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchLists_PropertyTypes" Association="MapItModel.FK_WatchLists_PropertyTypes">
+            <End Role="PropertyType" EntitySet="PropertyTypes" />
+            <End Role="WatchList" EntitySet="WatchLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchLists_Purposes" Association="MapItModel.FK_WatchLists_Purposes">
+            <End Role="Purpos" EntitySet="Purposes" />
+            <End Role="WatchList" EntitySet="WatchLists" />
+          </AssociationSet>
+          <EntitySet Name="GeneralSettings" EntityType="MapItModel.GeneralSetting" />
+          <AssociationSet Name="FK_GeneralSettings_Countries" Association="MapItModel.FK_GeneralSettings_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="GeneralSetting" EntitySet="GeneralSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GeneralSettings_Currencies" Association="MapItModel.FK_GeneralSettings_Currencies">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="GeneralSetting" EntitySet="GeneralSettings" />
+          </AssociationSet>
           <EntitySet Name="Users" EntityType="MapItModel.User" />
           <AssociationSet Name="FK_Users_Countries" Association="MapItModel.FK_Users_Countries">
             <End Role="Country" EntitySet="Countries" />
@@ -2485,41 +2514,13 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserCredit" EntitySet="UserCredits" />
           </AssociationSet>
-          <AssociationSet Name="FK_WatchLists_Users" Association="MapItModel.FK_WatchLists_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="WatchList" EntitySet="WatchLists" />
-          </AssociationSet>
-          <EntitySet Name="PropertyTypes" EntityType="MapItModel.PropertyType" />
-          <EntitySet Name="Purposes" EntityType="MapItModel.Purpos" />
-          <EntitySet Name="UserTypes" EntityType="MapItModel.UserType" />
-          <AssociationSet Name="FK_Properties_PropertyTypes" Association="MapItModel.FK_Properties_PropertyTypes">
-            <End Role="PropertyType" EntitySet="PropertyTypes" />
-            <End Role="Property" EntitySet="Properties" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Properties_Purposes" Association="MapItModel.FK_Properties_Purposes">
-            <End Role="Purpos" EntitySet="Purposes" />
-            <End Role="Property" EntitySet="Properties" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WatchLists_PropertyTypes" Association="MapItModel.FK_WatchLists_PropertyTypes">
-            <End Role="PropertyType" EntitySet="PropertyTypes" />
-            <End Role="WatchList" EntitySet="WatchLists" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WatchLists_Purposes" Association="MapItModel.FK_WatchLists_Purposes">
-            <End Role="Purpos" EntitySet="Purposes" />
-            <End Role="WatchList" EntitySet="WatchLists" />
-          </AssociationSet>
           <AssociationSet Name="FK_Users_UserTypes" Association="MapItModel.FK_Users_UserTypes">
             <End Role="UserType" EntitySet="UserTypes" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <EntitySet Name="GeneralSettings" EntityType="MapItModel.GeneralSetting" />
-          <AssociationSet Name="FK_GeneralSettings_Countries" Association="MapItModel.FK_GeneralSettings_Countries">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="GeneralSetting" EntitySet="GeneralSettings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GeneralSettings_Currencies" Association="MapItModel.FK_GeneralSettings_Currencies">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="GeneralSetting" EntitySet="GeneralSettings" />
+          <AssociationSet Name="FK_WatchLists_Users" Association="MapItModel.FK_WatchLists_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="WatchList" EntitySet="WatchLists" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="AdminPage">
@@ -2668,8 +2669,8 @@
           <NavigationProperty Name="Sliders" Relationship="MapItModel.FK_Sliders_Countries" FromRole="Country" ToRole="Slider" />
           <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Countries" FromRole="Country" ToRole="WatchList" />
           <NavigationProperty Name="Offers" Relationship="MapItModel.FK_Offers_Countries" FromRole="Country" ToRole="Offer" />
-          <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_Countries" FromRole="Country" ToRole="User" />
           <NavigationProperty Name="GeneralSettings" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="Country" ToRole="GeneralSetting" />
+          <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_Countries" FromRole="Country" ToRole="User" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -2834,9 +2835,9 @@
           <NavigationProperty Name="PropertyComments" Relationship="MapItModel.FK_PropertyComments_Properties" FromRole="Property" ToRole="PropertyComment" />
           <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_Properties" FromRole="Property" ToRole="Notification" />
           <NavigationProperty Name="PropertyReports" Relationship="MapItModel.FK_PropertyReports_Properties" FromRole="Property" ToRole="PropertyReport" />
-          <NavigationProperty Name="User" Relationship="MapItModel.FK_Properties_Users" FromRole="Property" ToRole="User" />
           <NavigationProperty Name="PropertyType" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="Property" ToRole="PropertyType" />
           <NavigationProperty Name="Purpos" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Property" ToRole="Purpos" />
+          <NavigationProperty Name="User" Relationship="MapItModel.FK_Properties_Users" FromRole="Property" ToRole="User" />
         </EntityType>
         <EntityType Name="PropertyComponent">
           <Key>
@@ -3024,9 +3025,9 @@
           <NavigationProperty Name="Area" Relationship="MapItModel.FK_WatchLists_Areas" FromRole="WatchList" ToRole="Area" />
           <NavigationProperty Name="City" Relationship="MapItModel.FK_WatchLists_Cities" FromRole="WatchList" ToRole="City" />
           <NavigationProperty Name="Country" Relationship="MapItModel.FK_WatchLists_Countries" FromRole="WatchList" ToRole="Country" />
-          <NavigationProperty Name="User" Relationship="MapItModel.FK_WatchLists_Users" FromRole="WatchList" ToRole="User" />
           <NavigationProperty Name="PropertyType" Relationship="MapItModel.FK_WatchLists_PropertyTypes" FromRole="WatchList" ToRole="PropertyType" />
           <NavigationProperty Name="Purpos" Relationship="MapItModel.FK_WatchLists_Purposes" FromRole="WatchList" ToRole="Purpos" />
+          <NavigationProperty Name="User" Relationship="MapItModel.FK_WatchLists_Users" FromRole="WatchList" ToRole="User" />
         </EntityType>
         <Association Name="FK_AdminPermissions_AdminPages">
           <End Type="MapItModel.AdminPage" Role="AdminPage" Multiplicity="1" />
@@ -3957,6 +3958,174 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PropertyType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ordering" Type="Int32" Nullable="false" />
+          <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="PropertyType" ToRole="Property" />
+          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_PropertyTypes" FromRole="PropertyType" ToRole="WatchList" />
+        </EntityType>
+        <EntityType Name="Purpos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Purpos" ToRole="Property" />
+          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Purposes" FromRole="Purpos" ToRole="WatchList" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_UserTypes" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Properties_PropertyTypes">
+          <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
+          <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Properties_Purposes">
+          <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="1" />
+          <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purpos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="PurposeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchLists_PropertyTypes">
+          <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
+          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WatchList">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchLists_Purposes">
+          <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="0..1" />
+          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purpos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WatchList">
+              <PropertyRef Name="PurposeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GeneralSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDesc" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKW" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Facebook" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Twitter" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Instagram" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Youtube" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Linkedin" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Snapchat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tumblr" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="AppStore" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="GooglePlay" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultCountryId" Type="Int32" Nullable="false" />
+          <Property Name="DefaultCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceTerms" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="WorkingHours" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DefFreeAmount" Type="Double" Nullable="false" />
+          <Property Name="NormalAdCost" Type="Double" Nullable="false" />
+          <Property Name="SpecAdCost" Type="Double" Nullable="false" />
+          <Property Name="AdVideoCost" Type="Double" Nullable="false" />
+          <Property Name="NormalAdDuration" Type="Int32" Nullable="false" />
+          <Property Name="SpecAdDuration" Type="Int32" Nullable="false" />
+          <Property Name="AvPhotos" Type="Int32" Nullable="false" />
+          <Property Name="AvVideos" Type="Int32" Nullable="false" />
+          <Property Name="SimilarAdCount" Type="Int32" Nullable="false" />
+          <Property Name="PageSize" Type="Int32" Nullable="false" />
+          <Property Name="PageSizeMob" Type="Int32" Nullable="false" />
+          <Property Name="AutoActiveUser" Type="Boolean" Nullable="false" />
+          <Property Name="AutoActiveAd" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Double" Nullable="false" />
+          <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="AdminUserId" Type="Int32" />
+          <Property Name="MessageCloseEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MessageCloseArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IOSAppUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MessageUpdateEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MessageUpdateArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsForceUpdateIOS" Type="Boolean" />
+          <Property Name="IOSVersionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsForceClose" Type="Boolean" />
+          <Property Name="PaciUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PaciPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="GeneralSetting" ToRole="Country" />
+          <NavigationProperty Name="DefaultCurrency" Relationship="MapItModel.FK_GeneralSettings_Currencies" FromRole="GeneralSetting" ToRole="Currency" />
+        </EntityType>
+        <Association Name="FK_GeneralSettings_Countries">
+          <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralSetting">
+              <PropertyRef Name="DefaultCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GeneralSettings_Currencies">
+          <End Type="MapItModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GeneralSetting">
+              <PropertyRef Name="DefaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -3982,6 +4151,7 @@
           <Property Name="AdminUserId" Type="Int32" />
           <Property Name="Lang" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           <Property Name="UserTypeID" Type="Int32" />
+          <Property Name="IsVerified" Type="Boolean" />
           <NavigationProperty Name="Country" Relationship="MapItModel.FK_Users_Countries" FromRole="User" ToRole="Country" />
           <NavigationProperty Name="DevicesTokens" Relationship="MapItModel.FK_DevicesTokens_Users" FromRole="User" ToRole="DevicesToken" />
           <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_Users" FromRole="User" ToRole="Notification" />
@@ -4001,8 +4171,8 @@
           <NavigationProperty Name="TechMessages" Relationship="MapItModel.FK_TechMessages_Users" FromRole="User" ToRole="TechMessage" />
           <NavigationProperty Name="UserBalanceLogs" Relationship="MapItModel.FK_UserBalanceLogs_Users" FromRole="User" ToRole="UserBalanceLog" />
           <NavigationProperty Name="UserCredits" Relationship="MapItModel.FK_UserCredits_Users" FromRole="User" ToRole="UserCredit" />
-          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Users" FromRole="User" ToRole="WatchList" />
           <NavigationProperty Name="UserType" Relationship="MapItModel.FK_Users_UserTypes" FromRole="User" ToRole="UserType" />
+          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Users" FromRole="User" ToRole="WatchList" />
         </EntityType>
         <Association Name="FK_Users_Countries">
           <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
@@ -4242,103 +4412,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WatchLists_Users">
-          <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WatchList">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="PropertyType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Ordering" Type="Int32" Nullable="false" />
-          <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="PropertyType" ToRole="Property" />
-          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_PropertyTypes" FromRole="PropertyType" ToRole="WatchList" />
-        </EntityType>
-        <EntityType Name="Purpos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Purpos" ToRole="Property" />
-          <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Purposes" FromRole="Purpos" ToRole="WatchList" />
-        </EntityType>
-        <EntityType Name="UserType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_UserTypes" FromRole="UserType" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_Properties_PropertyTypes">
-          <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
-          <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PropertyType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Property">
-              <PropertyRef Name="TypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Properties_Purposes">
-          <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="1" />
-          <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Purpos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Property">
-              <PropertyRef Name="PurposeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WatchLists_PropertyTypes">
-          <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
-          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PropertyType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WatchList">
-              <PropertyRef Name="TypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WatchLists_Purposes">
-          <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="0..1" />
-          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Purpos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WatchList">
-              <PropertyRef Name="PurposeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Users_UserTypes">
           <End Type="MapItModel.UserType" Role="UserType" Multiplicity="0..1" />
           <End Type="MapItModel.User" Role="User" Multiplicity="*" />
@@ -4351,86 +4424,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="GeneralSetting">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MetaDesc" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="MetaKW" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Facebook" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Twitter" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Instagram" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Youtube" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Linkedin" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Snapchat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Tumblr" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="AppStore" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="GooglePlay" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DefaultCountryId" Type="Int32" Nullable="false" />
-          <Property Name="DefaultCurrencyId" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceTerms" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="WorkingHours" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="DefFreeAmount" Type="Double" Nullable="false" />
-          <Property Name="NormalAdCost" Type="Double" Nullable="false" />
-          <Property Name="SpecAdCost" Type="Double" Nullable="false" />
-          <Property Name="AdVideoCost" Type="Double" Nullable="false" />
-          <Property Name="NormalAdDuration" Type="Int32" Nullable="false" />
-          <Property Name="SpecAdDuration" Type="Int32" Nullable="false" />
-          <Property Name="AvPhotos" Type="Int32" Nullable="false" />
-          <Property Name="AvVideos" Type="Int32" Nullable="false" />
-          <Property Name="SimilarAdCount" Type="Int32" Nullable="false" />
-          <Property Name="PageSize" Type="Int32" Nullable="false" />
-          <Property Name="PageSizeMob" Type="Int32" Nullable="false" />
-          <Property Name="AutoActiveUser" Type="Boolean" Nullable="false" />
-          <Property Name="AutoActiveAd" Type="Boolean" Nullable="false" />
-          <Property Name="Version" Type="Double" Nullable="false" />
-          <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="AdminUserId" Type="Int32" />
-          <Property Name="MessageCloseEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="MessageCloseArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="IOSAppUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="MessageUpdateEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="MessageUpdateArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="IsForceUpdateIOS" Type="Boolean" />
-          <Property Name="IOSVersionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsForceClose" Type="Boolean" />
-          <Property Name="PaciUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PaciPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Country" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="GeneralSetting" ToRole="Country" />
-          <NavigationProperty Name="DefaultCurrency" Relationship="MapItModel.FK_GeneralSettings_Currencies" FromRole="GeneralSetting" ToRole="Currency" />
-        </EntityType>
-        <Association Name="FK_GeneralSettings_Countries">
-          <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
-          <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
+        <Association Name="FK_WatchLists_Users">
+          <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+          <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Country">
+            <Principal Role="User">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="GeneralSetting">
-              <PropertyRef Name="DefaultCountryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GeneralSettings_Currencies">
-          <End Type="MapItModel.Currency" Role="Currency" Multiplicity="1" />
-          <End Type="MapItModel.GeneralSetting" Role="GeneralSetting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="GeneralSetting">
-              <PropertyRef Name="DefaultCurrencyId" />
+            <Dependent Role="WatchList">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5188,33 +5190,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="MapItModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
-                <ScalarProperty Name="Lang" ColumnName="Lang" />
-                <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-                <ScalarProperty Name="LastLoginOn" ColumnName="LastLoginOn" />
-                <ScalarProperty Name="IsCanceled" ColumnName="IsCanceled" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="OtherPhones" ColumnName="OtherPhones" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropertyTypes">
             <EntityTypeMapping TypeName="MapItModel.PropertyType">
               <MappingFragment StoreEntitySet="PropertyTypes">
@@ -5308,6 +5283,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MapItModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+                <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+                <ScalarProperty Name="LastLoginOn" ColumnName="LastLoginOn" />
+                <ScalarProperty Name="IsCanceled" ColumnName="IsCanceled" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="OtherPhones" ColumnName="OtherPhones" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5377,8 +5380,8 @@
         <EntityTypeShape EntityType="MapItModel.UserCredit" Width="1.5" PointX="7.625" PointY="58" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Merchant" Width="1.5" PointX="4.625" PointY="5.5" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Photographer" Width="1.5" PointX="6.375" PointY="5.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="MapItModel.PropertyComment" Width="1.875" PointX="11.75" PointY="56.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="MapItModel.ServiceComment" Width="1.5" PointX="17.5" PointY="47.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="MapItModel.PropertyComment" Width="1.875" PointX="11.75" PointY="56.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MapItModel.ServiceComment" Width="1.5" PointX="17" PointY="46.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MapItModel.TechMessage" Width="1.5" PointX="5.25" PointY="70.5" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Notification" Width="1.5" PointX="15" PointY="64.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Component" Width="1.5" PointX="12.75" PointY="44" IsExpanded="false" />
@@ -5437,7 +5440,17 @@
         <AssociationConnector Association="MapItModel.FK_ServiceReports_Services" />
         <EntityTypeShape EntityType="MapItModel.GenNotif" Width="1.5" PointX="0.75" PointY="5" IsExpanded="false" />
         <AssociationConnector Association="MapItModel.FK_Notifications_GenNotifs" />
-        <EntityTypeShape EntityType="MapItModel.User" Width="2.25" PointX="3" PointY="57.75" />
+        <EntityTypeShape EntityType="MapItModel.PropertyType" Width="1.5" PointX="7.875" PointY="35.75" />
+        <EntityTypeShape EntityType="MapItModel.Purpos" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="MapItModel.UserType" Width="1.5" PointX="1.125" PointY="61.25" />
+        <AssociationConnector Association="MapItModel.FK_Properties_PropertyTypes" />
+        <AssociationConnector Association="MapItModel.FK_Properties_Purposes" />
+        <AssociationConnector Association="MapItModel.FK_WatchLists_PropertyTypes" />
+        <AssociationConnector Association="MapItModel.FK_WatchLists_Purposes" />
+        <EntityTypeShape EntityType="MapItModel.GeneralSetting" Width="1.5" PointX="18" PointY="48.875" />
+        <AssociationConnector Association="MapItModel.FK_GeneralSettings_Countries" />
+        <AssociationConnector Association="MapItModel.FK_GeneralSettings_Currencies" />
+        <EntityTypeShape EntityType="MapItModel.User" Width="2" PointX="15.375" PointY="66.625" />
         <AssociationConnector Association="MapItModel.FK_Users_Countries" />
         <AssociationConnector Association="MapItModel.FK_DevicesTokens_Users" />
         <AssociationConnector Association="MapItModel.FK_Notifications_Users" />
@@ -5457,18 +5470,8 @@
         <AssociationConnector Association="MapItModel.FK_TechMessages_Users" />
         <AssociationConnector Association="MapItModel.FK_UserBalanceLogs_Users" />
         <AssociationConnector Association="MapItModel.FK_UserCredits_Users" />
-        <AssociationConnector Association="MapItModel.FK_WatchLists_Users" />
-        <EntityTypeShape EntityType="MapItModel.PropertyType" Width="1.5" PointX="7.875" PointY="35.75" />
-        <EntityTypeShape EntityType="MapItModel.Purpos" Width="1.5" PointX="0.75" PointY="7" />
-        <EntityTypeShape EntityType="MapItModel.UserType" Width="1.5" PointX="1.125" PointY="61.25" />
-        <AssociationConnector Association="MapItModel.FK_Properties_PropertyTypes" />
-        <AssociationConnector Association="MapItModel.FK_Properties_Purposes" />
-        <AssociationConnector Association="MapItModel.FK_WatchLists_PropertyTypes" />
-        <AssociationConnector Association="MapItModel.FK_WatchLists_Purposes" />
         <AssociationConnector Association="MapItModel.FK_Users_UserTypes" />
-        <EntityTypeShape EntityType="MapItModel.GeneralSetting" Width="1.5" PointX="18" PointY="48.875" />
-        <AssociationConnector Association="MapItModel.FK_GeneralSettings_Countries" />
-        <AssociationConnector Association="MapItModel.FK_GeneralSettings_Currencies" />
+        <AssociationConnector Association="MapItModel.FK_WatchLists_Users" />
       </Diagram>
     </Diagrams>
   </Designer>

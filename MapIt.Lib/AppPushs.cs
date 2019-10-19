@@ -10,7 +10,8 @@ namespace MapIt.Lib
     {
         #region Methods
 
-        public static void Push(int typeId, long? userId, int? gNotifId, long? propertyId, long? serviceId, int? offerId, string msgEN, string msgAR,string imageFile="")
+        public static void Push(int typeId, long? userId, int? gNotifId, long? propertyId, long? serviceId,
+            int? offerId, string msgEN, string msgAR,string imageFile="")
         {
             try
             {
@@ -48,20 +49,14 @@ namespace MapIt.Lib
                 notifObj = notificationsRepository.GetByKey(notifObj.Id);
 
 
-                #region Get message by Language
-                string message = notifObj.TitleAR;
-
-                if (userId.HasValue && userId > 0)
+                if (notifObj.UserId.HasValue)
                 {
+                    string message = notifObj.TitleAR;
                     UsersRepository usersRepository = new UsersRepository();
                     var usr = usersRepository.First(c => c.Id == userId);
                     if (usr != null && usr.Lang == "en")
                         message = notifObj.TitleEN;
-                }
-                #endregion
 
-                if (notifObj.UserId.HasValue)
-                {
                     if (notifObj.OfferId.HasValue)
                     {
                         SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), notifObj.User.DevicesTokens.ToList(), message, imageFile);
@@ -85,6 +80,7 @@ namespace MapIt.Lib
                 }
                 else
                 {
+                    string message = notifObj.TitleAR + "$#" + notifObj.TitleEN;
                     if (notifObj.OfferId.HasValue)
                     {
                         SendPushNotification.Send(notifObj.Id.ToString(), notifObj.OfferId.Value.ToString(), nTypeObj.Title.ToString(), message, imageFile);
