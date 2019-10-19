@@ -1090,13 +1090,14 @@ namespace MapIt.Web.App
                 }
 
                 propertiesRepository = new PropertiesRepository();
-                var propertyObj = new Data.Property();
-
-                propertyObj.PurposeId = purposeId;
-                propertyObj.TypeId = typeId;
-                propertyObj.UserId = userId;
-                propertyObj.CountryId = countryId;
-                propertyObj.BlockId = bId;
+                var propertyObj = new Data.Property
+                {
+                    PurposeId = purposeId,
+                    TypeId = typeId,
+                    UserId = userId,
+                    CountryId = countryId,
+                    BlockId = bId
+                };
 
                 if (area > 0)
                 {

@@ -254,14 +254,18 @@ namespace MapIt.Web.Admin
 
         void DoWork()
         {
+            int type = (int)AppEnums.NotifTypes.General;
+
             long? propertyID = null, serviceID = null;
             if (ddlProperties.SelectedValue != "")
             {
                 propertyID = long.Parse(ddlProperties.SelectedValue);
+                type = (int)AppEnums.NotifTypes.Property;
             }
             else if (ddlServices.SelectedValue != "")
             {
                 serviceID = long.Parse(ddlServices.SelectedValue);
+                type = (int)AppEnums.NotifTypes.Service;
             }
 
             string photo = string.Empty;
@@ -276,9 +280,10 @@ namespace MapIt.Web.Admin
             }
 
 
-            photo = !string.IsNullOrEmpty(photo) ? string.Concat( AppSettings.PackagePhotos  + photo) : string.Empty;
+            
+            photo = !string.IsNullOrEmpty(photo) ? AppSettings.WebsiteURL + AppSettings.PackagePhotos + photo : string.Empty;
 
-            AppPushs.Push((int)AppEnums.NotifTypes.General, null, pushGNotifId, propertyID, serviceID, null, pushMessageEN, pushMessageAR, photo);
+            AppPushs.Push(type, null, pushGNotifId, propertyID, serviceID, null, pushMessageEN, pushMessageAR, photo);
         }
 
         void Add()

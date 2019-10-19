@@ -159,10 +159,12 @@ namespace MapIt.Lib
                 alertNotification.DeviceToken = token;
                 alertNotification.Payload.Alert.Body = Message;
                 alertNotification.Payload.Sound = "push.mp3";
+
                 alertNotification.Payload.Badge = 0; // pushCounter;
 
                 if ((parameters != null && parameters.Count > 0))
                 {
+                    alertNotification.Payload.AddCustom("mutable-content", "1");
                     foreach (string key in parameters.Keys)
                     {
                         if (!string.IsNullOrEmpty(key) && !key.Trim().Equals(""))
@@ -174,6 +176,7 @@ namespace MapIt.Lib
 
                 //Message ID
                 alertNotification.Payload.ContentAvailable = 33;
+
                 service.QueueNotification(alertNotification);
 
                 //First, close the service.  

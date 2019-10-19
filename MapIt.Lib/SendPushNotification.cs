@@ -83,10 +83,12 @@ namespace MapIt.Lib
 
                 if (dt != null && dt.Count > 0)
                 {
-                    Dictionary<string, string> dic = new Dictionary<string, string>();
-                    dic.Add("Id", id);
-                    dic.Add("Id2", id2);
-                    dic.Add("Type", type);
+                    Dictionary<string, string> dic = new Dictionary<string, string>
+                    {
+                        { "Id", id },
+                        { "Id2", id2 },
+                        { "Type", type }
+                    };
 
                     if (!string.IsNullOrEmpty(imageFile))
                         dic.Add("Image", imageFile);
