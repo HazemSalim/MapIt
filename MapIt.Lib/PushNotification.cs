@@ -138,7 +138,7 @@ namespace MapIt.Lib
                 {
                     SendRetries = 1,
                     //5 retries before generating notificationfailed event
-
+                    
                     ReconnectDelay = 1
                 };
 

@@ -84,7 +84,7 @@
                             <div class="panel-heading">Notification Details</div>
                             <div class="panel-body">
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                  <%--  <div class="form-group">
                                         <label>
                                             Photo
                                         </label>
@@ -99,7 +99,7 @@
                                                 </div>
                                             </span>
                                         </div>
-                                    </div>
+                                    </div>--%>
 
 
                                     <div class="form-group">

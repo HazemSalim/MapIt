@@ -44,3 +44,9 @@ F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\bin\Debug\MapIt.Data.dll.config
 F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\bin\Debug\MapIt.Repository.pdb
 F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\bin\Debug\MapIt.Repository.dll.config
 F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\bin\Debug\EntityFramework.xml
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\MapIt.Data.dll
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\MapIt.Repository.dll
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\EntityFramework.dll
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\MapIt.Data.pdb
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\MapIt.Repository.pdb
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\bin\Debug\EntityFramework.xml
