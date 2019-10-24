@@ -1506,4 +1506,13 @@
   <data name="messagesList" xml:space="preserve">
     <value>قائمة الرسائل</value>
   </data>
+  <data name="addedOn" xml:space="preserve">
+    <value>تاريخ الإرسال</value>
+  </data>
+  <data name="sender" xml:space="preserve">
+    <value>الراسل</value>
+  </data>
+  <data name="textMessage" xml:space="preserve">
+    <value>نص الرسالة</value>
+  </data>
 </root>

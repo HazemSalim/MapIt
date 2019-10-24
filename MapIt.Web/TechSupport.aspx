@@ -60,9 +60,9 @@
                                                         <AlternatingRowStyle CssClass="alt-table-data" />
                                                         <Columns>
                                                             <asp:BoundField DataField="Id" Visible="false" />
-                                                            <asp:BoundField DataField="Sender" HeaderText="Sender" SortExpression="Sender" />
-                                                            <asp:BoundField DataField="TextMessage" HeaderText="Text Message" SortExpression="TextMessage" />
-                                                            <asp:BoundField DataField="AddedOn" HeaderText="Added On" SortExpression="AddedOn" DataFormatString="{0:dd/MM/yyyy hh:mm tt}" />
+                                                            <asp:BoundField DataField="Sender" HeaderText="<%$ Resources:Resource,sender %>"  SortExpression="Sender" />
+                                                            <asp:BoundField DataField="TextMessage" HeaderText="<%$ Resources:Resource,textMessage %>"   SortExpression="TextMessage" />
+                                                            <asp:BoundField DataField="AddedOn" HeaderText="<%$ Resources:Resource,addedOn %>"   SortExpression="AddedOn" DataFormatString="{0:dd/MM/yyyy hh:mm tt}" />
                                                         </Columns>
                                                     </asp:GridView>
                                                     <webdiyer:AspNetPager ID="AspNetPager1" runat="server" HorizontalAlign="Center" OnPageChanged="AspNetPager1_PageChanged"

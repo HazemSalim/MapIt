@@ -151,6 +151,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add On.
+        /// </summary>
+        internal static string addedOn {
+            get {
+                return ResourceManager.GetString("addedOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Added on.
         /// </summary>
         internal static string added_on {
@@ -3535,6 +3544,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sender.
+        /// </summary>
+        internal static string sender {
+            get {
+                return ResourceManager.GetString("sender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SMS will be sent to your phone containing activation code. Kindly enter this code here..
         /// </summary>
         internal static string send_activation_code {
@@ -3837,6 +3855,15 @@ namespace Resources {
         internal static string terms_use {
             get {
                 return ResourceManager.GetString("terms_use", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text Message.
+        /// </summary>
+        internal static string textMessage {
+            get {
+                return ResourceManager.GetString("textMessage", resourceCulture);
             }
         }
         
