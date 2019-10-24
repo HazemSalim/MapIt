@@ -12057,3 +12057,19 @@ Exception StackTrace :
    at MapIt.Helpers.PresentHelper.GenerateToken() in F:\MapIt\MapItWebsite\MapIt\MapIt.Helpers\PresentHelper.cs:line 396
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   24/10/2019 09:37
+
+Exception Message :   
+Bad sequence of commands. The server response was: This mail server requires authentication when attempting to send to a non-local e-mail address. Please check your mail client settings or contact your administrator to verify that the domain or address is defined for this server.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Net.Mail.RecipientCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

@@ -745,6 +745,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        internal static string clear {
+            get {
+                return ResourceManager.GetString("clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Client Info..
         /// </summary>
         internal static string client_info {
@@ -2154,6 +2163,15 @@ namespace Resources {
         internal static string message {
             get {
                 return ResourceManager.GetString("message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Messages List.
+        /// </summary>
+        internal static string messagesList {
+            get {
+                return ResourceManager.GetString("messagesList", resourceCulture);
             }
         }
         

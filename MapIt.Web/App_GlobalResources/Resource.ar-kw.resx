@@ -1500,4 +1500,10 @@
   <data name="reason" xml:space="preserve">
     <value>السبب</value>
   </data>
+  <data name="clear" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="messagesList" xml:space="preserve">
+    <value>قائمة الرسائل</value>
+  </data>
 </root>

@@ -1503,4 +1503,10 @@
   <data name="reason" xml:space="preserve">
     <value>Reason</value>
   </data>
+  <data name="clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="messagesList" xml:space="preserve">
+    <value>Messages List</value>
+  </data>
 </root>
