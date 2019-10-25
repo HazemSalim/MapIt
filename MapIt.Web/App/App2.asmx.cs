@@ -4182,6 +4182,7 @@ namespace MapIt.Web.App
                 }
 
                 userObj.IsCanceled = true;
+                userObj.IsActive = false;
                 usersRepository.Update(userObj);
 
                 //RenderAsJson(userObj.Id);
