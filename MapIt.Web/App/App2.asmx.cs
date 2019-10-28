@@ -850,9 +850,9 @@ namespace MapIt.Web.App
                     return;
                 }
 
-                brokersRepository = new BrokersRepository();
-                List<App_Broker> list = new List<App_Broker>();
-                var brokers = brokersRepository.Find(s => s.IsActive);
+                usersRepository = new UsersRepository();
+                List<App_User> list = new List<App_User>();
+                var brokers = usersRepository.Find(s => s.IsActive && s.UserTypeID==4); //Agent, Company شركة, مكتب عقارى
                 if (brokerId > 0)
                 {
                     brokers = brokers.Where(s => s.Id == brokerId);
@@ -860,13 +860,13 @@ namespace MapIt.Web.App
 
                 if (countryId > 0)
                 {
-                    brokers = brokers.Where(a => a.City.CountryId == countryId);
+                    brokers = brokers.Where(a => a.CountryId == countryId);
                 }
 
-                if (cityId > 0)
-                {
-                    brokers = brokers.Where(a => a.CityId == cityId);
-                }
+                //if (cityId > 0)
+                //{
+                //    brokers = brokers.Where(a => a.CityId == cityId);
+                //}
 
                 if (pageIndex > -1)
                 {
@@ -875,7 +875,7 @@ namespace MapIt.Web.App
 
                 foreach (var obj in brokers)
                 {
-                    list.Add(new App_Broker(obj));
+                    list.Add(new App_User(obj));
                 }
 
                 RenderAsJson(list);
