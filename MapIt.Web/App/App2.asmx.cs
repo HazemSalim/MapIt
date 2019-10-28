@@ -39,7 +39,7 @@ namespace MapIt.Web.App
         CommercialAdsRepository commercialAdsRepository;
         SlidersRepository slidersRepository;
         OffersRepository offersRepository;
-        BrokersRepository brokersRepository;
+        //BrokersRepository brokersRepository;
         ContentPagesRepository cPagesRepository;
         FAQsRepository faqsRepository;
         ComponentsRepository componentsRepository;
