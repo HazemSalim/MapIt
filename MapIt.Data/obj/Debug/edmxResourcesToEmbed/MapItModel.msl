@@ -492,26 +492,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Brokers">
-      <EntityTypeMapping TypeName="MapItModel.Broker">
-        <MappingFragment StoreEntitySet="Brokers">
-          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="AllAreas" ColumnName="AllAreas" />
-          <ScalarProperty Name="Photo" ColumnName="Photo" />
-          <ScalarProperty Name="DetailsAR" ColumnName="DetailsAR" />
-          <ScalarProperty Name="DetailsEN" ColumnName="DetailsEN" />
-          <ScalarProperty Name="Link" ColumnName="Link" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="CityId" ColumnName="CityId" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Services">
       <EntityTypeMapping TypeName="MapItModel.Service">
         <MappingFragment StoreEntitySet="Services">
@@ -866,6 +846,27 @@
           <ScalarProperty Name="Sex" ColumnName="Sex" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brokers">
+      <EntityTypeMapping TypeName="MapItModel.Broker">
+        <MappingFragment StoreEntitySet="Brokers">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AllAreas" ColumnName="AllAreas" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="DetailsAR" ColumnName="DetailsAR" />
+          <ScalarProperty Name="DetailsEN" ColumnName="DetailsEN" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

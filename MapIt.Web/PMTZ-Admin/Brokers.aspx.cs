@@ -19,6 +19,7 @@ namespace MapIt.Web.Admin
         #region Variables
 
         BrokersRepository brokersRepository;
+        UsersRepository usersRepository;
         CountriesRepository countriesRepository;
         CitiesRepository citiesRepository;
 
@@ -223,6 +224,22 @@ namespace MapIt.Web.Admin
             }
         }
 
+        void BindUsers()
+        {
+            try
+            {
+                usersRepository = new UsersRepository();
+                var brokers = usersRepository.GetAll().Where(x => x.IsActive && x.UserTypeID == 4).OrderByDescending(a => a.AddedOn).ToList();
+
+                ddlUsers.DataSource = brokers;
+                ddlUsers.DataBind();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+            }
+        }
+
         void LoadData()
         {
             try
@@ -289,7 +306,7 @@ namespace MapIt.Web.Admin
 
         public void ClearControls()
         {
-            ddlCountry.SelectedIndex = ddlCode.SelectedIndex = 0;
+            ddlCountry.SelectedIndex = ddlCode.SelectedIndex = ddlUsers.SelectedIndex = 0;
             txtFullName.Text = txtPhone.Text = txtEmail.Text = txtLink.Text = txtDetailsEN.Text = txtDetailsAR.Text = string.Empty;
             chkActive.Checked = true;
             div_old.Visible = false;
@@ -399,19 +416,25 @@ namespace MapIt.Web.Admin
                 }
 
                 brokersRepository = new BrokersRepository();
-                var brokerObj = new MapIt.Data.Broker();
+                var brokerObj = new Data.Broker
+                {
+                    FullName = txtFullName.Text,
+                    CityId = cityId.Value,
+                    Phone = ddlCode.SelectedValue + " " + txtPhone.Text,
+                    Email = txtEmail.Text,
+                    Link = txtLink.Text,
+                    DetailsEN = txtDetailsEN.Text,
+                    DetailsAR = txtDetailsAR.Text,
+                    Photo = photo,
+                    AllAreas = allAreas.Checked,
+                    IsActive = chkActive.Checked,
+                    AddedOn = DateTime.Now
+                };
 
-                brokerObj.FullName = txtFullName.Text;
-                brokerObj.CityId = cityId.Value;
-                brokerObj.Phone = ddlCode.SelectedValue + " " + txtPhone.Text;
-                brokerObj.Email = txtEmail.Text;
-                brokerObj.Link = txtLink.Text;
-                brokerObj.DetailsEN = txtDetailsEN.Text;
-                brokerObj.DetailsAR = txtDetailsAR.Text;
-                brokerObj.Photo = photo;
-                brokerObj.AllAreas = allAreas.Checked;
-                brokerObj.IsActive = chkActive.Checked;
-                brokerObj.AddedOn = DateTime.Now;
+                if (ddlUsers.SelectedValue != "")
+                {
+                    brokerObj.UserId = int.Parse(ddlUsers.SelectedValue);
+                }
 
                 //------------- save areas ------------------//
                 var areasList = GetAreasList();
@@ -467,6 +490,11 @@ namespace MapIt.Web.Admin
 
                 brokersRepository = new BrokersRepository();
                 var brokerObj = brokersRepository.GetByKey(id);
+
+                if (ddlUsers.SelectedValue != "")
+                {
+                    brokerObj.UserId = int.Parse(ddlUsers.SelectedValue);
+                }
 
                 brokerObj.FullName = txtFullName.Text;
                 brokerObj.CityId = cityId.Value;
@@ -542,6 +570,10 @@ namespace MapIt.Web.Admin
                 var brokerObj = brokersRepository.GetByKey(id);
                 if (brokerObj != null)
                 {
+                    if(brokerObj.UserId.HasValue && brokerObj.UserId.Value > 0)
+                    {
+                        ddlUsers.SelectedValue = brokerObj.UserId.ToString();
+                    }
                     txtFullName.Text = brokerObj.FullName;
                     ddlCountry.SelectedValue = brokerObj.City.CountryId.ToString();
                     BindCities();
@@ -610,12 +642,13 @@ namespace MapIt.Web.Admin
         {
             if (!IsPostBack)
             {
-                if (Session["AdminUserId"] != null && (int)ParseHelper.GetInt(Session["AdminUserId"].ToString()) > 1 &&
+                if (Session["AdminUserId"] != null && ParseHelper.GetInt(Session["AdminUserId"].ToString()) > 1 &&
                     !(new AdminPermissionsRepository().GetByPageId((int)ParseHelper.GetInt(Session["AdminUserId"].ToString()), (int)AppEnums.AdminPages.Brokers)))
                 {
                     Response.Redirect(".");
                 }
 
+                BindUsers();
                 BindCountries();
                 LoadData();
                 pnlAllRecords.Visible = true;
@@ -770,5 +803,44 @@ namespace MapIt.Web.Admin
         }
 
         #endregion Events
+
+        protected void ddlUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsers.SelectedValue != "")
+            {
+                usersRepository = new UsersRepository();
+                var user = usersRepository.GetByKey(Int64.Parse(ddlUsers.SelectedValue));
+                if (user != null)
+                {
+                    txtEmail.Text = user.Email;
+                    txtFullName.Text = user.FullName;
+
+                    ddlCountry.SelectedValue = user.CountryId.ToString();
+
+                    ddlCountry_SelectedIndexChanged(null, null);
+
+                    var tmpPhonesParts = user.Phone.Split(' ');
+                    ddlCode.SelectedValue = tmpPhonesParts[0];
+                    txtPhone.Text = tmpPhonesParts[1];
+
+                    chkActive.Checked = true;
+
+                    if (!string.IsNullOrEmpty(user.Photo))
+                    {
+                        aOld.HRef = imgOld.Src = AppSettings.UserPhotos + user.Photo;
+                        div_old.Visible = true;
+                        OldPhoto = user.Photo;
+                    }
+                    else
+                    {
+                        OldPhoto = null;
+                    }
+                }
+            }
+            else
+            {
+                ClearControls();
+            }
+        }
     }
 }

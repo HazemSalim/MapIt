@@ -78,6 +78,7 @@
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
+    <Property Name="UserId" Type="bigint" />
   </EntityType>
   <EntityType Name="Cities">
     <Key>

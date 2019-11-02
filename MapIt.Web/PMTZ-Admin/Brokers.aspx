@@ -198,6 +198,21 @@
                             <div class="panel-heading">Broker Details</div>
                             <div class="panel-body">
                                 <div class="col-md-4">
+                                     <div class="form-group">
+                                        <label>
+                                            Broker User
+                                        </label>
+                                         <asp:DropDownList ID="ddlUsers" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
+                                             DataTextField="Email" DataValueField="Id"
+                                            OnSelectedIndexChanged="ddlUsers_SelectedIndexChanged" CssClass="form-control">
+                                            <asp:ListItem Text="Select Broker" Value=""></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlUsers" SetFocusOnError="true"
+                                            EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"
+                                            InitialValue=""></asp:RequiredFieldValidator>
+                                    </div>
+
+
                                     <div class="form-group">
                                         <label>
                                             Full Name

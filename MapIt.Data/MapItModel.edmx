@@ -83,6 +83,7 @@
           <Property Name="AddedOn" Type="datetime" Nullable="false" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="AdminUserId" Type="int" />
+          <Property Name="UserId" Type="bigint" />
         </EntityType>
         <EntityType Name="Cities">
           <Key>
@@ -2284,15 +2285,6 @@
             <End Role="Area" EntitySet="Areas" />
             <End Role="ServiceArea" EntitySet="ServiceAreas" />
           </AssociationSet>
-          <EntitySet Name="Brokers" EntityType="MapItModel.Broker" />
-          <AssociationSet Name="FK_BrokerAreas_Brokers" Association="MapItModel.FK_BrokerAreas_Brokers">
-            <End Role="Broker" EntitySet="Brokers" />
-            <End Role="BrokerArea" EntitySet="BrokerAreas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Brokers_Cities" Association="MapItModel.FK_Brokers_Cities">
-            <End Role="City" EntitySet="Cities" />
-            <End Role="Broker" EntitySet="Brokers" />
-          </AssociationSet>
           <EntitySet Name="Services" EntityType="MapItModel.Service" />
           <AssociationSet Name="FK_Services_Cities" Association="MapItModel.FK_Services_Cities">
             <End Role="City" EntitySet="Cities" />
@@ -2522,6 +2514,15 @@
             <End Role="User" EntitySet="Users" />
             <End Role="WatchList" EntitySet="WatchLists" />
           </AssociationSet>
+          <EntitySet Name="Brokers" EntityType="MapItModel.Broker" />
+          <AssociationSet Name="FK_BrokerAreas_Brokers" Association="MapItModel.FK_BrokerAreas_Brokers">
+            <End Role="Broker" EntitySet="Brokers" />
+            <End Role="BrokerArea" EntitySet="BrokerAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brokers_Cities" Association="MapItModel.FK_Brokers_Cities">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Broker" EntitySet="Brokers" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="AdminPage">
           <Key>
@@ -2598,8 +2599,8 @@
           <NavigationProperty Name="Areas" Relationship="MapItModel.FK_Areas_Cities" FromRole="City" ToRole="Area" />
           <NavigationProperty Name="Country" Relationship="MapItModel.FK_Cities_Countries" FromRole="City" ToRole="Country" />
           <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Cities" FromRole="City" ToRole="WatchList" />
-          <NavigationProperty Name="Brokers" Relationship="MapItModel.FK_Brokers_Cities" FromRole="City" ToRole="Broker" />
           <NavigationProperty Name="Services" Relationship="MapItModel.FK_Services_Cities" FromRole="City" ToRole="Service" />
+          <NavigationProperty Name="Brokers" Relationship="MapItModel.FK_Brokers_Cities" FromRole="City" ToRole="Broker" />
         </EntityType>
         <EntityType Name="CommAdPlace">
           <Key>
@@ -3358,51 +3359,6 @@
             </Principal>
             <Dependent Role="ServiceArea">
               <PropertyRef Name="AreaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Broker">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="CityId" Type="Int32" Nullable="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="DetailsEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DetailsAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AllAreas" Type="Boolean" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="AdminUserId" Type="Int32" />
-          <NavigationProperty Name="BrokerAreas" Relationship="MapItModel.FK_BrokerAreas_Brokers" FromRole="Broker" ToRole="BrokerArea" />
-          <NavigationProperty Name="City" Relationship="MapItModel.FK_Brokers_Cities" FromRole="Broker" ToRole="City" />
-        </EntityType>
-        <Association Name="FK_BrokerAreas_Brokers">
-          <End Type="MapItModel.Broker" Role="Broker" Multiplicity="1" />
-          <End Type="MapItModel.BrokerArea" Role="BrokerArea" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Broker">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BrokerArea">
-              <PropertyRef Name="BrokerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Brokers_Cities">
-          <End Type="MapItModel.City" Role="City" Multiplicity="1" />
-          <End Type="MapItModel.Broker" Role="Broker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="City">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Broker">
-              <PropertyRef Name="CityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4436,6 +4392,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Broker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DetailsEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DetailsAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AllAreas" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="AdminUserId" Type="Int32" />
+          <Property Name="UserId" Type="Int64" />
+          <NavigationProperty Name="BrokerAreas" Relationship="MapItModel.FK_BrokerAreas_Brokers" FromRole="Broker" ToRole="BrokerArea" />
+          <NavigationProperty Name="City" Relationship="MapItModel.FK_Brokers_Cities" FromRole="Broker" ToRole="City" />
+        </EntityType>
+        <Association Name="FK_BrokerAreas_Brokers">
+          <End Type="MapItModel.Broker" Role="Broker" Multiplicity="1" />
+          <End Type="MapItModel.BrokerArea" Role="BrokerArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Broker">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrokerArea">
+              <PropertyRef Name="BrokerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brokers_Cities">
+          <End Type="MapItModel.City" Role="City" Multiplicity="1" />
+          <End Type="MapItModel.Broker" Role="Broker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Broker">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4933,26 +4935,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Brokers">
-            <EntityTypeMapping TypeName="MapItModel.Broker">
-              <MappingFragment StoreEntitySet="Brokers">
-                <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="AllAreas" ColumnName="AllAreas" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="DetailsAR" ColumnName="DetailsAR" />
-                <ScalarProperty Name="DetailsEN" ColumnName="DetailsEN" />
-                <ScalarProperty Name="Link" ColumnName="Link" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="MapItModel.Service">
               <MappingFragment StoreEntitySet="Services">
@@ -5311,6 +5293,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Brokers">
+            <EntityTypeMapping TypeName="MapItModel.Broker">
+              <MappingFragment StoreEntitySet="Brokers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AllAreas" ColumnName="AllAreas" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="DetailsAR" ColumnName="DetailsAR" />
+                <ScalarProperty Name="DetailsEN" ColumnName="DetailsEN" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5373,7 +5376,6 @@
         <EntityTypeShape EntityType="MapItModel.WatchList" Width="1.5" PointX="7.5" PointY="53" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.BrokerArea" Width="1.5" PointX="7.5" PointY="45.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.ServiceArea" Width="1.5" PointX="7.5" PointY="39.375" IsExpanded="false" />
-        <EntityTypeShape EntityType="MapItModel.Broker" Width="1.5" PointX="5.25" PointY="45.5" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Service" Width="1.5" PointX="5.25" PointY="50.625" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Offer" Width="1.5" PointX="3" PointY="69" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Package" Width="1.5" PointX="6" PointY="77.5" IsExpanded="false" />
@@ -5411,8 +5413,6 @@
         <AssociationConnector Association="MapItModel.FK_ServicesCategories_ServicesCategories" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_BrokerAreas_Areas" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_ServiceAreas_Areas" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_BrokerAreas_Brokers" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_Brokers_Cities" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_Services_Cities" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_ServiceAreas_Services" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_ServiceFavorites_Services" ManuallyRouted="false" />
@@ -5441,7 +5441,7 @@
         <EntityTypeShape EntityType="MapItModel.GenNotif" Width="1.5" PointX="0.75" PointY="5" IsExpanded="false" />
         <AssociationConnector Association="MapItModel.FK_Notifications_GenNotifs" />
         <EntityTypeShape EntityType="MapItModel.PropertyType" Width="1.5" PointX="7.875" PointY="35.75" />
-        <EntityTypeShape EntityType="MapItModel.Purpos" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="MapItModel.Purpos" Width="1.5" PointX="0.75" PointY="7" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.UserType" Width="1.5" PointX="1.125" PointY="61.25" />
         <AssociationConnector Association="MapItModel.FK_Properties_PropertyTypes" />
         <AssociationConnector Association="MapItModel.FK_Properties_Purposes" />
@@ -5472,6 +5472,9 @@
         <AssociationConnector Association="MapItModel.FK_UserCredits_Users" />
         <AssociationConnector Association="MapItModel.FK_Users_UserTypes" />
         <AssociationConnector Association="MapItModel.FK_WatchLists_Users" />
+        <EntityTypeShape EntityType="MapItModel.Broker" Width="1.5" PointX="5.25" PointY="43.25" IsExpanded="false" />
+        <AssociationConnector Association="MapItModel.FK_BrokerAreas_Brokers" />
+        <AssociationConnector Association="MapItModel.FK_Brokers_Cities" />
       </Diagram>
     </Diagrams>
   </Designer>

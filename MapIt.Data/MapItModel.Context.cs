@@ -66,7 +66,6 @@ namespace MapIt.Data
         public virtual DbSet<WatchList> WatchLists { get; set; }
         public virtual DbSet<BrokerArea> BrokerAreas { get; set; }
         public virtual DbSet<ServiceArea> ServiceAreas { get; set; }
-        public virtual DbSet<Broker> Brokers { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
@@ -86,6 +85,7 @@ namespace MapIt.Data
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<GeneralSetting> GeneralSettings { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Broker> Brokers { get; set; }
     
         public virtual ObjectResult<GetSettings_Result> GetSettings(Nullable<int> propertyTypeId)
         {
