@@ -17,6 +17,7 @@ namespace MapIt.Web.Admin
         #region Variables
 
         UsersRepository usersRepository;
+        UserTypesRepository userTypesRepository;
         CountriesRepository countriesRepository;
 
         #endregion Variables
@@ -67,6 +68,21 @@ namespace MapIt.Web.Admin
             set
             {
                 ViewState["SearchSexStatus"] = value;
+            }
+        }
+
+        public int? SearchUserType
+        {
+            get
+            {
+                int t = 0;
+                if (ViewState["SearchUserType"] != null && int.TryParse(ViewState["SearchUserType"].ToString(), out t))
+                    return t;
+                return null;
+            }
+            set
+            {
+                ViewState["SearchUserType"] = value;
             }
         }
 
@@ -252,6 +268,32 @@ namespace MapIt.Web.Admin
             }
         }
 
+        void BindUserTypes()
+        {
+            try
+            {
+                ddlUserTypes.DataValueField = ddlSearchCountry.DataValueField = "Id";
+                ddlUserTypes.DataTextField = ddlSearchCountry.DataTextField = "TitleEN";
+
+
+
+                userTypesRepository = new UserTypesRepository();
+                var data = userTypesRepository.GetAll();
+                if (data != null)
+                {
+                    ddlUserTypes.DataSource = data.ToList();
+                    ddlUserTypes.DataBind();
+                }
+
+                data = null;
+                userTypesRepository = null;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+            }
+        }
+
         void LoadData()
         {
             try
@@ -261,7 +303,7 @@ namespace MapIt.Web.Admin
 
                 if (Search)
                 {
-                    usersList = usersRepository.Search(null, SearchSexStatus, SearchCountry, SearchActiveStatus, SearchCDateFrom, SearchCDateTo, SearchKeyWord);
+                    usersList = usersRepository.Search(null, SearchSexStatus, SearchCountry, SearchActiveStatus, SearchCDateFrom, SearchCDateTo, SearchKeyWord, SearchUserType);
                 }
                 else
                 {
@@ -277,11 +319,10 @@ namespace MapIt.Web.Admin
                         usersList = SortHelper.SortList(usersList, SortExpression, SortDirection);
                     }
 
-                    //if (Search && (SearchSexStatus != null || SearchCountry != null || SearchActiveStatus != null || SearchCDateFrom != null || SearchCDateTo != null || !string.IsNullOrEmpty(SearchKeyWord)))
-                    //{
+                    
                     gvUsersExcel.DataSource = usersList;
                     gvUsersExcel.DataBind();
-                    //}
+               
 
                     int count = usersList.Count();
                     usersList = usersList.Skip((AspNetPager1.CurrentPageIndex - 1) * AspNetPager1.PageSize).Take(AspNetPager1.PageSize);
@@ -310,6 +351,7 @@ namespace MapIt.Web.Admin
                 // Srearch criteria
                 lblSearchCountry.Text = ddlSearchCountry.SelectedItem.Text;
                 lblSearchSexStatus.Text = ddlSearchSexStatus.SelectedItem.Text;
+                lblSearchUserType.Text = ddlUserTypes.SelectedItem.Text;
                 lblSearchActiveStatus.Text = ddlSearchActiveStatus.SelectedItem.Text;
                 lblSearchCDateFrom.Text = !string.IsNullOrEmpty(txtSearchCDateFrom.Text) ? txtSearchCDateFrom.Text : "All Days";
                 lblSearchCDateTo.Text = !string.IsNullOrEmpty(txtSearchCDateTo.Text) ? txtSearchCDateTo.Text : "All Days";
@@ -323,7 +365,7 @@ namespace MapIt.Web.Admin
 
         public void ClearSearch()
         {
-            ddlSearchCountry.SelectedIndex = ddlSearchSexStatus.SelectedIndex = ddlSearchActiveStatus.SelectedIndex = 0;
+            ddlSearchCountry.SelectedIndex = ddlSearchSexStatus.SelectedIndex = ddlUserTypes.SelectedIndex  = ddlSearchActiveStatus.SelectedIndex = 0;
             txtSearchCDateFrom.Text = txtSearchCDateTo.Text = txtSearchKeyWord.Text = SearchKeyWord = string.Empty;
             SearchCountry = SearchActiveStatus = null;
             SearchCDateFrom = SearchCDateTo = null;
@@ -753,6 +795,7 @@ namespace MapIt.Web.Admin
                 }
 
                 BindCountries();
+                BindUserTypes();
                 LoadData();
                 pnlAllRecords.Visible = true;
                 pnlRecordDetails.Visible = false;
@@ -883,6 +926,7 @@ namespace MapIt.Web.Admin
             Search = true;
 
             SearchSexStatus = ParseHelper.GetInt(ddlSearchSexStatus.SelectedValue);
+            SearchUserType = ParseHelper.GetInt(ddlUserTypes.SelectedValue);
             SearchCountry = ParseHelper.GetInt(ddlSearchCountry.SelectedValue);
             SearchActiveStatus = ParseHelper.GetInt(ddlSearchActiveStatus.SelectedValue);
             SearchCDateFrom = ParseHelper.GetDate(txtSearchCDateFrom.Text, "yyyy-MM-dd", null);

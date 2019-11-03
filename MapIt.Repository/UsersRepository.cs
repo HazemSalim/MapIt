@@ -6,12 +6,13 @@ namespace MapIt.Repository
 {
     public class UsersRepository : Repository<User>
     {
-        public IQueryable<User> Search(long? userId, int? sex, int? country, int? active, DateTime? cDateFrom, DateTime? cDateTo, string keyword)
+        public IQueryable<User> Search(long? userId, int? sex, int? country, int? active, DateTime? cDateFrom, DateTime? cDateTo, string keyword,int? userType=0)
         {
             return base.Find(u =>
                     (userId.HasValue && userId.Value > 0 ? u.Id == userId.Value : true) &&
                     (sex.HasValue && sex.Value > 0 ? u.Sex == sex.Value : true) &&
                     (country.HasValue && country.Value > 0 ? u.CountryId == country.Value : true) &&
+                    (userType.HasValue && userType.Value > 0 ? u.UserTypeID == userType.Value : true) &&
                     (active.HasValue ? (u.IsActive == (active.Value == 1 ? true : false)) : true) &&
                     ((cDateFrom.HasValue && cDateTo.HasValue) ? (u.AddedOn >= cDateFrom.Value && u.AddedOn < cDateTo.Value) : true) &&
                     ((!string.IsNullOrEmpty(keyword) ? u.FirstName.Replace(" ", string.Empty).ToLower().Contains(keyword.Replace(" ", string.Empty).ToLower()) : true) ||

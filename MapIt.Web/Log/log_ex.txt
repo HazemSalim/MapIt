@@ -12073,3 +12073,123 @@ Exception StackTrace :
    at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   3/11/2019 10:05
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   3/11/2019 10:05
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   3/11/2019 10:05
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   3/11/2019 10:05
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   3/11/2019 10:05
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   3/11/2019 10:05
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   3/11/2019 10:05
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   3/11/2019 10:05
+
+Exception Message :   
+String was not recognized as a valid DateTime.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider, DateTimeStyles style)
+   at MapIt.Helpers.ParseHelper.GetDate(Object input, String format, CultureInfo culInfo) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\ParseHelper.cs:line 77
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
