@@ -255,6 +255,10 @@
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <div class="pull-left">
+
+                                             <a href="Brokers?id=<%# Eval("Id") %>" style="float: left; display: block; padding: 0px 8px;">
+                                                    <i class="fa fa-users" style="font-size: 25px;"></i></a>
+
                                             <asp:LinkButton ID="lnkEdit" runat="server" CommandName="EditItem" CommandArgument='<%# Eval("Id") %>'
                                                 ToolTip="Edit" Style="float: left; display: block; padding: 0px 8px;">
                                                     <i class="fa fa-pencil" style="font-size:25px;"></i>

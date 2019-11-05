@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Data;
-using System.Drawing;
 using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
@@ -41,6 +40,21 @@ namespace MapIt.Web.Admin
             set
             {
                 ViewState["RecordId"] = value;
+            }
+        }
+
+        long UserId
+        {
+            get
+            {
+                long id = 0;
+                if (ViewState["UserId"] != null && long.TryParse(ViewState["UserId"].ToString(), out id))
+                    return id;
+                return 0;
+            }
+            set
+            {
+                ViewState["UserId"] = value;
             }
         }
 
@@ -224,22 +238,6 @@ namespace MapIt.Web.Admin
             }
         }
 
-        void BindUsers()
-        {
-            try
-            {
-                usersRepository = new UsersRepository();
-                var brokers = usersRepository.GetAll().Where(x => x.IsActive && x.UserTypeID == 4).OrderByDescending(a => a.AddedOn).ToList();
-
-                ddlUsers.DataSource = brokers;
-                ddlUsers.DataBind();
-            }
-            catch (Exception ex)
-            {
-                LogHelper.LogException(ex);
-            }
-        }
-
         void LoadData()
         {
             try
@@ -306,7 +304,7 @@ namespace MapIt.Web.Admin
 
         public void ClearControls()
         {
-            ddlCountry.SelectedIndex = ddlCode.SelectedIndex = ddlUsers.SelectedIndex = 0;
+            ddlCountry.SelectedIndex = ddlCode.SelectedIndex = 0;
             txtFullName.Text = txtPhone.Text = txtEmail.Text = txtLink.Text = txtDetailsEN.Text = txtDetailsAR.Text = string.Empty;
             chkActive.Checked = true;
             div_old.Visible = false;
@@ -431,9 +429,9 @@ namespace MapIt.Web.Admin
                     AddedOn = DateTime.Now
                 };
 
-                if (ddlUsers.SelectedValue != "")
+                if (UserId>0)
                 {
-                    brokerObj.UserId = int.Parse(ddlUsers.SelectedValue);
+                    brokerObj.UserId = UserId;
                 }
 
                 //------------- save areas ------------------//
@@ -491,9 +489,9 @@ namespace MapIt.Web.Admin
                 brokersRepository = new BrokersRepository();
                 var brokerObj = brokersRepository.GetByKey(id);
 
-                if (ddlUsers.SelectedValue != "")
+                if (UserId > 0)
                 {
-                    brokerObj.UserId = int.Parse(ddlUsers.SelectedValue);
+                    brokerObj.UserId = UserId;
                 }
 
                 brokerObj.FullName = txtFullName.Text;
@@ -572,7 +570,7 @@ namespace MapIt.Web.Admin
                 {
                     if(brokerObj.UserId.HasValue && brokerObj.UserId.Value > 0)
                     {
-                        ddlUsers.SelectedValue = brokerObj.UserId.ToString();
+                        UserId = brokerObj.UserId.Value;
                     }
                     txtFullName.Text = brokerObj.FullName;
                     ddlCountry.SelectedValue = brokerObj.City.CountryId.ToString();
@@ -643,16 +641,69 @@ namespace MapIt.Web.Admin
             if (!IsPostBack)
             {
                 if (Session["AdminUserId"] != null && ParseHelper.GetInt(Session["AdminUserId"].ToString()) > 1 &&
-                    !(new AdminPermissionsRepository().GetByPageId((int)ParseHelper.GetInt(Session["AdminUserId"].ToString()), (int)AppEnums.AdminPages.Brokers)))
+                    !new AdminPermissionsRepository().GetByPageId((int)ParseHelper.GetInt(Session["AdminUserId"].ToString()), (int)AppEnums.AdminPages.Brokers))
                 {
                     Response.Redirect(".");
                 }
 
-                BindUsers();
                 BindCountries();
+
+                long id = 0;
+                if (Request.QueryString["id"] != null && long.TryParse(Request.QueryString["id"], out id))
+                {
+                    UserId = id;
+                    if (UserId > 0)
+                    {
+                        usersRepository = new UsersRepository();
+                        var user = usersRepository.GetByKey(UserId);
+                        if (user != null)
+                        {
+                            txtEmail.Text = user.Email;
+                            txtFullName.Text = user.FullName;
+
+                            ddlCountry.SelectedValue = user.CountryId.ToString();
+
+                            ddlCountry_SelectedIndexChanged(null, null);
+
+                            var tmpPhonesParts = user.Phone.Split(' ');
+                            if (tmpPhonesParts.Count() > 1)
+                            {
+                                ddlCode.SelectedValue = tmpPhonesParts[0];
+                                txtPhone.Text = tmpPhonesParts[1];
+                            }
+
+                            chkActive.Checked = true;
+
+                            if (!string.IsNullOrEmpty(user.Photo))
+                            {
+                                aOld.HRef = imgOld.Src = AppSettings.UserPhotos + user.Photo;
+                                div_old.Visible = true;
+                                OldPhoto = user.Photo;
+                            }
+                            else
+                            {
+                                OldPhoto = null;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ClearControls();
+                    }
+                }
+
+                if (UserId > 0)
+                {
+                    pnlAllRecords.Visible = false;
+                    pnlRecordDetails.Visible = true;
+                }
+                else
+                {
+                    pnlAllRecords.Visible = true;
+                    pnlRecordDetails.Visible = false;
+                }
+
                 LoadData();
-                pnlAllRecords.Visible = true;
-                pnlRecordDetails.Visible = false;
             }
         }
 
@@ -804,43 +855,6 @@ namespace MapIt.Web.Admin
 
         #endregion Events
 
-        protected void ddlUsers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlUsers.SelectedValue != "")
-            {
-                usersRepository = new UsersRepository();
-                var user = usersRepository.GetByKey(Int64.Parse(ddlUsers.SelectedValue));
-                if (user != null)
-                {
-                    txtEmail.Text = user.Email;
-                    txtFullName.Text = user.FullName;
-
-                    ddlCountry.SelectedValue = user.CountryId.ToString();
-
-                    ddlCountry_SelectedIndexChanged(null, null);
-
-                    var tmpPhonesParts = user.Phone.Split(' ');
-                    ddlCode.SelectedValue = tmpPhonesParts[0];
-                    txtPhone.Text = tmpPhonesParts[1];
-
-                    chkActive.Checked = true;
-
-                    if (!string.IsNullOrEmpty(user.Photo))
-                    {
-                        aOld.HRef = imgOld.Src = AppSettings.UserPhotos + user.Photo;
-                        div_old.Visible = true;
-                        OldPhoto = user.Photo;
-                    }
-                    else
-                    {
-                        OldPhoto = null;
-                    }
-                }
-            }
-            else
-            {
-                ClearControls();
-            }
-        }
+     
     }
 }

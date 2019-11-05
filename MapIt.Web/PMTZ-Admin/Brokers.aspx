@@ -170,6 +170,9 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField>
                                             <ItemTemplate>
+
+                                                 
+
                                                 <asp:LinkButton ID="lnkEdit" runat="server" CommandName="EditItem" CommandArgument='<%# Eval("Id") %>'
                                                     ToolTip="Edit" CssClass="grid_button">
                                                         <i class="fa fa-pencil" style="font-size:25px;"></i>
@@ -198,7 +201,7 @@
                             <div class="panel-heading">Broker Details</div>
                             <div class="panel-body">
                                 <div class="col-md-4">
-                                     <div class="form-group">
+                                    <%-- <div class="form-group">
                                         <label>
                                             Broker User
                                         </label>
@@ -210,7 +213,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlUsers" SetFocusOnError="true"
                                             EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"
                                             InitialValue=""></asp:RequiredFieldValidator>
-                                    </div>
+                                    </div>--%>
 
 
                                     <div class="form-group">
