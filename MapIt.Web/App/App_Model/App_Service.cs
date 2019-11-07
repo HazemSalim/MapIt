@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
@@ -42,6 +40,7 @@ namespace MapIt.Web.App.App_Model
         public bool IsCompany { get; set; }
         public bool IsFavorite { get; set; }
         public bool IsReport { get; set; }
+        public bool IsViewed { get; set; }
         public bool IsSentComment { get; set; }
         public bool AdminAdded { get; set; }
 
@@ -118,6 +117,7 @@ namespace MapIt.Web.App.App_Model
             IsCompany = service.IsCompany;
             IsFavorite = false;
             IsReport = false;
+            IsViewed = false;
             IsSentComment = false;
             AdminAdded = service.AdminAdded;
             Rate = 3;
@@ -168,7 +168,7 @@ namespace MapIt.Web.App.App_Model
                 });
         }
 
-        public App_Service(MapIt.Data.Service service, long userId)
+        public App_Service(Data.Service service, long userId)
         {
             Id = service.Id;
             Title = service.Title;
@@ -200,6 +200,7 @@ namespace MapIt.Web.App.App_Model
             IsCompany = service.IsCompany;
             IsFavorite = false;
             IsReport = false;
+            IsViewed = false;
             IsSentComment = false;
             AdminAdded = service.AdminAdded;
             Rate = 3;
@@ -281,6 +282,7 @@ namespace MapIt.Web.App.App_Model
             AllAreas = false;
             IsCompany = false;
             IsFavorite = false;
+            IsViewed = false;
             IsReport = false;
             IsSentComment = false;
             AdminAdded = false;

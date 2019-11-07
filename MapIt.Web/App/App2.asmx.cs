@@ -1570,6 +1570,7 @@ namespace MapIt.Web.App
                         Details = propertyId < 1 ? string.Empty : property.Details,
                         IsFavorite = loginFavIds.Contains(property.Id),
                         IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false,
+                        IsViewed = property.PropertyViews.Any(pr => pr.UserId == loginUserId) ? true : false,
                         IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false
                     };
                     //list.Add(appProperty);
@@ -1742,6 +1743,7 @@ namespace MapIt.Web.App
                     appProperty.Details = propertyId < 1 ? string.Empty : property.Details;
                     appProperty.IsFavorite = loginFavIds.Contains(property.Id);
                     appProperty.IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false;
+                    appProperty.IsViewed = property.PropertyViews.Any(pr => pr.UserId == loginUserId) ? true : false;
                     appProperty.IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false;
                     //list.Add(appProperty);
 
@@ -1899,6 +1901,7 @@ namespace MapIt.Web.App
                         Details = propertyId < 1 ? string.Empty : property.Details,
                         IsFavorite = loginFavIds.Contains(property.Id),
                         IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false,
+                        IsViewed = property.PropertyViews.Any(pr => pr.UserId == loginUserId) ? true : false,
                         IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false
                     };
 
@@ -2053,6 +2056,7 @@ namespace MapIt.Web.App
                     appProperty = new App_Property(property);
                     appProperty.IsFavorite = loginFavIds.Contains(property.Id);
                     appProperty.IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false;
+                    appProperty.IsViewed = property.PropertyViews.Any(pr => pr.UserId == loginUserId) ? true : false;
                     appProperty.IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false;
                     list.Add(appProperty);
                 }
@@ -2093,6 +2097,7 @@ namespace MapIt.Web.App
                     appProperty = new App_Property(view.Property);
                     appProperty.IsFavorite = view.Property.PropertyFavorites.Any(pf => pf.UserId == userId) ? true : false;
                     appProperty.IsReport = view.Property.PropertyReports.Any(pr => pr.UserId == userId) ? true : false;
+                    appProperty.IsViewed = view.Property.PropertyViews.Any(pr => pr.UserId == userId) ? true : false;
                     appProperty.IsSentComment = view.Property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == userId) ? true : false;
                     list.Add(appProperty);
                 }
@@ -2138,6 +2143,7 @@ namespace MapIt.Web.App
                     appProperty = new App_Property(view.Property);
                     appProperty.IsFavorite = view.Property.PropertyFavorites.Any(pf => pf.UserId == userId) ? true : false;
                     appProperty.IsReport = view.Property.PropertyReports.Any(pr => pr.UserId == userId) ? true : false;
+                    appProperty.IsViewed = view.Property.PropertyViews.Any(pr => pr.UserId == userId) ? true : false;
                     appProperty.IsSentComment = view.Property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == userId) ? true : false;
                     list.Add(appProperty);
                 }
@@ -2178,6 +2184,7 @@ namespace MapIt.Web.App
                     appProperty = new App_Property(fav.Property);
                     appProperty.IsFavorite = true;
                     appProperty.IsReport = fav.Property.PropertyReports.Any(pr => pr.UserId == userId) ? true : false;
+                    appProperty.IsViewed = fav.Property.PropertyViews.Any(pr => pr.UserId == userId) ? true : false;
                     appProperty.IsSentComment = fav.Property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == userId) ? true : false;
                     list.Add(appProperty);
                 }
@@ -2223,6 +2230,7 @@ namespace MapIt.Web.App
                     appProperty = new App_Property(fav.Property);
                     appProperty.IsFavorite = true;
                     appProperty.IsReport = fav.Property.PropertyReports.Any(pr => pr.UserId == userId) ? true : false;
+                    appProperty.IsViewed = fav.Property.PropertyViews.Any(pr => pr.UserId == userId) ? true : false;
                     appProperty.IsSentComment = fav.Property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == userId) ? true : false;
                     list.Add(appProperty);
                 }
@@ -2331,6 +2339,29 @@ namespace MapIt.Web.App
                 propertiesRepository = new PropertiesRepository();
                 int result = propertiesRepository.SetFavorite(propertyId, userId);
                 RenderAsJson(result + "-" + propertiesRepository.Entities.PropertyFavorites.Where(uf => uf.PropertyId == propertyId).Count());
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+                RenderAsJson(-1);
+            }
+        }
+
+
+        [WebMethod(Description = "Set property is viewed by propertyId and userId.")]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void MakePropertyViewed(long propertyId, long userId, string key)
+        {
+            try
+            {
+                if (!key.Equals(AppSettings.WSKey))
+                {
+                    return;
+                }
+
+                propertiesRepository = new PropertiesRepository();
+                int result = propertiesRepository.SetViewed(propertyId, userId);
+                RenderAsJson(result + "-" + propertiesRepository.Entities.PropertyViews.Where(uf => uf.PropertyId == propertyId).Count());
             }
             catch (Exception ex)
             {
@@ -2843,6 +2874,7 @@ namespace MapIt.Web.App
                     appService = new App_Service(service);
                     appService.IsFavorite = loginFavIds.Contains(service.Id);
                     appService.IsReport = service.ServiceReports.Any(sr => sr.UserId == loginUserId) ? true : false;
+                    appService.IsViewed = service.ServiceViews.Any(sr => sr.UserId == loginUserId) ? true : false;
                     appService.IsSentComment = service.User.ReceiverServiceComments.Any(sc => sc.SenderId == loginUserId) ? true : false;
                     list.Add(appService);
                 }
@@ -3019,6 +3051,7 @@ namespace MapIt.Web.App
                     appService = new App_Service(obj);
                     appService.IsFavorite = loginFavIds.Contains(obj.Id);
                     appService.IsReport = obj.ServiceReports.Any(sr => sr.UserId == loginUserId) ? true : false;
+                    appService.IsViewed = obj.ServiceViews.Any(sr => sr.UserId == loginUserId) ? true : false;
                     appService.IsSentComment = obj.User.ReceiverServiceComments.Any(sc => sc.SenderId == loginUserId) ? true : false;
                     //list.Add(appService);
 
@@ -3097,6 +3130,7 @@ namespace MapIt.Web.App
                     appService = new App_Service(fav.Service);
                     appService.IsFavorite = fav.Service.ServiceFavorites.Any(sf => sf.UserId == userId) ? true : false;
                     appService.IsReport = fav.Service.ServiceReports.Any(sr => sr.UserId == userId) ? true : false;
+                    appService.IsViewed = fav.Service.ServiceViews.Any(sr => sr.UserId == userId) ? true : false;
                     appService.IsSentComment = fav.Service.User.ReceiverServiceComments.Any(sc => sc.SenderId == userId) ? true : false;
                     list.Add(appService);
                 }
@@ -3137,6 +3171,7 @@ namespace MapIt.Web.App
                     appService = new App_Service(fav.Service);
                     appService.IsFavorite = true;
                     appService.IsReport = fav.Service.ServiceReports.Any(sr => sr.UserId == userId) ? true : false;
+                    appService.IsViewed = fav.Service.ServiceViews.Any(sr => sr.UserId == userId) ? true : false;
                     appService.IsSentComment = fav.Service.User.ReceiverServiceComments.Any(sc => sc.SenderId == userId) ? true : false;
                     list.Add(appService);
                 }
@@ -3191,6 +3226,28 @@ namespace MapIt.Web.App
                 servicesRepository = new ServicesRepository();
                 int result = servicesRepository.SetFavorite(serviceId, userId);
                 RenderAsJson(result + "-" + servicesRepository.Entities.ServiceFavorites.Where(sf => sf.ServiceId == serviceId).Count());
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+                RenderAsJson(-1);
+            }
+        }
+
+        [WebMethod(Description = "Set service is viewed by serviceId and userId.")]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void MakeServiceViewed(long serviceId, long userId, string key)
+        {
+            try
+            {
+                if (!key.Equals(AppSettings.WSKey))
+                {
+                    return;
+                }
+
+                servicesRepository = new ServicesRepository();
+                int result = servicesRepository.SetViewed(serviceId, userId);
+                RenderAsJson(result + "-" + servicesRepository.Entities.ServiceViews.Where(sf => sf.ServiceId == serviceId).Count());
             }
             catch (Exception ex)
             {

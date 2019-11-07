@@ -6,7 +6,6 @@ using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 
 namespace MapIt.Web.App.App_Model
 {
@@ -73,6 +72,7 @@ namespace MapIt.Web.App.App_Model
         public int IsSpecial { get; set; }
         public bool IsFavorite { get; set; }
         public bool IsReport { get; set; }
+        public bool IsViewed { get; set; }
         public bool IsSentComment { get; set; }
         public bool AdminAdded { get; set; }
 
@@ -118,7 +118,7 @@ namespace MapIt.Web.App.App_Model
 
         }
 
-        public App_Property(MapIt.Data.Property property)
+        public App_Property(Data.Property property)
         {
             Id = property.Id;
             PageURL = property.PageName;
@@ -181,6 +181,7 @@ namespace MapIt.Web.App.App_Model
             IsSpecial = property.IsSpecial ? 1 : 0;
             IsFavorite = false;
             IsReport = false;
+            IsViewed = false;
             IsSentComment = false;
             AdminAdded = property.AdminAdded;
 
@@ -300,6 +301,7 @@ namespace MapIt.Web.App.App_Model
             IsSpecial = property.IsSpecial ? 1 : 0;
             IsFavorite = false;
             IsReport = false;
+            IsViewed = false;
             IsSentComment = false;
             AdminAdded = property.AdminAdded;
 
@@ -418,6 +420,7 @@ namespace MapIt.Web.App.App_Model
             IsSpecial = 0;
             IsFavorite = false;
             IsReport = false;
+            IsViewed = false;
             IsSentComment = false;
             AdminAdded = false;
 

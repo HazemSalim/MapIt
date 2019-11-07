@@ -465,11 +465,29 @@ namespace MapIt.Data
             }
         }
 
+
         public int ReportsCount
         {
             get
             {
                 return this.PropertyReports.Count;
+            }
+        }
+
+        public bool IsViewed
+        {
+            get
+            {
+                return this.PropertyViews.Count > 0;
+            }
+        }
+
+
+        public int ViewsCount
+        {
+            get
+            {
+                return this.PropertyViews.Count;
             }
         }
     }
@@ -601,6 +619,23 @@ namespace MapIt.Data
             get
             {
                 return this.ServiceReports.Count;
+            }
+        }
+
+        public bool IsViewed
+        {
+            get
+            {
+                return this.ServiceViews.Count > 0;
+            }
+        }
+
+
+        public int ViewsCount
+        {
+            get
+            {
+                return this.ServiceViews.Count;
             }
         }
     }
