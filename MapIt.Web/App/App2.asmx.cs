@@ -2350,23 +2350,25 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = "Set property is viewed by propertyId and userId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void MakePropertyViewed(long propertyId, long userId, string key)
+        public long MakePropertyViewed(long propertyId, long userId, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 propertiesRepository = new PropertiesRepository();
                 int result = propertiesRepository.SetViewed(propertyId, userId);
-                RenderAsJson(result + "-" + propertiesRepository.Entities.PropertyViews.Where(uf => uf.PropertyId == propertyId).Count());
+                //RenderAsJson(result + "-" + propertiesRepository.Entities.PropertyViews.Where(uf => uf.PropertyId == propertyId).Count());
+                return propertyId;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
@@ -3236,23 +3238,25 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = "Set service is viewed by serviceId and userId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void MakeServiceViewed(long serviceId, long userId, string key)
+        public long MakeServiceViewed(long serviceId, long userId, string key)
         {
             try
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 servicesRepository = new ServicesRepository();
                 int result = servicesRepository.SetViewed(serviceId, userId);
-                RenderAsJson(result + "-" + servicesRepository.Entities.ServiceViews.Where(sf => sf.ServiceId == serviceId).Count());
+                //RenderAsJson(result + "-" + servicesRepository.Entities.ServiceViews.Where(sf => sf.ServiceId == serviceId).Count());
+                return serviceId;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
