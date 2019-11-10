@@ -1967,7 +1967,7 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = "Get all properties Count.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void GetPropertiesCount(long propertyId, long userId, int purposeId, int typeId, int countryId, int cityId, int areaId, int blockId,
+        public int GetPropertiesCount(long propertyId, long userId, int purposeId, int typeId, int countryId, int cityId, int areaId, int blockId,
             string portalAddress, double areaFrom, double areaTo, int yearFrom, int yearTo, double mIncomeFrom, double mIncomeTo, double sPriceFrom,
             double sPriceTo, double rPriceFrom, double rPriceTo, int today, int special, int sortOption, int pageIndex, long loginUserId, string key)
         {
@@ -1975,7 +1975,7 @@ namespace MapIt.Web.App
             {
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return -1;
                 }
 
                 propertiesRepository = new PropertiesRepository();
@@ -2009,12 +2009,14 @@ namespace MapIt.Web.App
                     null, areaFrom, areaTo, yearFrom, yearTo, mIncomeFrom, mIncomeTo, sPriceFrom, sPriceTo, rPriceFrom, rPriceTo, dateFrom, dateTo, _special,
                     1, 1, 0, null, 1, null).Count();
 
-                RenderAsJson(propertiesCount);
+                //RenderAsJson(propertiesCount);
+                return propertiesCount;
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                //RenderAsJson(-1);
+                return -1;
             }
         }
 
