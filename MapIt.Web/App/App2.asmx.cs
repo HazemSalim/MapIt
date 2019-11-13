@@ -1854,7 +1854,8 @@ namespace MapIt.Web.App
                 {
                     var sCoordCenter = new GeoCoordinate(centerLatitude, centerLongitude);
                     properties = properties.Where(p => minLatitude > 0 && maxLatitude > 0 ? p.DLatitude >= minLatitude && p.DLatitude <= maxLatitude && p.DLongitude >= minLongitude && p.DLongitude <= maxLongitude : true)
-                        .OrderBy(x => x.GeoCoord.GetDistanceTo(sCoordCenter)).ToList();
+                        //.OrderBy(x => x.GeoCoord.GetDistanceTo(sCoordCenter)).ToList();
+                        .OrderByDescending(x => x.Id).ToList();//
                 }
                 else
                 {
