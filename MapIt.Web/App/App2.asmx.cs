@@ -2008,7 +2008,7 @@ namespace MapIt.Web.App
                 int propertiesCount = propertiesRepository.Search(propertyId, userId, purposeId, typeId, countryId, cityId, areaId, blockId, null, portalAddress,
                     null, areaFrom, areaTo, yearFrom, yearTo, mIncomeFrom, mIncomeTo, sPriceFrom, sPriceTo, rPriceFrom, rPriceTo, dateFrom, dateTo, _special,
                     1, 1, 0, null, 1, null).Count();
-
+                 
                 //RenderAsJson(propertiesCount);
                 return propertiesCount;
             }
