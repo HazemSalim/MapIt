@@ -19,8 +19,8 @@ namespace MapIt.Data
         {
             this.Areas = new HashSet<Area>();
             this.WatchLists = new HashSet<WatchList>();
-            this.Services = new HashSet<Service>();
             this.Brokers = new HashSet<Broker>();
+            this.Services = new HashSet<Service>();
         }
     
         public int Id { get; set; }
@@ -35,8 +35,8 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WatchList> WatchLists { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Service> Services { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Broker> Brokers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Service> Services { get; set; }
     }
 }

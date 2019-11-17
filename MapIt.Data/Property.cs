@@ -17,15 +17,15 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Property()
         {
+            this.Notifications = new HashSet<Notification>();
+            this.PropertyComments = new HashSet<PropertyComment>();
             this.PropertyComponents = new HashSet<PropertyComponent>();
             this.PropertyFavorites = new HashSet<PropertyFavorite>();
             this.PropertyFeatures = new HashSet<PropertyFeature>();
             this.PropertyPhotos = new HashSet<PropertyPhoto>();
+            this.PropertyReports = new HashSet<PropertyReport>();
             this.PropertyVideos = new HashSet<PropertyVideo>();
             this.PropertyViews = new HashSet<PropertyView>();
-            this.PropertyComments = new HashSet<PropertyComment>();
-            this.Notifications = new HashSet<Notification>();
-            this.PropertyReports = new HashSet<PropertyReport>();
         }
     
         public long Id { get; set; }
@@ -48,6 +48,10 @@ namespace MapIt.Data
         public string PortalAddressAR { get; set; }
         public string PACI { get; set; }
         public int ViewersCount { get; set; }
+        public Nullable<int> WhatsAppCount { get; set; }
+        public Nullable<int> CallsCount { get; set; }
+        public Nullable<int> MapsCount { get; set; }
+        public Nullable<int> CapturesCount { get; set; }
         public bool PaySpecial { get; set; }
         public bool PayVideo { get; set; }
         public bool IsSpecial { get; set; }
@@ -61,6 +65,13 @@ namespace MapIt.Data
         public virtual Block Block { get; set; }
         public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notification> Notifications { get; set; }
+        public virtual PropertyType PropertyType { get; set; }
+        public virtual Purpos Purpos { get; set; }
+        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PropertyComment> PropertyComments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyComponent> PropertyComponents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyFavorite> PropertyFavorites { get; set; }
@@ -69,17 +80,10 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyPhoto> PropertyPhotos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PropertyReport> PropertyReports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyVideo> PropertyVideos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyView> PropertyViews { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PropertyComment> PropertyComments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Notification> Notifications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PropertyReport> PropertyReports { get; set; }
-        public virtual PropertyType PropertyType { get; set; }
-        public virtual Purpos Purpos { get; set; }
-        public virtual User User { get; set; }
     }
 }

@@ -47,7 +47,6 @@ namespace MapIt.Data
         public virtual DbSet<PageShow> PageShows { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTransaction> PaymentTransactions { get; set; }
-        public virtual DbSet<Property> Properties { get; set; }
         public virtual DbSet<PropertyComponent> PropertyComponents { get; set; }
         public virtual DbSet<PropertyFavorite> PropertyFavorites { get; set; }
         public virtual DbSet<PropertyFeature> PropertyFeatures { get; set; }
@@ -66,7 +65,6 @@ namespace MapIt.Data
         public virtual DbSet<WatchList> WatchLists { get; set; }
         public virtual DbSet<BrokerArea> BrokerAreas { get; set; }
         public virtual DbSet<ServiceArea> ServiceAreas { get; set; }
-        public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
         public virtual DbSet<UserCredit> UserCredits { get; set; }
@@ -86,6 +84,8 @@ namespace MapIt.Data
         public virtual DbSet<GeneralSetting> GeneralSettings { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Broker> Brokers { get; set; }
+        public virtual DbSet<Property> Properties { get; set; }
+        public virtual DbSet<Service> Services { get; set; }
     
         public virtual ObjectResult<GetSettings_Result> GetSettings(Nullable<int> propertyTypeId)
         {

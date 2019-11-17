@@ -28,9 +28,9 @@ namespace MapIt.Data
     
         public virtual NotifType NotifType { get; set; }
         public virtual Offer Offer { get; set; }
-        public virtual Property Property { get; set; }
-        public virtual Service Service { get; set; }
         public virtual GenNotif GenNotif { get; set; }
         public virtual User User { get; set; }
+        public virtual Property Property { get; set; }
+        public virtual Service Service { get; set; }
     }
 }

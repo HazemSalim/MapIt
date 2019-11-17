@@ -19,7 +19,6 @@ namespace MapIt.Data
         {
             this.DevicesTokens = new HashSet<DevicesToken>();
             this.Notifications = new HashSet<Notification>();
-            this.Properties = new HashSet<Property>();
             this.PropertyComments = new HashSet<PropertyComment>();
             this.ReceiverPropertyComments = new HashSet<PropertyComment>();
             this.PropertyFavorites = new HashSet<PropertyFavorite>();
@@ -30,12 +29,13 @@ namespace MapIt.Data
             this.ServiceFavorites = new HashSet<ServiceFavorite>();
             this.ServiceRates = new HashSet<ServiceRate>();
             this.ServiceReports = new HashSet<ServiceReport>();
-            this.Services = new HashSet<Service>();
             this.ServiceViews = new HashSet<ServiceView>();
             this.TechMessages = new HashSet<TechMessage>();
             this.UserBalanceLogs = new HashSet<UserBalanceLog>();
             this.UserCredits = new HashSet<UserCredit>();
             this.WatchLists = new HashSet<WatchList>();
+            this.Properties = new HashSet<Property>();
+            this.Services = new HashSet<Service>();
         }
     
         public long Id { get; set; }
@@ -67,8 +67,6 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Notification> Notifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Property> Properties { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyComment> PropertyComments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyComment> ReceiverPropertyComments { get; set; }
@@ -89,8 +87,6 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceReport> ServiceReports { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Service> Services { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceView> ServiceViews { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TechMessage> TechMessages { get; set; }
@@ -101,5 +97,9 @@ namespace MapIt.Data
         public virtual UserType UserType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WatchList> WatchLists { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Property> Properties { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Service> Services { get; set; }
     }
 }

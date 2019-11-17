@@ -22,7 +22,7 @@ namespace MapIt.Data
         public string Notes { get; set; }
     
         public virtual Reason Reason { get; set; }
-        public virtual Service Service { get; set; }
         public virtual User User { get; set; }
+        public virtual Service Service { get; set; }
     }
 }

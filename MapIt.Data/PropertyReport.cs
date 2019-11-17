@@ -21,8 +21,8 @@ namespace MapIt.Data
         public System.DateTime CreatedOn { get; set; }
         public string Notes { get; set; }
     
-        public virtual Property Property { get; set; }
         public virtual Reason Reason { get; set; }
         public virtual User User { get; set; }
+        public virtual Property Property { get; set; }
     }
 }

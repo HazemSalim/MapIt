@@ -19,7 +19,7 @@ namespace MapIt.Data
         public long PropertyId { get; set; }
         public System.DateTime ViewedOn { get; set; }
     
-        public virtual Property Property { get; set; }
         public virtual User User { get; set; }
+        public virtual Property Property { get; set; }
     }
 }

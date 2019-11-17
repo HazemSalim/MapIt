@@ -17,8 +17,8 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Purpos()
         {
-            this.Properties = new HashSet<Property>();
             this.WatchLists = new HashSet<WatchList>();
+            this.Properties = new HashSet<Property>();
         }
     
         public int Id { get; set; }
@@ -28,8 +28,8 @@ namespace MapIt.Data
         public string ShortTitleEN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Property> Properties { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WatchList> WatchLists { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Property> Properties { get; set; }
     }
 }

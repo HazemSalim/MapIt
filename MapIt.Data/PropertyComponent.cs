@@ -19,7 +19,7 @@ namespace MapIt.Data
         public int ComponentId { get; set; }
         public Nullable<int> Count { get; set; }
     
-        public virtual Property Property { get; set; }
         public virtual Component Component { get; set; }
+        public virtual Property Property { get; set; }
     }
 }

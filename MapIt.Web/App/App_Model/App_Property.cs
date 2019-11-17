@@ -69,6 +69,11 @@ namespace MapIt.Web.App.App_Model
         public int ViewersCount { get; set; }
         public int FavoritesCount { get; set; }
 
+        public int WhatsAppCount { get; set; }
+        public int CallsCount { get; set; }
+        public int MapsCount { get; set; }
+        public int CapturesCount { get; set; }
+
         public int IsSpecial { get; set; }
         public bool IsFavorite { get; set; }
         public bool IsReport { get; set; }
@@ -177,6 +182,11 @@ namespace MapIt.Web.App.App_Model
 
             ViewersCount = property.ViewersCount;
             FavoritesCount = property.PropertyFavorites.Count;
+
+            CallsCount = property.CallsCount ?? 0;
+            WhatsAppCount = property.WhatsAppCount ?? 0;
+            CapturesCount = property.CapturesCount ?? 0;
+            MapsCount = property.MapsCount ?? 0;
 
             IsSpecial = property.IsSpecial ? 1 : 0;
             IsFavorite = false;
@@ -298,6 +308,11 @@ namespace MapIt.Web.App.App_Model
             ViewersCount = property.ViewersCount;
             FavoritesCount = property.PropertyFavorites.Count;
 
+            CallsCount = property.CallsCount ?? 0;
+            WhatsAppCount = property.WhatsAppCount ?? 0;
+            CapturesCount = property.CapturesCount ?? 0;
+            MapsCount = property.MapsCount ?? 0;
+
             IsSpecial = property.IsSpecial ? 1 : 0;
             IsFavorite = false;
             IsReport = false;
@@ -416,6 +431,11 @@ namespace MapIt.Web.App.App_Model
 
             ViewersCount = 0;
             FavoritesCount = 0;
+
+            CallsCount =  0;
+            WhatsAppCount =   0;
+            CapturesCount =   0;
+            MapsCount =   0;
 
             IsSpecial = 0;
             IsFavorite = false;

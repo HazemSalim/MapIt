@@ -443,6 +443,10 @@
     <Property Name="PortalAddressAR" Type="nvarchar" MaxLength="500" />
     <Property Name="PACI" Type="nvarchar" MaxLength="50" />
     <Property Name="ViewersCount" Type="int" Nullable="false" />
+    <Property Name="WhatsAppCount" Type="int" />
+    <Property Name="CallsCount" Type="int" />
+    <Property Name="MapsCount" Type="int" />
+    <Property Name="CapturesCount" Type="int" />
     <Property Name="PaySpecial" Type="bit" Nullable="false" />
     <Property Name="PayVideo" Type="bit" Nullable="false" />
     <Property Name="IsSpecial" Type="bit" Nullable="false" />
@@ -648,6 +652,10 @@
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
+    <Property Name="WhatsAppCount" Type="int" />
+    <Property Name="CallsCount" Type="int" />
+    <Property Name="MapsCount" Type="int" />
+    <Property Name="CapturesCount" Type="int" />
   </EntityType>
   <EntityType Name="ServicesCategories">
     <Key>

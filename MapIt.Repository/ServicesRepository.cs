@@ -42,6 +42,37 @@ namespace MapIt.Repository
                 (s.IsSpecial && EntityFunctions.AddDays(s.AddedOn, GSetting.SpecAdDuration).Value >= DateTime.Now));
         }
 
+
+        public bool IncreaseServiceShares(long serviceId, string type)
+        {
+            var proObj = Entities.Services.Where(o => o.Id == serviceId).Single();
+
+            if (proObj != null)
+            {
+                switch (type)
+                {
+                    case "WhatsAppCount":
+                        proObj.WhatsAppCount++;
+                        break;
+                    case "CallsCount":
+                        proObj.CallsCount++;
+                        break;
+                    case "MapsCount":
+                        proObj.MapsCount++;
+                        break;
+                    case "CapturesCount":
+                        proObj.CapturesCount++;
+                        break;
+                    default:
+                        return false;
+                }
+
+                return Entities.SaveChanges() > 0;
+            }
+
+            return false;
+        }
+
         public bool IncreaseViewersCount(long serviceId)
         {
             var serObj = Entities.Services.Where(o => o.Id == serviceId).Single();

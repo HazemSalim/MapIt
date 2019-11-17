@@ -108,6 +108,36 @@ namespace MapIt.Repository
             return Entities.SaveChanges() > 0;
         }
 
+        public bool IncreasePropertyShares(long propertyId,string type)
+        {
+            var proObj = Entities.Properties.Where(o => o.Id == propertyId).Single();
+
+            if (proObj != null)
+            {
+                switch (type)
+                {
+                    case "WhatsAppCount":
+                        proObj.WhatsAppCount++;
+                        break;
+                    case "CallsCount":
+                        proObj.CallsCount++;
+                        break;
+                    case "MapsCount":
+                        proObj.MapsCount++;
+                        break;
+                    case "CapturesCount":
+                        proObj.CapturesCount++;
+                        break;
+                    default:
+                        return false;
+                }
+              
+                return Entities.SaveChanges() > 0;
+            }
+
+            return false;
+        }
+
         public int SetViewed(long propertyId, long userId)
         {
             var proViewList = Entities.PropertyViews.Where(uv => uv.PropertyId == propertyId && uv.UserId == userId);

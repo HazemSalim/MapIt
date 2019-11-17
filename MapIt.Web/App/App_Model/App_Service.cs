@@ -44,6 +44,11 @@ namespace MapIt.Web.App.App_Model
         public bool IsSentComment { get; set; }
         public bool AdminAdded { get; set; }
 
+        public int WhatsAppCount { get; set; }
+        public int CallsCount { get; set; }
+        public int MapsCount { get; set; }
+        public int CapturesCount { get; set; }
+
         public int Rate { get; set; }
         public int RatersCount { get; set; }
         public int ViewersCount { get; set; }
@@ -83,7 +88,7 @@ namespace MapIt.Web.App.App_Model
 
         CommercialAdsRepository commercialAdsRepository = new CommercialAdsRepository();
 
-        public App_Service(MapIt.Data.Service service)
+        public App_Service(Data.Service service)
         {
             Id = service.Id;
             Title = service.Title;
@@ -123,6 +128,11 @@ namespace MapIt.Web.App.App_Model
             Rate = 3;
             RatersCount = service.ServiceRates.Count;
             ViewersCount = service.ViewersCount;
+
+            CallsCount = service.CallsCount ?? 0;
+            WhatsAppCount = service.WhatsAppCount ?? 0;
+            CapturesCount = service.CapturesCount ?? 0;
+            MapsCount = service.MapsCount ?? 0;
 
             UnreadMessageCount = 0;
 
@@ -207,6 +217,12 @@ namespace MapIt.Web.App.App_Model
             RatersCount = service.ServiceRates.Count;
             ViewersCount = service.ViewersCount;
 
+
+            CallsCount = service.CallsCount ?? 0;
+            WhatsAppCount = service.WhatsAppCount ?? 0;
+            CapturesCount = service.CapturesCount ?? 0;
+            MapsCount = service.MapsCount ?? 0;
+
             UnreadMessageCount = service.ServiceComments.Count(sc => !sc.IsRead && sc.ReceiverId == userId);
 
             Photo = service.ServicePhoto;
@@ -290,7 +306,13 @@ namespace MapIt.Web.App.App_Model
             RatersCount = 0;
             ViewersCount = 0;
 
+            CallsCount = 0;
+            WhatsAppCount = 0;
+            CapturesCount = 0;
+            MapsCount = 0;
+
             UnreadMessageCount = 0;
+
 
             Photo = !String.IsNullOrEmpty(adObj.Photo) ? string.Concat(AppSettings.CommAdPhotos + adObj.Photo) : string.Empty;
             AddedOn = adObj.AddedOn;

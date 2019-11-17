@@ -19,12 +19,12 @@ namespace MapIt.Data
         {
             this.Cities = new HashSet<City>();
             this.CommercialAds = new HashSet<CommercialAd>();
-            this.Properties = new HashSet<Property>();
             this.Sliders = new HashSet<Slider>();
             this.WatchLists = new HashSet<WatchList>();
             this.Offers = new HashSet<Offer>();
             this.GeneralSettings = new HashSet<GeneralSetting>();
             this.Users = new HashSet<User>();
+            this.Properties = new HashSet<Property>();
         }
     
         public int Id { get; set; }
@@ -43,8 +43,6 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CommercialAd> CommercialAds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Property> Properties { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Slider> Sliders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WatchList> WatchLists { get; set; }
@@ -54,5 +52,7 @@ namespace MapIt.Data
         public virtual ICollection<GeneralSetting> GeneralSettings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Property> Properties { get; set; }
     }
 }

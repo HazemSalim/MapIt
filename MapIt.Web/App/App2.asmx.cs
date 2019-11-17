@@ -2375,6 +2375,33 @@ namespace MapIt.Web.App
             }
         }
 
+        [WebMethod(Description = "Set property shares by propertyId and type.")]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public long IncreasePropertyShares(long propertyId, string type, string key)
+        {
+            try
+            {
+                if (!key.Equals(AppSettings.WSKey))
+                {
+                    return -1;
+                }
+
+                propertiesRepository = new PropertiesRepository();
+                bool result = propertiesRepository.IncreasePropertyShares(propertyId, type);
+
+                if (!result)
+                    return -2;
+
+                return propertyId;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+                //RenderAsJson(-1);
+                return -1;
+            }
+        }
+
         [WebMethod(Description = "Set property is reported by propertyId, userId , notes and reasonId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public long MakePropertyReported2(long propertyId, long userId, int reasonId, string key, string notes)
@@ -2984,18 +3011,18 @@ namespace MapIt.Web.App
                     List<int> CatsIdlst2 = new List<int>();
                     List<int> CatsIdlst3 = new List<int>();
 
-                    var categoryList = servicesCategoriesRepository.Single(c => c.IsActive == true && (c.TitleAR == keyword || c.TitleEN == keyword));
+                    var categoryList = servicesCategoriesRepository.Single(c => c.IsActive  && (c.TitleAR == keyword || c.TitleEN == keyword));
                     if (categoryList != null)
                     {
                         var properties2 = services.Where(l => l.CategoryId == categoryList.Id);
 
-                        List<ServicesCategory> category2 = servicesCategoriesRepository.Find(c => c.IsActive == true && c.ParentId.HasValue && c.ParentId > 0 && c.ParentId == categoryList.Id).ToList();
+                        List<ServicesCategory> category2 = servicesCategoriesRepository.Find(c => c.IsActive  && c.ParentId.HasValue && c.ParentId > 0 && c.ParentId == categoryList.Id).ToList();
                         if (category2 != null && category2.Count() > 0)
                         {
                             foreach (var item in category2)
                             {
                                 CatsIdlst2.Add(item.Id);
-                                List<ServicesCategory> category3 = servicesCategoriesRepository.Find(c => c.IsActive == true && c.ParentId.HasValue && c.ParentId > 0 && c.ParentId == item.Id).ToList();
+                                List<ServicesCategory> category3 = servicesCategoriesRepository.Find(c => c.IsActive && c.ParentId.HasValue && c.ParentId > 0 && c.ParentId == item.Id).ToList();
                                 if (category3 != null && category3.Count() > 0)
                                 {
                                     foreach (var item3 in category3)
@@ -3239,6 +3266,33 @@ namespace MapIt.Web.App
             }
         }
 
+        [WebMethod(Description = "Set service shares by propertyId and type.")]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public long IncreaseServiceShares(long serviceId, string type, string key)
+        {
+            try
+            {
+                if (!key.Equals(AppSettings.WSKey))
+                {
+                    return -1;
+                }
+
+                servicesRepository = new ServicesRepository();
+                bool result = servicesRepository.IncreaseServiceShares(serviceId, type);
+
+                if (!result)
+                    return -2;
+
+                return serviceId;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+                //RenderAsJson(-1);
+                return -1;
+            }
+        }
+
         [WebMethod(Description = "Set service is viewed by serviceId and userId.")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public long MakeServiceViewed(long serviceId, long userId, string key)
@@ -3475,9 +3529,9 @@ namespace MapIt.Web.App
                     Photo = photo,
                     Lang = lang,
                     ActivationCode = AuthHelper.RandomCode(4),
-                    IsActive = false,//GSetting.AutoActiveUser,
+                    IsActive = true,//GSetting.AutoActiveUser,
                     IsCanceled = false,
-                    IsVerified = true,
+                    IsVerified = false,
                     AddedOn = DateTime.Now
                 };
 
@@ -3486,11 +3540,11 @@ namespace MapIt.Web.App
 
                 usersRepository.Add(userObj);
 
-                if (!userObj.IsActive)
-                {
+                //if (!userObj.IsActive)
+                //{
                     string smsMessage = AppSettings.SMSActivationText + userObj.ActivationCode;
                     AppSMS.Send(smsMessage, userObj.PhoneForSMS);
-                }
+                //}
 
                 #region Assgin device token to user
                 devicesTokensRepository = new DevicesTokensRepository();
@@ -3527,11 +3581,11 @@ namespace MapIt.Web.App
                 AppMails.SendNewCreditToUser(userCredit.Id);
                 #endregion
 
-                if (userObj.IsActive)
-                {
-                    AppMails.SendWelcomeToUser(userObj.Id);
-                    AppMails.SendNewUserToAdmin(userObj.Id);
-                }
+                //if (userObj.IsActive)
+                //{
+                //    AppMails.SendWelcomeToUser(userObj.Id);
+                //    AppMails.SendNewUserToAdmin(userObj.Id);
+                //}
 
                 //RenderAsJson(userObj.Id);
                 return userObj.Id;
@@ -5405,7 +5459,7 @@ namespace MapIt.Web.App
 
                 merchantsRepository = new MerchantsRepository();
 
-                var merchantObj = new MapIt.Data.Merchant();
+                var merchantObj = new Merchant();
                 merchantObj.FullName = fullName;
                 merchantObj.Country = country;
                 merchantObj.City = city;

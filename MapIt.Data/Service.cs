@@ -17,14 +17,14 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Service()
         {
+            this.Notifications = new HashSet<Notification>();
             this.ServiceAreas = new HashSet<ServiceArea>();
+            this.ServiceComments = new HashSet<ServiceComment>();
             this.ServiceFavorites = new HashSet<ServiceFavorite>();
             this.ServicePhotos = new HashSet<ServicePhoto>();
             this.ServiceRates = new HashSet<ServiceRate>();
-            this.ServiceViews = new HashSet<ServiceView>();
-            this.ServiceComments = new HashSet<ServiceComment>();
-            this.Notifications = new HashSet<Notification>();
             this.ServiceReports = new HashSet<ServiceReport>();
+            this.ServiceViews = new HashSet<ServiceView>();
         }
     
         public long Id { get; set; }
@@ -47,25 +47,29 @@ namespace MapIt.Data
         public System.DateTime AddedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<int> AdminUserId { get; set; }
+        public Nullable<int> WhatsAppCount { get; set; }
+        public Nullable<int> CallsCount { get; set; }
+        public Nullable<int> MapsCount { get; set; }
+        public Nullable<int> CapturesCount { get; set; }
     
         public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notification> Notifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceArea> ServiceAreas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServiceComment> ServiceComments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceFavorite> ServiceFavorites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServicePhoto> ServicePhotos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceRate> ServiceRates { get; set; }
-        public virtual ServicesCategory ServicesCategory { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceView> ServiceViews { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceComment> ServiceComments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Notification> Notifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceReport> ServiceReports { get; set; }
+        public virtual ServicesCategory ServicesCategory { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServiceView> ServiceViews { get; set; }
     }
 }

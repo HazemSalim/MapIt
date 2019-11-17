@@ -22,8 +22,8 @@ namespace MapIt.Data
         public bool IsRead { get; set; }
         public System.DateTime AddedOn { get; set; }
     
-        public virtual Property Property { get; set; }
         public virtual User Sender { get; set; }
         public virtual User Receiver { get; set; }
+        public virtual Property Property { get; set; }
     }
 }

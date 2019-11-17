@@ -19,7 +19,7 @@ namespace MapIt.Data
         public long ServiceId { get; set; }
         public System.DateTime ViewedOn { get; set; }
     
-        public virtual Service Service { get; set; }
         public virtual User User { get; set; }
+        public virtual Service Service { get; set; }
     }
 }
