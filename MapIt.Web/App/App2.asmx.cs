@@ -1739,12 +1739,14 @@ namespace MapIt.Web.App
 
                 foreach (var property in properties)
                 {
-                    appProperty = new App_Property(property);
-                    appProperty.Details = propertyId < 1 ? string.Empty : property.Details;
-                    appProperty.IsFavorite = loginFavIds.Contains(property.Id);
-                    appProperty.IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false;
-                    appProperty.IsViewed = property.PropertyViews.Any(pr => pr.UserId == loginUserId) ? true : false;
-                    appProperty.IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false;
+                    appProperty = new App_Property(property)
+                    {
+                        Details = propertyId < 1 ? string.Empty : property.Details,
+                        IsFavorite = loginFavIds.Contains(property.Id),
+                        IsReport = property.PropertyReports.Any(pr => pr.UserId == loginUserId) ? true : false,
+                        IsViewed = property.PropertyViews.Any(pr => pr.UserId == loginUserId) ? true : false,
+                        IsSentComment = property.User.ReceiverPropertyComments.Any(pc => pc.SenderId == loginUserId) ? true : false
+                    };
                     //list.Add(appProperty);
 
                     if (propertyId > 0)
