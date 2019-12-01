@@ -13,7 +13,7 @@ using MapIt.Repository;
 
 namespace MapIt.Web.Admin
 {
-    public partial class Brokers : System.Web.UI.Page
+    public partial class Brokers : Page
     {
         #region Variables
 
@@ -243,7 +243,7 @@ namespace MapIt.Web.Admin
             try
             {
                 brokersRepository = new BrokersRepository();
-                IQueryable<MapIt.Data.Broker> list;
+                IQueryable<Data.Broker> list;
 
                 if (Search)
                 {
@@ -260,7 +260,7 @@ namespace MapIt.Web.Admin
 
                     if (!string.IsNullOrEmpty(SortExpression))
                     {
-                        list = SortHelper.SortList<MapIt.Data.Broker>(list, SortExpression, SortDirection);
+                        list = SortHelper.SortList(list, SortExpression, SortDirection);
                     }
 
                     gvBrokersExcel.DataSource = list;
@@ -305,7 +305,7 @@ namespace MapIt.Web.Admin
         public void ClearControls()
         {
             ddlCountry.SelectedIndex = ddlCode.SelectedIndex = 0;
-            txtFullName.Text = txtPhone.Text = txtEmail.Text = txtLink.Text = txtDetailsEN.Text = txtDetailsAR.Text = string.Empty;
+            txtFullName.Text = txtFullNameEN.Text = txtPhone.Text = txtEmail.Text = txtLink.Text = txtDetailsEN.Text = txtDetailsAR.Text = string.Empty;
             chkActive.Checked = true;
             div_old.Visible = false;
             gvBrokers.SelectedIndex = -1;
@@ -417,6 +417,7 @@ namespace MapIt.Web.Admin
                 var brokerObj = new Data.Broker
                 {
                     FullName = txtFullName.Text,
+                    FullNameEN = txtFullNameEN.Text,
                     CityId = cityId.Value,
                     Phone = ddlCode.SelectedValue + " " + txtPhone.Text,
                     Email = txtEmail.Text,
@@ -495,6 +496,7 @@ namespace MapIt.Web.Admin
                 }
 
                 brokerObj.FullName = txtFullName.Text;
+                brokerObj.FullNameEN = txtFullNameEN.Text;
                 brokerObj.CityId = cityId.Value;
                 brokerObj.Phone = ddlCode.SelectedValue + " " + txtPhone.Text;
                 brokerObj.Email = txtEmail.Text;
@@ -573,6 +575,7 @@ namespace MapIt.Web.Admin
                         UserId = brokerObj.UserId.Value;
                     }
                     txtFullName.Text = brokerObj.FullName;
+                    txtFullNameEN.Text = brokerObj.FullNameEN;
                     ddlCountry.SelectedValue = brokerObj.City.CountryId.ToString();
                     BindCities();
                     ddlCity.SelectedValue = brokerObj.CityId.ToString();
@@ -660,6 +663,7 @@ namespace MapIt.Web.Admin
                         {
                             txtEmail.Text = user.Email;
                             txtFullName.Text = user.FullName;
+                            txtFullNameEN.Text = user.FullName;
 
                             ddlCountry.SelectedValue = user.CountryId.ToString();
 

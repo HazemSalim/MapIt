@@ -22,6 +22,7 @@ namespace MapIt.Data
     
         public int Id { get; set; }
         public string FullName { get; set; }
+        public string FullNameEN { get; set; }
         public int CityId { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }

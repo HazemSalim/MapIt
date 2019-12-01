@@ -16,13 +16,9 @@ using System.Web.Script.Serialization;
 
 namespace MapIt.Web.App
 {
-    /// <summary>
-    /// Summary description for Service
-    /// </summary>
     [WebService(Namespace = "http://mapitre.com/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     [ScriptService]
     public class App2 : WebService
     {

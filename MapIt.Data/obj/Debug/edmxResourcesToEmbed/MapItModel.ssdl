@@ -66,6 +66,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FullName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="FullNameEN" Type="nvarchar" MaxLength="250" />
     <Property Name="CityId" Type="int" Nullable="false" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />

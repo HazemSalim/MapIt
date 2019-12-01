@@ -123,7 +123,8 @@
                                         <AlternatingRowStyle CssClass="alt-table-data" />
                                         <Columns>
                                             <asp:BoundField DataField="Id" HeaderText="Id" />
-                                            <asp:BoundField DataField="FullName" HeaderText="Broker" />
+                                            <asp:BoundField DataField="FullNameEN" HeaderText="Broker EN" />
+                                              <asp:BoundField DataField="FullName" HeaderText="Broker AR" />
                                             <asp:BoundField DataField="City.Country.TitleEN" HeaderText="Country" />
                                             <asp:BoundField DataField="City.TitleEN" HeaderText="City" />
                                             <asp:BoundField DataField="Phone" HeaderText="Phone" />
@@ -150,7 +151,11 @@
                                     <AlternatingRowStyle CssClass="alt-table-data" />
                                     <Columns>
                                         <asp:BoundField DataField="Id" HeaderText="Id" />
-                                        <asp:BoundField DataField="FullName" HeaderText="Broker" SortExpression="FullName" />
+                                  
+                                           <asp:BoundField DataField="FullNameEN" HeaderText="Broker EN"  SortExpression="FullNameEN"/>
+                                              <asp:BoundField DataField="FullName" HeaderText="Broker AR"  SortExpression="FullName" />
+
+
                                         <asp:BoundField DataField="City.Country.TitleEN" HeaderText="Country" SortExpression="City.Country.TitleEN" />
                                         <asp:BoundField DataField="City.TitleEN" HeaderText="City" SortExpression="City.TitleEN" />
                                         <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
@@ -218,10 +223,18 @@
 
                                     <div class="form-group">
                                         <label>
-                                            Full Name
+                                            Full Name (AR)
                                         </label>
                                         <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control" />
                                         <asp:RequiredFieldValidator ID="rfvFullName" runat="server" ControlToValidate="txtFullName" SetFocusOnError="true"
+                                            EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
+                                    </div>
+                                         <div class="form-group">
+                                        <label>
+                                            Full Name (EN)
+                                        </label>
+                                        <asp:TextBox ID="txtFullNameEN" runat="server" CssClass="form-control" />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFullNameEN" SetFocusOnError="true"
                                             EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="form-group">

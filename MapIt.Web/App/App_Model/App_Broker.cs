@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using MapIt.Helpers;
-using MapIt.Data;
 using MapIt.Lib;
 
 namespace MapIt.Web.App.App_Model
@@ -12,6 +9,7 @@ namespace MapIt.Web.App.App_Model
     {
         public int Id { get; set; }
         public string FullName { get; set; }
+        public string FullNameEN { get; set; }
 
         public int CountryId { get; set; }
         public string CountryEN { get; set; }
@@ -43,11 +41,11 @@ namespace MapIt.Web.App.App_Model
             set { _Photo = value; }
         }
 
-        public String AddedOnDate
+        public string AddedOnDate
         {
             get
             {
-                return this.AddedOn.ToString("dd/MM/yyyy hh:mm tt");
+                return AddedOn.ToString("dd/MM/yyyy hh:mm tt");
             }
         }
 
@@ -56,10 +54,11 @@ namespace MapIt.Web.App.App_Model
 
         public IEnumerable<App_Area> Areas { get; set; }
 
-        public App_Broker(MapIt.Data.Broker broker)
+        public App_Broker(Data.Broker broker)
         {
             Id = broker.Id;
             FullName = broker.FullName;
+            FullNameEN = broker.FullNameEN;
 
             CountryId = broker.City.CountryId;
             CountryEN = broker.City.Country.TitleEN;
