@@ -86,10 +86,8 @@ namespace MapIt.Web.App.App_Model
             MessageUpdateEnglish = !string.IsNullOrEmpty(gSetting.MessageUpdateEnglish) ? gSetting.MessageUpdateEnglish : string.Empty;
             MessageUpdateArabic = !string.IsNullOrEmpty(gSetting.MessageUpdateArabic) ? gSetting.MessageUpdateArabic : string.Empty;
             IOSVersionNumber = !string.IsNullOrEmpty(gSetting.IOSVersionNumber) ? gSetting.IOSVersionNumber : string.Empty;
-            IsForceUpdateIOS = gSetting.IsForceUpdateIOS.HasValue && gSetting.IsForceUpdateIOS.Value ?
-                gSetting.IsForceUpdateIOS.Value : false;
-            IsForceClose = gSetting.IsForceClose.HasValue && gSetting.IsForceClose.Value ?
-                gSetting.IsForceClose.Value : false;
+            IsForceUpdateIOS = gSetting.IsForceUpdateIOS.HasValue && gSetting.IsForceUpdateIOS.Value;
+            IsForceClose = gSetting.IsForceClose.HasValue && gSetting.IsForceClose.Value ;
         }
     }
 }
