@@ -117,16 +117,16 @@ namespace MapIt.Repository
                 switch (type)
                 {
                     case "WhatsAppCount":
-                        proObj.WhatsAppCount++;
+                        proObj.WhatsAppCount = proObj.WhatsAppCount.HasValue ? proObj.WhatsAppCount + 1 : 1;
                         break;
                     case "CallsCount":
-                        proObj.CallsCount++;
+                        proObj.CallsCount = proObj.CallsCount.HasValue ? proObj.CallsCount + 1 : 1;
                         break;
                     case "MapsCount":
-                        proObj.MapsCount++;
+                        proObj.MapsCount = proObj.MapsCount.HasValue ? proObj.MapsCount + 1 : 1;
                         break;
                     case "CapturesCount":
-                        proObj.CapturesCount++;
+                        proObj.CapturesCount = proObj.CapturesCount.HasValue ? proObj.CapturesCount + 1 : 1;
                         break;
                     default:
                         return false;
