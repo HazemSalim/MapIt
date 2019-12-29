@@ -9,7 +9,7 @@ using MapIt.Repository;
 
 namespace MapIt.Web.Admin
 {
-    public partial class GeneralSettings : System.Web.UI.Page
+    public partial class GeneralSettings : Page
     {
         #region Variables
 
@@ -137,6 +137,7 @@ namespace MapIt.Web.Admin
                     txtVersion.Text = gSettingObj.Version.ToString();
 
                     txtIOSVersionNumber.Text = gSettingObj.IOSVersionNumber.ToString();
+                    txtAndroidVersionNumber.Text = gSettingObj.AndroidVersionNumber.ToString();
                     txtMessageCloseEnglish.Text = gSettingObj.MessageCloseEnglish.ToString();
                     txtMessageCloseArabic.Text = gSettingObj.MessageCloseArabic.ToString();
                     txtIOSAppUrl.Text = gSettingObj.IOSAppUrl.ToString();
@@ -144,6 +145,7 @@ namespace MapIt.Web.Admin
                     txtMessageUpdateArabic.Text = gSettingObj.MessageUpdateArabic.ToString();
                     chkIsForceClose.Checked = gSettingObj.IsForceClose.HasValue && gSettingObj.IsForceClose.Value;
                     chkIsForceUpdateIOS.Checked = gSettingObj.IsForceUpdateIOS.HasValue && gSettingObj.IsForceUpdateIOS.Value;
+                    chkIsForceUpdateAndroid.Checked = gSettingObj.IsForceUpdateAndroid.HasValue && gSettingObj.IsForceUpdateAndroid.Value;
 
                     txtPaciPassword.Text = gSettingObj.PaciPassword;
                     txtPaciUserName.Text = gSettingObj.PaciUserName;
@@ -248,7 +250,9 @@ namespace MapIt.Web.Admin
                         gSettingObj.MessageUpdateEnglish = txtMessageUpdateEnglish.Text;
                         gSettingObj.MessageUpdateArabic = txtMessageUpdateArabic.Text;
                         gSettingObj.IOSVersionNumber = txtIOSVersionNumber.Text;
+                        gSettingObj.AndroidVersionNumber = txtAndroidVersionNumber.Text;
                         gSettingObj.IsForceUpdateIOS = chkIsForceUpdateIOS.Checked;
+                        gSettingObj.IsForceUpdateAndroid = chkIsForceUpdateAndroid.Checked;
                         gSettingObj.IsForceClose = chkIsForceClose.Checked;
 
                         gSettingObj.PaciPassword = txtPaciPassword.Text;
@@ -312,7 +316,9 @@ namespace MapIt.Web.Admin
                     gSettingObj.MessageUpdateEnglish = txtMessageUpdateEnglish.Text;
                     gSettingObj.MessageUpdateArabic = txtMessageUpdateArabic.Text;
                     gSettingObj.IOSVersionNumber = txtIOSVersionNumber.Text;
+                    gSettingObj.AndroidVersionNumber = txtAndroidVersionNumber.Text;
                     gSettingObj.IsForceUpdateIOS = chkIsForceUpdateIOS.Checked;
+                    gSettingObj.IsForceUpdateAndroid = chkIsForceUpdateAndroid.Checked;
                     gSettingObj.IsForceClose = chkIsForceClose.Checked;
 
                     gSettingObj.PaciPassword = txtPaciPassword.Text;

@@ -81,11 +81,11 @@ namespace MapIt.Data
         public virtual DbSet<PropertyType> PropertyTypes { get; set; }
         public virtual DbSet<Purpos> Purposes { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
-        public virtual DbSet<GeneralSetting> GeneralSettings { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Property> Properties { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Broker> Brokers { get; set; }
+        public virtual DbSet<GeneralSetting> GeneralSettings { get; set; }
     
         public virtual ObjectResult<GetSettings_Result> GetSettings(Nullable<int> propertyTypeId)
         {

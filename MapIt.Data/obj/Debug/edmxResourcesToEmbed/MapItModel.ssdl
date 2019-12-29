@@ -267,6 +267,8 @@
     <Property Name="IsForceClose" Type="bit" />
     <Property Name="PaciUserName" Type="nvarchar" MaxLength="100" />
     <Property Name="PaciPassword" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsForceUpdateAndroid" Type="bit" />
+    <Property Name="AndroidVersionNumber" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="GenNotifs">
     <Key>

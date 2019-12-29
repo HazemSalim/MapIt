@@ -39,7 +39,9 @@ namespace MapIt.Web.App.App_Model
         public string MessageUpdateEnglish { get; set; }
         public string MessageUpdateArabic { get; set; }
         public bool IsForceUpdateIOS { get; set; }
+        public bool IsForceUpdateAndroid { get; set; }
         public string IOSVersionNumber { get; set; }
+        public string AndroidVersionNumber { get; set; }
         public bool IsForceClose { get; set; }
 
         public string PaciUserName { get; set; }
@@ -86,8 +88,10 @@ namespace MapIt.Web.App.App_Model
             MessageUpdateEnglish = !string.IsNullOrEmpty(gSetting.MessageUpdateEnglish) ? gSetting.MessageUpdateEnglish : string.Empty;
             MessageUpdateArabic = !string.IsNullOrEmpty(gSetting.MessageUpdateArabic) ? gSetting.MessageUpdateArabic : string.Empty;
             IOSVersionNumber = !string.IsNullOrEmpty(gSetting.IOSVersionNumber) ? gSetting.IOSVersionNumber : string.Empty;
+            AndroidVersionNumber = !string.IsNullOrEmpty(gSetting.AndroidVersionNumber) ? gSetting.AndroidVersionNumber : string.Empty;
             IsForceUpdateIOS = gSetting.IsForceUpdateIOS.HasValue && gSetting.IsForceUpdateIOS.Value;
-            IsForceClose = gSetting.IsForceClose.HasValue && gSetting.IsForceClose.Value ;
+            IsForceUpdateAndroid = gSetting.IsForceUpdateAndroid.HasValue && gSetting.IsForceUpdateAndroid.Value;
+            IsForceClose = gSetting.IsForceClose.HasValue && gSetting.IsForceClose.Value;
         }
     }
 }

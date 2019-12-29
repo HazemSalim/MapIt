@@ -66,6 +66,8 @@ namespace MapIt.Data
         public Nullable<bool> IsForceClose { get; set; }
         public string PaciUserName { get; set; }
         public string PaciPassword { get; set; }
+        public Nullable<bool> IsForceUpdateAndroid { get; set; }
+        public string AndroidVersionNumber { get; set; }
     
         public virtual Country Country { get; set; }
         public virtual Currency DefaultCurrency { get; set; }

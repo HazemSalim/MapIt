@@ -452,6 +452,18 @@
                                 </div>
                             </div>
 
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        Android Version Number
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtAndroidVersionNumber" TextMode="Number" CssClass="form-control" Text="1.0" min="1.0" step="0.1"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtAndroidVersionNumber"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
@@ -505,6 +517,17 @@
                                         <label>
                                             <asp:CheckBox ID="chkIsForceUpdateIOS" runat="server" />
                                             Is Force Update IOS
+                                           
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <asp:CheckBox ID="chkIsForceUpdateAndroid" runat="server" />
+                                            Is Force Update Android
                                            
                                         </label>
                                     </div>
