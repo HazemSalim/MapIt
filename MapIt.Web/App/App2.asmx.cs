@@ -1851,9 +1851,9 @@ namespace MapIt.Web.App
                 if (centerLatitude != 0 && centerLongitude != 0)
                 {
                     var sCoordCenter = new GeoCoordinate(centerLatitude, centerLongitude);
-                    properties = properties.Where(p => minLatitude > 0 && maxLatitude > 0 ? p.DLatitude >= minLatitude && p.DLatitude <= maxLatitude && p.DLongitude >= minLongitude && p.DLongitude <= maxLongitude : true)
+                    properties = properties.Where(p => minLatitude > 0 && maxLatitude > 0 ? p.DLatitude >= minLatitude && p.DLatitude <= maxLatitude && p.DLongitude >= minLongitude && p.DLongitude <= maxLongitude : true).ToList();
                         //.OrderBy(x => x.GeoCoord.GetDistanceTo(sCoordCenter)).ToList();
-                        .OrderByDescending(x => x.Id).ToList();//
+                       //.OrderByDescending(x => x.Id).ToList();//
                 }
                 else
                 {
@@ -1865,6 +1865,37 @@ namespace MapIt.Web.App
                 {
                     properties = properties.Skip(pageIndex * pageSize).Take(pageSize).ToList();
                 }
+
+                if (sortOption >= 0)
+                {
+                    switch (sortOption)
+                    {
+                        case 0:
+                            properties = properties.OrderByDescending(i => i.AddedOn).ToList();
+                            break;
+                        case 1:
+                            properties = properties.OrderByDescending(i => i.AddedOn).ToList();
+                            break;
+                        case 2:
+                            properties = properties.OrderBy(i => i.AddedOn).ToList();
+                            break;
+                        case 3:
+                            properties = properties.OrderByDescending(i => i.SellingPrice.HasValue ? i.SellingPrice.Value : i.RentPrice.Value).ToList();
+                            break;
+                        case 4:
+                            properties = properties.OrderBy(i => i.SellingPrice.HasValue ? i.SellingPrice.Value : i.RentPrice.Value).ToList();
+                            break;
+                        default:
+                            properties = properties.OrderByDescending(i => i.AddedOn).ToList();
+                            break;
+                    }
+                }
+                else
+                {
+                    properties = properties.OrderByDescending(i => i.AddedOn).ToList();
+                }
+               
+
 
                 List<long> loginFavIds = new List<long>();
                 if (loginUserId > 0)
