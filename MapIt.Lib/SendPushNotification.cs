@@ -16,7 +16,7 @@ namespace MapIt.Lib
             try
             {
                 var devicesTokensRepository = new DevicesTokensRepository();
-                var dtList = devicesTokensRepository.GetAll();
+                var dtList = devicesTokensRepository.GetAll().Where(x => !string.IsNullOrEmpty(x.DeviceToken)).OrderByDescending(x=>x.AddedOn);
 
                 if (dtList != null && dtList.Count() > 0)
                 {
@@ -46,9 +46,9 @@ namespace MapIt.Lib
 
                     foreach (var item in dtList)
                     {
-                        // Increasing Push Counter
-                        devicesTokensRepository = new DevicesTokensRepository();
-                        devicesTokensRepository.IncreasePushCounter(item.DeviceToken);
+                        //// Increasing Push Counter
+                        //devicesTokensRepository = new DevicesTokensRepository();
+                        //devicesTokensRepository.IncreasePushCounter(item.DeviceToken);
 
                         if (item.User != null)
                         {
@@ -71,10 +71,10 @@ namespace MapIt.Lib
                             t.Type = tokenType;
                             t.DToken = token;
                             t.PushCount = pushCounter + 1;
-                        }
 
-                        AsyncSendPushNotification del = new AsyncSendPushNotification(push.SendPushNotification);
-                        IAsyncResult result = del.BeginInvoke(t, msg, dic, null, null);
+                            AsyncSendPushNotification del = new AsyncSendPushNotification(push.SendPushNotification);
+                            IAsyncResult result = del.BeginInvoke(t, msg, dic, null, null);
+                        }
                     }
                 }
             }
