@@ -113,6 +113,7 @@ namespace MapIt.Lib
                     push.GoogleAppID = ConfigurationManager.AppSettings["GoogleAppID"];
                     push.P12FilePath = ConfigurationManager.AppSettings["P12FilePath"];
                     push.P12FilePassword = ConfigurationManager.AppSettings["P12FilePassword"];
+                    
                     push.Sandbox = Convert.ToBoolean(ConfigurationManager.AppSettings["Sandbox"]);
                     push.PrintResult = Convert.ToBoolean(ConfigurationManager.AppSettings["PrintResult"]);
                     push.CurrentContext = HttpContext.Current;

@@ -263,41 +263,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Properties">
-      <EntityTypeMapping TypeName="MapItModel.Property">
-        <MappingFragment StoreEntitySet="Properties">
-          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-          <ScalarProperty Name="AdminAdded" ColumnName="AdminAdded" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
-          <ScalarProperty Name="IsSpecial" ColumnName="IsSpecial" />
-          <ScalarProperty Name="PayVideo" ColumnName="PayVideo" />
-          <ScalarProperty Name="PaySpecial" ColumnName="PaySpecial" />
-          <ScalarProperty Name="ViewersCount" ColumnName="ViewersCount" />
-          <ScalarProperty Name="PACI" ColumnName="PACI" />
-          <ScalarProperty Name="PortalAddressAR" ColumnName="PortalAddressAR" />
-          <ScalarProperty Name="PortalAddressEN" ColumnName="PortalAddressEN" />
-          <ScalarProperty Name="Street" ColumnName="Street" />
-          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-          <ScalarProperty Name="OtherPhones" ColumnName="OtherPhones" />
-          <ScalarProperty Name="Details" ColumnName="Details" />
-          <ScalarProperty Name="RentPrice" ColumnName="RentPrice" />
-          <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-          <ScalarProperty Name="MonthlyIncome" ColumnName="MonthlyIncome" />
-          <ScalarProperty Name="BuildingAge" ColumnName="BuildingAge" />
-          <ScalarProperty Name="Area" ColumnName="Area" />
-          <ScalarProperty Name="BlockId" ColumnName="BlockId" />
-          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-          <ScalarProperty Name="PurposeId" ColumnName="PurposeId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PropertyComponents">
       <EntityTypeMapping TypeName="MapItModel.PropertyComponent">
         <MappingFragment StoreEntitySet="PropertyComponents">
@@ -335,17 +300,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PropertyReports">
-      <EntityTypeMapping TypeName="MapItModel.PropertyReport">
-        <MappingFragment StoreEntitySet="PropertyReports">
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PropertySettings">
       <EntityTypeMapping TypeName="MapItModel.PropertySetting">
         <MappingFragment StoreEntitySet="PropertySettings">
@@ -355,17 +309,6 @@
           <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
           <ScalarProperty Name="Category" ColumnName="Category" />
           <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PropertyTypes">
-      <EntityTypeMapping TypeName="MapItModel.PropertyType">
-        <MappingFragment StoreEntitySet="PropertyTypes">
-          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
-          <ScalarProperty Name="Color" ColumnName="Color" />
-          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -385,15 +328,6 @@
           <ScalarProperty Name="ViewedOn" ColumnName="ViewedOn" />
           <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Purposes">
-      <EntityTypeMapping TypeName="MapItModel.Purpos">
-        <MappingFragment StoreEntitySet="Purposes">
-          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -431,17 +365,6 @@
           <ScalarProperty Name="Rate" ColumnName="Rate" />
           <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ServiceReports">
-      <EntityTypeMapping TypeName="MapItModel.ServiceReport">
-        <MappingFragment StoreEntitySet="ServiceReports">
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -502,31 +425,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="MapItModel.User">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-          <ScalarProperty Name="LastLoginOn" ColumnName="LastLoginOn" />
-          <ScalarProperty Name="IsCanceled" ColumnName="IsCanceled" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
-          <ScalarProperty Name="Photo" ColumnName="Photo" />
-          <ScalarProperty Name="OtherPhones" ColumnName="OtherPhones" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="WatchLists">
       <EntityTypeMapping TypeName="MapItModel.WatchList">
         <MappingFragment StoreEntitySet="WatchLists">
@@ -555,52 +453,6 @@
         <MappingFragment StoreEntitySet="ServiceAreas">
           <ScalarProperty Name="AreaId" ColumnName="AreaId" />
           <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Brokers">
-      <EntityTypeMapping TypeName="MapItModel.Broker">
-        <MappingFragment StoreEntitySet="Brokers">
-          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="AllAreas" ColumnName="AllAreas" />
-          <ScalarProperty Name="Photo" ColumnName="Photo" />
-          <ScalarProperty Name="DetailsAR" ColumnName="DetailsAR" />
-          <ScalarProperty Name="DetailsEN" ColumnName="DetailsEN" />
-          <ScalarProperty Name="Link" ColumnName="Link" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="CityId" ColumnName="CityId" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Services">
-      <EntityTypeMapping TypeName="MapItModel.Service">
-        <MappingFragment StoreEntitySet="Services">
-          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
-          <ScalarProperty Name="AdminAdded" ColumnName="AdminAdded" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="IsSpecial" ColumnName="IsSpecial" />
-          <ScalarProperty Name="IsCompany" ColumnName="IsCompany" />
-          <ScalarProperty Name="AllAreas" ColumnName="AllAreas" />
-          <ScalarProperty Name="ViewersCount" ColumnName="ViewersCount" />
-          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-          <ScalarProperty Name="OtherPhones" ColumnName="OtherPhones" />
-          <ScalarProperty Name="ExYears" ColumnName="ExYears" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-          <ScalarProperty Name="CityId" ColumnName="CityId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -732,18 +584,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GenNotifs">
-      <EntityTypeMapping TypeName="MapItModel.GenNotif">
-        <MappingFragment StoreEntitySet="GenNotifs">
-          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
-          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
-          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Notifications">
       <EntityTypeMapping TypeName="MapItModel.Notification">
         <MappingFragment StoreEntitySet="Notifications">
@@ -792,9 +632,211 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="PropertyReports">
+      <EntityTypeMapping TypeName="MapItModel.PropertyReport">
+        <MappingFragment StoreEntitySet="PropertyReports">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceReports">
+      <EntityTypeMapping TypeName="MapItModel.ServiceReport">
+        <MappingFragment StoreEntitySet="ServiceReports">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GenNotifs">
+      <EntityTypeMapping TypeName="MapItModel.GenNotif">
+        <MappingFragment StoreEntitySet="GenNotifs">
+          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropertyTypes">
+      <EntityTypeMapping TypeName="MapItModel.PropertyType">
+        <MappingFragment StoreEntitySet="PropertyTypes">
+          <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
+          <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
+          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purposes">
+      <EntityTypeMapping TypeName="MapItModel.Purpos">
+        <MappingFragment StoreEntitySet="Purposes">
+          <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
+          <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="MapItModel.UserType">
+        <MappingFragment StoreEntitySet="UserTypes">
+          <ScalarProperty Name="ShortTitleEN" ColumnName="ShortTitleEN" />
+          <ScalarProperty Name="ShortTitleAR" ColumnName="ShortTitleAR" />
+          <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+          <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MapItModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+          <ScalarProperty Name="LastLoginOn" ColumnName="LastLoginOn" />
+          <ScalarProperty Name="IsCanceled" ColumnName="IsCanceled" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="OtherPhones" ColumnName="OtherPhones" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Properties">
+      <EntityTypeMapping TypeName="MapItModel.Property">
+        <MappingFragment StoreEntitySet="Properties">
+          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+          <ScalarProperty Name="AdminAdded" ColumnName="AdminAdded" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="IsSpecial" ColumnName="IsSpecial" />
+          <ScalarProperty Name="PayVideo" ColumnName="PayVideo" />
+          <ScalarProperty Name="PaySpecial" ColumnName="PaySpecial" />
+          <ScalarProperty Name="CapturesCount" ColumnName="CapturesCount" />
+          <ScalarProperty Name="MapsCount" ColumnName="MapsCount" />
+          <ScalarProperty Name="CallsCount" ColumnName="CallsCount" />
+          <ScalarProperty Name="WhatsAppCount" ColumnName="WhatsAppCount" />
+          <ScalarProperty Name="ViewersCount" ColumnName="ViewersCount" />
+          <ScalarProperty Name="PACI" ColumnName="PACI" />
+          <ScalarProperty Name="PortalAddressAR" ColumnName="PortalAddressAR" />
+          <ScalarProperty Name="PortalAddressEN" ColumnName="PortalAddressEN" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="OtherPhones" ColumnName="OtherPhones" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="RentPrice" ColumnName="RentPrice" />
+          <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+          <ScalarProperty Name="MonthlyIncome" ColumnName="MonthlyIncome" />
+          <ScalarProperty Name="BuildingAge" ColumnName="BuildingAge" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="PurposeId" ColumnName="PurposeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="MapItModel.Service">
+        <MappingFragment StoreEntitySet="Services">
+          <ScalarProperty Name="CapturesCount" ColumnName="CapturesCount" />
+          <ScalarProperty Name="MapsCount" ColumnName="MapsCount" />
+          <ScalarProperty Name="CallsCount" ColumnName="CallsCount" />
+          <ScalarProperty Name="WhatsAppCount" ColumnName="WhatsAppCount" />
+          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+          <ScalarProperty Name="AdminAdded" ColumnName="AdminAdded" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsSpecial" ColumnName="IsSpecial" />
+          <ScalarProperty Name="IsCompany" ColumnName="IsCompany" />
+          <ScalarProperty Name="AllAreas" ColumnName="AllAreas" />
+          <ScalarProperty Name="ViewersCount" ColumnName="ViewersCount" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="OtherPhones" ColumnName="OtherPhones" />
+          <ScalarProperty Name="ExYears" ColumnName="ExYears" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brokers">
+      <EntityTypeMapping TypeName="MapItModel.Broker">
+        <MappingFragment StoreEntitySet="Brokers">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AllAreas" ColumnName="AllAreas" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="DetailsAR" ColumnName="DetailsAR" />
+          <ScalarProperty Name="DetailsEN" ColumnName="DetailsEN" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="FullNameEN" ColumnName="FullNameEN" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="GeneralSettings">
       <EntityTypeMapping TypeName="MapItModel.GeneralSetting">
         <MappingFragment StoreEntitySet="GeneralSettings">
+          <ScalarProperty Name="AndroidVersionNumber" ColumnName="AndroidVersionNumber" />
+          <ScalarProperty Name="IsForceUpdateAndroid" ColumnName="IsForceUpdateAndroid" />
+          <ScalarProperty Name="PaciPassword" ColumnName="PaciPassword" />
+          <ScalarProperty Name="PaciUserName" ColumnName="PaciUserName" />
+          <ScalarProperty Name="IsForceClose" ColumnName="IsForceClose" />
+          <ScalarProperty Name="IOSVersionNumber" ColumnName="IOSVersionNumber" />
+          <ScalarProperty Name="IsForceUpdateIOS" ColumnName="IsForceUpdateIOS" />
+          <ScalarProperty Name="MessageUpdateArabic" ColumnName="MessageUpdateArabic" />
+          <ScalarProperty Name="MessageUpdateEnglish" ColumnName="MessageUpdateEnglish" />
+          <ScalarProperty Name="IOSAppUrl" ColumnName="IOSAppUrl" />
+          <ScalarProperty Name="MessageCloseArabic" ColumnName="MessageCloseArabic" />
+          <ScalarProperty Name="MessageCloseEnglish" ColumnName="MessageCloseEnglish" />
           <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
           <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
           <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />

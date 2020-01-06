@@ -1485,4 +1485,34 @@
   <data name="add_service_image" xml:space="preserve">
     <value>/images/add-service_ar.png</value>
   </data>
+  <data name="lang" xml:space="preserve">
+    <value>اللغة المفضلة</value>
+  </data>
+  <data name="resendSMS" xml:space="preserve">
+    <value>إعادة إرسال كود التفعيل</value>
+  </data>
+  <data name="sms_verify" xml:space="preserve">
+    <value>إرسال للتفعيل</value>
+  </data>
+  <data name="userType" xml:space="preserve">
+    <value>نوع المستخدم</value>
+  </data>
+  <data name="reason" xml:space="preserve">
+    <value>السبب</value>
+  </data>
+  <data name="clear" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="messagesList" xml:space="preserve">
+    <value>قائمة الرسائل</value>
+  </data>
+  <data name="addedOn" xml:space="preserve">
+    <value>تاريخ الإرسال</value>
+  </data>
+  <data name="sender" xml:space="preserve">
+    <value>الراسل</value>
+  </data>
+  <data name="textMessage" xml:space="preserve">
+    <value>نص الرسالة</value>
+  </data>
 </root>

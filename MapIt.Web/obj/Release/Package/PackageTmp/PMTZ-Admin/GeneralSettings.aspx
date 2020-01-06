@@ -45,6 +45,8 @@
                                     <asp:RequiredFieldValidator ID="rfvTitleEN" runat="server" ControlToValidate="txtTitleEN" SetFocusOnError="true"
                                         EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Website Title (AR)
@@ -53,6 +55,8 @@
                                     <asp:RequiredFieldValidator ID="rfvTitleAR" runat="server" ControlToValidate="txtTitleAR" SetFocusOnError="true"
                                         EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Meta Description
@@ -61,6 +65,8 @@
                                     <asp:RequiredFieldValidator ID="rfvMetaDescription" runat="server" ControlToValidate="txtMetaDescription"
                                         EnableClientScript="true" Display="Dynamic" SetFocusOnError="true" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Meta keyWords
@@ -69,48 +75,64 @@
                                     <asp:RequiredFieldValidator ID="rfvMetaKW" runat="server" ControlToValidate="txtMetaKW"
                                         EnableClientScript="true" Display="Dynamic" SetFocusOnError="true" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Website
                                     </label>
                                     <asp:TextBox ID="txtWebsite" runat="server" TextMode="Url" CssClass="form-control"></asp:TextBox>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Facebook
                                     </label>
                                     <asp:TextBox ID="txtFacebook" runat="server" TextMode="Url" CssClass="form-control"></asp:TextBox>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Twitter
                                     </label>
                                     <asp:TextBox ID="txtTwitter" runat="server" TextMode="Url" CssClass="form-control"></asp:TextBox>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Instagram
                                     </label>
                                     <asp:TextBox ID="txtInstagram" runat="server" TextMode="Url" CssClass="form-control"></asp:TextBox>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Youtube
                                     </label>
                                     <asp:TextBox ID="txtYoutube" runat="server" TextMode="Url" CssClass="form-control"></asp:TextBox>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Linkedin
                                     </label>
                                     <asp:TextBox ID="txtLinkedin" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Snapchat
                                     </label>
                                     <asp:TextBox ID="txtSnapchat" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Tumblr
@@ -125,12 +147,16 @@
                                     </label>
                                     <asp:TextBox ID="txtAppStore" runat="server" TextMode="Url" CssClass="form-control"></asp:TextBox>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Google Play
                                     </label>
                                     <asp:TextBox ID="txtGooglePlay" runat="server" TextMode="Url" CssClass="form-control"></asp:TextBox>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Latitude
@@ -139,6 +165,8 @@
                                     <asp:RequiredFieldValidator ID="rfvLatitude" runat="server" ControlToValidate="txtLatitude" SetFocusOnError="true"
                                         EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Longitude
@@ -147,30 +175,40 @@
                                     <asp:RequiredFieldValidator ID="rfvLongitude" runat="server" ControlToValidate="txtLongitude" SetFocusOnError="true"
                                         EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Address
                                     </label>
                                     <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" TextMode="MultiLine" Height="50px" />
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Email
                                     </label>
                                     <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" CssClass="form-control" />
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Phone
                                     </label>
                                     <asp:TextBox ID="txtPhone" runat="server" TextMode="Phone" CssClass="form-control" />
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Fax
                                     </label>
                                     <asp:TextBox ID="txtFax" runat="server" TextMode="Phone" CssClass="form-control" />
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Default Country
@@ -182,6 +220,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Default Currency
@@ -193,12 +233,16 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Invoice Terms
                                     </label>
                                     <asp:TextBox ID="txtInvoiceTerms" runat="server" CssClass="form-control" TextMode="MultiLine" Height="50px" />
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         WorkingHours
@@ -218,6 +262,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Normal Ad Cost
@@ -227,6 +273,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Special Ad Cost
@@ -236,6 +284,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Ad Video Cost
@@ -245,6 +295,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Normal Ad Duration (Days)
@@ -254,6 +306,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Special Ad Duration (Days)
@@ -263,6 +317,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Avalible Photos
@@ -272,6 +328,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Avalible Videos
@@ -281,6 +339,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Similar Ad Count
@@ -290,6 +350,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Page Size
@@ -299,6 +361,8 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
                                         Page Size Mobile
@@ -308,24 +372,9 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <asp:CheckBox ID="chkAutoActiveUser" runat="server" />
-                                            Auto Active User
-                                           
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <asp:CheckBox ID="chkAutoActiveAd" runat="server" />
-                                            Auto Active Ad
-                                           
-                                        </label>
-                                    </div>
-                                </div>
+                            </div>
+                            <div class="col-md-4">
+
                                 <div class="form-group">
                                     <label>
                                         Version
@@ -335,15 +384,178 @@
                                         Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
                                         CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
                                 </div>
-
-                                <asp:Button ID="btnSave" runat="server" Text="Save" CausesValidation="true" ValidationGroup="S"
-                                    CssClass="btn btn-primary" OnClick="btnSave_Click" />
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        Message Close English
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtMessageCloseEnglish" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMessageCloseEnglish"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        Message Close Arabic
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtMessageCloseArabic" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtMessageCloseArabic"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        IOS App Url
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtIOSAppUrl" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtIOSAppUrl"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        Message Update English
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtMessageUpdateEnglish" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtMessageUpdateEnglish"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        Message Update Arabic
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtMessageUpdateArabic" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtMessageUpdateArabic"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        IOS Version Number
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtIOSVersionNumber" TextMode="Number" CssClass="form-control" Text="1.0" min="1.0" step="0.1"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtIOSVersionNumber"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
                             </div>
 
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        Android Version Number
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtAndroidVersionNumber" TextMode="Number" CssClass="form-control" Text="1.0" min="1.0" step="0.1"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtAndroidVersionNumber"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        PACI User Name
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtPaciUserName" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPaciUserName"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        Paci Password
+                                    </label>
+                                    <asp:TextBox runat="server" ID="txtPaciPassword" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtPaciPassword"
+                                        Display="Dynamic" EnableClientScript="true" Text="* Required field" ValidationGroup="S"
+                                        CssClass="alert-text" SetFocusOnError="true" InitialValue=""></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <asp:CheckBox ID="chkAutoActiveUser" runat="server" />
+                                            Auto Active User
+                                           
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <asp:CheckBox ID="chkAutoActiveAd" runat="server" />
+                                            Auto Active Ad
+                                           
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <asp:CheckBox ID="chkIsForceUpdateIOS" runat="server" />
+                                            Is Force Update IOS
+                                           
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <asp:CheckBox ID="chkIsForceUpdateAndroid" runat="server" />
+                                            Is Force Update Android
+                                           
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <asp:CheckBox ID="chkIsForceClose" runat="server" />
+                                            Is Force Close
+                                           
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                            <asp:Button ID="btnSave" runat="server" Text="Save" CausesValidation="true" ValidationGroup="S"
+                                CssClass="btn btn-primary" OnClick="btnSave_Click" />
+                                    </div>
                         </div>
+
                     </div>
                 </div>
-                <!-- /.col-->
+            </div>
+            <!-- /.col-->
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>

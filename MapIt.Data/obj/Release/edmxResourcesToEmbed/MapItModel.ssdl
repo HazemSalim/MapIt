@@ -66,6 +66,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FullName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="FullNameEN" Type="nvarchar" MaxLength="250" />
     <Property Name="CityId" Type="int" Nullable="false" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
@@ -78,6 +79,7 @@
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
+    <Property Name="UserId" Type="bigint" />
   </EntityType>
   <EntityType Name="Cities">
     <Key>
@@ -255,6 +257,18 @@
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
+    <Property Name="MessageCloseEnglish" Type="nvarchar" MaxLength="500" />
+    <Property Name="MessageCloseArabic" Type="nvarchar" MaxLength="500" />
+    <Property Name="IOSAppUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="MessageUpdateEnglish" Type="nvarchar" MaxLength="500" />
+    <Property Name="MessageUpdateArabic" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsForceUpdateIOS" Type="bit" />
+    <Property Name="IOSVersionNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsForceClose" Type="bit" />
+    <Property Name="PaciUserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="PaciPassword" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsForceUpdateAndroid" Type="bit" />
+    <Property Name="AndroidVersionNumber" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="GenNotifs">
     <Key>
@@ -303,8 +317,8 @@
     <Property Name="ServiceId" Type="bigint" />
     <Property Name="OfferId" Type="int" />
     <Property Name="TypeId" Type="int" Nullable="false" />
-    <Property Name="TitleEN" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TitleAR" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="IsRead" Type="bit" Nullable="false" />
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
   </EntityType>
@@ -432,6 +446,10 @@
     <Property Name="PortalAddressAR" Type="nvarchar" MaxLength="500" />
     <Property Name="PACI" Type="nvarchar" MaxLength="50" />
     <Property Name="ViewersCount" Type="int" Nullable="false" />
+    <Property Name="WhatsAppCount" Type="int" />
+    <Property Name="CallsCount" Type="int" />
+    <Property Name="MapsCount" Type="int" />
+    <Property Name="CapturesCount" Type="int" />
     <Property Name="PaySpecial" Type="bit" Nullable="false" />
     <Property Name="PayVideo" Type="bit" Nullable="false" />
     <Property Name="IsSpecial" Type="bit" Nullable="false" />
@@ -496,6 +514,7 @@
     <Property Name="UserId" Type="bigint" Nullable="false" />
     <Property Name="ReasonId" Type="int" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="PropertySettings">
     <Key>
@@ -518,6 +537,8 @@
     <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Ordering" Type="int" Nullable="false" />
+    <Property Name="ShortTitleAR" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortTitleEN" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PropertyVideos">
     <Key>
@@ -543,6 +564,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ShortTitleAR" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortTitleEN" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Reasons">
     <Key>
@@ -606,6 +629,7 @@
     <Property Name="UserId" Type="bigint" Nullable="false" />
     <Property Name="ReasonId" Type="int" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Services">
     <Key>
@@ -631,6 +655,10 @@
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
+    <Property Name="WhatsAppCount" Type="int" />
+    <Property Name="CallsCount" Type="int" />
+    <Property Name="MapsCount" Type="int" />
+    <Property Name="CapturesCount" Type="int" />
   </EntityType>
   <EntityType Name="ServicesCategories">
     <Key>
@@ -733,6 +761,19 @@
     <Property Name="AddedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="AdminUserId" Type="int" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="8" />
+    <Property Name="UserTypeID" Type="int" />
+    <Property Name="IsVerified" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TitleAR" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ShortTitleAR" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortTitleEN" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="WatchLists">
     <Key>
@@ -1621,6 +1662,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Users_UserTypes">
+    <End Role="UserTypes" Type="Self.UserTypes" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_WatchLists_Areas">
     <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
     <End Role="WatchLists" Type="Self.WatchLists" Multiplicity="*" />
@@ -1764,6 +1817,7 @@
     <EntitySet Name="UserBalanceLogs" EntityType="Self.UserBalanceLogs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserCredits" EntityType="Self.UserCredits" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WatchLists" EntityType="Self.WatchLists" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AdminPermissions_AdminPages" Association="Self.FK_AdminPermissions_AdminPages">
       <End Role="AdminPages" EntitySet="AdminPages" />
@@ -2051,6 +2105,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Users_Countries" Association="Self.FK_Users_Countries">
       <End Role="Countries" EntitySet="Countries" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_UserTypes" Association="Self.FK_Users_UserTypes">
+      <End Role="UserTypes" EntitySet="UserTypes" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
     <AssociationSet Name="FK_WatchLists_Areas" Association="Self.FK_WatchLists_Areas">

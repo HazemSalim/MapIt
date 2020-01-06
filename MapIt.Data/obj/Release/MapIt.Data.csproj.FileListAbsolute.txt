@@ -22,3 +22,15 @@ D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Release\MapIt.Data.pdb
 D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Release\MapIt.Data.csproj.CoreCompileInputs.cache
 D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Release\MapIt.Data.csprojAssemblyReference.cache
 D:\dev\MapIt\mapit_web\trunk\MapIt.Data\obj\Release\MapIt.Data.csproj.CopyComplete
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\bin\Release\MapIt.Data.dll.config
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\bin\Release\MapIt.Data.dll
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\bin\Release\MapIt.Data.pdb
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\bin\Release\EntityFramework.dll
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\bin\Release\EntityFramework.SqlServer.dll
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\bin\Release\EntityFramework.xml
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\bin\Release\EntityFramework.SqlServer.xml
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Release\MapIt.Data.csproj.CoreCompileInputs.cache
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Release\MapIt.Data.csproj.CopyComplete
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Release\MapIt.Data.dll
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Release\MapIt.Data.pdb
+F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Release\MapIt.Data.csprojAssemblyReference.cache

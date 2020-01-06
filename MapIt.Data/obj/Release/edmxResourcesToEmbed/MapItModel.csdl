@@ -28,27 +28,21 @@
     <EntitySet Name="PageShows" EntityType="MapItModel.PageShow" />
     <EntitySet Name="PaymentMethods" EntityType="MapItModel.PaymentMethod" />
     <EntitySet Name="PaymentTransactions" EntityType="MapItModel.PaymentTransaction" />
-    <EntitySet Name="Properties" EntityType="MapItModel.Property" />
     <EntitySet Name="PropertyComponents" EntityType="MapItModel.PropertyComponent" />
     <EntitySet Name="PropertyFavorites" EntityType="MapItModel.PropertyFavorite" />
     <EntitySet Name="PropertyFeatures" EntityType="MapItModel.PropertyFeature" />
     <EntitySet Name="PropertyPhotos" EntityType="MapItModel.PropertyPhoto" />
-    <EntitySet Name="PropertyReports" EntityType="MapItModel.PropertyReport" />
     <EntitySet Name="PropertySettings" EntityType="MapItModel.PropertySetting" />
-    <EntitySet Name="PropertyTypes" EntityType="MapItModel.PropertyType" />
     <EntitySet Name="PropertyVideos" EntityType="MapItModel.PropertyVideo" />
     <EntitySet Name="PropertyViews" EntityType="MapItModel.PropertyView" />
-    <EntitySet Name="Purposes" EntityType="MapItModel.Purpos" />
     <EntitySet Name="Reasons" EntityType="MapItModel.Reason" />
     <EntitySet Name="ServiceFavorites" EntityType="MapItModel.ServiceFavorite" />
     <EntitySet Name="ServicePhotos" EntityType="MapItModel.ServicePhoto" />
     <EntitySet Name="ServiceRates" EntityType="MapItModel.ServiceRate" />
-    <EntitySet Name="ServiceReports" EntityType="MapItModel.ServiceReport" />
     <EntitySet Name="ServicesCategories" EntityType="MapItModel.ServicesCategory" />
     <EntitySet Name="ServiceViews" EntityType="MapItModel.ServiceView" />
     <EntitySet Name="Sliders" EntityType="MapItModel.Slider" />
     <EntitySet Name="UserBalanceLogs" EntityType="MapItModel.UserBalanceLog" />
-    <EntitySet Name="Users" EntityType="MapItModel.User" />
     <EntitySet Name="WatchLists" EntityType="MapItModel.WatchList" />
     <AssociationSet Name="FK_AdminPermissions_AdminPages" Association="MapItModel.FK_AdminPermissions_AdminPages">
       <End Role="AdminPage" EntitySet="AdminPages" />
@@ -69,10 +63,6 @@
     <AssociationSet Name="FK_WatchLists_Areas" Association="MapItModel.FK_WatchLists_Areas">
       <End Role="Area" EntitySet="Areas" />
       <End Role="WatchList" EntitySet="WatchLists" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Properties_Blocks" Association="MapItModel.FK_Properties_Blocks">
-      <End Role="Block" EntitySet="Blocks" />
-      <End Role="Property" EntitySet="Properties" />
     </AssociationSet>
     <AssociationSet Name="FK_Cities_Countries" Association="MapItModel.FK_Cities_Countries">
       <End Role="Country" EntitySet="Countries" />
@@ -98,25 +88,13 @@
       <End Role="ContentPage" EntitySet="ContentPages" />
       <End Role="PageShow" EntitySet="PageShows" />
     </AssociationSet>
-    <AssociationSet Name="FK_Properties_Countries" Association="MapItModel.FK_Properties_Countries">
-      <End Role="Country" EntitySet="Countries" />
-      <End Role="Property" EntitySet="Properties" />
-    </AssociationSet>
     <AssociationSet Name="FK_Sliders_Countries" Association="MapItModel.FK_Sliders_Countries">
       <End Role="Country" EntitySet="Countries" />
       <End Role="Slider" EntitySet="Sliders" />
     </AssociationSet>
-    <AssociationSet Name="FK_Users_Countries" Association="MapItModel.FK_Users_Countries">
-      <End Role="Country" EntitySet="Countries" />
-      <End Role="User" EntitySet="Users" />
-    </AssociationSet>
     <AssociationSet Name="FK_WatchLists_Countries" Association="MapItModel.FK_WatchLists_Countries">
       <End Role="Country" EntitySet="Countries" />
       <End Role="WatchList" EntitySet="WatchLists" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DevicesTokens_Users" Association="MapItModel.FK_DevicesTokens_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="DevicesToken" EntitySet="DevicesTokens" />
     </AssociationSet>
     <AssociationSet Name="FK_PropertyFeatures_Features" Association="MapItModel.FK_PropertyFeatures_Features">
       <End Role="Feature" EntitySet="Features" />
@@ -125,6 +103,193 @@
     <AssociationSet Name="FK_PageShows_PagePlaces" Association="MapItModel.FK_PageShows_PagePlaces">
       <End Role="PagePlace" EntitySet="PagePlaces" />
       <End Role="PageShow" EntitySet="PageShows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicesCategories_ServicesCategories" Association="MapItModel.FK_ServicesCategories_ServicesCategories">
+      <End Role="ServicesCategory" EntitySet="ServicesCategories" />
+      <End Role="ServicesCategory1" EntitySet="ServicesCategories" />
+    </AssociationSet>
+    <EntitySet Name="BrokerAreas" EntityType="MapItModel.BrokerArea" />
+    <EntitySet Name="ServiceAreas" EntityType="MapItModel.ServiceArea" />
+    <AssociationSet Name="FK_BrokerAreas_Areas" Association="MapItModel.FK_BrokerAreas_Areas">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="BrokerArea" EntitySet="BrokerAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceAreas_Areas" Association="MapItModel.FK_ServiceAreas_Areas">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="ServiceArea" EntitySet="ServiceAreas" />
+    </AssociationSet>
+    <EntitySet Name="Offers" EntityType="MapItModel.Offer" />
+    <AssociationSet Name="FK_Offers_Countries" Association="MapItModel.FK_Offers_Countries">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Offer" EntitySet="Offers" />
+    </AssociationSet>
+    <EntitySet Name="Packages" EntityType="MapItModel.Package" />
+    <EntitySet Name="UserCredits" EntityType="MapItModel.UserCredit" />
+    <AssociationSet Name="FK_UserCredits_Currencies" Association="MapItModel.FK_UserCredits_Currencies">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="UserCredit" EntitySet="UserCredits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCredits_Packages" Association="MapItModel.FK_UserCredits_Packages">
+      <End Role="Package" EntitySet="Packages" />
+      <End Role="UserCredit" EntitySet="UserCredits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCredits_PaymentMethods" Association="MapItModel.FK_UserCredits_PaymentMethods">
+      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+      <End Role="UserCredit" EntitySet="UserCredits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PaymentTransactions_UserCredits" Association="MapItModel.FK_PaymentTransactions_UserCredits">
+      <End Role="UserCredit" EntitySet="UserCredits" />
+      <End Role="PaymentTransaction" EntitySet="PaymentTransactions" />
+    </AssociationSet>
+    <EntitySet Name="Merchants" EntityType="MapItModel.Merchant" />
+    <EntitySet Name="Photographers" EntityType="MapItModel.Photographer" />
+    <EntitySet Name="PropertyComments" EntityType="MapItModel.PropertyComment" />
+    <EntitySet Name="ServiceComments" EntityType="MapItModel.ServiceComment" />
+    <EntitySet Name="TechMessages" EntityType="MapItModel.TechMessage" />
+    <EntitySet Name="Notifications" EntityType="MapItModel.Notification" />
+    <AssociationSet Name="FK_Notifications_NotifTypes" Association="MapItModel.FK_Notifications_NotifTypes">
+      <End Role="NotifType" EntitySet="NotifTypes" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Offers" Association="MapItModel.FK_Notifications_Offers">
+      <End Role="Offer" EntitySet="Offers" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <EntitySet Name="Components" EntityType="MapItModel.Component" />
+    <AssociationSet Name="FK_PropertyComponents_Components" Association="MapItModel.FK_PropertyComponents_Components">
+      <End Role="Component" EntitySet="Components" />
+      <End Role="PropertyComponent" EntitySet="PropertyComponents" />
+    </AssociationSet>
+    <FunctionImport Name="GetComponents" ReturnType="Collection(MapItModel.GetComponents_Result)">
+      <Parameter Name="propertyTypeId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetFeatures" ReturnType="Collection(MapItModel.GetFeatures_Result)">
+      <Parameter Name="propertyTypeId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="PropertyReports" EntityType="MapItModel.PropertyReport" />
+    <EntitySet Name="ServiceReports" EntityType="MapItModel.ServiceReport" />
+    <AssociationSet Name="FK_PropertyReports_Reasons" Association="MapItModel.FK_PropertyReports_Reasons">
+      <End Role="Reason" EntitySet="Reasons" />
+      <End Role="PropertyReport" EntitySet="PropertyReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceReports_Reasons" Association="MapItModel.FK_ServiceReports_Reasons">
+      <End Role="Reason" EntitySet="Reasons" />
+      <End Role="ServiceReport" EntitySet="ServiceReports" />
+    </AssociationSet>
+    <EntitySet Name="GenNotifs" EntityType="MapItModel.GenNotif" />
+    <AssociationSet Name="FK_Notifications_GenNotifs" Association="MapItModel.FK_Notifications_GenNotifs">
+      <End Role="GenNotif" EntitySet="GenNotifs" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <EntitySet Name="PropertyTypes" EntityType="MapItModel.PropertyType" />
+    <EntitySet Name="Purposes" EntityType="MapItModel.Purpos" />
+    <EntitySet Name="UserTypes" EntityType="MapItModel.UserType" />
+    <AssociationSet Name="FK_WatchLists_PropertyTypes" Association="MapItModel.FK_WatchLists_PropertyTypes">
+      <End Role="PropertyType" EntitySet="PropertyTypes" />
+      <End Role="WatchList" EntitySet="WatchLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchLists_Purposes" Association="MapItModel.FK_WatchLists_Purposes">
+      <End Role="Purpos" EntitySet="Purposes" />
+      <End Role="WatchList" EntitySet="WatchLists" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="MapItModel.User" />
+    <AssociationSet Name="FK_Users_Countries" Association="MapItModel.FK_Users_Countries">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DevicesTokens_Users" Association="MapItModel.FK_DevicesTokens_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="DevicesToken" EntitySet="DevicesTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Users" Association="MapItModel.FK_Notifications_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyComments_Users" Association="MapItModel.FK_PropertyComments_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PropertyComment" EntitySet="PropertyComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyComments_Users1" Association="MapItModel.FK_PropertyComments_Users1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PropertyComment" EntitySet="PropertyComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyFavorites_Users" Association="MapItModel.FK_PropertyFavorites_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PropertyFavorite" EntitySet="PropertyFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyReports_Users" Association="MapItModel.FK_PropertyReports_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PropertyReport" EntitySet="PropertyReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyViews_Users" Association="MapItModel.FK_PropertyViews_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PropertyView" EntitySet="PropertyViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceComments_Users" Association="MapItModel.FK_ServiceComments_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ServiceComment" EntitySet="ServiceComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceComments_Users1" Association="MapItModel.FK_ServiceComments_Users1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ServiceComment" EntitySet="ServiceComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceFavorites_Users" Association="MapItModel.FK_ServiceFavorites_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ServiceFavorite" EntitySet="ServiceFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRates_Users" Association="MapItModel.FK_ServiceRates_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ServiceRate" EntitySet="ServiceRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceReports_Users" Association="MapItModel.FK_ServiceReports_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ServiceReport" EntitySet="ServiceReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceViews_Users" Association="MapItModel.FK_ServiceViews_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ServiceView" EntitySet="ServiceViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TechMessages_Users" Association="MapItModel.FK_TechMessages_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="TechMessage" EntitySet="TechMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserBalanceLogs_Users" Association="MapItModel.FK_UserBalanceLogs_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserBalanceLog" EntitySet="UserBalanceLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCredits_Users" Association="MapItModel.FK_UserCredits_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserCredit" EntitySet="UserCredits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_UserTypes" Association="MapItModel.FK_Users_UserTypes">
+      <End Role="UserType" EntitySet="UserTypes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchLists_Users" Association="MapItModel.FK_WatchLists_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="WatchList" EntitySet="WatchLists" />
+    </AssociationSet>
+    <EntitySet Name="Properties" EntityType="MapItModel.Property" />
+    <EntitySet Name="Services" EntityType="MapItModel.Service" />
+    <AssociationSet Name="FK_Properties_Blocks" Association="MapItModel.FK_Properties_Blocks">
+      <End Role="Block" EntitySet="Blocks" />
+      <End Role="Property" EntitySet="Properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Services_Cities" Association="MapItModel.FK_Services_Cities">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Service" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Properties_Countries" Association="MapItModel.FK_Properties_Countries">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Property" EntitySet="Properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Properties" Association="MapItModel.FK_Notifications_Properties">
+      <End Role="Property" EntitySet="Properties" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Services" Association="MapItModel.FK_Notifications_Services">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="Notification" EntitySet="Notifications" />
     </AssociationSet>
     <AssociationSet Name="FK_Properties_PropertyTypes" Association="MapItModel.FK_Properties_PropertyTypes">
       <End Role="PropertyType" EntitySet="PropertyTypes" />
@@ -137,6 +302,10 @@
     <AssociationSet Name="FK_Properties_Users" Association="MapItModel.FK_Properties_Users">
       <End Role="User" EntitySet="Users" />
       <End Role="Property" EntitySet="Properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyComments_Properties" Association="MapItModel.FK_PropertyComments_Properties">
+      <End Role="Property" EntitySet="Properties" />
+      <End Role="PropertyComment" EntitySet="PropertyComments" />
     </AssociationSet>
     <AssociationSet Name="FK_PropertyComponents_Properties" Association="MapItModel.FK_PropertyComponents_Properties">
       <End Role="Property" EntitySet="Properties" />
@@ -166,89 +335,13 @@
       <End Role="Property" EntitySet="Properties" />
       <End Role="PropertyView" EntitySet="PropertyViews" />
     </AssociationSet>
-    <AssociationSet Name="FK_PropertyFavorites_Users" Association="MapItModel.FK_PropertyFavorites_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="PropertyFavorite" EntitySet="PropertyFavorites" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PropertyReports_Reasons" Association="MapItModel.FK_PropertyReports_Reasons">
-      <End Role="Reason" EntitySet="Reasons" />
-      <End Role="PropertyReport" EntitySet="PropertyReports" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PropertyReports_Users" Association="MapItModel.FK_PropertyReports_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="PropertyReport" EntitySet="PropertyReports" />
-    </AssociationSet>
-    <AssociationSet Name="FK_WatchLists_PropertyTypes" Association="MapItModel.FK_WatchLists_PropertyTypes">
-      <End Role="PropertyType" EntitySet="PropertyTypes" />
-      <End Role="WatchList" EntitySet="WatchLists" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PropertyViews_Users" Association="MapItModel.FK_PropertyViews_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="PropertyView" EntitySet="PropertyViews" />
-    </AssociationSet>
-    <AssociationSet Name="FK_WatchLists_Purposes" Association="MapItModel.FK_WatchLists_Purposes">
-      <End Role="Purpos" EntitySet="Purposes" />
-      <End Role="WatchList" EntitySet="WatchLists" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServiceReports_Reasons" Association="MapItModel.FK_ServiceReports_Reasons">
-      <End Role="Reason" EntitySet="Reasons" />
-      <End Role="ServiceReport" EntitySet="ServiceReports" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServiceFavorites_Users" Association="MapItModel.FK_ServiceFavorites_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="ServiceFavorite" EntitySet="ServiceFavorites" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServiceRates_Users" Association="MapItModel.FK_ServiceRates_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="ServiceRate" EntitySet="ServiceRates" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServiceReports_Users" Association="MapItModel.FK_ServiceReports_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="ServiceReport" EntitySet="ServiceReports" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServicesCategories_ServicesCategories" Association="MapItModel.FK_ServicesCategories_ServicesCategories">
-      <End Role="ServicesCategory" EntitySet="ServicesCategories" />
-      <End Role="ServicesCategory1" EntitySet="ServicesCategories" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServiceViews_Users" Association="MapItModel.FK_ServiceViews_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="ServiceView" EntitySet="ServiceViews" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserBalanceLogs_Users" Association="MapItModel.FK_UserBalanceLogs_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserBalanceLog" EntitySet="UserBalanceLogs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_WatchLists_Users" Association="MapItModel.FK_WatchLists_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="WatchList" EntitySet="WatchLists" />
-    </AssociationSet>
-    <EntitySet Name="BrokerAreas" EntityType="MapItModel.BrokerArea" />
-    <EntitySet Name="ServiceAreas" EntityType="MapItModel.ServiceArea" />
-    <AssociationSet Name="FK_BrokerAreas_Areas" Association="MapItModel.FK_BrokerAreas_Areas">
-      <End Role="Area" EntitySet="Areas" />
-      <End Role="BrokerArea" EntitySet="BrokerAreas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServiceAreas_Areas" Association="MapItModel.FK_ServiceAreas_Areas">
-      <End Role="Area" EntitySet="Areas" />
-      <End Role="ServiceArea" EntitySet="ServiceAreas" />
-    </AssociationSet>
-    <EntitySet Name="Brokers" EntityType="MapItModel.Broker" />
-    <AssociationSet Name="FK_BrokerAreas_Brokers" Association="MapItModel.FK_BrokerAreas_Brokers">
-      <End Role="Broker" EntitySet="Brokers" />
-      <End Role="BrokerArea" EntitySet="BrokerAreas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Brokers_Cities" Association="MapItModel.FK_Brokers_Cities">
-      <End Role="City" EntitySet="Cities" />
-      <End Role="Broker" EntitySet="Brokers" />
-    </AssociationSet>
-    <EntitySet Name="Services" EntityType="MapItModel.Service" />
-    <AssociationSet Name="FK_Services_Cities" Association="MapItModel.FK_Services_Cities">
-      <End Role="City" EntitySet="Cities" />
-      <End Role="Service" EntitySet="Services" />
-    </AssociationSet>
     <AssociationSet Name="FK_ServiceAreas_Services" Association="MapItModel.FK_ServiceAreas_Services">
       <End Role="Service" EntitySet="Services" />
       <End Role="ServiceArea" EntitySet="ServiceAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceComments_Services" Association="MapItModel.FK_ServiceComments_Services">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServiceComment" EntitySet="ServiceComments" />
     </AssociationSet>
     <AssociationSet Name="FK_ServiceFavorites_Services" Association="MapItModel.FK_ServiceFavorites_Services">
       <End Role="Service" EntitySet="Services" />
@@ -278,103 +371,15 @@
       <End Role="Service" EntitySet="Services" />
       <End Role="ServiceView" EntitySet="ServiceViews" />
     </AssociationSet>
-    <EntitySet Name="Offers" EntityType="MapItModel.Offer" />
-    <AssociationSet Name="FK_Offers_Countries" Association="MapItModel.FK_Offers_Countries">
-      <End Role="Country" EntitySet="Countries" />
-      <End Role="Offer" EntitySet="Offers" />
+    <EntitySet Name="Brokers" EntityType="MapItModel.Broker" />
+    <AssociationSet Name="FK_BrokerAreas_Brokers" Association="MapItModel.FK_BrokerAreas_Brokers">
+      <End Role="Broker" EntitySet="Brokers" />
+      <End Role="BrokerArea" EntitySet="BrokerAreas" />
     </AssociationSet>
-    <EntitySet Name="Packages" EntityType="MapItModel.Package" />
-    <EntitySet Name="UserCredits" EntityType="MapItModel.UserCredit" />
-    <AssociationSet Name="FK_UserCredits_Currencies" Association="MapItModel.FK_UserCredits_Currencies">
-      <End Role="Currency" EntitySet="Currencies" />
-      <End Role="UserCredit" EntitySet="UserCredits" />
+    <AssociationSet Name="FK_Brokers_Cities" Association="MapItModel.FK_Brokers_Cities">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Broker" EntitySet="Brokers" />
     </AssociationSet>
-    <AssociationSet Name="FK_UserCredits_Packages" Association="MapItModel.FK_UserCredits_Packages">
-      <End Role="Package" EntitySet="Packages" />
-      <End Role="UserCredit" EntitySet="UserCredits" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserCredits_PaymentMethods" Association="MapItModel.FK_UserCredits_PaymentMethods">
-      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
-      <End Role="UserCredit" EntitySet="UserCredits" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PaymentTransactions_UserCredits" Association="MapItModel.FK_PaymentTransactions_UserCredits">
-      <End Role="UserCredit" EntitySet="UserCredits" />
-      <End Role="PaymentTransaction" EntitySet="PaymentTransactions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserCredits_Users" Association="MapItModel.FK_UserCredits_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserCredit" EntitySet="UserCredits" />
-    </AssociationSet>
-    <EntitySet Name="Merchants" EntityType="MapItModel.Merchant" />
-    <EntitySet Name="Photographers" EntityType="MapItModel.Photographer" />
-    <EntitySet Name="PropertyComments" EntityType="MapItModel.PropertyComment" />
-    <EntitySet Name="ServiceComments" EntityType="MapItModel.ServiceComment" />
-    <EntitySet Name="TechMessages" EntityType="MapItModel.TechMessage" />
-    <AssociationSet Name="FK_PropertyComments_Properties" Association="MapItModel.FK_PropertyComments_Properties">
-      <End Role="Property" EntitySet="Properties" />
-      <End Role="PropertyComment" EntitySet="PropertyComments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PropertyComments_Users" Association="MapItModel.FK_PropertyComments_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="PropertyComment" EntitySet="PropertyComments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PropertyComments_Users1" Association="MapItModel.FK_PropertyComments_Users1">
-      <End Role="User" EntitySet="Users" />
-      <End Role="PropertyComment" EntitySet="PropertyComments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServiceComments_Services" Association="MapItModel.FK_ServiceComments_Services">
-      <End Role="Service" EntitySet="Services" />
-      <End Role="ServiceComment" EntitySet="ServiceComments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServiceComments_Users" Association="MapItModel.FK_ServiceComments_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="ServiceComment" EntitySet="ServiceComments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ServiceComments_Users1" Association="MapItModel.FK_ServiceComments_Users1">
-      <End Role="User" EntitySet="Users" />
-      <End Role="ServiceComment" EntitySet="ServiceComments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TechMessages_Users" Association="MapItModel.FK_TechMessages_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="TechMessage" EntitySet="TechMessages" />
-    </AssociationSet>
-    <EntitySet Name="GenNotifs" EntityType="MapItModel.GenNotif" />
-    <EntitySet Name="Notifications" EntityType="MapItModel.Notification" />
-    <AssociationSet Name="FK_Notifications_GenNotifs" Association="MapItModel.FK_Notifications_GenNotifs">
-      <End Role="GenNotif" EntitySet="GenNotifs" />
-      <End Role="Notification" EntitySet="Notifications" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Notifications_NotifTypes" Association="MapItModel.FK_Notifications_NotifTypes">
-      <End Role="NotifType" EntitySet="NotifTypes" />
-      <End Role="Notification" EntitySet="Notifications" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Notifications_Offers" Association="MapItModel.FK_Notifications_Offers">
-      <End Role="Offer" EntitySet="Offers" />
-      <End Role="Notification" EntitySet="Notifications" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Notifications_Properties" Association="MapItModel.FK_Notifications_Properties">
-      <End Role="Property" EntitySet="Properties" />
-      <End Role="Notification" EntitySet="Notifications" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Notifications_Services" Association="MapItModel.FK_Notifications_Services">
-      <End Role="Service" EntitySet="Services" />
-      <End Role="Notification" EntitySet="Notifications" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Notifications_Users" Association="MapItModel.FK_Notifications_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="Notification" EntitySet="Notifications" />
-    </AssociationSet>
-    <EntitySet Name="Components" EntityType="MapItModel.Component" />
-    <AssociationSet Name="FK_PropertyComponents_Components" Association="MapItModel.FK_PropertyComponents_Components">
-      <End Role="Component" EntitySet="Components" />
-      <End Role="PropertyComponent" EntitySet="PropertyComponents" />
-    </AssociationSet>
-    <FunctionImport Name="GetComponents" ReturnType="Collection(MapItModel.GetComponents_Result)">
-      <Parameter Name="propertyTypeId" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="GetFeatures" ReturnType="Collection(MapItModel.GetFeatures_Result)">
-      <Parameter Name="propertyTypeId" Mode="In" Type="Int32" />
-    </FunctionImport>
     <EntitySet Name="GeneralSettings" EntityType="MapItModel.GeneralSetting" />
     <AssociationSet Name="FK_GeneralSettings_Countries" Association="MapItModel.FK_GeneralSettings_Countries">
       <End Role="Country" EntitySet="Countries" />
@@ -460,8 +465,8 @@
     <NavigationProperty Name="Areas" Relationship="MapItModel.FK_Areas_Cities" FromRole="City" ToRole="Area" />
     <NavigationProperty Name="Country" Relationship="MapItModel.FK_Cities_Countries" FromRole="City" ToRole="Country" />
     <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Cities" FromRole="City" ToRole="WatchList" />
-    <NavigationProperty Name="Brokers" Relationship="MapItModel.FK_Brokers_Cities" FromRole="City" ToRole="Broker" />
     <NavigationProperty Name="Services" Relationship="MapItModel.FK_Services_Cities" FromRole="City" ToRole="Service" />
+    <NavigationProperty Name="Brokers" Relationship="MapItModel.FK_Brokers_Cities" FromRole="City" ToRole="Broker" />
   </EntityType>
   <EntityType Name="CommAdPlace">
     <Key>
@@ -527,11 +532,11 @@
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Cities" Relationship="MapItModel.FK_Cities_Countries" FromRole="Country" ToRole="City" />
     <NavigationProperty Name="CommercialAds" Relationship="MapItModel.FK_CommercialAds_Countries" FromRole="Country" ToRole="CommercialAd" />
-    <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Countries" FromRole="Country" ToRole="Property" />
     <NavigationProperty Name="Sliders" Relationship="MapItModel.FK_Sliders_Countries" FromRole="Country" ToRole="Slider" />
-    <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_Countries" FromRole="Country" ToRole="User" />
     <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Countries" FromRole="Country" ToRole="WatchList" />
     <NavigationProperty Name="Offers" Relationship="MapItModel.FK_Offers_Countries" FromRole="Country" ToRole="Offer" />
+    <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_Countries" FromRole="Country" ToRole="User" />
+    <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Countries" FromRole="Country" ToRole="Property" />
     <NavigationProperty Name="GeneralSettings" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="Country" ToRole="GeneralSetting" />
   </EntityType>
   <EntityType Name="Currency">
@@ -653,54 +658,6 @@
     <Property Name="PaidOn" Type="DateTime" Precision="3" />
     <NavigationProperty Name="UserCredit" Relationship="MapItModel.FK_PaymentTransactions_UserCredits" FromRole="PaymentTransaction" ToRole="UserCredit" />
   </EntityType>
-  <EntityType Name="Property">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserId" Type="Int64" Nullable="false" />
-    <Property Name="PurposeId" Type="Int32" Nullable="false" />
-    <Property Name="TypeId" Type="Int32" Nullable="false" />
-    <Property Name="CountryId" Type="Int32" Nullable="false" />
-    <Property Name="BlockId" Type="Int32" />
-    <Property Name="Area" Type="Double" />
-    <Property Name="BuildingAge" Type="Int32" />
-    <Property Name="MonthlyIncome" Type="Double" />
-    <Property Name="SellingPrice" Type="Double" />
-    <Property Name="RentPrice" Type="Double" />
-    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="OtherPhones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="PortalAddressEN" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="PortalAddressAR" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="PACI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ViewersCount" Type="Int32" Nullable="false" />
-    <Property Name="PaySpecial" Type="Boolean" Nullable="false" />
-    <Property Name="PayVideo" Type="Boolean" Nullable="false" />
-    <Property Name="IsSpecial" Type="Boolean" Nullable="false" />
-    <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="AdminAdded" Type="Boolean" Nullable="false" />
-    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="AdminUserId" Type="Int32" />
-    <NavigationProperty Name="Block" Relationship="MapItModel.FK_Properties_Blocks" FromRole="Property" ToRole="Block" />
-    <NavigationProperty Name="Country" Relationship="MapItModel.FK_Properties_Countries" FromRole="Property" ToRole="Country" />
-    <NavigationProperty Name="PropertyType" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="Property" ToRole="PropertyType" />
-    <NavigationProperty Name="Purpos" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Property" ToRole="Purpos" />
-    <NavigationProperty Name="User" Relationship="MapItModel.FK_Properties_Users" FromRole="Property" ToRole="User" />
-    <NavigationProperty Name="PropertyComponents" Relationship="MapItModel.FK_PropertyComponents_Properties" FromRole="Property" ToRole="PropertyComponent" />
-    <NavigationProperty Name="PropertyFavorites" Relationship="MapItModel.FK_PropertyFavorites_Properties" FromRole="Property" ToRole="PropertyFavorite" />
-    <NavigationProperty Name="PropertyFeatures" Relationship="MapItModel.FK_PropertyFeatures_Properties" FromRole="Property" ToRole="PropertyFeature" />
-    <NavigationProperty Name="PropertyPhotos" Relationship="MapItModel.FK_PropertyPhotos_Properties" FromRole="Property" ToRole="PropertyPhoto" />
-    <NavigationProperty Name="PropertyReports" Relationship="MapItModel.FK_PropertyReports_Properties" FromRole="Property" ToRole="PropertyReport" />
-    <NavigationProperty Name="PropertyVideos" Relationship="MapItModel.FK_PropertyVideos_Properties" FromRole="Property" ToRole="PropertyVideo" />
-    <NavigationProperty Name="PropertyViews" Relationship="MapItModel.FK_PropertyViews_Properties" FromRole="Property" ToRole="PropertyView" />
-    <NavigationProperty Name="PropertyComments" Relationship="MapItModel.FK_PropertyComments_Properties" FromRole="Property" ToRole="PropertyComment" />
-    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_Properties" FromRole="Property" ToRole="Notification" />
-  </EntityType>
   <EntityType Name="PropertyComponent">
     <Key>
       <PropertyRef Name="Id" />
@@ -709,8 +666,8 @@
     <Property Name="PropertyId" Type="Int64" Nullable="false" />
     <Property Name="ComponentId" Type="Int32" Nullable="false" />
     <Property Name="Count" Type="Int32" />
-    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyComponents_Properties" FromRole="PropertyComponent" ToRole="Property" />
     <NavigationProperty Name="Component" Relationship="MapItModel.FK_PropertyComponents_Components" FromRole="PropertyComponent" ToRole="Component" />
+    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyComponents_Properties" FromRole="PropertyComponent" ToRole="Property" />
   </EntityType>
   <EntityType Name="PropertyFavorite">
     <Key>
@@ -719,8 +676,8 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="Int64" Nullable="false" />
     <Property Name="PropertyId" Type="Int64" Nullable="false" />
-    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyFavorites_Properties" FromRole="PropertyFavorite" ToRole="Property" />
     <NavigationProperty Name="User" Relationship="MapItModel.FK_PropertyFavorites_Users" FromRole="PropertyFavorite" ToRole="User" />
+    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyFavorites_Properties" FromRole="PropertyFavorite" ToRole="Property" />
   </EntityType>
   <EntityType Name="PropertyFeature">
     <Key>
@@ -741,19 +698,6 @@
     <Property Name="Photo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyPhotos_Properties" FromRole="PropertyPhoto" ToRole="Property" />
   </EntityType>
-  <EntityType Name="PropertyReport">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PropertyId" Type="Int64" Nullable="false" />
-    <Property Name="UserId" Type="Int64" Nullable="false" />
-    <Property Name="ReasonId" Type="Int32" Nullable="false" />
-    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyReports_Properties" FromRole="PropertyReport" ToRole="Property" />
-    <NavigationProperty Name="Reason" Relationship="MapItModel.FK_PropertyReports_Reasons" FromRole="PropertyReport" ToRole="Reason" />
-    <NavigationProperty Name="User" Relationship="MapItModel.FK_PropertyReports_Users" FromRole="PropertyReport" ToRole="User" />
-  </EntityType>
   <EntityType Name="PropertySetting">
     <Key>
       <PropertyRef Name="Id" />
@@ -765,18 +709,6 @@
     <Property Name="PropertyId" Type="Int32" />
     <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
     <Property Name="IsMondatory" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PropertyType">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Ordering" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="PropertyType" ToRole="Property" />
-    <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_PropertyTypes" FromRole="PropertyType" ToRole="WatchList" />
   </EntityType>
   <EntityType Name="PropertyVideo">
     <Key>
@@ -795,18 +727,8 @@
     <Property Name="UserId" Type="Int64" Nullable="false" />
     <Property Name="PropertyId" Type="Int64" Nullable="false" />
     <Property Name="ViewedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyViews_Properties" FromRole="PropertyView" ToRole="Property" />
     <NavigationProperty Name="User" Relationship="MapItModel.FK_PropertyViews_Users" FromRole="PropertyView" ToRole="User" />
-  </EntityType>
-  <EntityType Name="Purpos">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Purpos" ToRole="Property" />
-    <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Purposes" FromRole="Purpos" ToRole="WatchList" />
+    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyViews_Properties" FromRole="PropertyView" ToRole="Property" />
   </EntityType>
   <EntityType Name="Reason">
     <Key>
@@ -847,19 +769,6 @@
     <Property Name="Rate" Type="Int32" Nullable="false" />
     <NavigationProperty Name="User" Relationship="MapItModel.FK_ServiceRates_Users" FromRole="ServiceRate" ToRole="User" />
     <NavigationProperty Name="Service" Relationship="MapItModel.FK_ServiceRates_Services" FromRole="ServiceRate" ToRole="Service" />
-  </EntityType>
-  <EntityType Name="ServiceReport">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ServiceId" Type="Int64" Nullable="false" />
-    <Property Name="UserId" Type="Int64" Nullable="false" />
-    <Property Name="ReasonId" Type="Int32" Nullable="false" />
-    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Reason" Relationship="MapItModel.FK_ServiceReports_Reasons" FromRole="ServiceReport" ToRole="Reason" />
-    <NavigationProperty Name="User" Relationship="MapItModel.FK_ServiceReports_Users" FromRole="ServiceReport" ToRole="User" />
-    <NavigationProperty Name="Service" Relationship="MapItModel.FK_ServiceReports_Services" FromRole="ServiceReport" ToRole="Service" />
   </EntityType>
   <EntityType Name="ServicesCategory">
     <Key>
@@ -919,50 +828,6 @@
     <Property Name="TransType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="TransOn" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="User" Relationship="MapItModel.FK_UserBalanceLogs_Users" FromRole="UserBalanceLog" ToRole="User" />
-  </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Sex" Type="Int32" />
-    <Property Name="BirthDate" Type="DateTime" Precision="0" />
-    <Property Name="CountryId" Type="Int32" Nullable="false" />
-    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="OtherPhones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ActivationCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="IsCanceled" Type="Boolean" Nullable="false" />
-    <Property Name="LastLoginOn" Type="DateTime" Precision="3" />
-    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="AdminUserId" Type="Int32" />
-    <NavigationProperty Name="Country" Relationship="MapItModel.FK_Users_Countries" FromRole="User" ToRole="Country" />
-    <NavigationProperty Name="DevicesTokens" Relationship="MapItModel.FK_DevicesTokens_Users" FromRole="User" ToRole="DevicesToken" />
-    <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Users" FromRole="User" ToRole="Property" />
-    <NavigationProperty Name="PropertyFavorites" Relationship="MapItModel.FK_PropertyFavorites_Users" FromRole="User" ToRole="PropertyFavorite" />
-    <NavigationProperty Name="PropertyReports" Relationship="MapItModel.FK_PropertyReports_Users" FromRole="User" ToRole="PropertyReport" />
-    <NavigationProperty Name="PropertyViews" Relationship="MapItModel.FK_PropertyViews_Users" FromRole="User" ToRole="PropertyView" />
-    <NavigationProperty Name="ServiceFavorites" Relationship="MapItModel.FK_ServiceFavorites_Users" FromRole="User" ToRole="ServiceFavorite" />
-    <NavigationProperty Name="ServiceRates" Relationship="MapItModel.FK_ServiceRates_Users" FromRole="User" ToRole="ServiceRate" />
-    <NavigationProperty Name="ServiceReports" Relationship="MapItModel.FK_ServiceReports_Users" FromRole="User" ToRole="ServiceReport" />
-    <NavigationProperty Name="ServiceViews" Relationship="MapItModel.FK_ServiceViews_Users" FromRole="User" ToRole="ServiceView" />
-    <NavigationProperty Name="UserBalanceLogs" Relationship="MapItModel.FK_UserBalanceLogs_Users" FromRole="User" ToRole="UserBalanceLog" />
-    <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Users" FromRole="User" ToRole="WatchList" />
-    <NavigationProperty Name="Services" Relationship="MapItModel.FK_Services_Users" FromRole="User" ToRole="Service" />
-    <NavigationProperty Name="UserCredits" Relationship="MapItModel.FK_UserCredits_Users" FromRole="User" ToRole="UserCredit" />
-    <NavigationProperty Name="SenderPropertyComments" Relationship="MapItModel.FK_PropertyComments_Users" FromRole="User" ToRole="PropertyComment" />
-    <NavigationProperty Name="ReceiverPropertyComments" Relationship="MapItModel.FK_PropertyComments_Users1" FromRole="User" ToRole="PropertyComment" />
-    <NavigationProperty Name="SenderServiceComments" Relationship="MapItModel.FK_ServiceComments_Users" FromRole="User" ToRole="ServiceComment" />
-    <NavigationProperty Name="ReceiverServiceComments" Relationship="MapItModel.FK_ServiceComments_Users1" FromRole="User" ToRole="ServiceComment" />
-    <NavigationProperty Name="TechMessages" Relationship="MapItModel.FK_TechMessages_Users" FromRole="User" ToRole="TechMessage" />
-    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_Users" FromRole="User" ToRole="Notification" />
   </EntityType>
   <EntityType Name="WatchList">
     <Key>
@@ -1043,18 +908,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Properties_Blocks">
-    <End Type="MapItModel.Block" Role="Block" Multiplicity="0..1" />
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Block">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Property">
-        <PropertyRef Name="BlockId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Cities_Countries">
     <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
     <End Type="MapItModel.City" Role="City" Multiplicity="*" />
@@ -1127,18 +980,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Properties_Countries">
-    <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Property">
-        <PropertyRef Name="CountryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Sliders_Countries">
     <End Type="MapItModel.Country" Role="Country" Multiplicity="0..1" />
     <End Type="MapItModel.Slider" Role="Slider" Multiplicity="*" />
@@ -1147,18 +988,6 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Slider">
-        <PropertyRef Name="CountryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_Countries">
-    <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
-    <End Type="MapItModel.User" Role="User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="User">
         <PropertyRef Name="CountryId" />
       </Dependent>
     </ReferentialConstraint>
@@ -1172,18 +1001,6 @@
       </Principal>
       <Dependent Role="WatchList">
         <PropertyRef Name="CountryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DevicesTokens_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="0..1" />
-    <End Type="MapItModel.DevicesToken" Role="DevicesToken" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="DevicesToken">
-        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1211,254 +1028,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Properties_PropertyTypes">
-    <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PropertyType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Property">
-        <PropertyRef Name="TypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Properties_Purposes">
-    <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="1" />
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Purpos">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Property">
-        <PropertyRef Name="PurposeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Properties_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Property">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyComponents_Properties">
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
-    <End Type="MapItModel.PropertyComponent" Role="PropertyComponent" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyComponent">
-        <PropertyRef Name="PropertyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyFavorites_Properties">
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
-    <End Type="MapItModel.PropertyFavorite" Role="PropertyFavorite" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyFavorite">
-        <PropertyRef Name="PropertyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyFeatures_Properties">
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
-    <End Type="MapItModel.PropertyFeature" Role="PropertyFeature" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyFeature">
-        <PropertyRef Name="PropertyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyPhotos_Properties">
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
-    <End Type="MapItModel.PropertyPhoto" Role="PropertyPhoto" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyPhoto">
-        <PropertyRef Name="PropertyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyReports_Properties">
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
-    <End Type="MapItModel.PropertyReport" Role="PropertyReport" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyReport">
-        <PropertyRef Name="PropertyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyVideos_Properties">
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
-    <End Type="MapItModel.PropertyVideo" Role="PropertyVideo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyVideo">
-        <PropertyRef Name="PropertyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyViews_Properties">
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
-    <End Type="MapItModel.PropertyView" Role="PropertyView" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyView">
-        <PropertyRef Name="PropertyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyFavorites_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="MapItModel.PropertyFavorite" Role="PropertyFavorite" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyFavorite">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyReports_Reasons">
-    <End Type="MapItModel.Reason" Role="Reason" Multiplicity="1" />
-    <End Type="MapItModel.PropertyReport" Role="PropertyReport" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Reason">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyReport">
-        <PropertyRef Name="ReasonId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyReports_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.PropertyReport" Role="PropertyReport" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyReport">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_WatchLists_PropertyTypes">
-    <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
-    <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PropertyType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="WatchList">
-        <PropertyRef Name="TypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyViews_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="MapItModel.PropertyView" Role="PropertyView" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyView">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_WatchLists_Purposes">
-    <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="0..1" />
-    <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Purpos">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="WatchList">
-        <PropertyRef Name="PurposeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceReports_Reasons">
-    <End Type="MapItModel.Reason" Role="Reason" Multiplicity="1" />
-    <End Type="MapItModel.ServiceReport" Role="ServiceReport" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Reason">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceReport">
-        <PropertyRef Name="ReasonId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceFavorites_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="MapItModel.ServiceFavorite" Role="ServiceFavorite" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceFavorite">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceRates_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="MapItModel.ServiceRate" Role="ServiceRate" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceRate">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceReports_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.ServiceReport" Role="ServiceReport" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceReport">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ServicesCategories_ServicesCategories">
     <End Type="MapItModel.ServicesCategory" Role="ServicesCategory" Multiplicity="0..1" />
     <End Type="MapItModel.ServicesCategory" Role="ServicesCategory1" Multiplicity="*" />
@@ -1468,44 +1037,6 @@
       </Principal>
       <Dependent Role="ServicesCategory1">
         <PropertyRef Name="ParentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceViews_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="MapItModel.ServiceView" Role="ServiceView" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceView">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserBalanceLogs_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.UserBalanceLog" Role="UserBalanceLog" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UserBalanceLog">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_WatchLists_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="WatchList">
-        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1550,195 +1081,6 @@
       </Principal>
       <Dependent Role="ServiceArea">
         <PropertyRef Name="AreaId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="Broker">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FullName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="CityId" Type="Int32" Nullable="false" />
-    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="DetailsEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="DetailsAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="AllAreas" Type="Boolean" Nullable="false" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="AdminUserId" Type="Int32" />
-    <NavigationProperty Name="BrokerAreas" Relationship="MapItModel.FK_BrokerAreas_Brokers" FromRole="Broker" ToRole="BrokerArea" />
-    <NavigationProperty Name="City" Relationship="MapItModel.FK_Brokers_Cities" FromRole="Broker" ToRole="City" />
-  </EntityType>
-  <Association Name="FK_BrokerAreas_Brokers">
-    <End Type="MapItModel.Broker" Role="Broker" Multiplicity="1" />
-    <End Type="MapItModel.BrokerArea" Role="BrokerArea" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Broker">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="BrokerArea">
-        <PropertyRef Name="BrokerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Brokers_Cities">
-    <End Type="MapItModel.City" Role="City" Multiplicity="1" />
-    <End Type="MapItModel.Broker" Role="Broker" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Broker">
-        <PropertyRef Name="CityId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="Service">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="UserId" Type="Int64" Nullable="false" />
-    <Property Name="CityId" Type="Int32" Nullable="false" />
-    <Property Name="CategoryId" Type="Int32" Nullable="false" />
-    <Property Name="ExYears" Type="Int32" Nullable="false" />
-    <Property Name="OtherPhones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ViewersCount" Type="Int32" Nullable="false" />
-    <Property Name="AllAreas" Type="Boolean" Nullable="false" />
-    <Property Name="IsCompany" Type="Boolean" Nullable="false" />
-    <Property Name="IsSpecial" Type="Boolean" Nullable="false" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="AdminAdded" Type="Boolean" Nullable="false" />
-    <Property Name="Ordering" Type="Int32" />
-    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="AdminUserId" Type="Int32" />
-    <NavigationProperty Name="City" Relationship="MapItModel.FK_Services_Cities" FromRole="Service" ToRole="City" />
-    <NavigationProperty Name="ServiceAreas" Relationship="MapItModel.FK_ServiceAreas_Services" FromRole="Service" ToRole="ServiceArea" />
-    <NavigationProperty Name="ServiceFavorites" Relationship="MapItModel.FK_ServiceFavorites_Services" FromRole="Service" ToRole="ServiceFavorite" />
-    <NavigationProperty Name="ServicePhotos" Relationship="MapItModel.FK_ServicePhotos_Services" FromRole="Service" ToRole="ServicePhoto" />
-    <NavigationProperty Name="ServiceRates" Relationship="MapItModel.FK_ServiceRates_Services" FromRole="Service" ToRole="ServiceRate" />
-    <NavigationProperty Name="ServiceReports" Relationship="MapItModel.FK_ServiceReports_Services" FromRole="Service" ToRole="ServiceReport" />
-    <NavigationProperty Name="ServicesCategory" Relationship="MapItModel.FK_Services_ServicesCategories" FromRole="Service" ToRole="ServicesCategory" />
-    <NavigationProperty Name="User" Relationship="MapItModel.FK_Services_Users" FromRole="Service" ToRole="User" />
-    <NavigationProperty Name="ServiceViews" Relationship="MapItModel.FK_ServiceViews_Services" FromRole="Service" ToRole="ServiceView" />
-    <NavigationProperty Name="ServiceComments" Relationship="MapItModel.FK_ServiceComments_Services" FromRole="Service" ToRole="ServiceComment" />
-    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_Services" FromRole="Service" ToRole="Notification" />
-  </EntityType>
-  <Association Name="FK_Services_Cities">
-    <End Type="MapItModel.City" Role="City" Multiplicity="1" />
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Service">
-        <PropertyRef Name="CityId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceAreas_Services">
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
-    <End Type="MapItModel.ServiceArea" Role="ServiceArea" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Service">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceArea">
-        <PropertyRef Name="ServiceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceFavorites_Services">
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
-    <End Type="MapItModel.ServiceFavorite" Role="ServiceFavorite" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Service">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceFavorite">
-        <PropertyRef Name="ServiceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServicePhotos_Services">
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
-    <End Type="MapItModel.ServicePhoto" Role="ServicePhoto" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Service">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServicePhoto">
-        <PropertyRef Name="ServiceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceRates_Services">
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
-    <End Type="MapItModel.ServiceRate" Role="ServiceRate" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Service">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceRate">
-        <PropertyRef Name="ServiceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceReports_Services">
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
-    <End Type="MapItModel.ServiceReport" Role="ServiceReport" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Service">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceReport">
-        <PropertyRef Name="ServiceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Services_ServicesCategories">
-    <End Type="MapItModel.ServicesCategory" Role="ServicesCategory" Multiplicity="1" />
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ServicesCategory">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Service">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Services_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Service">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceViews_Services">
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
-    <End Type="MapItModel.ServiceView" Role="ServiceView" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Service">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceView">
-        <PropertyRef Name="ServiceId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1861,18 +1203,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_UserCredits_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UserCredit">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Merchant">
     <Key>
       <PropertyRef Name="Id" />
@@ -1917,9 +1247,9 @@
     <Property Name="TextMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="IsRead" Type="Boolean" Nullable="false" />
     <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyComments_Properties" FromRole="PropertyComment" ToRole="Property" />
     <NavigationProperty Name="Sender" Relationship="MapItModel.FK_PropertyComments_Users" FromRole="PropertyComment" ToRole="User" />
     <NavigationProperty Name="Receiver" Relationship="MapItModel.FK_PropertyComments_Users1" FromRole="PropertyComment" ToRole="User" />
+    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyComments_Properties" FromRole="PropertyComment" ToRole="Property" />
   </EntityType>
   <EntityType Name="ServiceComment">
     <Key>
@@ -1932,9 +1262,9 @@
     <Property Name="TextMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="IsRead" Type="Boolean" Nullable="false" />
     <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Service" Relationship="MapItModel.FK_ServiceComments_Services" FromRole="ServiceComment" ToRole="Service" />
     <NavigationProperty Name="Sender" Relationship="MapItModel.FK_ServiceComments_Users" FromRole="ServiceComment" ToRole="User" />
     <NavigationProperty Name="Receiver" Relationship="MapItModel.FK_ServiceComments_Users1" FromRole="ServiceComment" ToRole="User" />
+    <NavigationProperty Name="Service" Relationship="MapItModel.FK_ServiceComments_Services" FromRole="ServiceComment" ToRole="Service" />
   </EntityType>
   <EntityType Name="TechMessage">
     <Key>
@@ -1948,90 +1278,6 @@
     <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="User" Relationship="MapItModel.FK_TechMessages_Users" FromRole="TechMessage" ToRole="User" />
   </EntityType>
-  <Association Name="FK_PropertyComments_Properties">
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
-    <End Type="MapItModel.PropertyComment" Role="PropertyComment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyComment">
-        <PropertyRef Name="PropertyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyComments_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.PropertyComment" Role="PropertyComment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyComment">
-        <PropertyRef Name="SenderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PropertyComments_Users1">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.PropertyComment" Role="PropertyComment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PropertyComment">
-        <PropertyRef Name="ReceiverId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceComments_Services">
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
-    <End Type="MapItModel.ServiceComment" Role="ServiceComment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Service">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceComment">
-        <PropertyRef Name="ServiceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceComments_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.ServiceComment" Role="ServiceComment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceComment">
-        <PropertyRef Name="SenderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ServiceComments_Users1">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.ServiceComment" Role="ServiceComment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ServiceComment">
-        <PropertyRef Name="ReceiverId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TechMessages_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-    <End Type="MapItModel.TechMessage" Role="TechMessage" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TechMessage">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <ComplexType Name="GetSettings_Result">
     <Property Type="String" Name="CategoryName" MaxLength="Max" Nullable="true" />
     <Property Type="String" Name="CategoryText" MaxLength="Max" Nullable="true" />
@@ -2041,18 +1287,6 @@
     <Property Type="String" Name="PropertyName" Nullable="true" MaxLength="Max" />
     <Property Type="String" Name="PropertyText" MaxLength="Max" Nullable="true" />
   </ComplexType>
-  <EntityType Name="GenNotif">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="AdminUserId" Type="Int32" />
-    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_GenNotifs" FromRole="GenNotif" ToRole="Notification" />
-  </EntityType>
   <EntityType Name="Notification">
     <Key>
       <PropertyRef Name="Id" />
@@ -2064,29 +1298,17 @@
     <Property Name="ServiceId" Type="Int64" />
     <Property Name="OfferId" Type="Int32" />
     <Property Name="TypeId" Type="Int32" Nullable="false" />
-    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="IsRead" Type="Boolean" Nullable="false" />
     <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="GenNotif" Relationship="MapItModel.FK_Notifications_GenNotifs" FromRole="Notification" ToRole="GenNotif" />
     <NavigationProperty Name="NotifType" Relationship="MapItModel.FK_Notifications_NotifTypes" FromRole="Notification" ToRole="NotifType" />
     <NavigationProperty Name="Offer" Relationship="MapItModel.FK_Notifications_Offers" FromRole="Notification" ToRole="Offer" />
+    <NavigationProperty Name="GenNotif" Relationship="MapItModel.FK_Notifications_GenNotifs" FromRole="Notification" ToRole="GenNotif" />
+    <NavigationProperty Name="User" Relationship="MapItModel.FK_Notifications_Users" FromRole="Notification" ToRole="User" />
     <NavigationProperty Name="Property" Relationship="MapItModel.FK_Notifications_Properties" FromRole="Notification" ToRole="Property" />
     <NavigationProperty Name="Service" Relationship="MapItModel.FK_Notifications_Services" FromRole="Notification" ToRole="Service" />
-    <NavigationProperty Name="User" Relationship="MapItModel.FK_Notifications_Users" FromRole="Notification" ToRole="User" />
   </EntityType>
-  <Association Name="FK_Notifications_GenNotifs">
-    <End Type="MapItModel.GenNotif" Role="GenNotif" Multiplicity="0..1" />
-    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="GenNotif">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Notification">
-        <PropertyRef Name="GenNotifId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Notifications_NotifTypes">
     <End Type="MapItModel.NotifType" Role="NotifType" Multiplicity="1" />
     <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
@@ -2108,42 +1330,6 @@
       </Principal>
       <Dependent Role="Notification">
         <PropertyRef Name="OfferId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Notifications_Properties">
-    <End Type="MapItModel.Property" Role="Property" Multiplicity="0..1" />
-    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Notification">
-        <PropertyRef Name="PropertyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Notifications_Services">
-    <End Type="MapItModel.Service" Role="Service" Multiplicity="0..1" />
-    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Service">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Notification">
-        <PropertyRef Name="ServiceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Notifications_Users">
-    <End Type="MapItModel.User" Role="User" Multiplicity="0..1" />
-    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Notification">
-        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2182,6 +1368,868 @@
     <Property Type="String" Name="TitleAR" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="TitleEN" Nullable="false" MaxLength="100" />
   </ComplexType>
+  <EntityType Name="PropertyReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PropertyId" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="ReasonId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Reason" Relationship="MapItModel.FK_PropertyReports_Reasons" FromRole="PropertyReport" ToRole="Reason" />
+    <NavigationProperty Name="User" Relationship="MapItModel.FK_PropertyReports_Users" FromRole="PropertyReport" ToRole="User" />
+    <NavigationProperty Name="Property" Relationship="MapItModel.FK_PropertyReports_Properties" FromRole="PropertyReport" ToRole="Property" />
+  </EntityType>
+  <EntityType Name="ServiceReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceId" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="ReasonId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Reason" Relationship="MapItModel.FK_ServiceReports_Reasons" FromRole="ServiceReport" ToRole="Reason" />
+    <NavigationProperty Name="User" Relationship="MapItModel.FK_ServiceReports_Users" FromRole="ServiceReport" ToRole="User" />
+    <NavigationProperty Name="Service" Relationship="MapItModel.FK_ServiceReports_Services" FromRole="ServiceReport" ToRole="Service" />
+  </EntityType>
+  <Association Name="FK_PropertyReports_Reasons">
+    <End Type="MapItModel.Reason" Role="Reason" Multiplicity="1" />
+    <End Type="MapItModel.PropertyReport" Role="PropertyReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reason">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyReport">
+        <PropertyRef Name="ReasonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceReports_Reasons">
+    <End Type="MapItModel.Reason" Role="Reason" Multiplicity="1" />
+    <End Type="MapItModel.ServiceReport" Role="ServiceReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reason">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceReport">
+        <PropertyRef Name="ReasonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="GenNotif">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="AdminUserId" Type="Int32" />
+    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_GenNotifs" FromRole="GenNotif" ToRole="Notification" />
+  </EntityType>
+  <Association Name="FK_Notifications_GenNotifs">
+    <End Type="MapItModel.GenNotif" Role="GenNotif" Multiplicity="0..1" />
+    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GenNotif">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="GenNotifId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PropertyType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ordering" Type="Int32" Nullable="false" />
+    <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_PropertyTypes" FromRole="PropertyType" ToRole="WatchList" />
+    <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="PropertyType" ToRole="Property" />
+  </EntityType>
+  <EntityType Name="Purpos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Purposes" FromRole="Purpos" ToRole="WatchList" />
+    <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Purpos" ToRole="Property" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TitleEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ShortTitleAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShortTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="MapItModel.FK_Users_UserTypes" FromRole="UserType" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_WatchLists_PropertyTypes">
+    <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
+    <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PropertyType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchList">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchLists_Purposes">
+    <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="0..1" />
+    <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Purpos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchList">
+        <PropertyRef Name="PurposeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="Int32" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OtherPhones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ActivationCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsCanceled" Type="Boolean" Nullable="false" />
+    <Property Name="LastLoginOn" Type="DateTime" Precision="3" />
+    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="AdminUserId" Type="Int32" />
+    <Property Name="Lang" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="UserTypeID" Type="Int32" />
+    <Property Name="IsVerified" Type="Boolean" />
+    <NavigationProperty Name="Country" Relationship="MapItModel.FK_Users_Countries" FromRole="User" ToRole="Country" />
+    <NavigationProperty Name="DevicesTokens" Relationship="MapItModel.FK_DevicesTokens_Users" FromRole="User" ToRole="DevicesToken" />
+    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_Users" FromRole="User" ToRole="Notification" />
+    <NavigationProperty Name="PropertyComments" Relationship="MapItModel.FK_PropertyComments_Users" FromRole="User" ToRole="PropertyComment" />
+    <NavigationProperty Name="ReceiverPropertyComments" Relationship="MapItModel.FK_PropertyComments_Users1" FromRole="User" ToRole="PropertyComment" />
+    <NavigationProperty Name="PropertyFavorites" Relationship="MapItModel.FK_PropertyFavorites_Users" FromRole="User" ToRole="PropertyFavorite" />
+    <NavigationProperty Name="PropertyReports" Relationship="MapItModel.FK_PropertyReports_Users" FromRole="User" ToRole="PropertyReport" />
+    <NavigationProperty Name="PropertyViews" Relationship="MapItModel.FK_PropertyViews_Users" FromRole="User" ToRole="PropertyView" />
+    <NavigationProperty Name="ServiceComments" Relationship="MapItModel.FK_ServiceComments_Users" FromRole="User" ToRole="ServiceComment" />
+    <NavigationProperty Name="ReceiverServiceComments" Relationship="MapItModel.FK_ServiceComments_Users1" FromRole="User" ToRole="ServiceComment" />
+    <NavigationProperty Name="ServiceFavorites" Relationship="MapItModel.FK_ServiceFavorites_Users" FromRole="User" ToRole="ServiceFavorite" />
+    <NavigationProperty Name="ServiceRates" Relationship="MapItModel.FK_ServiceRates_Users" FromRole="User" ToRole="ServiceRate" />
+    <NavigationProperty Name="ServiceReports" Relationship="MapItModel.FK_ServiceReports_Users" FromRole="User" ToRole="ServiceReport" />
+    <NavigationProperty Name="ServiceViews" Relationship="MapItModel.FK_ServiceViews_Users" FromRole="User" ToRole="ServiceView" />
+    <NavigationProperty Name="TechMessages" Relationship="MapItModel.FK_TechMessages_Users" FromRole="User" ToRole="TechMessage" />
+    <NavigationProperty Name="UserBalanceLogs" Relationship="MapItModel.FK_UserBalanceLogs_Users" FromRole="User" ToRole="UserBalanceLog" />
+    <NavigationProperty Name="UserCredits" Relationship="MapItModel.FK_UserCredits_Users" FromRole="User" ToRole="UserCredit" />
+    <NavigationProperty Name="UserType" Relationship="MapItModel.FK_Users_UserTypes" FromRole="User" ToRole="UserType" />
+    <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Users" FromRole="User" ToRole="WatchList" />
+    <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Users" FromRole="User" ToRole="Property" />
+    <NavigationProperty Name="Services" Relationship="MapItModel.FK_Services_Users" FromRole="User" ToRole="Service" />
+  </EntityType>
+  <Association Name="FK_Users_Countries">
+    <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="MapItModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DevicesTokens_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="MapItModel.DevicesToken" Role="DevicesToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DevicesToken">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyComments_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.PropertyComment" Role="PropertyComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyComment">
+        <PropertyRef Name="SenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyComments_Users1">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.PropertyComment" Role="PropertyComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyComment">
+        <PropertyRef Name="ReceiverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyFavorites_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MapItModel.PropertyFavorite" Role="PropertyFavorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyFavorite">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyReports_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.PropertyReport" Role="PropertyReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyReport">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyViews_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MapItModel.PropertyView" Role="PropertyView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyView">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceComments_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.ServiceComment" Role="ServiceComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceComment">
+        <PropertyRef Name="SenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceComments_Users1">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.ServiceComment" Role="ServiceComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceComment">
+        <PropertyRef Name="ReceiverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceFavorites_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MapItModel.ServiceFavorite" Role="ServiceFavorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceFavorite">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRates_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MapItModel.ServiceRate" Role="ServiceRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceRate">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceReports_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.ServiceReport" Role="ServiceReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceReport">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceViews_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MapItModel.ServiceView" Role="ServiceView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceView">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TechMessages_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.TechMessage" Role="TechMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TechMessage">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserBalanceLogs_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.UserBalanceLog" Role="UserBalanceLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserBalanceLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCredits_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCredit">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_UserTypes">
+    <End Type="MapItModel.UserType" Role="UserType" Multiplicity="0..1" />
+    <End Type="MapItModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchLists_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.WatchList" Role="WatchList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchList">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="PurposeId" Type="Int32" Nullable="false" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="BlockId" Type="Int32" />
+    <Property Name="Area" Type="Double" />
+    <Property Name="BuildingAge" Type="Int32" />
+    <Property Name="MonthlyIncome" Type="Double" />
+    <Property Name="SellingPrice" Type="Double" />
+    <Property Name="RentPrice" Type="Double" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OtherPhones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PortalAddressEN" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PortalAddressAR" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PACI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ViewersCount" Type="Int32" Nullable="false" />
+    <Property Name="WhatsAppCount" Type="Int32" />
+    <Property Name="CallsCount" Type="Int32" />
+    <Property Name="MapsCount" Type="Int32" />
+    <Property Name="CapturesCount" Type="Int32" />
+    <Property Name="PaySpecial" Type="Boolean" Nullable="false" />
+    <Property Name="PayVideo" Type="Boolean" Nullable="false" />
+    <Property Name="IsSpecial" Type="Boolean" Nullable="false" />
+    <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAdded" Type="Boolean" Nullable="false" />
+    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="AdminUserId" Type="Int32" />
+    <NavigationProperty Name="Block" Relationship="MapItModel.FK_Properties_Blocks" FromRole="Property" ToRole="Block" />
+    <NavigationProperty Name="Country" Relationship="MapItModel.FK_Properties_Countries" FromRole="Property" ToRole="Country" />
+    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_Properties" FromRole="Property" ToRole="Notification" />
+    <NavigationProperty Name="PropertyType" Relationship="MapItModel.FK_Properties_PropertyTypes" FromRole="Property" ToRole="PropertyType" />
+    <NavigationProperty Name="Purpos" Relationship="MapItModel.FK_Properties_Purposes" FromRole="Property" ToRole="Purpos" />
+    <NavigationProperty Name="User" Relationship="MapItModel.FK_Properties_Users" FromRole="Property" ToRole="User" />
+    <NavigationProperty Name="PropertyComments" Relationship="MapItModel.FK_PropertyComments_Properties" FromRole="Property" ToRole="PropertyComment" />
+    <NavigationProperty Name="PropertyComponents" Relationship="MapItModel.FK_PropertyComponents_Properties" FromRole="Property" ToRole="PropertyComponent" />
+    <NavigationProperty Name="PropertyFavorites" Relationship="MapItModel.FK_PropertyFavorites_Properties" FromRole="Property" ToRole="PropertyFavorite" />
+    <NavigationProperty Name="PropertyFeatures" Relationship="MapItModel.FK_PropertyFeatures_Properties" FromRole="Property" ToRole="PropertyFeature" />
+    <NavigationProperty Name="PropertyPhotos" Relationship="MapItModel.FK_PropertyPhotos_Properties" FromRole="Property" ToRole="PropertyPhoto" />
+    <NavigationProperty Name="PropertyReports" Relationship="MapItModel.FK_PropertyReports_Properties" FromRole="Property" ToRole="PropertyReport" />
+    <NavigationProperty Name="PropertyVideos" Relationship="MapItModel.FK_PropertyVideos_Properties" FromRole="Property" ToRole="PropertyVideo" />
+    <NavigationProperty Name="PropertyViews" Relationship="MapItModel.FK_PropertyViews_Properties" FromRole="Property" ToRole="PropertyView" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="CityId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="ExYears" Type="Int32" Nullable="false" />
+    <Property Name="OtherPhones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ViewersCount" Type="Int32" Nullable="false" />
+    <Property Name="AllAreas" Type="Boolean" Nullable="false" />
+    <Property Name="IsCompany" Type="Boolean" Nullable="false" />
+    <Property Name="IsSpecial" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAdded" Type="Boolean" Nullable="false" />
+    <Property Name="Ordering" Type="Int32" />
+    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="AdminUserId" Type="Int32" />
+    <Property Name="WhatsAppCount" Type="Int32" />
+    <Property Name="CallsCount" Type="Int32" />
+    <Property Name="MapsCount" Type="Int32" />
+    <Property Name="CapturesCount" Type="Int32" />
+    <NavigationProperty Name="City" Relationship="MapItModel.FK_Services_Cities" FromRole="Service" ToRole="City" />
+    <NavigationProperty Name="Notifications" Relationship="MapItModel.FK_Notifications_Services" FromRole="Service" ToRole="Notification" />
+    <NavigationProperty Name="ServiceAreas" Relationship="MapItModel.FK_ServiceAreas_Services" FromRole="Service" ToRole="ServiceArea" />
+    <NavigationProperty Name="ServiceComments" Relationship="MapItModel.FK_ServiceComments_Services" FromRole="Service" ToRole="ServiceComment" />
+    <NavigationProperty Name="ServiceFavorites" Relationship="MapItModel.FK_ServiceFavorites_Services" FromRole="Service" ToRole="ServiceFavorite" />
+    <NavigationProperty Name="ServicePhotos" Relationship="MapItModel.FK_ServicePhotos_Services" FromRole="Service" ToRole="ServicePhoto" />
+    <NavigationProperty Name="ServiceRates" Relationship="MapItModel.FK_ServiceRates_Services" FromRole="Service" ToRole="ServiceRate" />
+    <NavigationProperty Name="ServiceReports" Relationship="MapItModel.FK_ServiceReports_Services" FromRole="Service" ToRole="ServiceReport" />
+    <NavigationProperty Name="ServicesCategory" Relationship="MapItModel.FK_Services_ServicesCategories" FromRole="Service" ToRole="ServicesCategory" />
+    <NavigationProperty Name="User" Relationship="MapItModel.FK_Services_Users" FromRole="Service" ToRole="User" />
+    <NavigationProperty Name="ServiceViews" Relationship="MapItModel.FK_ServiceViews_Services" FromRole="Service" ToRole="ServiceView" />
+  </EntityType>
+  <Association Name="FK_Properties_Blocks">
+    <End Type="MapItModel.Block" Role="Block" Multiplicity="0..1" />
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Block">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="BlockId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Services_Cities">
+    <End Type="MapItModel.City" Role="City" Multiplicity="1" />
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Properties_Countries">
+    <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Properties">
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="0..1" />
+    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Services">
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="0..1" />
+    <End Type="MapItModel.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Properties_PropertyTypes">
+    <End Type="MapItModel.PropertyType" Role="PropertyType" Multiplicity="1" />
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PropertyType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Properties_Purposes">
+    <End Type="MapItModel.Purpos" Role="Purpos" Multiplicity="1" />
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Purpos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="PurposeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Properties_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyComments_Properties">
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
+    <End Type="MapItModel.PropertyComment" Role="PropertyComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyComment">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyComponents_Properties">
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
+    <End Type="MapItModel.PropertyComponent" Role="PropertyComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyComponent">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyFavorites_Properties">
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
+    <End Type="MapItModel.PropertyFavorite" Role="PropertyFavorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyFavorite">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyFeatures_Properties">
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
+    <End Type="MapItModel.PropertyFeature" Role="PropertyFeature" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyFeature">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyPhotos_Properties">
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
+    <End Type="MapItModel.PropertyPhoto" Role="PropertyPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyPhoto">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyReports_Properties">
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
+    <End Type="MapItModel.PropertyReport" Role="PropertyReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyReport">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyVideos_Properties">
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
+    <End Type="MapItModel.PropertyVideo" Role="PropertyVideo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyVideo">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyViews_Properties">
+    <End Type="MapItModel.Property" Role="Property" Multiplicity="1" />
+    <End Type="MapItModel.PropertyView" Role="PropertyView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PropertyView">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceAreas_Services">
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
+    <End Type="MapItModel.ServiceArea" Role="ServiceArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceArea">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceComments_Services">
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
+    <End Type="MapItModel.ServiceComment" Role="ServiceComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceComment">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceFavorites_Services">
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
+    <End Type="MapItModel.ServiceFavorite" Role="ServiceFavorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceFavorite">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicePhotos_Services">
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
+    <End Type="MapItModel.ServicePhoto" Role="ServicePhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServicePhoto">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRates_Services">
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
+    <End Type="MapItModel.ServiceRate" Role="ServiceRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceRate">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceReports_Services">
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
+    <End Type="MapItModel.ServiceReport" Role="ServiceReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceReport">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Services_ServicesCategories">
+    <End Type="MapItModel.ServicesCategory" Role="ServicesCategory" Multiplicity="1" />
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicesCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Services_Users">
+    <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceViews_Services">
+    <End Type="MapItModel.Service" Role="Service" Multiplicity="1" />
+    <End Type="MapItModel.ServiceView" Role="ServiceView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceView">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Broker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FullNameEN" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CityId" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DetailsEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DetailsAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AllAreas" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="AdminUserId" Type="Int32" />
+    <Property Name="UserId" Type="Int64" />
+    <NavigationProperty Name="BrokerAreas" Relationship="MapItModel.FK_BrokerAreas_Brokers" FromRole="Broker" ToRole="BrokerArea" />
+    <NavigationProperty Name="City" Relationship="MapItModel.FK_Brokers_Cities" FromRole="Broker" ToRole="City" />
+  </EntityType>
+  <Association Name="FK_BrokerAreas_Brokers">
+    <End Type="MapItModel.Broker" Role="Broker" Multiplicity="1" />
+    <End Type="MapItModel.BrokerArea" Role="BrokerArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Broker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrokerArea">
+        <PropertyRef Name="BrokerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Brokers_Cities">
+    <End Type="MapItModel.City" Role="City" Multiplicity="1" />
+    <End Type="MapItModel.Broker" Role="Broker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Broker">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="GeneralSetting">
     <Key>
       <PropertyRef Name="Id" />
@@ -2228,6 +2276,18 @@
     <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
     <Property Name="AdminUserId" Type="Int32" />
+    <Property Name="MessageCloseEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MessageCloseArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IOSAppUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MessageUpdateEnglish" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MessageUpdateArabic" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsForceUpdateIOS" Type="Boolean" />
+    <Property Name="IOSVersionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsForceClose" Type="Boolean" />
+    <Property Name="PaciUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PaciPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsForceUpdateAndroid" Type="Boolean" />
+    <Property Name="AndroidVersionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Country" Relationship="MapItModel.FK_GeneralSettings_Countries" FromRole="GeneralSetting" ToRole="Country" />
     <NavigationProperty Name="DefaultCurrency" Relationship="MapItModel.FK_GeneralSettings_Currencies" FromRole="GeneralSetting" ToRole="Currency" />
   </EntityType>
