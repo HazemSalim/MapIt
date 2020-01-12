@@ -1528,10 +1528,10 @@ namespace MapIt.Web.App
                         properties = properties.OrderBy(i => i.AddedOn);
                         break;
                     case 3:
-                        properties = properties.OrderByDescending(i => i.SellingPrice.HasValue ? i.SellingPrice.Value : i.RentPrice.Value);
+                        properties = properties.OrderByDescending(i => i.SellingPrice ?? i.RentPrice);
                         break;
                     case 4:
-                        properties = properties.OrderBy(i => i.SellingPrice.HasValue ? i.SellingPrice.Value : i.RentPrice.Value);
+                        properties = properties.OrderBy(i => i.SellingPrice ?? i.RentPrice);
                         break;
                     default:
                         properties = properties.OrderByDescending(i => i.AddedOn);
@@ -1701,12 +1701,12 @@ namespace MapIt.Web.App
                 //    case 2:
                 //        properties = properties.OrderBy(i => i.AddedOn);
                 //        break;
-                //    case 3:
-                //        properties = properties.OrderByDescending(i => i.SellingPrice.HasValue ? i.SellingPrice.Value : i.RentPrice.Value);
-                //        break;
-                //    case 4:
-                //        properties = properties.OrderBy(i => i.SellingPrice.HasValue ? i.SellingPrice.Value : i.RentPrice.Value);
-                //        break;
+                //   case 3:
+                //            properties = properties.OrderByDescending(i => i.SellingPrice ?? i.RentPrice);
+                //break;
+                //        case 4:
+                //            properties = properties.OrderBy(i => i.SellingPrice ?? i.RentPrice);
+                //break;
                 //    default:
                 //        properties = properties.OrderByDescending(i => i.AddedOn);
                 //        break;
@@ -1880,10 +1880,10 @@ namespace MapIt.Web.App
                             properties = properties.OrderBy(i => i.AddedOn).ToList();
                             break;
                         case 3:
-                            properties = properties.OrderByDescending(i => i.SellingPrice.HasValue ? i.SellingPrice.Value : i.RentPrice.Value).ToList();
+                            properties = properties.OrderByDescending(i => i.SellingPrice ?? i.RentPrice).ToList();
                             break;
                         case 4:
-                            properties = properties.OrderBy(i => i.SellingPrice.HasValue ? i.SellingPrice.Value : i.RentPrice.Value).ToList();
+                            properties = properties.OrderBy(i => i.SellingPrice ?? i.RentPrice).ToList();
                             break;
                         default:
                             properties = properties.OrderByDescending(i => i.AddedOn).ToList();

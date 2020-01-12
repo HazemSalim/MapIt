@@ -13,7 +13,7 @@ using MapIt.Web.MyFatoorahServiceReference;
 
 namespace MapIt.Web.Payment
 {
-    public partial class Buy : MapIt.Lib.BasePage
+    public partial class Buy : BasePage
     {
         #region Variables
 
@@ -63,27 +63,33 @@ namespace MapIt.Web.Payment
                 var lst = new List<ProductDC>();
 
                 // Merchnat
-                var merchantDCObj = new MerchantDC();
-                merchantDCObj.merchant_ReferenceID = creditObj.Id.ToString();
-                merchantDCObj.merchant_username = AppSettings.MyF_merchant_username;
-                merchantDCObj.merchant_password = AppSettings.MyF_merchant_password;
-                merchantDCObj.merchant_code = AppSettings.MyF_merchant_code;
-                merchantDCObj.ReturnURL = AppSettings.MyF_merchant_return_url;
-                merchantDCObj.merchant_error_url = AppSettings.MyF_merchant_error_url;
-                merchantDCObj.udf1 = creditObj.Id.ToString();
+                var merchantDCObj = new MerchantDC
+                {
+                    merchant_ReferenceID = creditObj.Id.ToString(),
+                    merchant_username = AppSettings.MyF_merchant_username,
+                    merchant_password = AppSettings.MyF_merchant_password,
+                    merchant_code = AppSettings.MyF_merchant_code,
+                    ReturnURL = AppSettings.MyF_merchant_return_url,
+                    merchant_error_url = AppSettings.MyF_merchant_error_url,
+                    udf1 = creditObj.Id.ToString()
+                };
 
                 //Product
-                var productDCObj = new ProductDC();
-                productDCObj.product_name = product;
-                productDCObj.qty = 1;
-                productDCObj.unitPrice = creditObj.Amount;
+                var productDCObj = new ProductDC
+                {
+                    product_name = product,
+                    qty = 1,
+                    unitPrice = creditObj.Amount
+                };
                 lst.Add(productDCObj);
 
                 //Customer 
-                var customerDCObj = new CustomerDC();
-                customerDCObj.Name = creditObj.User.FullName;
-                customerDCObj.Email = creditObj.User.Email;
-                customerDCObj.Mobile = creditObj.User.Phone;
+                var customerDCObj = new CustomerDC
+                {
+                    Name = creditObj.User.FullName,
+                    Email = creditObj.User.Email,
+                    Mobile = creditObj.User.Phone
+                };
 
                 //payReq
                 var payRequestDCObj = new PayRequestDC();
@@ -101,12 +107,13 @@ namespace MapIt.Web.Payment
                 if (payResponseDC.ResponseCode == "0")
                 {
                     paymentTransactionsRepository = new PaymentTransactionsRepository();
-                    var ptObj = new PaymentTransaction();
-
-                    ptObj.CreditId = creditObj.Id;
-                    ptObj.PaymentId = payResponseDC.referenceID;
-                    ptObj.Amount = creditObj.Amount;
-                    ptObj.PaidOn = DateTime.Now;
+                    var ptObj = new PaymentTransaction
+                    {
+                        CreditId = creditObj.Id,
+                        PaymentId = payResponseDC.referenceID,
+                        Amount = creditObj.Amount,
+                        PaidOn = DateTime.Now
+                    };
                     paymentTransactionsRepository.Add(ptObj);
 
                     Response.Redirect(payResponseDC.paymentURL, false);
