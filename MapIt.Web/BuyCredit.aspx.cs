@@ -9,7 +9,7 @@ using MapIt.Repository;
 
 namespace MapIt.Web
 {
-    public partial class BuyCredit : MapIt.Lib.BasePage
+    public partial class BuyCredit : BasePage
     {
         #region Variables
 
