@@ -21,6 +21,8 @@ namespace MapIt.Web
 
             // Add Routes
             RegisterCustomRoutes(RouteTable.Routes);
+
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
         }
 
         void RegisterCustomRoutes(RouteCollection routes)
