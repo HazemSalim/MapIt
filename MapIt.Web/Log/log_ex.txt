@@ -14239,9 +14239,6 @@ Exception StackTrace :
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
-<<<<<<< HEAD
-Exception Time :   15/1/2020 01:05
-=======
 Exception Time :   1/1/2020 10:05
 
 Exception Message :   
@@ -15107,7 +15104,6 @@ Exception StackTrace :
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 
 Exception Time :   12/1/2020 09:06
->>>>>>> 7a601ac3269f2ed25bd099eade65ead0e3842dfc
 
 Exception Message :   
 An error occurred while making the HTTP request to https://test.myfatoorah.com/pg/PayGatewayService.asmx. This could be due to the fact that the server certificate is not configured properly with HTTP.SYS in the HTTPS case. This could also be caused by a mismatch of the security binding between the client and the server.
@@ -15151,63 +15147,6 @@ Exception rethrown at [0]:
    at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
    at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
    at MapIt.Web.MyFatoorahServiceReference.PayGatewayServiceSoap.PaymentRequest(PaymentRequestRequest request)
-<<<<<<< HEAD
-   at MapIt.Web.MyFatoorahServiceReference.PayGatewayServiceSoapClient.MapIt.Web.MyFatoorahServiceReference.PayGatewayServiceSoap.PaymentRequest(PaymentRequestRequest request) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Service References\MyFatoorahServiceReference\Reference.cs:line 1719
-   at MapIt.Web.MyFatoorahServiceReference.PayGatewayServiceSoapClient.PaymentRequest(PayRequestDC req) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Service References\MyFatoorahServiceReference\Reference.cs:line 1726
-   at MapIt.Web.Payment.Buy.SendRequest() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Buy.aspx.cs:line 100
-
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-Exception Time :   15/1/2020 01:15
-
-Exception Message :   
-One or more errors occurred.
-
-Exception InnerException :   
-System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a send. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
-   at System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
-   at System.Net.Sockets.NetworkStream.EndRead(IAsyncResult asyncResult)
-   --- End of inner exception stack trace ---
-   at System.Net.TlsStream.EndWrite(IAsyncResult asyncResult)
-   at System.Net.PooledStream.EndWrite(IAsyncResult asyncResult)
-   at System.Net.ConnectStream.WriteHeadersCallback(IAsyncResult ar)
-   --- End of inner exception stack trace ---
-   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
-   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
-   --- End of inner exception stack trace ---
-
-Exception StackTrace :   
-   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
-   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
-   at System.Threading.Tasks.Task`1.get_Result()
-   at MapIt.Web.Payment.Buy.SendRequest() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Buy.aspx.cs:line 133
-
-ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-
-Exception Time :   15/1/2020 01:23
-
-Exception Message :   
-One or more errors occurred.
-
-Exception InnerException :   
-System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a send. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
-   at System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
-   at System.Net.Sockets.NetworkStream.EndRead(IAsyncResult asyncResult)
-   --- End of inner exception stack trace ---
-   at System.Net.TlsStream.EndWrite(IAsyncResult asyncResult)
-   at System.Net.PooledStream.EndWrite(IAsyncResult asyncResult)
-   at System.Net.ConnectStream.WriteHeadersCallback(IAsyncResult ar)
-   --- End of inner exception stack trace ---
-   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
-   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
-   --- End of inner exception stack trace ---
-
-Exception StackTrace :   
-   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
-   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
-   at System.Threading.Tasks.Task`1.get_Result()
-   at MapIt.Web.Payment.Buy.SendRequest() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Buy.aspx.cs:line 133
-=======
    at MapIt.Web.MyFatoorahServiceReference.PayGatewayServiceSoapClient.MapIt.Web.MyFatoorahServiceReference.PayGatewayServiceSoap.PaymentRequest(PaymentRequestRequest request) in F:\MapIt\MapItWebsite\MapIt\MapIt.Web\Service References\MyFatoorahServiceReference\Reference.cs:line 1719
    at MapIt.Web.MyFatoorahServiceReference.PayGatewayServiceSoapClient.PaymentRequest(PayRequestDC req) in F:\MapIt\MapItWebsite\MapIt\MapIt.Web\Service References\MyFatoorahServiceReference\Reference.cs:line 1726
    at MapIt.Web.Payment.Buy.SendRequest() in F:\MapIt\MapItWebsite\MapIt\MapIt.Web\Payment\Buy.aspx.cs:line 105
@@ -15813,6 +15752,5 @@ Exception StackTrace :
    at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
    at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
    at MapIt.Web.App.App2.GetPropertiesMap(Int64 propertyId, Int64 userId, Int32 purposeId, String typeId, Int32 countryId, Int32 cityId, Int32 areaId, Int32 blockId, String portalAddress, Double areaFrom, Double areaTo, Int32 yearFrom, Int32 yearTo, Double mIncomeFrom, Double mIncomeTo, Double sPriceFrom, Double sPriceTo, Double rPriceFrom, Double rPriceTo, Int32 today, Int32 special, Int32 sortOption, Int32 pageIndex, Int64 loginUserId, String userTypeID, Double minLatitude, Double minLongitude, Double maxLatitude, Double maxLongitude, Double centerLatitude, Double centerLongitude, String key) in F:\MapIt\MapItWebsite\MapIt\MapIt.Web\App\App2.asmx.cs:line 1883
->>>>>>> 7a601ac3269f2ed25bd099eade65ead0e3842dfc
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

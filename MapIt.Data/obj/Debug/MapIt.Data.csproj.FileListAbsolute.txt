@@ -59,4 +59,5 @@ D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\bin\Debug\EntityFramework.xml
 D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\obj\Debug\MapIt.Data.dll
 D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\obj\Debug\MapIt.Data.pdb
+D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Data\obj\Debug\MapIt.Data.csprojResolveAssemblyReference.cache
 F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Debug\MapIt.Data.csprojAssemblyReference.cache
