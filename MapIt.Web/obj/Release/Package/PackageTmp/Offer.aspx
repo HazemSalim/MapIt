@@ -31,8 +31,8 @@
                                     </span>
                                     <span class="uk-margin-left">
                                         <i class="fa fa-whatsapp"></i>
-                                        <span>
-                                            <a id="aWhatsapp" runat="server" href="#"></a></span>
+                                        <span style="user-select:none;">
+                                            <a id="aWhatsapp" runat="server" ></a></span>
                                     </span>
                                     <span class="uk-margin-left">
                                         <i class="fa fa-phone"></i>

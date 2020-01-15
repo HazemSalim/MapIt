@@ -74,9 +74,11 @@
 
                                                     <span class="uk-margin-left">
                                                         <i class="fa fa-phone"></i>
-                                                        <span>
-                                                            <a href="tel:<%# Eval("Phone") %>">
-                                                                <%# Eval("Phone") %></a></span>
+                                                        <span style="user-select:none;">
+                                                            <a>
+                                                                <%# Eval("Phone") %></a>
+                                                        </span>
+
                                                     </span>
                                                     <span class="uk-margin-left">
                                                         <i class="fa fa-envelope"></i>

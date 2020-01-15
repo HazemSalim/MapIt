@@ -21,8 +21,8 @@
 
                                     <span class="uk-margin-left">
                                         <i class="fa fa-phone"></i>
-                                        <span>
-                                            <a id="aPhone" runat="server" href="#"></a></span>
+                                        <span style="user-select:none;">
+                                            <a id="aPhone" runat="server" ></a></span>
                                     </span>
                                     <span class="uk-margin-left">
                                         <i class="fa fa-envelope"></i>

@@ -1488,4 +1488,34 @@
   <data name="add_service_image" xml:space="preserve">
     <value>/images/add-service_en.png</value>
   </data>
+  <data name="lang" xml:space="preserve">
+    <value>Prefered Language</value>
+  </data>
+  <data name="resendSMS" xml:space="preserve">
+    <value>Resend SMS Verification</value>
+  </data>
+  <data name="sms_verify" xml:space="preserve">
+    <value>SMS Verification</value>
+  </data>
+  <data name="userType" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+  <data name="reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="messagesList" xml:space="preserve">
+    <value>Messages List</value>
+  </data>
+  <data name="addedOn" xml:space="preserve">
+    <value>Add On</value>
+  </data>
+  <data name="sender" xml:space="preserve">
+    <value>Sender</value>
+  </data>
+  <data name="textMessage" xml:space="preserve">
+    <value>Text Message</value>
+  </data>
 </root>

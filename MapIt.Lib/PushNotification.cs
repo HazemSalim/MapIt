@@ -105,19 +105,24 @@ namespace MapIt.Lib
                 tResponse.Close();
                 bool result = (!string.IsNullOrEmpty(sResponseFromServer) ? true : false);
 
-                if (PrintResult == true && CurrentContext != null)
+                if (result == true)
                 {
-                    if (result == true)
-                    {
-                        LogHelper.LogPushNot("Send notification successfully to token: " + token + "<br />");
-                        CurrentContext.Response.Write("Send notification successfully to token: " + token + "<br />");
-                    }
-                    else
-                    {
-                        LogHelper.LogPushNot("Send notification failed to token: " + token + "<br />");
-                        CurrentContext.Response.Write("Send notification failed to token: " + token + "<br />");
-                    }
+                    LogHelper.LogPushNot("Send notification successfully to token: " + token);
                 }
+
+                //if (PrintResult == true && CurrentContext != null)
+                //{
+                //    if (result == true)
+                //    {
+                //        LogHelper.LogPushNot("Send notification successfully to token: " + token + "<br />");
+                //        CurrentContext.Response.Write("Send notification successfully to token: " + token + "<br />");
+                //    }
+                //    else
+                //    {
+                //        LogHelper.LogPushNot("Send notification failed to token: " + token + "<br />");
+                //        CurrentContext.Response.Write("Send notification failed to token: " + token + "<br />");
+                //    }
+                //}
 
                 return result;
             }
@@ -159,7 +164,6 @@ namespace MapIt.Lib
                 alertNotification.DeviceToken = token;
                 alertNotification.Payload.Alert.Body = Message;
                 alertNotification.Payload.Sound = "push.mp3";
-
                 alertNotification.Payload.Badge = 0; // pushCounter;
 
                 if ((parameters != null && parameters.Count > 0))

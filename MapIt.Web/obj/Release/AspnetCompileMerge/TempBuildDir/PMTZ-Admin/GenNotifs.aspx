@@ -84,11 +84,48 @@
                             <div class="panel-heading">Notification Details</div>
                             <div class="panel-body">
                                 <div class="col-md-6">
+                                  <%--  <div class="form-group">
+                                        <label>
+                                            Photo
+                                        </label>
+                                        <asp:FileUpload ID="fuPhoto" runat="server" />
+                                        <br />
+                                        <div id="div_old" runat="server" class="row" visible="false">
+                                            <span class="datalistitem" style="display: inline-block; width: 150px;">
+                                                <div style="text-align: center;">
+                                                    <a id="aOld" runat="server" href="" class="highslide " onclick="return hs.expand(this)">
+                                                        <img id="imgOld" runat="server" src="" alt="Highslide JS" />
+                                                    </a>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>--%>
+
+
+                                    <div class="form-group">
+                                        <label>
+                                            Property
+                                        </label>
+                                        <asp:DropDownList ID="ddlProperties" DataValueField="Id" DataTextField="Details" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem Text="No Property" Value=""></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>
+                                            Service
+                                        </label>
+                                        <asp:DropDownList ID="ddlServices" runat="server" DataValueField="Id" DataTextField="Title" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem Text="No Service" Value=""></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+
+
                                     <div class="form-group">
                                         <label>
                                             Title (EN)
                                         </label>
-                                        <asp:TextBox ID="txtTitleEN" runat="server" CssClass="form-control" TextMode="MultiLine" Height="50px" />
+                                        <asp:TextBox ID="txtTitleEN" runat="server" CssClass="form-control" TextMode="MultiLine" Height="80px" />
                                         <asp:RequiredFieldValidator ID="rfvTitleEN" runat="server" ControlToValidate="txtTitleEN" SetFocusOnError="true"
                                             EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
                                     </div>
@@ -96,7 +133,7 @@
                                         <label>
                                             Title (AR)
                                         </label>
-                                        <asp:TextBox ID="txtTitleAR" runat="server" CssClass="form-control" TextMode="MultiLine" Height="50px" />
+                                        <asp:TextBox ID="txtTitleAR" runat="server" CssClass="form-control" TextMode="MultiLine" Height="80px" />
                                         <asp:RequiredFieldValidator ID="rfvTitleAR" runat="server" ControlToValidate="txtTitleAR" SetFocusOnError="true"
                                             EnableClientScript="true" Display="Dynamic" ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>
                                     </div>
