@@ -109,7 +109,7 @@ namespace MapIt.Web.Payment
                 var payObj = paymentTransactionsRepository.GetByPaymentId(RefNo);
                 if (payObj != null)
                 {
-                    Response.Redirect("~/Payment/CreditReceipt?ord=" + payObj.UserCredit.TransNo);
+                    Response.Redirect("~/Payment/CreditReceipt?trn=" + payObj.UserCredit.TransNo);
                 }
             }
             catch (Exception ex)

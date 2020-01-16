@@ -57,9 +57,9 @@ namespace MapIt.Repository
                                        (purposeId.HasValue && purposeId.Value > 0 ? p.PurposeId == purposeId.Value : true) &&
                                        (typeId.HasValue && typeId.Value > 0 ? p.TypeId == typeId.Value : true) &&
                                        (countryId.HasValue && countryId.Value > 0 ? p.CountryId == countryId.Value : true) &&
-                                       (cityId.HasValue && cityId.Value > 0 ? (p.BlockId.HasValue ? p.Block.Area.CityId == cityId.Value : true) : true) &&
-                                       (areaId.HasValue && areaId.Value > 0 ? (p.BlockId.HasValue ? p.Block.AreaId == areaId.Value : true) : true) &&
-                                       (blockId.HasValue && blockId.Value > 0 ? (p.BlockId.HasValue ? p.BlockId == blockId.Value : true) : true) &&
+                                       (cityId.HasValue && cityId.Value > 0 ? (p.Block!=null && p.Block.Area!=null && p.Block.Area.CityId == cityId.Value) : true) &&
+                                       (areaId.HasValue && areaId.Value > 0 ? (p.Block != null && p.Block.AreaId == areaId.Value) : true) &&
+                                       (blockId.HasValue && blockId.Value > 0 ? (p.BlockId == blockId.Value) : true) &&
                                        (!string.IsNullOrEmpty(street) ? p.Street.Replace(" ", string.Empty).ToLower().Contains(street.Replace(" ", string.Empty).ToLower()) : true) &&
 
                                        (!string.IsNullOrEmpty(portalAddress)? 
