@@ -48,3 +48,13 @@ Order No. :
 TRNS001513
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Error Time :   16/1/2020 10:10
+
+Error Code :   
+Name:executePayment.CallBackUrlError:The field CallBackUrl must be a url. Example http://www.example.comName:executePayment.ErrorUrlError:The field ErrorUrl must be a url. Example http://www.example.com
+
+Order No. :   
+TRNS011495
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

@@ -1,26 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using MapIt.Data;
 
 namespace MapIt.Repository
 {
     public class PaymentTransactionsRepository : Repository<PaymentTransaction>
     {
-        public IQueryable<PaymentTransaction> GetByCreditId(Int64 creId)
+        public IQueryable<PaymentTransaction> GetByCreditId(int creId)
         {
-            return base.Find(opt => opt.CreditId == creId);
+            return Find(opt => opt.CreditId == creId);
         }
 
-        public PaymentTransaction GetByPaymentId(String payId)
+        public PaymentTransaction GetByPaymentId(string payId)
         {
-            return base.First(opt => opt.PaymentId == payId);
+            return First(opt => opt.PaymentId == payId);
         }
 
-        public PaymentTransaction GetByTranId(String tranId)
+        public PaymentTransaction GetByInvoiceId(string invoiceId)
         {
-            return base.First(opt => opt.TranId == tranId);
+            return First(opt => opt.RefId == invoiceId);
+        }
+
+        public PaymentTransaction GetByTranId(string tranId)
+        {
+            return First(opt => opt.TranId == tranId);
         }
     }
 }

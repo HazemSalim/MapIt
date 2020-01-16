@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
-using System.Net;
-using System.Text;
-using System.IO;
-using MapIt.Data;
 using MapIt.Helpers;
-using MapIt.Lib;
 using MapIt.Repository;
 
 namespace MapIt.Web.Payment
 {
-    public partial class CreditReceipt : MapIt.Lib.BasePage
+    public partial class CreditReceipt : Lib.BasePage
     {
         #region Variables
 

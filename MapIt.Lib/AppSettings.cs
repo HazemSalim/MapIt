@@ -364,11 +364,31 @@ namespace MapIt.Lib
             }
         }
 
+
+
         public static string MyF_merchant_error_url
         {
             get
             {
                 return ConfigurationManager.AppSettings["MyF_merchant_error_url"];
+            }
+        }
+
+        public static string MyF_merchant_token
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["MyF_merchant_token"];
+            }
+        }
+
+
+
+        public static string MyF_merchant_url
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["MyF_merchant_url"];
             }
         }
 

@@ -263,3 +263,607 @@ Exception StackTrace :
    at MapIt.Web.Payment.Buy.SendRequest() in F:\MapIt\MapItWebsite\MapIt\MapIt.Web\Payment\Buy.aspx.cs:line 158
 
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 10:10
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MapIt.Web.Payment.Buy.SendRequest() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Buy.aspx.cs:line 157
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 10:10
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:01
+
+Exception Message :   
+Object reference not set to an instance of an object.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at MapIt.Web.Payment.Buy.SendRequest() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Buy.aspx.cs:line 116
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:22
+
+Exception Message :   
+Object reference not set to an instance of an object.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at MapIt.Web.Payment.Response.GetResponse() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Response.aspx.cs:line 70
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:22
+
+Exception Message :   
+Object reference not set to an instance of an object.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at MapIt.Web.Payment.Response.GetResponse() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Response.aspx.cs:line 70
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:44
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MapIt.Web.Payment.Response.GetResponse() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Response.aspx.cs:line 100
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:47
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MapIt.Web.Payment.Response.GetResponse() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Response.aspx.cs:line 100
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:52
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse)
+   at MapIt.Web.Payment.Response.GetResponse() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Response.aspx.cs:line 100
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:52
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse)
+   at MapIt.Web.Payment.Response.GetResponse() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Response.aspx.cs:line 100
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:52
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:53
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:53
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 11:53
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse)
+   at MapIt.Web.Payment.Response.GetResponse() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Response.aspx.cs:line 100
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:01
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MapIt.Web.Payment.Thanks.LoadData() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Thanks.aspx.cs:line 56
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:01
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:04
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:04
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:05
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:05
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MapIt.Web.Payment.Thanks.btnShowInv_Click(Object sender, EventArgs e) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Thanks.aspx.cs:line 117
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:34
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:34
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:35
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MapIt.Web.Payment.Thanks.LoadData() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Thanks.aspx.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:35
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:41
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:42
+
+Exception Message :   
+Thread was being aborted.
+
+Exception InnerException :   
+
+
+Exception StackTrace :   
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MapIt.Web.Payment.Thanks.LoadData() in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Web\Payment\Thanks.aspx.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:43
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:43
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Exception Time :   16/1/2020 12:43
+
+Exception Message :   
+Failure sending mail.
+
+Exception InnerException :   
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 69.64.49.18:25
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.ServicePoint.GetConnection(PooledStream PooledStream, Object owner, Boolean async, IPAddress& address, Socket& abortSocket, Socket& abortSocket6)
+   at System.Net.PooledStream.Activate(Object owningObject, Boolean async, GeneralAsyncDelegate asyncCallback)
+   at System.Net.PooledStream.Activate(Object owningObject, GeneralAsyncDelegate asyncCallback)
+   at System.Net.ConnectionPool.GetConnection(Object owningObject, GeneralAsyncDelegate asyncCallback, Int32 creationTimeout)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpTransport.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+
+Exception StackTrace :   
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at MapIt.Helpers.MailHelper.SendEmail(String From, String To, String SMTPServer, String UserName, String Password, String Subject, String Body, String AttachmentFilePath) in D:\MohammedHassan\MapIt\MapItWebsite\MapIt.Helpers\MailHelper.cs:line 51
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Text;
 using System.IO;
-using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
@@ -114,7 +109,7 @@ namespace MapIt.Web.Payment
                 var payObj = paymentTransactionsRepository.GetByPaymentId(RefNo);
                 if (payObj != null)
                 {
-                    Response.Redirect("~/payment/Receipt?ord=" + payObj.UserCredit.TransNo);
+                    Response.Redirect("~/Payment/CreditReceipt?ord=" + payObj.UserCredit.TransNo);
                 }
             }
             catch (Exception ex)

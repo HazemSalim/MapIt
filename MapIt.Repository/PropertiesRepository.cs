@@ -45,6 +45,8 @@ namespace MapIt.Repository
             var tmpUserTpes = tointarray(usertypesIDs, ',');
             var tmpPropertyTypesIDs = tointarray(propertytypesIDs, ',');
 
+            portalAddress = portalAddress.Replace(" ", string.Empty).ToLower();
+
             return Find(p =>
                                        (p.User != null && tmpUserTpes.Count > 0 ? tmpUserTpes.Contains(p.User.UserTypeID.Value) : true) &&
                                        (tmpPropertyTypesIDs.Count > 0 ? tmpPropertyTypesIDs.Contains(p.TypeId) : true) &&
@@ -59,14 +61,21 @@ namespace MapIt.Repository
                                        (areaId.HasValue && areaId.Value > 0 ? (p.BlockId.HasValue ? p.Block.AreaId == areaId.Value : true) : true) &&
                                        (blockId.HasValue && blockId.Value > 0 ? (p.BlockId.HasValue ? p.BlockId == blockId.Value : true) : true) &&
                                        (!string.IsNullOrEmpty(street) ? p.Street.Replace(" ", string.Empty).ToLower().Contains(street.Replace(" ", string.Empty).ToLower()) : true) &&
-                                       ((!string.IsNullOrEmpty(portalAddress) ? p.PortalAddressEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                                       (!string.IsNullOrEmpty(portalAddress) ? p.PortalAddressAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.City.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.City.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.Area.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true) ||
-                                       (!string.IsNullOrEmpty(portalAddress) ? p.Block.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress.Replace(" ", string.Empty).ToLower()) : true)) &&
+
+                                       (!string.IsNullOrEmpty(portalAddress)? 
+                                            (p.PortalAddressEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress)) ||
+                                            (p.PortalAddressAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress)) ||
+                                            (p.Block !=null && p.Block.Area != null && p.Block.Area.City.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress))||
+                                            (p.Block != null && p.Block.Area != null && p.Block.Area.City.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress)) ||
+                                            (p.Block != null && p.Block.Area != null && p.Block.Area.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress)) ||
+                                            (p.Block != null && p.Block.Area != null && p.Block.Area.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress))||
+                                            (p.Block != null && p.Block.Area != null && p.Block.TitleEN.Replace(" ", string.Empty).ToLower().Contains(portalAddress)) ||
+                                            (p.Block != null && p.Block.Area != null && p.Block.TitleAR.Replace(" ", string.Empty).ToLower().Contains(portalAddress))
+
+
+                                        : true) &&
+
+
                                        (!string.IsNullOrEmpty(paci) ? p.PACI.Replace(" ", string.Empty).ToLower().Contains(paci.Replace(" ", string.Empty).ToLower()) : true) &&
                                        ((areaFrom.HasValue && areaFrom.Value > 0 && areaTo.HasValue && areaTo.Value > 0) ?
                                        (p.Area.Value >= areaFrom.Value && p.Area.Value <= areaTo.Value) : true) &&

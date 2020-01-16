@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Configuration;
 using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
-using MapIt.Web.MyFatoorahServiceReference;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Threading;
 
 namespace MapIt.Web.Payment
 {
-    public partial class Response : MapIt.Lib.BasePage
+    public partial class Response : BasePage
     {
         #region Variables
 
@@ -25,18 +21,18 @@ namespace MapIt.Web.Payment
 
         #region Properties
 
-        public string RefNo
+        public string PaymentId
         {
             get
             {
-                if (ViewState["RefNo"] != null && !string.IsNullOrEmpty(ViewState["RefNo"].ToString().Trim()))
-                    return ViewState["RefNo"].ToString().Trim();
+                if (ViewState["PaymentId"] != null && !string.IsNullOrEmpty(ViewState["PaymentId"].ToString().Trim()))
+                    return ViewState["PaymentId"].ToString().Trim();
 
                 return string.Empty;
             }
             set
             {
-                ViewState["RefNo"] = value;
+                ViewState["PaymentId"] = value;
             }
         }
 
@@ -46,32 +42,37 @@ namespace MapIt.Web.Payment
 
         private void GetResponse()
         {
+            string redirectTo = "";
             try
             {
-                //PayGateway
-                PayGatewayServiceSoapClient cli = new PayGatewayServiceSoapClient();
+                EnquiryRequest enquiryRequest = new EnquiryRequest
+                {
+                    KeyType = "PaymentId",
+                    Key = PaymentId
+                };
 
-                // Get Order Status
-                var getOrderStatusRequestDCObj = new GetOrderStatusRequestDC();
-                getOrderStatusRequestDCObj.merchant_code = ConfigurationManager.AppSettings["merchant_code"];
-                getOrderStatusRequestDCObj.merchant_password = ConfigurationManager.AppSettings["merchant_password"];
-                getOrderStatusRequestDCObj.merchant_username = ConfigurationManager.AppSettings["merchant_username"];
-                getOrderStatusRequestDCObj.referenceID = RefNo;
+                string json = JsonConvert.SerializeObject(enquiryRequest);
+                string result = MyfatoorahPayment.PostRequest("GetPaymentStatus", json);
 
-                OrderStatusResponseDC ResponseSattus = new OrderStatusResponseDC();
-                ResponseSattus = cli.GetOrderStatusRequest(getOrderStatusRequestDCObj);
+                var enquiryPaymentResult = JsonConvert.DeserializeObject<PaymentResponse>(result);
+
+                JObject tmpObj = enquiryPaymentResult.Data as JObject;
+                EnquiryPaymentData data = tmpObj.ToObject<EnquiryPaymentData>();
+
 
                 paymentTransactionsRepository = new PaymentTransactionsRepository();
-                var ptObj = paymentTransactionsRepository.GetByPaymentId(RefNo);
+                var ptObj = paymentTransactionsRepository.GetByInvoiceId(data.InvoiceId.ToString());
 
                 if (ptObj != null)
                 {
-                    ptObj.RefId = ResponseSattus.RefID;
-                    ptObj.Result = ResponseSattus.result;
+                    ptObj.PaymentId = PaymentId;
+                    ptObj.TranId = data.InvoiceTransactions.Count > 0 ? data.InvoiceTransactions[0].TransactionId : "";
+                    ptObj.Result = data.InvoiceStatus;
+                    ptObj.PaymentMethod = "2"; //Myfatoorah not Free (1)
                     paymentTransactionsRepository.Update(ptObj);
                 }
 
-                if (ResponseSattus.result == "CAPTURED")
+                if (data.InvoiceStatus == "Paid")
                 {
                     userCreditsRepository = new UserCreditsRepository();
                     var creditObj = userCreditsRepository.GetByKey(ptObj.CreditId);
@@ -98,17 +99,29 @@ namespace MapIt.Web.Payment
                         userBalanceLogsRepository.Update(userBalanceObj);
                     }
 
-                    Response.Redirect("Thanks?ref=" + RefNo);
+                    redirectTo = "~/Payment/Thanks.aspx?ref=" + PaymentId;
+                    // end response
+
                 }
                 else
                 {
-                    Response.Redirect("Error?ref=" + RefNo);
+                    redirectTo = "~/Payment/Error.aspx?ref=" + PaymentId;
                 }
+            }
+            catch (ThreadAbortException)
+            {
+                // Do nothing. ASP.NET is redirecting.
+                // Always comment this so other developers know why the exception 
+                // is being swallowed.
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
             }
+
+            Response.Redirect(redirectTo, false);
+            Context.ApplicationInstance.CompleteRequest();
+
         }
 
         #endregion
@@ -121,7 +134,7 @@ namespace MapIt.Web.Payment
             {
                 if (Request.QueryString["id"] != null && !string.IsNullOrEmpty(Request.QueryString["id"].Trim()))
                 {
-                    RefNo = Request.QueryString["id"].Trim();
+                    PaymentId = Request.QueryString["id"].Trim();
                     GetResponse();
                 }
                 else
