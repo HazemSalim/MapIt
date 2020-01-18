@@ -8,7 +8,7 @@ using MapIt.Repository;
 
 namespace MapIt.Web.Payment
 {
-    public partial class Thanks : MapIt.Lib.BasePage
+    public partial class Thanks : BasePage
     {
         #region Variables
 
@@ -46,10 +46,10 @@ namespace MapIt.Web.Payment
                 var payObj = paymentTransactionsRepository.GetByPaymentId(RefNo);
                 if (payObj != null)
                 {
-                    if (UserId <= 0 || payObj.UserCredit.UserId != UserId)
-                    {
-                        Response.Redirect("..");
-                    }
+                    //if (UserId <= 0 || payObj.UserCredit.UserId != UserId)
+                    //{
+                    //    Response.Redirect("..");
+                    //}
 
                     lbl_SuccessOrNot.Text = payObj.Result;
                     lbl_Amount.Text = payObj.Amount.ToString();

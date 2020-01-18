@@ -1,10 +1,11 @@
 ﻿using System;
 using MapIt.Helpers;
+using MapIt.Lib;
 using MapIt.Repository;
 
 namespace MapIt.Web.Payment
 {
-    public partial class CreditReceipt : Lib.BasePage
+    public partial class CreditReceipt : BasePage
     {
         #region Variables
 
