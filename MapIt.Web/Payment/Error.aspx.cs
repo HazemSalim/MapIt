@@ -1,54 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Text;
 using System.IO;
-using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
 
 namespace MapIt.Web.Payment
 {
-    public partial class Error : MapIt.Lib.BasePage
+    public partial class Error : BasePage
     {
-        #region Variables
-
         PaymentTransactionsRepository paymentTransactionsRepository;
-
-        #endregion
-
-        #region Properties
-
-        public string RefNo
-        {
-            get
-            {
-                if (ViewState["RefNo"] != null && !string.IsNullOrEmpty(ViewState["RefNo"].ToString().Trim()))
-                    return ViewState["RefNo"].ToString().Trim();
-
-                return string.Empty;
-            }
-            set
-            {
-                ViewState["RefNo"] = value;
-            }
-        }
-
-        #endregion
 
         #region Methods
 
-        void LoadData()
+        void LoadData(string ID,string Type)
         {
             try
             {
                 paymentTransactionsRepository = new PaymentTransactionsRepository();
 
-                var payObj = paymentTransactionsRepository.GetByPaymentId(RefNo);
+                Data.PaymentTransaction payObj = null;
+
+                if (Type == "InvoiceID")
+                    payObj = paymentTransactionsRepository.GetByInvoiceId(ID);
+                else if (Type == "PaymentID")
+                    payObj = paymentTransactionsRepository.GetByPaymentId(ID);
+                
                 if (payObj != null)
                 {
                     //if (UserId <= 0 || payObj.UserCredit.UserId != UserId)
@@ -89,10 +67,14 @@ namespace MapIt.Web.Payment
         {
             if (!IsPostBack)
             {
+                string param = string.Empty;
                 if (Request.QueryString["ref"] != null && !string.IsNullOrEmpty(Request.QueryString["ref"].Trim()))
                 {
-                    RefNo = Request.QueryString["ref"].Trim();
-                    LoadData();
+                    LoadData(Request.QueryString["ref"].Trim(),"InvoiceID");
+                }
+                else if (Request.QueryString["paymentId"] != null && !string.IsNullOrEmpty(Request.QueryString["paymentId"].Trim()))
+                {
+                    LoadData(Request.QueryString["paymentId"].Trim(), "PaymentID");
                 }
                 else
                 {

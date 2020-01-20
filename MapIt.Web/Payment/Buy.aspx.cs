@@ -4,9 +4,6 @@ using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
-using System.Net.Http;
-using System.Text;
-using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

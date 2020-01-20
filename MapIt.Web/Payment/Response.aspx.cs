@@ -105,7 +105,7 @@ namespace MapIt.Web.Payment
                 }
                 else
                 {
-                    redirectTo = "~/Payment/Error.aspx?ref=" + PaymentId;
+                    redirectTo = "~/Payment/Error.aspx?paymentId=" + PaymentId;
                 }
             }
             catch (ThreadAbortException)
