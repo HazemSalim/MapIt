@@ -6,6 +6,9 @@ using MapIt.Data;
 using MapIt.Helpers;
 using MapIt.Lib;
 using MapIt.Repository;
+using System.Net;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace MapIt.Web
 {
@@ -112,7 +115,7 @@ namespace MapIt.Web
                 LogHelper.LogException(ex);
             }
         }
-        
+
         void Save()
         {
             try
@@ -155,12 +158,15 @@ namespace MapIt.Web
                     //Lang = ddlLanguage.SelectedValue,
                     Password = AuthHelper.GetMD5Hash(txtPassword.Text),
                     ActivationCode = AuthHelper.RandomCode(4),
-                    IsActive = false,//GeneralSetting.AutoActiveUser,
+                    IsActive = true,//GSetting.AutoActiveUser,
                     IsCanceled = false,
+                    IsVerified = false,
                     AddedOn = DateTime.Now
                 };
 
                 usersRepository.Add(userObj);
+
+                LogHelper.LogNewUser("UserID:"+ userObj.Id + "," + GetWorkstation());
 
                 if (!userObj.IsActive)
                 {
@@ -233,7 +239,7 @@ namespace MapIt.Web
                 }
 
 
-                userObj.IsActive = true;
+                userObj.IsVerified = true;
                 usersRepository.Update(userObj);
 
                 AppMails.SendWelcomeToUser(userObj.Id);
@@ -271,6 +277,39 @@ namespace MapIt.Web
                 var gSettingObj = gSettingsRepository.Get();
                 return gSettingObj;
             }
+        }
+
+        private string GetWorkstation()
+        {
+            try
+            {
+                string strHostName = "";
+                strHostName = System.Net.Dns.GetHostName();
+
+                IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
+
+                IPAddress[] addr = ipEntry.AddressList;
+
+
+
+                string ip = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                if (string.IsNullOrEmpty(ip))
+                {
+                    ip = Request.ServerVariables["REMOTE_ADDR"];
+                }
+                if(string.IsNullOrEmpty(ip) || ip.Length < 5)
+                    ip = addr[1].ToString();
+
+
+                TimeZone localZone = TimeZone.CurrentTimeZone;
+
+
+                IPAddress myIP = IPAddress.Parse(ip);
+                IPHostEntry GetIPHost = Dns.GetHostEntry(myIP);
+                List<string> compName = GetIPHost.HostName.ToString().Split('.').ToList();
+                return localZone.StandardName + "," + RegionInfo.CurrentRegion.DisplayName + "," + ip + "," + compName.First().ToUpper();
+            }
+            catch { return ""; }
         }
 
         #endregion
@@ -322,7 +361,5 @@ namespace MapIt.Web
         }
 
         #endregion
-
-
     }
 }

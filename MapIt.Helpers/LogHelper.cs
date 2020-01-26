@@ -83,5 +83,28 @@ namespace MapIt.Helpers
             {
             }
         }
+
+        public static void LogNewUser(string data)
+        {
+            try
+            {
+                FileStream fs = new FileStream(HttpContext.Current.Server.MapPath("~/log/log_ex.txt"), FileMode.Append, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(fs);
+                sw.WriteLine("");
+                sw.WriteLine("Time :   " + DateTime.Now.ToString("d/M/yyyy hh:mm"));
+                sw.WriteLine("");
+                sw.WriteLine("Data Message :   ");
+                sw.WriteLine(data);
+                sw.WriteLine("");
+                sw.WriteLine("ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
+                sw.Close();
+                sw.Dispose();
+                fs.Close();
+                fs.Dispose();
+            }
+            catch
+            {
+            }
+        }
     }
 }
