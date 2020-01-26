@@ -81,7 +81,7 @@
                                         <%= GetGlobalResourceObject("Resource","phone") %></label>
                                     <asp:DropDownList ID="ddlCode" runat="server" CssClass="uk-input l_tel">
                                     </asp:DropDownList>
-                                    <asp:TextBox ID="txtPhone" runat="server" TextMode="Phone" Enabled="false" ClientIDMode="Static" CssClass="uk-input r_tel"></asp:TextBox>
+                                    <asp:TextBox ID="txtPhone" runat="server" TextMode="Phone" MaxLength="8" Enabled="false" ClientIDMode="Static" CssClass="uk-input r_tel"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="txtPhone"
                                         Display="Dynamic" EnableClientScript="true" SetFocusOnError="true"
                                         ValidationGroup="EditProfile" Text='<%$ Resources:Resource,required_field %>' CssClass="alert-text"></asp:RequiredFieldValidator>

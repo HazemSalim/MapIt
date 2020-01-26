@@ -221,7 +221,7 @@
                                         <label style="display: block;">Phone</label>
                                         <asp:DropDownList ID="ddlCode" runat="server" CssClass="form-control l_tel">
                                         </asp:DropDownList>
-                                        <asp:TextBox ID="txtPhone" runat="server" TextMode="Phone" CssClass="form-control r_tel"></asp:TextBox>
+                                        <asp:TextBox ID="txtPhone" runat="server" TextMode="Phone" MaxLength="8" CssClass="form-control r_tel"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="txtPhone"
                                             Display="Dynamic" EnableClientScript="true" SetFocusOnError="true"
                                             ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>

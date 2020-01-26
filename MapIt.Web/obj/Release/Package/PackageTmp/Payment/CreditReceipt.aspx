@@ -22,7 +22,7 @@
 <body>
     <form id="form1" runat="server">
         <div id="page-wrap">
-            <a href="/Account" class="back_home">Back to your account page</a>
+            <%--<a href="/Account" class="back_home">Back to your account page</a>--%>
             <div id="header">Map It | Credit Receipt</div>
             <div id="identity">
                 <strong>Address:</strong>
@@ -31,7 +31,7 @@
                 <strong>Phone:</strong>
                 <asp:Label ID="lblComPhone" runat="server"></asp:Label>
                 <div id="logo">
-                    <img id="image" src="images/logo.png" alt="logo" />
+                    <img id="image" src="images/logo.svg" alt="logo" width="50px" height="50px" />
                 </div>
             </div>
             <div style="clear: both"></div>
