@@ -175,25 +175,25 @@ namespace MapIt.Web
                 }
 
 
-                //userCreditsRepository = new UserCreditsRepository();
-                //var userCredit = new UserCredit()
-                //{
-                //    TransNo = string.Empty,
-                //    UserId = userObj.Id,
-                //    PackageId = null,
-                //    PaymentMethodId = (int)AppEnums.PaymentMethods.Free,
-                //    CurrencyId = GSetting.DefaultCurrencyId,
-                //    ExchangeRate = GSetting.DefaultCurrency.ExchangeRate,
-                //    Amount = GSetting.DefFreeAmount,
-                //    PaymentStatus = (int)AppEnums.PaymentStatus.Paid,
-                //    TransOn = DateTime.Now
-                //};
+                userCreditsRepository = new UserCreditsRepository();
+                var userCredit = new UserCredit()
+                {
+                    TransNo = string.Empty,
+                    UserId = userObj.Id,
+                    PackageId = null,
+                    PaymentMethodId = (int)AppEnums.PaymentMethods.Free,
+                    CurrencyId = GSetting.DefaultCurrencyId,
+                    ExchangeRate = GSetting.DefaultCurrency.ExchangeRate,
+                    Amount = GSetting.DefFreeAmount,
+                    PaymentStatus = (int)AppEnums.PaymentStatus.Paid,
+                    TransOn = DateTime.Now
+                };
 
-                //userCreditsRepository.Add(userCredit);
-                //userCredit.TransNo = "TRN" + (userCredit.Id).ToString("D6");
-                //userCreditsRepository.Update(userCredit);
+                userCreditsRepository.Add(userCredit);
+                userCredit.TransNo = "TRN" + (userCredit.Id).ToString("D6");
+                userCreditsRepository.Update(userCredit);
 
-                //AppMails.SendNewCreditToUser(userCredit.Id);
+                AppMails.SendNewCreditToUser(userCredit.Id);
 
                 if (!userObj.IsActive)
                 {
