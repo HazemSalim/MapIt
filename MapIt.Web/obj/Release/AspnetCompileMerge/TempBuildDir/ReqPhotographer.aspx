@@ -42,7 +42,7 @@
                                         <%= GetGlobalResourceObject("Resource","phone") %></label>
                                     <asp:TextBox ID="txtCode" runat="server" Placeholder="+965" TextMode="Phone" CssClass="uk-input l_tel">
                                     </asp:TextBox>
-                                    <asp:TextBox ID="txtPhone" runat="server" Placeholder="<%$ Resources:Resource,phone %>" TextMode="Phone" ClientIDMode="Static" CssClass="uk-input r_tel"></asp:TextBox>
+                                    <asp:TextBox ID="txtPhone" runat="server" MaxLength="8" Placeholder="<%$ Resources:Resource,phone %>" TextMode="Phone" ClientIDMode="Static" CssClass="uk-input r_tel"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="txtPhone"
                                         Display="Dynamic" EnableClientScript="true" SetFocusOnError="true"
                                         ValidationGroup="Request" Text='<%$ Resources:Resource,required_field %>' CssClass="alert-text"></asp:RequiredFieldValidator>

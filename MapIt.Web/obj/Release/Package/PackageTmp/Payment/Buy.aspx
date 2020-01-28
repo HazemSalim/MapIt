@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Buy.aspx.cs" Inherits="MapIt.Web.Payment.Buy" %>
+﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeBehind="Buy.aspx.cs" Inherits="MapIt.Web.Payment.Buy" %>
 
 <!DOCTYPE html>
 

@@ -30,7 +30,7 @@
                                         <%= GetGlobalResourceObject("Resource","phone") %></label>
                                     <asp:DropDownList ID="ddlCode" runat="server" CssClass="uk-input l_tel">
                                     </asp:DropDownList>
-                                    <asp:TextBox ID="txtPhone" runat="server" Placeholder="<%$ Resources:Resource,phone %>" TextMode="Phone" ClientIDMode="Static" CssClass="uk-input r_tel"></asp:TextBox>
+                                    <asp:TextBox ID="txtPhone" runat="server" Placeholder="<%$ Resources:Resource,phone %>" MaxLength="8" TextMode="Phone" ClientIDMode="Static" CssClass="uk-input r_tel"></asp:TextBox>
                                     <div style="clear: both"></div>
                                 </div>
                                 <div class="uk-margin">

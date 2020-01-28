@@ -238,7 +238,7 @@
                                         <label style="display: block;">Phone</label>
                                         <asp:TextBox ID="txtCode" runat="server" Placeholder="+965" TextMode="Phone" CssClass="form-control l_tel">
                                         </asp:TextBox>
-                                        <asp:TextBox ID="txtPhone" runat="server" TextMode="Phone" CssClass="form-control r_tel"></asp:TextBox>
+                                        <asp:TextBox ID="txtPhone" runat="server" MaxLength="8" TextMode="Phone" CssClass="form-control r_tel"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="txtPhone"
                                             Display="Dynamic" EnableClientScript="true" SetFocusOnError="true"
                                             ValidationGroup="S" Text="* Required field" CssClass="alert-text"></asp:RequiredFieldValidator>

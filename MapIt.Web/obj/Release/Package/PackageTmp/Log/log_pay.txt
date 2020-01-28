@@ -1,1 +1,60 @@
 ﻿
+Error Time :   15/1/2020 08:31
+
+Error Code :   
+Name:executePayment.CustomerMobileError:Invalid mobile numberName:executePayment.CallBackUrlError:The field CallBackUrl must be a url. Example http://www.example.comName:executePayment.ErrorUrlError:The field ErrorUrl must be a url. Example http://www.example.com
+
+Order No. :   
+TRNS001510
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Error Time :   15/1/2020 08:31
+
+Error Code :   
+Name:executePayment.CustomerMobileError:Invalid mobile numberName:executePayment.CallBackUrlError:The field CallBackUrl must be a url. Example http://www.example.comName:executePayment.ErrorUrlError:The field ErrorUrl must be a url. Example http://www.example.com
+
+Order No. :   
+TRNS001510
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Error Time :   15/1/2020 08:44
+
+Error Code :   
+Name:executePayment.CustomerMobileError:Invalid mobile numberName:executePayment.CallBackUrlError:The field CallBackUrl must be a url. Example http://www.example.comName:executePayment.ErrorUrlError:The field ErrorUrl must be a url. Example http://www.example.com
+
+Order No. :   
+TRNS001511
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Error Time :   15/1/2020 08:53
+
+Error Code :   
+Name:executePayment.CallBackUrlError:The field CallBackUrl must be a url. Example http://www.example.comName:executePayment.ErrorUrlError:The field ErrorUrl must be a url. Example http://www.example.com
+
+Order No. :   
+TRNS001512
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Error Time :   15/1/2020 08:57
+
+Error Code :   
+Name:executePayment.CallBackUrlError:The field CallBackUrl must be a url. Example http://www.example.comName:executePayment.ErrorUrlError:The field ErrorUrl must be a url. Example http://www.example.com
+
+Order No. :   
+TRNS001513
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+Error Time :   16/1/2020 10:10
+
+Error Code :   
+Name:executePayment.CallBackUrlError:The field CallBackUrl must be a url. Example http://www.example.comName:executePayment.ErrorUrlError:The field ErrorUrl must be a url. Example http://www.example.com
+
+Order No. :   
+TRNS011495
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

@@ -116,7 +116,7 @@
                                         <label style="display: block;">Phone</label>
                                         <asp:DropDownList ID="ddlCode" runat="server" CssClass="form-control l_tel">
                                         </asp:DropDownList>
-                                        <asp:TextBox ID="txtPhone" runat="server" TextMode="Phone" CssClass="form-control r_tel"></asp:TextBox>
+                                        <asp:TextBox ID="txtPhone" runat="server" MaxLength="8" TextMode="Phone" CssClass="form-control r_tel"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
                                         <label>
