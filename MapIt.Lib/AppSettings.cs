@@ -4,6 +4,14 @@ namespace MapIt.Lib
 {
     public class AppSettings
     {
+        public static string BlockIps
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["BlockIps"];
+            }
+        }
+
         public static string WebsiteURL
         {
             get

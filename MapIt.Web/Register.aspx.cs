@@ -120,6 +120,10 @@ namespace MapIt.Web
         {
             try
             {
+
+                string block = GetWorkstation();
+                if (block == "Block") return;
+
                 usersRepository = new UsersRepository();
 
                 string phone = ddlCode.SelectedValue + " " + txtPhone.Text;
@@ -300,6 +304,8 @@ namespace MapIt.Web
                 if(string.IsNullOrEmpty(ip) || ip.Length < 5)
                     ip = addr[1].ToString();
 
+                if (ip.Length > 5 && AppSettings.BlockIps.Contains(ip))
+                    return "Block";
 
                 TimeZone localZone = TimeZone.CurrentTimeZone;
 
