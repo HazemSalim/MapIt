@@ -8,20 +8,20 @@ namespace MapIt.Lib
 {
     public class MyfatoorahPayment
     {
-        public  static string PostRequest(string apiName,string jsonBody)
+        public static string PostRequest(string apiName, string jsonBody)
         {
             string url = AppSettings.MyF_merchant_url + apiName;
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + AppSettings.MyF_merchant_token);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-             
+
             var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 
             var messge = client.PostAsync(url, content).Result;
             string result = messge.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             return result;
         }
-        
+
     }
 
 
@@ -71,13 +71,14 @@ namespace MapIt.Lib
         public string UserDefinedField { get; set; }
     }
 
+
     public class ValidationError
     {
         public string Name { get; set; }
         public string Error { get; set; }
     }
 
-    
+
 
     public class InvoiceTransaction
     {
@@ -105,7 +106,7 @@ namespace MapIt.Lib
         public string KeyType { get; set; }
     }
 
-        public class EnquiryPaymentData
+    public class EnquiryPaymentData
     {
         public int InvoiceId { get; set; }
         public string InvoiceStatus { get; set; }
@@ -124,6 +125,24 @@ namespace MapIt.Lib
         public List<InvoiceTransaction> InvoiceTransactions { get; set; }
     }
 
+    public class PaymentMethodData
+    {
+        public int PaymentMethodId { get; set; }
+        public string PaymentMethodAr { get; set; }
+        public string PaymentMethodEn { get; set; }
+        public string PaymentMethodCode { get; set; }
+        public bool IsDirectPayment { get; set; }
+        public double ServiceCharge { get; set; }
+        public double TotalAmount { get; set; }
+        public string CurrencyIso { get; set; }
+        public string ImageUrl { get; set; }
+    }
+
+    public class PaymentTypesData
+    {
+        public List<PaymentMethodData> PaymentMethods { get; set; }
+    }
+
     public class PaymentResponse
     {
         public bool IsSuccess { get; set; }
@@ -131,6 +150,4 @@ namespace MapIt.Lib
         public List<ValidationError> ValidationErrors { get; set; }
         public object Data { get; set; }
     }
-
-
 }

@@ -70,7 +70,9 @@ namespace MapIt.Web.Payment
 
                 PaymentRequest paymentRequest = new PaymentRequest
                 {
-                    PaymentMethodId = "1",
+                    PaymentMethodId = creditObj.PaymentTypeId.HasValue && creditObj.PaymentTypeId.Value > 0 
+                        ? creditObj.PaymentTypeId.Value.ToString() 
+                        : "1",
                     CustomerName = creditObj.User.FullName,
                     DisplayCurrencyIso = "KWD",
                     MobileCountryCode = currCode,

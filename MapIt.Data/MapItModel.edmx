@@ -737,6 +737,7 @@
           <Property Name="UserId" Type="bigint" Nullable="false" />
           <Property Name="PackageId" Type="int" />
           <Property Name="PaymentMethodId" Type="int" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="int" />
           <Property Name="CurrencyId" Type="int" Nullable="false" />
           <Property Name="ExchangeRate" Type="float" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
@@ -2269,23 +2270,6 @@
             <End Role="Offer" EntitySet="Offers" />
           </AssociationSet>
           <EntitySet Name="Packages" EntityType="MapItModel.Package" />
-          <EntitySet Name="UserCredits" EntityType="MapItModel.UserCredit" />
-          <AssociationSet Name="FK_UserCredits_Currencies" Association="MapItModel.FK_UserCredits_Currencies">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="UserCredit" EntitySet="UserCredits" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserCredits_Packages" Association="MapItModel.FK_UserCredits_Packages">
-            <End Role="Package" EntitySet="Packages" />
-            <End Role="UserCredit" EntitySet="UserCredits" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserCredits_PaymentMethods" Association="MapItModel.FK_UserCredits_PaymentMethods">
-            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
-            <End Role="UserCredit" EntitySet="UserCredits" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PaymentTransactions_UserCredits" Association="MapItModel.FK_PaymentTransactions_UserCredits">
-            <End Role="UserCredit" EntitySet="UserCredits" />
-            <End Role="PaymentTransaction" EntitySet="PaymentTransactions" />
-          </AssociationSet>
           <EntitySet Name="Merchants" EntityType="MapItModel.Merchant" />
           <EntitySet Name="Photographers" EntityType="MapItModel.Photographer" />
           <EntitySet Name="PropertyComments" EntityType="MapItModel.PropertyComment" />
@@ -2401,10 +2385,6 @@
           <AssociationSet Name="FK_UserBalanceLogs_Users" Association="MapItModel.FK_UserBalanceLogs_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="UserBalanceLog" EntitySet="UserBalanceLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserCredits_Users" Association="MapItModel.FK_UserCredits_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserCredit" EntitySet="UserCredits" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_UserTypes" Association="MapItModel.FK_Users_UserTypes">
             <End Role="UserType" EntitySet="UserTypes" />
@@ -2533,6 +2513,27 @@
           <AssociationSet Name="FK_GeneralSettings_Currencies" Association="MapItModel.FK_GeneralSettings_Currencies">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="GeneralSetting" EntitySet="GeneralSettings" />
+          </AssociationSet>
+          <EntitySet Name="UserCredits" EntityType="MapItModel.UserCredit" />
+          <AssociationSet Name="FK_UserCredits_Currencies" Association="MapItModel.FK_UserCredits_Currencies">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="UserCredit" EntitySet="UserCredits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserCredits_Packages" Association="MapItModel.FK_UserCredits_Packages">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="UserCredit" EntitySet="UserCredits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserCredits_PaymentMethods" Association="MapItModel.FK_UserCredits_PaymentMethods">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="UserCredit" EntitySet="UserCredits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentTransactions_UserCredits" Association="MapItModel.FK_PaymentTransactions_UserCredits">
+            <End Role="UserCredit" EntitySet="UserCredits" />
+            <End Role="PaymentTransaction" EntitySet="PaymentTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserCredits_Users" Association="MapItModel.FK_UserCredits_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserCredit" EntitySet="UserCredits" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="AdminPage">
@@ -2699,8 +2700,8 @@
           <Property Name="ExchangeRate" Type="Double" Nullable="false" />
           <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="UserCredits" Relationship="MapItModel.FK_UserCredits_Currencies" FromRole="Currency" ToRole="UserCredit" />
           <NavigationProperty Name="GeneralSettings" Relationship="MapItModel.FK_GeneralSettings_Currencies" FromRole="Currency" ToRole="GeneralSetting" />
+          <NavigationProperty Name="UserCredits" Relationship="MapItModel.FK_UserCredits_Currencies" FromRole="Currency" ToRole="UserCredit" />
         </EntityType>
         <EntityType Name="DevicesToken">
           <Key>
@@ -3280,74 +3281,6 @@
           <Property Name="AdminUserId" Type="Int32" />
           <NavigationProperty Name="UserCredits" Relationship="MapItModel.FK_UserCredits_Packages" FromRole="Package" ToRole="UserCredit" />
         </EntityType>
-        <EntityType Name="UserCredit">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TransNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="PackageId" Type="Int32" />
-          <Property Name="PaymentMethodId" Type="Int32" Nullable="false" />
-          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
-          <Property Name="ExchangeRate" Type="Double" Nullable="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="PaymentStatus" Type="Int32" Nullable="false" />
-          <Property Name="TransOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Currency" Relationship="MapItModel.FK_UserCredits_Currencies" FromRole="UserCredit" ToRole="Currency" />
-          <NavigationProperty Name="Package" Relationship="MapItModel.FK_UserCredits_Packages" FromRole="UserCredit" ToRole="Package" />
-          <NavigationProperty Name="PaymentMethod" Relationship="MapItModel.FK_UserCredits_PaymentMethods" FromRole="UserCredit" ToRole="PaymentMethod" />
-          <NavigationProperty Name="PaymentTransactions" Relationship="MapItModel.FK_PaymentTransactions_UserCredits" FromRole="UserCredit" ToRole="PaymentTransaction" />
-          <NavigationProperty Name="User" Relationship="MapItModel.FK_UserCredits_Users" FromRole="UserCredit" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_UserCredits_Currencies">
-          <End Type="MapItModel.Currency" Role="Currency" Multiplicity="1" />
-          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserCredit">
-              <PropertyRef Name="CurrencyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserCredits_Packages">
-          <End Type="MapItModel.Package" Role="Package" Multiplicity="0..1" />
-          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Package">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserCredit">
-              <PropertyRef Name="PackageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserCredits_PaymentMethods">
-          <End Type="MapItModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
-          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PaymentMethod">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserCredit">
-              <PropertyRef Name="PaymentMethodId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PaymentTransactions_UserCredits">
-          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="1" />
-          <End Type="MapItModel.PaymentTransaction" Role="PaymentTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserCredit">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PaymentTransaction">
-              <PropertyRef Name="CreditId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Merchant">
           <Key>
             <PropertyRef Name="Id" />
@@ -3692,11 +3625,11 @@
           <NavigationProperty Name="ServiceViews" Relationship="MapItModel.FK_ServiceViews_Users" FromRole="User" ToRole="ServiceView" />
           <NavigationProperty Name="TechMessages" Relationship="MapItModel.FK_TechMessages_Users" FromRole="User" ToRole="TechMessage" />
           <NavigationProperty Name="UserBalanceLogs" Relationship="MapItModel.FK_UserBalanceLogs_Users" FromRole="User" ToRole="UserBalanceLog" />
-          <NavigationProperty Name="UserCredits" Relationship="MapItModel.FK_UserCredits_Users" FromRole="User" ToRole="UserCredit" />
           <NavigationProperty Name="UserType" Relationship="MapItModel.FK_Users_UserTypes" FromRole="User" ToRole="UserType" />
           <NavigationProperty Name="WatchLists" Relationship="MapItModel.FK_WatchLists_Users" FromRole="User" ToRole="WatchList" />
           <NavigationProperty Name="Properties" Relationship="MapItModel.FK_Properties_Users" FromRole="User" ToRole="Property" />
           <NavigationProperty Name="Services" Relationship="MapItModel.FK_Services_Users" FromRole="User" ToRole="Service" />
+          <NavigationProperty Name="UserCredits" Relationship="MapItModel.FK_UserCredits_Users" FromRole="User" ToRole="UserCredit" />
         </EntityType>
         <Association Name="FK_Users_Countries">
           <End Type="MapItModel.Country" Role="Country" Multiplicity="1" />
@@ -3896,18 +3829,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UserBalanceLog">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserCredits_Users">
-          <End Type="MapItModel.User" Role="User" Multiplicity="1" />
-          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserCredit">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -4460,6 +4381,87 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserCredit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="PackageId" Type="Int32" />
+          <Property Name="PaymentMethodId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="Int32" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="ExchangeRate" Type="Double" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="PaymentStatus" Type="Int32" Nullable="false" />
+          <Property Name="TransOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Currency" Relationship="MapItModel.FK_UserCredits_Currencies" FromRole="UserCredit" ToRole="Currency" />
+          <NavigationProperty Name="Package" Relationship="MapItModel.FK_UserCredits_Packages" FromRole="UserCredit" ToRole="Package" />
+          <NavigationProperty Name="PaymentMethod" Relationship="MapItModel.FK_UserCredits_PaymentMethods" FromRole="UserCredit" ToRole="PaymentMethod" />
+          <NavigationProperty Name="PaymentTransactions" Relationship="MapItModel.FK_PaymentTransactions_UserCredits" FromRole="UserCredit" ToRole="PaymentTransaction" />
+          <NavigationProperty Name="User" Relationship="MapItModel.FK_UserCredits_Users" FromRole="UserCredit" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserCredits_Currencies">
+          <End Type="MapItModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserCredit">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserCredits_Packages">
+          <End Type="MapItModel.Package" Role="Package" Multiplicity="0..1" />
+          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserCredit">
+              <PropertyRef Name="PackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserCredits_PaymentMethods">
+          <End Type="MapItModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
+          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserCredit">
+              <PropertyRef Name="PaymentMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentTransactions_UserCredits">
+          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="1" />
+          <End Type="MapItModel.PaymentTransaction" Role="PaymentTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserCredit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentTransaction">
+              <PropertyRef Name="CreditId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserCredits_Users">
+          <End Type="MapItModel.User" Role="User" Multiplicity="1" />
+          <End Type="MapItModel.UserCredit" Role="UserCredit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserCredit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4960,22 +4962,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserCredits">
-            <EntityTypeMapping TypeName="MapItModel.UserCredit">
-              <MappingFragment StoreEntitySet="UserCredits">
-                <ScalarProperty Name="TransOn" ColumnName="TransOn" />
-                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
-                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
-                <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
-                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="TransNo" ColumnName="TransNo" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Merchants">
             <EntityTypeMapping TypeName="MapItModel.Merchant">
               <MappingFragment StoreEntitySet="Merchants">
@@ -5347,6 +5333,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserCredits">
+            <EntityTypeMapping TypeName="MapItModel.UserCredit">
+              <MappingFragment StoreEntitySet="UserCredits">
+                <ScalarProperty Name="TransOn" ColumnName="TransOn" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TransNo" ColumnName="TransNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -5410,11 +5413,10 @@
         <EntityTypeShape EntityType="MapItModel.ServiceArea" Width="1.5" PointX="7.5" PointY="39.375" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Offer" Width="1.5" PointX="3" PointY="69" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Package" Width="1.5" PointX="6" PointY="77.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="MapItModel.UserCredit" Width="1.5" PointX="7.625" PointY="58" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Merchant" Width="1.5" PointX="4.625" PointY="5.5" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Photographer" Width="1.5" PointX="6.375" PointY="5.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="MapItModel.PropertyComment" Width="1.875" PointX="11.75" PointY="56.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MapItModel.ServiceComment" Width="1.5" PointX="17" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MapItModel.PropertyComment" Width="1.875" PointX="12.375" PointY="56.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="MapItModel.ServiceComment" Width="1.5" PointX="17" PointY="46.625" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.TechMessage" Width="1.5" PointX="5.25" PointY="70.5" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Notification" Width="1.5" PointX="15" PointY="64.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MapItModel.Component" Width="1.5" PointX="12.75" PointY="44" IsExpanded="false" />
@@ -5437,10 +5439,6 @@
         <AssociationConnector Association="MapItModel.FK_BrokerAreas_Areas" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_ServiceAreas_Areas" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_Offers_Countries" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_UserCredits_Currencies" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_UserCredits_Packages" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_UserCredits_PaymentMethods" ManuallyRouted="false" />
-        <AssociationConnector Association="MapItModel.FK_PaymentTransactions_UserCredits" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_Notifications_NotifTypes" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_Notifications_Offers" ManuallyRouted="false" />
         <AssociationConnector Association="MapItModel.FK_PropertyComponents_Components" ManuallyRouted="false" />
@@ -5472,11 +5470,10 @@
         <AssociationConnector Association="MapItModel.FK_ServiceViews_Users" />
         <AssociationConnector Association="MapItModel.FK_TechMessages_Users" />
         <AssociationConnector Association="MapItModel.FK_UserBalanceLogs_Users" />
-        <AssociationConnector Association="MapItModel.FK_UserCredits_Users" />
         <AssociationConnector Association="MapItModel.FK_Users_UserTypes" />
         <AssociationConnector Association="MapItModel.FK_WatchLists_Users" />
-        <EntityTypeShape EntityType="MapItModel.Property" Width="1.5" PointX="18.125" PointY="35.375" />
-        <EntityTypeShape EntityType="MapItModel.Service" Width="1.5" PointX="21.125" PointY="50.75" />
+        <EntityTypeShape EntityType="MapItModel.Property" Width="1.5" PointX="18.125" PointY="35.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="MapItModel.Service" Width="1.5" PointX="21.125" PointY="50.75" IsExpanded="false" />
         <AssociationConnector Association="MapItModel.FK_Properties_Blocks" />
         <AssociationConnector Association="MapItModel.FK_Services_Cities" />
         <AssociationConnector Association="MapItModel.FK_Properties_Countries" />
@@ -5505,9 +5502,15 @@
         <EntityTypeShape EntityType="MapItModel.Broker" Width="1.5" PointX="5.25" PointY="43.25" IsExpanded="false" />
         <AssociationConnector Association="MapItModel.FK_BrokerAreas_Brokers" />
         <AssociationConnector Association="MapItModel.FK_Brokers_Cities" />
-        <EntityTypeShape EntityType="MapItModel.GeneralSetting" Width="1.5" PointX="18" PointY="50.625" />
+        <EntityTypeShape EntityType="MapItModel.GeneralSetting" Width="1.5" PointX="18" PointY="50.625" IsExpanded="false" />
         <AssociationConnector Association="MapItModel.FK_GeneralSettings_Countries" />
         <AssociationConnector Association="MapItModel.FK_GeneralSettings_Currencies" />
+        <EntityTypeShape EntityType="MapItModel.UserCredit" Width="2" PointX="21.125" PointY="62.75" IsExpanded="false" />
+        <AssociationConnector Association="MapItModel.FK_UserCredits_Currencies" />
+        <AssociationConnector Association="MapItModel.FK_UserCredits_Packages" />
+        <AssociationConnector Association="MapItModel.FK_UserCredits_PaymentMethods" />
+        <AssociationConnector Association="MapItModel.FK_PaymentTransactions_UserCredits" />
+        <AssociationConnector Association="MapItModel.FK_UserCredits_Users" />
       </Diagram>
     </Diagrams>
   </Designer>

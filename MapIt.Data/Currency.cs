@@ -17,8 +17,8 @@ namespace MapIt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Currency()
         {
-            this.UserCredits = new HashSet<UserCredit>();
             this.GeneralSettings = new HashSet<GeneralSetting>();
+            this.UserCredits = new HashSet<UserCredit>();
         }
     
         public int Id { get; set; }
@@ -34,8 +34,8 @@ namespace MapIt.Data
         public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserCredit> UserCredits { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GeneralSetting> GeneralSettings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserCredit> UserCredits { get; set; }
     }
 }

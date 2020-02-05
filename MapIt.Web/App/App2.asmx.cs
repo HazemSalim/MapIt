@@ -13,6 +13,7 @@ using System.Threading;
 using System.Device.Location;
 using Newtonsoft.Json;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace MapIt.Web.App
 {
@@ -251,6 +252,33 @@ namespace MapIt.Web.App
                 }
 
                 RenderAsJson(list);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+            }
+        }
+
+        [WebMethod(Description = "Get all payment types.")]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void GetPaymentTypes(string key)
+        {
+            try
+            {
+                if (!key.Equals(AppSettings.WSKey))
+                {
+                    return;
+                }
+
+
+                string json = "{ \"InvoiceAmount\": \"5\",  \"CurrencyIso\": \"KWD\" }";
+                string result = MyfatoorahPayment.PostRequest("InitiatePayment", json);
+
+                var paymentResult = JsonConvert.DeserializeObject<PaymentResponse>(result);
+
+                var data = JsonConvert.DeserializeObject<PaymentTypesData>(paymentResult.Data.ToString());
+                
+                RenderAsJson(data.PaymentMethods);
             }
             catch (Exception ex)
             {
@@ -1802,7 +1830,7 @@ namespace MapIt.Web.App
         public object GetPropertiesMap(long propertyId, long userId, int purposeId, string typeId, int countryId, int cityId, int areaId, int blockId,
            string portalAddress, double areaFrom, double areaTo, int yearFrom, int yearTo, double mIncomeFrom, double mIncomeTo, double sPriceFrom,
            double sPriceTo, double rPriceFrom, double rPriceTo, int today, int special, int sortOption, int pageIndex, long loginUserId,
-           string userTypeID, double minLatitude, double minLongitude, double maxLatitude, double maxLongitude, double centerLatitude, 
+           string userTypeID, double minLatitude, double minLongitude, double maxLatitude, double maxLongitude, double centerLatitude,
            double centerLongitude, string key)
         {
             int pageSize = 50;
@@ -1845,15 +1873,15 @@ namespace MapIt.Web.App
 
                 var properties = propertiesRepository.Search(propertyId, userId, purposeId, 0, countryId, cityId, areaId, blockId, null, portalAddress,
                     null, areaFrom, areaTo, yearFrom, yearTo, mIncomeFrom, mIncomeTo, sPriceFrom, sPriceTo, rPriceFrom, rPriceTo, dateFrom, dateTo, _special,
-                    1, 1, 0, null, 1, null, 0, typeId,userTypeID).ToList();
+                    1, 1, 0, null, 1, null, 0, typeId, userTypeID).ToList();
 
 
                 if (centerLatitude != 0 && centerLongitude != 0)
                 {
                     var sCoordCenter = new GeoCoordinate(centerLatitude, centerLongitude);
                     properties = properties.Where(p => minLatitude > 0 && maxLatitude > 0 ? p.DLatitude >= minLatitude && p.DLatitude <= maxLatitude && p.DLongitude >= minLongitude && p.DLongitude <= maxLongitude : true).ToList();
-                        //.OrderBy(x => x.GeoCoord.GetDistanceTo(sCoordCenter)).ToList();
-                       //.OrderByDescending(x => x.Id).ToList();//
+                    //.OrderBy(x => x.GeoCoord.GetDistanceTo(sCoordCenter)).ToList();
+                    //.OrderByDescending(x => x.Id).ToList();//
                 }
                 else
                 {
@@ -1894,7 +1922,7 @@ namespace MapIt.Web.App
                 {
                     properties = properties.OrderByDescending(i => i.AddedOn).ToList();
                 }
-               
+
 
 
                 List<long> loginFavIds = new List<long>();
@@ -2038,7 +2066,7 @@ namespace MapIt.Web.App
                 int propertiesCount = propertiesRepository.Search(propertyId, userId, purposeId, typeId, countryId, cityId, areaId, blockId, null, portalAddress,
                     null, areaFrom, areaTo, yearFrom, yearTo, mIncomeFrom, mIncomeTo, sPriceFrom, sPriceTo, rPriceFrom, rPriceTo, dateFrom, dateTo, _special,
                     1, 1, 0, null, 1, null).Count();
-                 
+
                 //RenderAsJson(propertiesCount);
                 return propertiesCount;
             }
@@ -3040,12 +3068,12 @@ namespace MapIt.Web.App
                     List<int> CatsIdlst2 = new List<int>();
                     List<int> CatsIdlst3 = new List<int>();
 
-                    var categoryList = servicesCategoriesRepository.Single(c => c.IsActive  && (c.TitleAR == keyword || c.TitleEN == keyword));
+                    var categoryList = servicesCategoriesRepository.Single(c => c.IsActive && (c.TitleAR == keyword || c.TitleEN == keyword));
                     if (categoryList != null)
                     {
                         var properties2 = services.Where(l => l.CategoryId == categoryList.Id);
 
-                        List<ServicesCategory> category2 = servicesCategoriesRepository.Find(c => c.IsActive  && c.ParentId.HasValue && c.ParentId > 0 && c.ParentId == categoryList.Id).ToList();
+                        List<ServicesCategory> category2 = servicesCategoriesRepository.Find(c => c.IsActive && c.ParentId.HasValue && c.ParentId > 0 && c.ParentId == categoryList.Id).ToList();
                         if (category2 != null && category2.Count() > 0)
                         {
                             foreach (var item in category2)
@@ -3571,8 +3599,8 @@ namespace MapIt.Web.App
 
                 //if (!userObj.IsActive)
                 //{
-                    string smsMessage = AppSettings.SMSActivationText + userObj.ActivationCode;
-                    AppSMS.Send(smsMessage, userObj.PhoneForSMS);
+                string smsMessage = AppSettings.SMSActivationText + userObj.ActivationCode;
+                AppSMS.Send(smsMessage, userObj.PhoneForSMS);
                 //}
 
                 #region Assgin device token to user
@@ -3661,7 +3689,7 @@ namespace MapIt.Web.App
                     return -3;
                 }
 
-                if (code!="5555" && userObj.ActivationCode != code)
+                if (code != "5555" && userObj.ActivationCode != code)
                 {
                     //RenderAsJson(-4);
                     return -4;
@@ -3734,7 +3762,7 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = "Link as string -> Success <br />-2 -> Required field is empty  <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void BuyCredit(long userId, int packageId, int currencyId, int paymentId, string key)
+        public void BuyCredit(long userId, int packageId, int currencyId, int paymentId, int paymentTypeId, string key)
         {
             try
             {
@@ -3744,7 +3772,7 @@ namespace MapIt.Web.App
                     return;
                 }
 
-                if (userId < 1 || packageId < 1 || paymentId < 1)
+                if (userId < 1 || packageId < 1 || paymentId < 1 || paymentTypeId < 1)
                 {
                     RenderAsJson(-2);
                     return;
@@ -3768,6 +3796,7 @@ namespace MapIt.Web.App
                     var userCredit = new UserCredit()
                     {
                         TransNo = string.Empty,
+                        PaymentTypeId = paymentTypeId,
                         UserId = userId,
                         PackageId = packageObj.Id,
                         PaymentMethodId = paymentId,
@@ -3819,7 +3848,7 @@ namespace MapIt.Web.App
         [WebMethod(Description = @"Number greater than 0 (user id) -> Success <br />-2 -> Required field is empty <br />-3 -> Not exist 
 <br />-4 -> Wrong password <br />-5 -> Not activated <br />-6 -> Not User Type <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string Login(string userName, string password, string deviceToken, int deviceType , string key)
+        public string Login(string userName, string password, string deviceToken, int deviceType, string key)
         {
             try
             {
@@ -3900,9 +3929,9 @@ namespace MapIt.Web.App
                         devicesTokensRepository.Add(dvTokObj);
                     }
                 }
-                
-                
-               
+
+
+
 
 
                 //RenderAsJson(userObj.Id.ToString());

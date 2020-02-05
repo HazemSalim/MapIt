@@ -25,6 +25,7 @@ namespace MapIt.Data
         public long UserId { get; set; }
         public Nullable<int> PackageId { get; set; }
         public int PaymentMethodId { get; set; }
+        public Nullable<int> PaymentTypeId { get; set; }
         public int CurrencyId { get; set; }
         public double ExchangeRate { get; set; }
         public double Amount { get; set; }

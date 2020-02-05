@@ -67,7 +67,6 @@ namespace MapIt.Data
         public virtual DbSet<ServiceArea> ServiceAreas { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
-        public virtual DbSet<UserCredit> UserCredits { get; set; }
         public virtual DbSet<Merchant> Merchants { get; set; }
         public virtual DbSet<Photographer> Photographers { get; set; }
         public virtual DbSet<PropertyComment> PropertyComments { get; set; }
@@ -86,6 +85,7 @@ namespace MapIt.Data
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Broker> Brokers { get; set; }
         public virtual DbSet<GeneralSetting> GeneralSettings { get; set; }
+        public virtual DbSet<UserCredit> UserCredits { get; set; }
     
         public virtual ObjectResult<GetSettings_Result> GetSettings(Nullable<int> propertyTypeId)
         {

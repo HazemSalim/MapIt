@@ -495,22 +495,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UserCredits">
-      <EntityTypeMapping TypeName="MapItModel.UserCredit">
-        <MappingFragment StoreEntitySet="UserCredits">
-          <ScalarProperty Name="TransOn" ColumnName="TransOn" />
-          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
-          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
-          <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
-          <ScalarProperty Name="PackageId" ColumnName="PackageId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="TransNo" ColumnName="TransNo" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Merchants">
       <EntityTypeMapping TypeName="MapItModel.Merchant">
         <MappingFragment StoreEntitySet="Merchants">
@@ -878,6 +862,23 @@
           <ScalarProperty Name="MetaDesc" ColumnName="MetaDesc" />
           <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
           <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserCredits">
+      <EntityTypeMapping TypeName="MapItModel.UserCredit">
+        <MappingFragment StoreEntitySet="UserCredits">
+          <ScalarProperty Name="TransOn" ColumnName="TransOn" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+          <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+          <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+          <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TransNo" ColumnName="TransNo" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -732,6 +732,7 @@
     <Property Name="UserId" Type="bigint" Nullable="false" />
     <Property Name="PackageId" Type="int" />
     <Property Name="PaymentMethodId" Type="int" Nullable="false" />
+    <Property Name="PaymentTypeId" Type="int" />
     <Property Name="CurrencyId" Type="int" Nullable="false" />
     <Property Name="ExchangeRate" Type="float" Nullable="false" />
     <Property Name="Amount" Type="float" Nullable="false" />

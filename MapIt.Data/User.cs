@@ -32,10 +32,10 @@ namespace MapIt.Data
             this.ServiceViews = new HashSet<ServiceView>();
             this.TechMessages = new HashSet<TechMessage>();
             this.UserBalanceLogs = new HashSet<UserBalanceLog>();
-            this.UserCredits = new HashSet<UserCredit>();
             this.WatchLists = new HashSet<WatchList>();
             this.Properties = new HashSet<Property>();
             this.Services = new HashSet<Service>();
+            this.UserCredits = new HashSet<UserCredit>();
         }
     
         public long Id { get; set; }
@@ -92,8 +92,6 @@ namespace MapIt.Data
         public virtual ICollection<TechMessage> TechMessages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserBalanceLog> UserBalanceLogs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserCredit> UserCredits { get; set; }
         public virtual UserType UserType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WatchList> WatchLists { get; set; }
@@ -101,5 +99,7 @@ namespace MapIt.Data
         public virtual ICollection<Property> Properties { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Service> Services { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserCredit> UserCredits { get; set; }
     }
 }
