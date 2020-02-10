@@ -3762,20 +3762,19 @@ namespace MapIt.Web.App
 
         [WebMethod(Description = "Link as string -> Success <br />-2 -> Required field is empty  <br />-1 -> Error")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void BuyCredit(long userId, int packageId, int currencyId, int paymentId, int paymentTypeId, string key)
+        public string BuyCredit(long userId, int packageId, int currencyId, int paymentId, int paymentTypeId, string key)
         {
             try
             {
                 userCreditsRepository = new UserCreditsRepository();
                 if (!key.Equals(AppSettings.WSKey))
                 {
-                    return;
+                    return "-1";
                 }
 
                 if (userId < 1 || packageId < 1 || paymentId < 1 || paymentTypeId < 1)
                 {
-                    RenderAsJson(-2);
-                    return;
+                    return "-2";
                 }
 
                 currenciesRepository = new CurrenciesRepository();
@@ -3793,7 +3792,7 @@ namespace MapIt.Web.App
 
                 if (packageObj != null)
                 {
-                    var userCredit = new UserCredit()
+                    var userCredit = new UserCredit
                     {
                         TransNo = string.Empty,
                         PaymentTypeId = paymentTypeId,
@@ -3811,37 +3810,132 @@ namespace MapIt.Web.App
                     userCredit.TransNo = "TRN" + (userCredit.Id).ToString("D6");
                     userCreditsRepository.Update(userCredit);
 
-                    if (userCredit.PaymentMethodId == (int)AppEnums.PaymentMethods.MyFatoorah)
-                    {
-                        // ----- Go to My Fatoorah payment ----- //
-                        RenderAsJson(AppSettings.WebsiteURL + "/payment/Buy?trn=" + userCredit.TransNo);
-                    }
-                    //else if (userCreditObj.PaymentMethodId == (int)AppEnums.PaymentMethods.Other1)
+                    return SendPaymentRequest(userCredit,userId);
+
+                    //if (userCredit.PaymentMethodId == (int)AppEnums.PaymentMethods.MyFatoorah)
                     //{
-                    //    // ----- Go to Knet payment ----- //
-                    //    RenderAsJson(AppSettings.WebsiteURL + "/knet/buy?trackid=" + userCreditObj.Id + "&total=" + userCreditObj.Amount);
+                    //    return AppSettings.WebsiteURL + "/payment/Buy?trn=" + userCredit.TransNo;
                     //}
-                    //else if (userCreditObj.PaymentMethodId == (int)AppEnums.PaymentMethods.Other2)
+                    //else
                     //{
-                    //    // ----- Go to Cyber Source payment ----- //
-                    //    RenderAsJson(AppSettings.WebsiteURL + "/cybersource/buy?trackid=" + userCreditObj.Id + "&total=" + userCreditObj.Amount);
+                    //    return AppSettings.WebsiteURL + "/payment/creditreceipt?trans=" + userCredit.TransNo;
                     //}
-                    else
-                    {
-                        // ----- Credit Confirmation Message ----- //
-                        RenderAsJson(AppSettings.WebsiteURL + "/payment/creditreceipt?trans=" + userCredit.TransNo);
-                    }
                 }
                 else
                 {
-                    RenderAsJson(-3);
-                    return;
+                    return "-3";
                 }
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex);
-                RenderAsJson(-1);
+                return "-1";
+            }
+        }
+
+
+        private string SendPaymentRequest(UserCredit creditObj,long userId)
+        {
+            try
+            {
+
+                usersRepository = new UsersRepository();
+                var userObj = usersRepository.GetByKey(userId);
+                if (userObj == null)
+                {
+                    return "-4";
+                }
+
+                    string product = "Buy from MapIt Co. :: Credit";
+
+                var phoneParts = userObj.Phone.Split(' ');
+                string currCode = "+965";
+                string mobile = "00000000";
+                if (phoneParts.Length > 1)
+                {
+                    currCode = phoneParts[0];
+                    mobile = phoneParts[1];
+                }
+
+
+                PaymentRequest paymentRequest = new PaymentRequest
+                {
+                    PaymentMethodId = creditObj.PaymentTypeId.HasValue && creditObj.PaymentTypeId.Value > 0
+                        ? creditObj.PaymentTypeId.Value.ToString()
+                        : "1",
+                    CustomerName = userObj.FullName,
+                    DisplayCurrencyIso = "KWD",
+                    MobileCountryCode = currCode,
+                    CustomerMobile = mobile,
+                    CustomerEmail = userObj.Email,
+                    InvoiceValue = creditObj.Amount,
+                    CallBackUrl = AppSettings.MyF_merchant_return_url,
+                    ErrorUrl = AppSettings.MyF_merchant_error_url,
+                    Language = "en",
+                    CustomerReference = "",
+                    CustomerCivilId = 0,
+                    UserDefinedField = "Custom field",
+                    ExpireDate = "",
+                    CustomerAddress = new CustomerAddress
+                    {
+                        Block = "",
+                        Street = "",
+                        HouseBuildingNo = "",
+                        Address = "",
+                        AddressInstructions = ""
+                    },
+                    InvoiceItems = new List<InvoiceItem>
+                {
+                    new InvoiceItem
+                    {
+                        ItemName = product,
+                        Quantity = 1,
+                        UnitPrice = creditObj.Amount
+                    }
+                }
+                };
+
+
+                string json = JsonConvert.SerializeObject(paymentRequest);
+                string result = MyfatoorahPayment.PostRequest("ExecutePayment", json);
+
+                var paymentResult = JsonConvert.DeserializeObject<PaymentResponse>(result);
+
+                JObject tmpObj = paymentResult.Data as JObject;
+                ExecutePaymentData data = tmpObj.ToObject<ExecutePaymentData>();
+
+                var paymentTransactionsRepository = new PaymentTransactionsRepository();
+                var ptObj = new PaymentTransaction
+                {
+                    CreditId = creditObj.Id,
+                    Amount = creditObj.Amount,
+                    RefId = data.InvoiceId.ToString(),
+                    PaidOn = DateTime.Now
+                };
+
+                paymentTransactionsRepository.Add(ptObj);
+
+                if (paymentResult.IsSuccess)
+                {
+                    return data.PaymentURL;
+                }
+                else
+                {
+                    string error = "";
+                    foreach (var err in paymentResult.ValidationErrors)
+                    {
+                        error += "Name:" + err.Name;
+                        error += "Error:" + err.Error;
+                    }
+                    LogHelper.LogPayment(creditObj.TransNo, error);
+
+                    return AppSettings.WebsiteURL + "/payment/Error?ref=" + creditObj.TransNo;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex);
+                return AppSettings.WebsiteURL + "/payment/Error?ref=" + creditObj.TransNo;
             }
         }
 
