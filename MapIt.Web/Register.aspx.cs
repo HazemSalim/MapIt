@@ -120,6 +120,8 @@ namespace MapIt.Web
         {
             try
             {
+                if (txtPhone.Text.Trim().Length > 8)
+                    return;
 
                 string block = GetWorkstation();
                 if (block == "Block") return;
