@@ -4000,10 +4000,9 @@ namespace MapIt.Web.App
                 }
                 else
                 {
-                    var exToken = devicesTokensRepository.First(c => c.UserId == userObj.Id);
+                    var exToken = devicesTokensRepository.First(c => c.UserId == userObj.Id && c.DeviceType==deviceType);
                     if (exToken != null)
                     {
-                        exToken.DeviceType = deviceType;
                         exToken.DeviceToken = deviceToken;
                         exToken.IsLogged = true;
 
@@ -4056,16 +4055,16 @@ namespace MapIt.Web.App
                     return -2;
                 }
 
-                devicesTokensRepository = new DevicesTokensRepository();
-                var exToken = devicesTokensRepository.First(c => c.DeviceToken == deviceToken);
-                if (exToken != null)
-                {
-                    exToken.UserId = null;
-                    exToken.PushCounter = 0;
-                    exToken.IsLogged = false;
+                //devicesTokensRepository = new DevicesTokensRepository();
+                //var exToken = devicesTokensRepository.First(c => c.DeviceToken == deviceToken);
+                //if (exToken != null)
+                //{
+                //    exToken.UserId = null;
+                //    exToken.PushCounter = 0;
+                //    exToken.IsLogged = false;
 
-                    devicesTokensRepository.Update(exToken);
-                }
+                //    devicesTokensRepository.Update(exToken);
+                //}
 
                 //RenderAsJson(userId);
                 return userId;
@@ -5445,22 +5444,30 @@ namespace MapIt.Web.App
                 devicesTokensRepository = new DevicesTokensRepository();
                 if (!devicesTokensRepository.ExistsToken(token))
                 {
-                    long? uId = null;
                     if (userId > 0)
                     {
-                        uId = userId;
-                    }
+                        var exToken = devicesTokensRepository.First(c => c.UserId == userId && c.DeviceType == deviceType);
+                        if (exToken != null)
+                        {
+                            exToken.DeviceToken = token;
+                            exToken.IsLogged = true;
 
-                    DevicesToken dvTokObj = new DevicesToken
-                    {
-                        UserId = uId,
-                        DeviceToken = token,
-                        DeviceType = deviceType,
-                        PushCounter = 0,
-                        IsLogged = uId.HasValue ? true : false,
-                        AddedOn = DateTime.Now
-                    };
-                    devicesTokensRepository.Add(dvTokObj);
+                            devicesTokensRepository.Update(exToken);
+                        }
+                        else
+                        {
+                            DevicesToken dvTokObj = new DevicesToken
+                            {
+                                UserId = userId,
+                                DeviceToken = token,
+                                DeviceType = deviceType,
+                                PushCounter = 0,
+                                IsLogged = true,
+                                AddedOn = DateTime.Now
+                            };
+                            devicesTokensRepository.Add(dvTokObj);
+                        }
+                    }
                 }
                 return 1;
             }
@@ -5488,38 +5495,31 @@ namespace MapIt.Web.App
                 }
 
                 devicesTokensRepository = new DevicesTokensRepository();
-
                 if (!devicesTokensRepository.ExistsToken(token))
                 {
-                    long? uId = null;
                     if (userId > 0)
                     {
-                        uId = userId;
-                    }
-
-                    if (!devicesTokensRepository.ExistsDvId(deviceId))
-                    {
-                        DevicesToken dvTokObj = new DevicesToken
+                        var exToken = devicesTokensRepository.First(c => c.UserId == userId && c.DeviceType==deviceType);
+                        if (exToken != null)
                         {
-                            UserId = uId,
-                            DeviceId = deviceId,
-                            DeviceToken = token,
-                            DeviceType = deviceType,
-                            PushCounter = 0,
-                            IsLogged = uId.HasValue ? true : false,
-                            AddedOn = DateTime.Now
-                        };
-                        devicesTokensRepository.Add(dvTokObj);
-                    }
-                    else
-                    {
-                        DevicesToken dvTokObj = devicesTokensRepository.First(dt => dt.DeviceId == deviceId);
-                        dvTokObj.UserId = uId;
-                        dvTokObj.DeviceToken = token;
-                        dvTokObj.PushCounter = 0;
-                        dvTokObj.IsLogged = uId.HasValue ? true : false;
-                        dvTokObj.ModifiedOn = DateTime.Now;
-                        devicesTokensRepository.Update(dvTokObj);
+                            exToken.DeviceToken = token;
+                            exToken.IsLogged = true;
+
+                            devicesTokensRepository.Update(exToken);
+                        }
+                        else
+                        {
+                            DevicesToken dvTokObj = new DevicesToken
+                            {
+                                UserId = userId,
+                                DeviceToken = token,
+                                DeviceType = deviceType,
+                                PushCounter = 0,
+                                IsLogged = true,
+                                AddedOn = DateTime.Now
+                            };
+                            devicesTokensRepository.Add(dvTokObj);
+                        }
                     }
                 }
                 return 1;
