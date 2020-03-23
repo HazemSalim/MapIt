@@ -758,6 +758,7 @@ namespace MapIt.Web.Admin
                 propertyObj.Latitude = hfLatitude.Value;
                 propertyObj.ViewersCount = ParseHelper.GetInt(txtViewersCount.Text).Value;
                 propertyObj.IsActive = chkActive.Checked;
+                propertyObj.IsAvailable = true;
                 propertyObj.AdminAdded = true;
                 propertyObj.AddedOn = DateTime.Now;
 
