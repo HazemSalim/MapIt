@@ -721,12 +721,14 @@ namespace MapIt.Web.Admin
                 var componentList = GetComponentList();
                 var featureList = GetFeatureList();
 
-                var propertyObj = new Data.Property();
-                propertyObj.UserId = ParseHelper.GetInt64(hfUserId.Value).Value;
-                propertyObj.PurposeId = purposeId.Value;
-                propertyObj.TypeId = typeId.Value;
-                propertyObj.CountryId = countryId.Value;
-                propertyObj.BlockId = blockId;
+                var propertyObj = new Data.Property
+                {
+                    UserId = ParseHelper.GetInt64(hfUserId.Value).Value,
+                    PurposeId = purposeId.Value,
+                    TypeId = typeId.Value,
+                    CountryId = countryId.Value,
+                    BlockId = blockId
+                };
 
                 if (div_Aream2.Visible)
                     propertyObj.Area = ParseHelper.GetDouble(txtArea.Text);
@@ -751,7 +753,7 @@ namespace MapIt.Web.Admin
                 if (div_Details.Visible && !string.IsNullOrEmpty(txtDetails.Text))
                     propertyObj.Details = txtDetails.Text;
                 else
-                    propertyObj.Details = null;
+                    propertyObj.Details = string.Empty;
 
                 propertyObj.OtherPhones = string.Join(",", phoneList);
                 propertyObj.Longitude = hfLongitude.Value;
@@ -844,6 +846,9 @@ namespace MapIt.Web.Admin
                 propertyObj.TypeId = typeId.Value;
                 propertyObj.CountryId = countryId.Value;
                 propertyObj.BlockId = blockId;
+
+                propertyObj.PACI= txtPACI.Text;
+                propertyObj.Street= txtStreet.Text;
 
                 if (div_Aream2.Visible)
                     propertyObj.Area = ParseHelper.GetDouble(txtArea.Text);
@@ -1013,8 +1018,8 @@ namespace MapIt.Web.Admin
                     ddlPurpose.SelectedValue = propertyObj.PurposeId.ToString();
                     ddlType.SelectedValue = propertyObj.TypeId.ToString();
 
-                    txtPACI.Text = Convert.ToString(propertyObj.PACI);
-                    txtStreet.Text = Convert.ToString(propertyObj.Street);
+                    txtPACI.Text = propertyObj.PACI;
+                    txtStreet.Text = propertyObj.Street;
                     if (propertyObj.BlockId.HasValue)
                     {
                         ddlCountry.SelectedValue = propertyObj.CountryId.ToString();
@@ -1111,7 +1116,7 @@ namespace MapIt.Web.Admin
                                    from p in op.DefaultIfEmpty()
                                    select new
                                    {
-                                       TitleEN = s.TitleEN,
+                                       s.TitleEN,
                                        FeatureId = s.Id,
                                        IsChecked = p == null ? false : true
                                    };
@@ -1132,7 +1137,7 @@ namespace MapIt.Web.Admin
                                    from p in op.DefaultIfEmpty()
                                    select new
                                    {
-                                       TitleEN = s.TitleEN,
+                                       s.TitleEN,
                                        ComponentId = s.Id,
                                        Count = p == null ? 0 : p.Count
                                    };

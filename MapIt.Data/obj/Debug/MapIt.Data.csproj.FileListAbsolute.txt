@@ -59,4 +59,3 @@ F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Debug\MapIt.Data.csproj.CoreCompileIn
 F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Debug\MapIt.Data.csproj.CopyComplete
 F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Debug\MapIt.Data.dll
 F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Debug\MapIt.Data.pdb
-F:\MapIt\MapItWebsite\MapIt\MapIt.Data\obj\Debug\MapIt.Data.csprojAssemblyReference.cache
